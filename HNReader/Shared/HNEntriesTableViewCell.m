@@ -7,6 +7,8 @@
 //
 
 #import "HNEntriesTableViewCell.h"
+#import "HNTableCellBackgroundView.h"
+
 
 @implementation HNEntriesTableViewCell
 
@@ -39,6 +41,10 @@
         [containerView addSubview:siteTitleLabel];
         [containerView addSubview:siteDomainLabel];
         [containerView addSubview:commentsCountLabel];
+        
+        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectMake(0, 0, 320, 72)];
+        [self setBackgroundView:backgroundView];
+        [backgroundView release];
         
         [self addSubview:containerView];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];

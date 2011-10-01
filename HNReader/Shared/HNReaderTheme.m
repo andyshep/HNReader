@@ -25,17 +25,59 @@
 #pragma mark Colors for UI elements
 
 + (UIColor *)brightOrangeColor {
-    return [UIColor colorWithRed:1.0 
-                           green:102.0/255.0 
-                            blue:0.0 
-                           alpha:1.0];
+    return [UIColor colorWithRed:1.0f 
+                           green:102.0f/255.0f 
+                            blue:0.0f 
+                           alpha:1.0f];
 }
 
 + (UIColor *)lightTanColor {
-    return[UIColor colorWithRed:246.0/255.0 
-                          green:246.0/255.0 
-                           blue:239.0/255.0 
-                          alpha:1.0];
+    return[UIColor colorWithRed:246.0f/255.0f 
+                          green:246.0f/255.0f 
+                           blue:239.0f/255.0f 
+                          alpha:1.0f];
+}
+
++ (CGGradientRef)oceanGradientColor {
+	UIColor *topColor = [UIColor colorWithRed:(75.0f/255.f) 
+										green:(193.0f/255.0f) 
+										 blue:(193.0f/255.0f) 
+										alpha:(255.0f/255.0f)];
+	
+	UIColor *bottomColor = [UIColor colorWithRed:(75.0f/255.f) 
+										   green:(153.0f/255.0f) 
+											blue:(193.0f/255.0f) 
+										   alpha:(255.0f/255.0f)];
+	
+	return SSGradientWithColors(topColor, bottomColor);
+}
+
++ (CGGradientRef)blueishGradientColor {
+	UIColor *topColor = [UIColor colorWithRed:(102.0f/255.f) 
+										green:(153.0f/255.0f) 
+										 blue:(204.0f/255.0f) 
+										alpha:(255.0f/255.0f)];
+	
+	UIColor *bottomColor = [UIColor colorWithRed:(75.0f/255.f) 
+										   green:(115.0f/255.0f) 
+											blue:(153.0f/255.0f) 
+										   alpha:(255.0f/255.0f)];
+	
+	return SSGradientWithColors(bottomColor, topColor);
+}
+
++ (CGGradientRef)tanGradientColor {
+	UIColor *topColor = [UIColor colorWithRed:242.0f/255.0f 
+                                         green:242.0f/255.0f 
+                                          blue:239.0f/255.0f 
+                                         alpha:1.0f];
+	
+	UIColor *bottomColor = [UIColor colorWithRed:(252.0f/255.f) 
+										   green:(252.0f/255.0f) 
+											blue:(251.0f/255.0f) 
+										   alpha:(1.0f)];
+	
+	return SSGradientWithColors(bottomColor, topColor);
 }
 
 @end

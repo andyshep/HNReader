@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SSDrawingUtilities.h"
 
 @interface HNReaderTheme : NSObject
 
@@ -15,5 +15,7 @@
 
 + (UIColor *)brightOrangeColor;
 + (UIColor *)lightTanColor;
+
++ (CGGradientRef)tanGradientColor;
 
 @end

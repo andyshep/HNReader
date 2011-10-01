@@ -11,36 +11,56 @@
 
 @implementation HNEntriesViewController
 
-@synthesize model;
+@synthesize model, tableView;
+@synthesize entriesControl, bottomToolbar;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // TODO: title
+- (id)init {
+    if ((self = [super init])) {
         
         model = [[HNReaderModel alloc] init];
         
         [model addObserver:self 
-                 forKeyPath:@"entries" 
-                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                    context:@selector(entriesDidLoad)];
+                forKeyPath:@"entries" 
+                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
+                   context:@selector(entriesDidLoad)];
         
         [model addObserver:self 
-                 forKeyPath:@"error" 
-                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                    context:@selector(operationDidFail)];
-        
-        [self loadEntries];
+                forKeyPath:@"error" 
+                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
+                   context:@selector(operationDidFail)];
     }
+    
     return self;
 }
+
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    self = [super initWithStyle:style];
+//    if (self) {
+//        // TODO: title
+//        
+//        model = [[HNReaderModel alloc] init];
+//        
+//        [model addObserver:self 
+//                 forKeyPath:@"entries" 
+//                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
+//                    context:@selector(entriesDidLoad)];
+//        
+//        [model addObserver:self 
+//                 forKeyPath:@"error" 
+//                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
+//                    context:@selector(operationDidFail)];
+//    }
+//    return self;
+//}
 
 - (void)dealloc {
     
     [model removeObserver:self forKeyPath:@"entries"];
     [model removeObserver:self forKeyPath:@"error"];
     [model release];
+    
+    [tableView release];
     
     [super dealloc];
 }
@@ -55,17 +75,49 @@
 
 #pragma mark - View lifecycle
 
+- (void)loadView {
+    [super loadView];
+    
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    
+    // make the table
+    CGRect tableFrame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height - 108.0f);
+    tableView = [[UITableView alloc] initWithFrame:tableFrame];
+    [tableView setDelegate:self];
+    [tableView setDataSource:self];
+    
+    // make direction control
+    NSArray *items = [NSArray arrayWithObjects:@"Front Page", @"Newest", @"Best", nil];
+	entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
+	entriesControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	entriesControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+	entriesControl.frame = CGRectMake(0, 0, 305, 30);
+	entriesControl.selectedSegmentIndex = 0;
+    [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+	UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:entriesControl];
+    
+    // make bottom toolbar
+    CGRect toolbarFrame = CGRectMake(0, rect.size.height - 108.0f, rect.size.width, 44.0f);
+    bottomToolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];    
+    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    
+    [self.view addSubview:bottomToolbar];
+    [self.view addSubview:tableView];
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
 	[[self navigationItem] setTitle:NSLocalizedString(@"Hacker News", @"Hacker News Entries")];
-    [[[self navigationController] navigationBar] setTintColor:[UIColor colorWithRed:1 green:102.0/255.0 blue:0.0 alpha:1]];
-    
-    [self.tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     [refreshButton release];
+    
+    [self loadEntries];
 }
 
 - (void)viewDidUnload
@@ -75,30 +127,13 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    }
+    
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -115,11 +150,11 @@
     return 72.0f;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"HNEntriesTableViewCell";
     
-    HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[HNEntriesTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 72)];
     }
@@ -136,14 +171,32 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
     
-    HNEntryViewController *nextController = [[HNEntryViewController alloc] init];
-    nextController.entry = selectedEntry;
-    [self.navigationController pushViewController:nextController animated:YES];
+    //HNEntryViewController *nextController = [[HNEntryViewController alloc] init];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // push on a new web view
+    
+        HNWebViewController *nextController = [[HNWebViewController alloc] init];
+        nextController.entry = selectedEntry;
+        [self.navigationController pushViewController:nextController animated:YES];
+        
+        // TODO: implement this correctly
+        // [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else {
+        // ask our delegate to load url
+    
+        // implement
+    }
 }
+
+//- (void)tableView:(UITableView *)aTableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
 
 #pragma mark - Model Observing and Reactions
 

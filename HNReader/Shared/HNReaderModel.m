@@ -87,6 +87,15 @@
                     aEntry.linkURL = [[[titles objectAtIndex:1] firstChild] getAttributeNamed:@"href"];
                     aEntry.siteDomainURL = [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents];
                     
+                    // NSLog(@"%@", aEntry.linkURL);
+                    
+                    if ([aEntry.linkURL hasPrefix:@"item?id="]) {
+                        
+                        NSString *baseURL = @"http://news.ycombinator.com/";
+                        
+                        aEntry.linkURL = [baseURL stringByAppendingString:aEntry.linkURL];
+                    }
+                    
                     // NSLog(@"%@", [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents]);
                     
                     // after the title <td>, the next child is a commment <td>

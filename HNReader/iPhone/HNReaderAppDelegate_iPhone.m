@@ -17,7 +17,7 @@
     HNEntriesViewController *rootController = [[HNEntriesViewController alloc] init];
     navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
-    [[navController navigationBar] setTintColor:[UIColor colorWithRed:1 green:102.0/255.0 blue:0.0 alpha:1]];
+    [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
