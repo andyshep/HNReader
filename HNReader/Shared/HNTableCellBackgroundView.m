@@ -1,22 +1,22 @@
 //
-//  JOTableCellBackgroundView.m
-//  GrowJo
+//  HNSelectedTableCellView.m
+//  HNReader
 //
-//  Created by Andrew Shepard on 6/12/11.
+//  Created by Andrew Shepard on 9/30/11.
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNSelectedTableCellView.h"
+#import "HNTableCellBackgroundView.h"
 
 
-@implementation HNSelectedTableCellView
+@implementation HNTableCellBackgroundView
 
 @synthesize borderColor;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code
-		gradient = [JOUserInferfaceTools blueishGradientColor];
+		gradient = [HNReaderTheme tanGradientColor];
     }
     return self;
 }

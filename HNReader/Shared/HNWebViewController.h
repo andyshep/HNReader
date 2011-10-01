@@ -6,8 +6,23 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HNEntry.h"
+#import "HNReaderTheme.h"
 
-@interface HNWebViewController : UIViewController
+@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate> {
+    UIWebView *webView;
+    HNEntry *entry;
+    
+    UIToolbar *toolbar;
+    UIPopoverController *popoverController;
+    NSMutableArray *items;
+}
+
+@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) HNEntry *entry;
+
+@property (nonatomic, retain) UIToolbar *toolbar;
+@property (nonatomic, retain) UIPopoverController *popoverController;
+@property (nonatomic, retain) NSMutableArray *items;
 
 @end

@@ -1,15 +1,17 @@
 //
-//  JOTableCellBackgroundView.h
-//  GrowJo
+//  HNSelectedTableCellView.h
+//  HNReader
 //
-//  Created by Andrew Shepard on 6/12/11.
+//  Created by Andrew Shepard on 9/30/11.
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
+
 #import "SSDrawingUtilities.h"
+#import "HNReaderTheme.h"
 
 
-@interface HNSelectedTableCellView : UIView {
+@interface HNTableCellBackgroundView : UIView {
 	UIColor *borderColor;
 	CGGradientRef gradient;
 }
