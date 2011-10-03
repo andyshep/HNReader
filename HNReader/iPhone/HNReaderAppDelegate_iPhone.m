@@ -17,9 +17,9 @@
     HNEntriesViewController *rootController = [[HNEntriesViewController alloc] init];
     navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
-    [navController setToolbarHidden:NO];
+    // [navController setToolbarHidden:NO];
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
-    [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
+    // [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     

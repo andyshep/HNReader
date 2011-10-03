@@ -20,6 +20,8 @@ typedef enum  {
 @interface HNReaderModel : NSObject {
     NSArray *entries;
     NSError *error;
+    
+    NSOperationQueue *opQueue;
 }
 
 @property (copy) NSArray *entries;

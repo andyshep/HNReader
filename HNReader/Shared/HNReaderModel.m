@@ -18,6 +18,8 @@
     if (self) {
         self.entries = nil;
         self.error = nil;
+        
+        opQueue = [[NSOperationQueue alloc] init];
     }
     
     return self;
@@ -26,6 +28,7 @@
 - (void)dealloc {
     [entries release];
     [error release];
+    [opQueue release];
     [super dealloc];
 }
 
@@ -140,8 +143,7 @@
         }
     }];
     
-    NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
-    [queue addOperation:operation];
+    [opQueue addOperation:operation];
 }
 
 @end

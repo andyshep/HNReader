@@ -100,9 +100,7 @@
 
 #pragma mark - UIWebViewDelegate methods
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidFinishLoad:");
-    
+- (void)webViewDidFinishLoad:(UIWebView *)webView {    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
@@ -110,8 +108,7 @@
 
 - (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
     
-    //barButtonItem.image = [UIImage imageNamed:@"flowering.png"];
-	barButtonItem.title = @"News";
+	barButtonItem.title = NSLocalizedString(@"News", @"News popover title");
 	barButtonItem.style = UIBarButtonItemStyleBordered;
 	
 	[self.items insertObject:barButtonItem atIndex:0];
@@ -132,9 +129,7 @@
 
 #pragma mark - HNEntriesViewControllerDelegate
 
-- (void)shouldLoadURL:(NSURL *)aURL {
-    NSLog(@"shouldLoadURL:");
-    
+- (void)shouldLoadURL:(NSURL *)aURL {    
     NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
     [webView loadRequest:request];
     

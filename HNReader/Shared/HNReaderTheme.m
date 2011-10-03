@@ -38,6 +38,13 @@
                           alpha:1.0f];
 }
 
++ (UIColor *)veryDarkGrey {
+    return [UIColor colorWithRed:1.0f/255.0f 
+                           green:15.0f/255.0f 
+                            blue:42.0f/255.0f 
+                           alpha:0.0f];
+}
+
 + (CGGradientRef)oceanGradientColor {
 	UIColor *topColor = [UIColor colorWithRed:(75.0f/255.f) 
 										green:(193.0f/255.0f) 

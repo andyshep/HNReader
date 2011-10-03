@@ -15,6 +15,7 @@
 
 + (UIColor *)brightOrangeColor;
 + (UIColor *)lightTanColor;
++ (UIColor *)veryDarkGrey;
 
 + (CGGradientRef)tanGradientColor;
 

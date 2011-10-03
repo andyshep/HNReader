@@ -16,7 +16,7 @@
 @synthesize delegate;
 
 - (id)init {
-    if ((self = [super init])) {
+    if ((self = [super initWithNibName:@"HNEntriesView" bundle:nil])) {
         
         model = [[HNReaderModel alloc] init];
         
@@ -82,47 +82,42 @@
     [super loadView];
     
     // CGRect rect = [[UIScreen mainScreen] bounds];
-    CGRect frame = [self.view bounds];
-    
-    UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
-    
-    // make the table
-    CGRect tableFrame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 88.0f);
-    
-    tableView = [[UITableView alloc] initWithFrame:tableFrame];
-    [tableView setDelegate:self];
-    [tableView setDataSource:self];
+    // CGRect frame = [self.view bounds];
     
     // make direction control
-    NSArray *items = [NSArray arrayWithObjects:@"Front Page", @"Newest", @"Best", nil];
+    NSArray *items = [NSArray arrayWithObjects:
+                      NSLocalizedString(@"Front Page", @"Front Page"), 
+                      NSLocalizedString(@"Newest", @"Newest"), 
+                      NSLocalizedString(@"Best", @"Best"), 
+                      nil];
 	entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
 	entriesControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	entriesControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	entriesControl.frame = CGRectMake(0, 0, 305, 30);
 	entriesControl.selectedSegmentIndex = 0;
-    [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
 	UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:entriesControl];
     
     [entriesControl addTarget:self action:@selector(swapEntriesList:) forControlEvents:UIControlEventValueChanged];
     
-//    // make bottom toolbar
-//    CGRect toolbarFrame = CGRectMake(0, frame.size.height - 88.0f, 320.0f, 44.0f);
-//    bottomToolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-//    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];    
-//    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
     
-    // [containerView addSubview:bottomToolbar];
-    [containerView addSubview:tableView];
-    
-    [containerView setBackgroundColor:[UIColor whiteColor]];
-    
-    [self.view addSubview:containerView];
-    
-    // [[self navigationController] setToolbarHidden:NO];
-    
-    // [[[self navigationController] toolbar] setItems:[NSArray arrayWithObjects:buttonItem, nil]];
-    
-    [self setToolbarItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+        [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+    }
+    else {
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        
+        // refactor and dry
+        if (UIInterfaceOrientationIsLandscape(orientation)) {
+            [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+            [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+        }
+        else {
+            [bottomToolbar setTintColor:[HNReaderTheme veryDarkGrey]];
+            [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
+        }
+    }
 }
 
 - (void)viewDidLoad {
@@ -150,6 +145,7 @@
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
     }
     
+    // support all orientation on the pad
     return YES;
 }
 
@@ -173,7 +169,7 @@
     
     HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[HNEntriesTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 72)];
+        cell = [[HNEntriesTableViewCell alloc] init];
     }
     
     HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
@@ -261,6 +257,21 @@
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+            // set tint color
+            [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+            [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+        }
+        else {
+            // unset tint color
+            [bottomToolbar setTintColor:[HNReaderTheme veryDarkGrey]];
+            [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
+        }
+    }
 }
 
 @end

@@ -17,9 +17,9 @@
     entriesViewController = [[HNEntriesViewController alloc] init];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:entriesViewController] autorelease];
     
-    [navController setToolbarHidden:NO];
+    // [navController setToolbarHidden:NO];
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
-    [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
+    // [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     webViewController = [[HNWebViewController alloc] init];
     

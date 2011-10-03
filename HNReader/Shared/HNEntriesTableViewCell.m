@@ -14,10 +14,8 @@
 
 @synthesize siteTitleLabel, commentsCountLabel, siteDomainLabel;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+- (id)init {
+    if ((self = [super init])) {
         UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 72)] autorelease];
         
         siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 4, 272, 40)];

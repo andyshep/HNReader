@@ -24,17 +24,17 @@
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNReaderModel *model;
     
-    UITableView *tableView;
+    IBOutlet UITableView *tableView;
+    IBOutlet UIToolbar *bottomToolbar;
 	UISegmentedControl *entriesControl;
-	UIToolbar *bottomToolbar;
     
     id<HNEntriesViewControllerDelegate> delegate;
 }
 
 @property (nonatomic, retain) HNReaderModel *model;
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) UISegmentedControl *entriesControl;
-@property (nonatomic, retain) UIToolbar *bottomToolbar;
 
 @property (assign) id<HNEntriesViewControllerDelegate> delegate;
 
