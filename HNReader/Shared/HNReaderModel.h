@@ -11,6 +11,12 @@
 #import "HTMLParser.h"
 #import "HTMLNode.h"
 
+typedef enum  {
+    HNEntriesFrontPageIdentifier,
+    HNEntriesNewestPageIdentifier,
+    HNEntriesBestPageIdentifier
+} HNEntriesPageIdentifier;
+
 @interface HNReaderModel : NSObject {
     NSArray *entries;
     NSError *error;
@@ -23,6 +29,7 @@
 - (id)objectInEntriesAtIndex:(NSUInteger)index;
 - (void)getEntriesObjects:(id *)objects range:(NSRange)range;
 
--(void)requestEntries;
+- (void)loadEntriesForIndex:(NSUInteger)index;
+- (void)loadEntriesForRequest:(NSURLRequest *)request;
 
 @end

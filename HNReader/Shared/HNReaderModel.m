@@ -46,8 +46,23 @@
 
 #pragma mark - Network Requests
 
--(void)requestEntries {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/newest"]];
+- (void)loadEntriesForIndex:(NSUInteger)index {
+    NSURL *url = [NSURL URLWithString:@"http://news.ycombinator.com/"];
+    
+    if (index == HNEntriesNewestPageIdentifier) {
+        url = [NSURL URLWithString:@"http://news.ycombinator.com/newest"];
+    }
+    else if (index == HNEntriesBestPageIdentifier) {
+        url = [NSURL URLWithString:@"http://news.ycombinator.com/best"];
+    }
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [self loadEntriesForRequest:request];
+}
+
+-(void)loadEntriesForRequest:(NSURLRequest *)request {
+    // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/newest"]];
     // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
     
     AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {

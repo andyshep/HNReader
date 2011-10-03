@@ -8,8 +8,11 @@
 
 #import "HNEntry.h"
 #import "HNReaderTheme.h"
+#import "HNEntriesViewController.h"
 
-@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate> {
+@protocol HNEntriesViewControllerDelegate;
+
+@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntriesViewControllerDelegate> {
     UIWebView *webView;
     HNEntry *entry;
     

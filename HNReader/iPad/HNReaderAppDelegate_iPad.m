@@ -10,16 +10,20 @@
 
 @implementation HNReaderAppDelegate_iPad
 
-@synthesize splitViewController, navController;
+@synthesize splitViewController, entriesViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     entriesViewController = [[HNEntriesViewController alloc] init];
-    navController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:entriesViewController] autorelease];
     
+    [navController setToolbarHidden:NO];
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
+    [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     webViewController = [[HNWebViewController alloc] init];
+    
+    entriesViewController.delegate = webViewController;
     
     splitViewController = [[UISplitViewController alloc] init];
     splitViewController.viewControllers = [NSArray arrayWithObjects:navController, webViewController, nil];

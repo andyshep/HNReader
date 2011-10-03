@@ -13,6 +13,7 @@
 
 @synthesize model, tableView;
 @synthesize entriesControl, bottomToolbar;
+@synthesize delegate;
 
 - (id)init {
     if ((self = [super init])) {
@@ -28,6 +29,8 @@
                 forKeyPath:@"error" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(operationDidFail)];
+        
+        self.delegate = nil;
     }
     
     return self;
@@ -78,10 +81,14 @@
 - (void)loadView {
     [super loadView];
     
-    CGRect rect = [[UIScreen mainScreen] bounds];
+    // CGRect rect = [[UIScreen mainScreen] bounds];
+    CGRect frame = [self.view bounds];
+    
+    UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
     
     // make the table
-    CGRect tableFrame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height - 108.0f);
+    CGRect tableFrame = CGRectMake(frame.origin.x, frame.origin.y, 320.0f, frame.size.height - 88.0f);
+    
     tableView = [[UITableView alloc] initWithFrame:tableFrame];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
@@ -96,16 +103,26 @@
     [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
 	UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:entriesControl];
     
-    // make bottom toolbar
-    CGRect toolbarFrame = CGRectMake(0, rect.size.height - 108.0f, rect.size.width, 44.0f);
-    bottomToolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];    
-    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    [entriesControl addTarget:self action:@selector(swapEntriesList:) forControlEvents:UIControlEventValueChanged];
     
-    [self.view addSubview:bottomToolbar];
-    [self.view addSubview:tableView];
+//    // make bottom toolbar
+//    CGRect toolbarFrame = CGRectMake(0, frame.size.height - 88.0f, 320.0f, 44.0f);
+//    bottomToolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+//    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];    
+//    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    // [containerView addSubview:bottomToolbar];
+    [containerView addSubview:tableView];
+    
+    [containerView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.view addSubview:containerView];
+    
+    // [[self navigationController] setToolbarHidden:NO];
+    
+    // [[[self navigationController] toolbar] setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:buttonItem, nil]];
 }
 
 - (void)viewDidLoad {
@@ -191,6 +208,7 @@
         // ask our delegate to load url
     
         // implement
+        [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
     }
 }
 
@@ -206,7 +224,13 @@
 }
 
 - (void)loadEntries {
-    [model requestEntries];
+    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
+}
+
+- (IBAction)swapEntriesList:(id)sender {
+	// tell the model we're switching directions
+	// [model_ loadStopsForTagIndex:self.directionControl.selectedSegmentIndex];
+    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
 }
 
 - (void)entriesDidLoad {

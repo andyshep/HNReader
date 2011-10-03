@@ -50,17 +50,19 @@
     [webView setDelegate:self];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    [self.view addSubview:webView];
-    [self.view setBackgroundColor:[HNReaderTheme lightTanColor]];
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // load a toolbar
         
         toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
         [toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
         
+        [webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
+        
         [self.view addSubview:toolbar];
     }
+    
+    [self.view addSubview:webView];
+    [self.view setBackgroundColor:[HNReaderTheme lightTanColor]];
 }
 
 
@@ -68,7 +70,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:entry.linkURL]];
@@ -127,6 +128,17 @@
 
 - (void) splitViewController:(UISplitViewController *)svc popoverController:(UIPopoverController *)pc willPresentViewController:(UIViewController *)aViewController {
 
+}
+
+#pragma mark - HNEntriesViewControllerDelegate
+
+- (void)shouldLoadURL:(NSURL *)aURL {
+    NSLog(@"shouldLoadURL:");
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
+    [webView loadRequest:request];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 @end

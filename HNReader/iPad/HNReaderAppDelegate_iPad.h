@@ -12,13 +12,12 @@
 
 @interface HNReaderAppDelegate_iPad : HNReaderAppDelegate {
     UISplitViewController *splitViewController;
-    UINavigationController *navController;
     
     HNEntriesViewController *entriesViewController;
     HNWebViewController *webViewController;
 }
 
 @property (nonatomic, retain) UISplitViewController *splitViewController;
-@property (nonatomic, retain) UINavigationController *navController;
+@property (nonatomic, retain) HNEntriesViewController *entriesViewController;
 
 @end
