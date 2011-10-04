@@ -18,20 +18,23 @@ typedef enum  {
 } HNEntriesPageIdentifier;
 
 @interface HNReaderModel : NSObject {
-    NSArray *entries;
+    NSMutableArray *entries;
     NSError *error;
+    NSString *moreEntriesLink;
     
     NSOperationQueue *opQueue;
 }
 
-@property (copy) NSArray *entries;
+@property (copy) NSMutableArray *entries;
 @property (copy) NSError *error;
+@property (copy) NSString *moreEntriesLink;
 
 - (NSUInteger)countOfEntries;
 - (id)objectInEntriesAtIndex:(NSUInteger)index;
 - (void)getEntriesObjects:(id *)objects range:(NSRange)range;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;
+- (void)loadMoreEntries;
 - (void)loadEntriesForRequest:(NSURLRequest *)request;
 
 @end

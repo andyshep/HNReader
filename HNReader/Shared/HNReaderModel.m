@@ -10,7 +10,7 @@
 
 @implementation HNReaderModel
 
-@synthesize entries, error;
+@synthesize entries, error, moreEntriesLink;
 
 - (id)init
 {
@@ -18,8 +18,10 @@
     if (self) {
         self.entries = nil;
         self.error = nil;
+        self.moreEntriesLink = nil;
         
         opQueue = [[NSOperationQueue alloc] init];
+        entries = [[NSMutableArray alloc] initWithCapacity:25];
     }
     
     return self;
@@ -28,6 +30,8 @@
 - (void)dealloc {
     [entries release];
     [error release];
+    [moreEntriesLink release];
+    
     [opQueue release];
     [super dealloc];
 }
@@ -50,6 +54,15 @@
 #pragma mark - Network Requests
 
 - (void)loadEntriesForIndex:(NSUInteger)index {
+    
+    // remove all entries
+    // presumably we've switched pages via teh control
+    if ([entries count] > 0) {
+        [self willChangeValueForKey:@"entries"];
+        [entries removeAllObjects];
+        [self didChangeValueForKey:@"entries"];
+    }
+    
     NSURL *url = [NSURL URLWithString:@"http://news.ycombinator.com/"];
     
     if (index == HNEntriesNewestPageIdentifier) {
@@ -61,6 +74,14 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    [self loadEntriesForRequest:request];
+}
+
+- (void)loadMoreEntries {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", moreEntriesLink]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    // we can keep the old entries around if we're loading more
     [self loadEntriesForRequest:request];
 }
 
@@ -87,8 +108,10 @@
             HTMLNode *entiresTable = [[bodyNode findChildTags:@"table"] objectAtIndex:2];
             NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
             
-            NSMutableArray *_entries = [NSMutableArray arrayWithCapacity:20];
+            // NSMutableArray *_entries = [NSMutableArray arrayWithCapacity:20];
             HTMLNode *_currentNode = [tableNodes objectAtIndex:0];
+            
+            [self willChangeValueForKey:@"entries"];
             
             while ([_currentNode allContents] != NULL) {
                 
@@ -98,7 +121,7 @@
                 
                 if ([titles count] > 1) {
                     
-                    // NSLog(@"%@", [[[titles objectAtIndex:1] firstChild] contents]);
+                    // NSLog(@"%@", [_currentNode rawContents]);
                     
                     HNEntry *aEntry = [[[HNEntry alloc] init] autorelease];
                     aEntry.title = [[[titles objectAtIndex:1] firstChild] contents];
@@ -129,7 +152,8 @@
                         aEntry.commentsCount = [[[commentTdNode children] objectAtIndex:4] contents];
                     }
                     
-                    [_entries addObject:aEntry];
+                    // [_entries addObject:aEntry];
+                    [self.entries addObject:aEntry];
                 }
                 
                 // move to the next node
@@ -137,13 +161,36 @@
                 _currentNode = [_currentNode nextSibling];
             }
             
-            self.entries = _entries;
+            // after we have all the entries
+            // we grab the link the load the next 25 or so entries
+            // we will load these next 25 when the user selects the last table cell
+            
+            HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
+            
+            if (moreEntriesNode != NULL) {
+                NSLog(@"%@", [[moreEntriesNode firstChild] getAttributeNamed:@"href"]);
+                
+                NSString *_moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
+                self.moreEntriesLink = _moreEntriesLink;
+                
+                // [_entries addObject:[NSString stringWithString:[[moreEntriesNode firstChild] getAttributeNamed:@"href"]]];
+            }
+            
+            // self.entries = _entries;
+            
+            [self didChangeValueForKey:@"entries"];
             
             [parser release];
         }
     }];
     
     [opQueue addOperation:operation];
+}
+
+#pragma mark - Response Parsing
+
+- (void)handleResponse {
+    
 }
 
 @end

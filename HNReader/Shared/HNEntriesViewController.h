@@ -14,9 +14,16 @@
 
 #import "HNEntriesTableViewCell.h"
 
+typedef enum  {
+    HNLoadingNewEntriesStateIdentifier,
+    HNLoadingMoreEntriesStateIdentifier,
+    HNLoadingIdleState
+} HNEntryLoadingStateIdentifier;
+
 @protocol HNEntriesViewControllerDelegate <NSObject>
 
 - (void)shouldLoadURL:(NSURL *)aURL;
+- (void)shouldStopLoading;
 
 @end
 
@@ -29,6 +36,8 @@
 	UISegmentedControl *entriesControl;
     
     id<HNEntriesViewControllerDelegate> delegate;
+    
+    HNEntryLoadingStateIdentifier loadingState;
 }
 
 @property (nonatomic, retain) HNReaderModel *model;

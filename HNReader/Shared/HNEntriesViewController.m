@@ -31,6 +31,7 @@
                    context:@selector(operationDidFail)];
         
         self.delegate = nil;
+        loadingState = HNLoadingIdleState;
     }
     
     return self;
@@ -97,7 +98,7 @@
 	entriesControl.selectedSegmentIndex = 0;
 	UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:entriesControl];
     
-    [entriesControl addTarget:self action:@selector(swapEntriesList:) forControlEvents:UIControlEventValueChanged];
+    [entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
     
     [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
     
@@ -129,6 +130,7 @@
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     [refreshButton release];
     
+    loadingState = HNLoadingNewEntriesStateIdentifier;
     [self loadEntries];
 }
 
@@ -156,7 +158,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [model countOfEntries];
+    
+    // if the entries are empty return 0
+    // do not show a single 'load more..' row.
+    if ([model countOfEntries] <= 0) {
+        return [model countOfEntries];
+    }
+    
+    // if we have the entries then show 'em
+    // and plus one for the 'load more...' cell
+    return [model countOfEntries] + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,46 +176,67 @@
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"HNEntriesTableViewCell";
-    
-    HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[HNEntriesTableViewCell alloc] init];
+    if ([indexPath row] >= [model countOfEntries]) {
+        static NSString *CellIdentifier = @"HNLoadMoreTableViewCell";
+        
+        // TODO: this should also be a custom cell
+        // so you can give it a gradient and matching style.
+        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        cell.textLabel.text = @"Load More...";
+        
+        return cell;
     }
-    
-    HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
-    
-    // Configure the cell...
-    cell.siteTitleLabel.text = aEntry.title;
-    cell.siteDomainLabel.text = aEntry.siteDomainURL;
-    cell.commentsCountLabel.text = aEntry.commentsCount;
-    
-    return cell;
+    else {
+        static NSString *CellIdentifier = @"HNEntriesTableViewCell";
+        
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[HNEntriesTableViewCell alloc] init];
+        }
+        
+        HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
+        
+        // Configure the cell...
+        cell.siteTitleLabel.text = aEntry.title;
+        cell.siteDomainLabel.text = aEntry.siteDomainURL;
+        cell.commentsCountLabel.text = aEntry.commentsCount;
+        
+        return cell;
+    }
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
-    
-    //HNEntryViewController *nextController = [[HNEntryViewController alloc] init];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        // push on a new web view
-    
-        HNWebViewController *nextController = [[HNWebViewController alloc] init];
-        nextController.entry = selectedEntry;
-        [self.navigationController pushViewController:nextController animated:YES];
-        
-        // TODO: implement this correctly
-        // [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([indexPath row] >= [model countOfEntries]) {
+        // load more entries..
+        [model loadMoreEntries];
+        [[aTableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
-        // ask our delegate to load url
-    
-        // implement
-        [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
+        HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            // push on a new web view
+            
+            HNWebViewController *nextController = [[HNWebViewController alloc] init];
+            nextController.entry = selectedEntry;
+            [self.navigationController pushViewController:nextController animated:YES];
+            
+            // TODO: implement this correctly
+            // [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        else {
+            // ask our delegate to load url
+            
+            // implement
+            [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
+        }
     }
 }
 
@@ -220,33 +252,41 @@
 }
 
 - (void)loadEntries {
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [delegate shouldStopLoading];
+    }
+    
+    loadingState = HNLoadingNewEntriesStateIdentifier;
     [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
 }
 
-- (IBAction)swapEntriesList:(id)sender {
-	// tell the model we're switching directions
-	// [model_ loadStopsForTagIndex:self.directionControl.selectedSegmentIndex];
-    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
-}
+//- (IBAction)swapEntriesList:(id)sender {
+//	// tell the model we're switching directions
+//	// [model_ loadStopsForTagIndex:self.directionControl.selectedSegmentIndex];
+//    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
+//}
 
 - (void)entriesDidLoad {
     // FIXME: only animate in the rows which are visible.
-    int entriesToAdd = [model countOfEntries];
-	int entriesToDelete = [self.tableView numberOfRowsInSection:0];
-    
-    [self.tableView beginUpdates];
-	
-	for (int i = 0; i < entriesToDelete; i++) {
-		NSArray *delete = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
-		[self.tableView deleteRowsAtIndexPaths:delete withRowAnimation:UITableViewRowAnimationBottom];
-	}
-    
-    for (int i = 0; i < entriesToAdd; i++) {
-		NSArray *insert = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
-		[self.tableView insertRowsAtIndexPaths:insert withRowAnimation:UITableViewRowAnimationTop];
-	}
-    
-    [self.tableView endUpdates];
+//    int entriesToAdd = [model countOfEntries];
+//	int entriesToDelete = [self.tableView numberOfRowsInSection:0] - 1;
+//    
+//    [self.tableView beginUpdates];
+//	
+//	for (int i = 0; i < entriesToDelete; i++) {
+//		NSArray *delete = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//		[self.tableView deleteRowsAtIndexPaths:delete withRowAnimation:UITableViewRowAnimationBottom];
+//	}
+//    
+//    for (int i = 0; i < entriesToAdd; i++) {
+//		NSArray *insert = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//		[self.tableView insertRowsAtIndexPaths:insert withRowAnimation:UITableViewRowAnimationTop];
+//	}
+//    
+//    [self.tableView endUpdates];
+
+    [self.tableView reloadData];
 }
 
 - (void)operationDidFail {    
