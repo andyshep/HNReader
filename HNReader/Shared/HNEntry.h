@@ -12,10 +12,12 @@
     NSString *title;
     NSString *linkURL, *commentsPageURL, *siteDomainURL;
     NSString *username, *commentsCount;
+    NSString *totalPoints;
 }
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *linkURL, *commentsPageURL, *siteDomainURL;
 @property (nonatomic, retain) NSString *username, *commentsCount;
+@property (nonatomic, retain) NSString *totalPoints;
 
 @end

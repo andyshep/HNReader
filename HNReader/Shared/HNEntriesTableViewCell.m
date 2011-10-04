@@ -7,20 +7,20 @@
 //
 
 #import "HNEntriesTableViewCell.h"
-#import "HNTableCellBackgroundView.h"
 
 
 @implementation HNEntriesTableViewCell
 
-@synthesize siteTitleLabel, commentsCountLabel, siteDomainLabel;
+@synthesize siteTitleLabel, totalPointsLabel, siteDomainLabel;
 
 - (id)init {
     if ((self = [super init])) {
-        UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 72)] autorelease];
+        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
+        UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
         
         siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 4, 272, 40)];
         siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 44, 162, 21)];
-        commentsCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(184, 44, 108, 21)];
+        totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectMake(204, 44, 108, 21)];
         
         siteTitleLabel.numberOfLines = 2;
         siteTitleLabel.font = [HNReaderTheme fourteenPointlabelFont];
@@ -32,17 +32,21 @@
         siteDomainLabel.adjustsFontSizeToFitWidth = YES;
         siteDomainLabel.textColor = [UIColor grayColor];
         
-        commentsCountLabel.font = [HNReaderTheme twelvePointlabelFont];
-        commentsCountLabel.backgroundColor = [UIColor clearColor];
-        commentsCountLabel.textColor = [UIColor grayColor];
+        totalPointsLabel.font = [HNReaderTheme twelvePointlabelFont];
+        totalPointsLabel.backgroundColor = [UIColor clearColor];
+        totalPointsLabel.textColor = [UIColor grayColor];
         
         [containerView addSubview:siteTitleLabel];
         [containerView addSubview:siteDomainLabel];
-        [containerView addSubview:commentsCountLabel];
+        [containerView addSubview:totalPointsLabel];
         
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectMake(0, 0, 320, 72)];
+        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:frame];
         [self setBackgroundView:backgroundView];
         [backgroundView release];
+        
+        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:frame];
+        [self setSelectedBackgroundView:selectedView];
+        [selectedView release];
         
         [self addSubview:containerView];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -54,15 +58,39 @@
 - (void)dealloc {
     [siteTitleLabel release];
     [siteDomainLabel release];
-    [commentsCountLabel release];
+    [totalPointsLabel release];
     [super dealloc];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (selected) {
+            self.siteTitleLabel.textColor = [UIColor blackColor];
+            self.siteDomainLabel.textColor = [UIColor whiteColor];
+            self.totalPointsLabel.textColor = [UIColor whiteColor];
+        }
+        else {
+            self.siteTitleLabel.textColor = [UIColor blackColor];
+            self.siteDomainLabel.textColor = [UIColor grayColor];
+            self.totalPointsLabel.textColor = [UIColor grayColor];
+        }
+    }
+}
 
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    
+    if (highlighted) {
+        self.siteDomainLabel.textColor = [UIColor blackColor];
+        self.totalPointsLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        self.siteDomainLabel.textColor = [UIColor grayColor];
+        self.totalPointsLabel.textColor = [UIColor grayColor];
+    }
 }
 
 @end

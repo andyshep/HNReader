@@ -45,32 +45,18 @@
                            alpha:0.0f];
 }
 
-+ (CGGradientRef)oceanGradientColor {
-	UIColor *topColor = [UIColor colorWithRed:(75.0f/255.f) 
-										green:(193.0f/255.0f) 
-										 blue:(193.0f/255.0f) 
-										alpha:(255.0f/255.0f)];
++ (CGGradientRef)blueishGradientColor {
+	UIColor *topColor = [UIColor colorWithRed:(122.0f/255.f) 
+                                        green:(202.0f/255.0f) 
+                                         blue:(255.0f/255.0f) 
+                                        alpha:(255.0f/255.0f)];
 	
-	UIColor *bottomColor = [UIColor colorWithRed:(75.0f/255.f) 
+	UIColor *bottomColor = [UIColor colorWithRed:(0.0f/255.f) 
 										   green:(153.0f/255.0f) 
-											blue:(193.0f/255.0f) 
+											blue:(255.0f/255.0f) 
 										   alpha:(255.0f/255.0f)];
 	
 	return SSGradientWithColors(topColor, bottomColor);
-}
-
-+ (CGGradientRef)blueishGradientColor {
-	UIColor *topColor = [UIColor colorWithRed:(102.0f/255.f) 
-										green:(153.0f/255.0f) 
-										 blue:(204.0f/255.0f) 
-										alpha:(255.0f/255.0f)];
-	
-	UIColor *bottomColor = [UIColor colorWithRed:(75.0f/255.f) 
-										   green:(115.0f/255.0f) 
-											blue:(153.0f/255.0f) 
-										   alpha:(255.0f/255.0f)];
-	
-	return SSGradientWithColors(bottomColor, topColor);
 }
 
 + (CGGradientRef)tanGradientColor {

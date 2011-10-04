@@ -18,5 +18,6 @@
 + (UIColor *)veryDarkGrey;
 
 + (CGGradientRef)tanGradientColor;
++ (CGGradientRef)blueishGradientColor;
 
 @end

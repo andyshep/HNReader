@@ -9,10 +9,10 @@
 #import "HNReaderModel.h"
 #import "HNReaderTheme.h"
 
-#import "HNEntryViewController.h"
 #import "HNWebViewController.h"
 
 #import "HNEntriesTableViewCell.h"
+#import "HNLoadMoreTableViewCell.h"
 
 typedef enum  {
     HNLoadingNewEntriesStateIdentifier,

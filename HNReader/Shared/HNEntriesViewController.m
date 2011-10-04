@@ -124,7 +124,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	[[self navigationItem] setTitle:NSLocalizedString(@"Hacker News", @"Hacker News Entries")];
+	[[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
@@ -139,6 +139,14 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([tableView indexPathForSelectedRow] != nil) {
+        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -181,12 +189,10 @@
         
         // TODO: this should also be a custom cell
         // so you can give it a gradient and matching style.
-        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        HNLoadMoreTableViewCell *cell = (HNLoadMoreTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[HNLoadMoreTableViewCell alloc] init];
         }
-        
-        cell.textLabel.text = @"Load More...";
         
         return cell;
     }
@@ -203,7 +209,7 @@
         // Configure the cell...
         cell.siteTitleLabel.text = aEntry.title;
         cell.siteDomainLabel.text = aEntry.siteDomainURL;
-        cell.commentsCountLabel.text = aEntry.commentsCount;
+        cell.totalPointsLabel.text = aEntry.totalPoints;
         
         return cell;
     }

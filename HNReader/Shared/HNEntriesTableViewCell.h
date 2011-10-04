@@ -7,11 +7,13 @@
 //
 
 #import "HNReaderTheme.h"
+#import "HNTableCellBackgroundView.h"
+#import "HNTableCellSelectedView.h"
 
 @interface HNEntriesTableViewCell : UITableViewCell {
-    UILabel *siteTitleLabel, *siteDomainLabel, *commentsCountLabel;
+    UILabel *siteTitleLabel, *siteDomainLabel, *totalPointsLabel;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *siteTitleLabel, *siteDomainLabel, *commentsCountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *siteTitleLabel, *siteDomainLabel, *totalPointsLabel;
 
 @end

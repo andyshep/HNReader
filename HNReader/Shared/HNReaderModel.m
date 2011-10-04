@@ -87,7 +87,7 @@
 
 -(void)loadEntriesForRequest:(NSURLRequest *)request {
     // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/newest"]];
-    // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
+    NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
     
     AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {
         // NSLog(@"data: %@", data);
@@ -145,8 +145,10 @@
                     HTMLNode *commentTdNode = [commentNode findChildOfClass:@"subtext"];
                     
                     // some stories don't have comments
-                    // YC alumi job posts, for example
+                    // YC alumi job posts
                     if ([[commentTdNode children] count] == 5) {
+                        
+                        aEntry.totalPoints = [[[commentTdNode children] objectAtIndex:0] contents];
                         aEntry.username = [[[commentTdNode children] objectAtIndex:2] contents];
                         aEntry.commentsPageURL = [[[commentTdNode children] objectAtIndex:4] getAttributeNamed:@"href"];
                         aEntry.commentsCount = [[[commentTdNode children] objectAtIndex:4] contents];
@@ -168,7 +170,7 @@
             HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
             
             if (moreEntriesNode != NULL) {
-                NSLog(@"%@", [[moreEntriesNode firstChild] getAttributeNamed:@"href"]);
+                // NSLog(@"%@", [[moreEntriesNode firstChild] getAttributeNamed:@"href"]);
                 
                 NSString *_moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
                 self.moreEntriesLink = _moreEntriesLink;

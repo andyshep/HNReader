@@ -13,6 +13,7 @@
 @synthesize title, linkURL, siteDomainURL;
 @synthesize username;
 @synthesize commentsPageURL, commentsCount;
+@synthesize totalPoints;
 
 - (id)init
 {
@@ -23,6 +24,7 @@
         siteDomainURL = nil;
         username = nil;
         commentsPageURL = nil, commentsCount = nil;
+        totalPoints = nil;
     }
     
     return self;
@@ -35,6 +37,7 @@
     
     [commentsCount release];
     [commentsPageURL release];
+    [totalPoints release];
     
     [username release];
     [super dealloc];

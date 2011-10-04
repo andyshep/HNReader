@@ -1,21 +1,22 @@
 //
-//  HNSelectedTableCellView.m
+//  HNTableCellSelectedView.m
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/30/11.
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNTableCellBackgroundView.h"
+#import "HNTableCellSelectedView.h"
 
 
-@implementation HNTableCellBackgroundView
+@implementation HNTableCellSelectedView
 
 @synthesize borderColor;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-		gradient = [HNReaderTheme tanGradientColor];
+        // Initialization code
+		gradient = [HNReaderTheme blueishGradientColor];
     }
     return self;
 }
@@ -31,6 +32,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+	// Drawing code
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(c, [borderColor CGColor]);
 	SSDrawGradientInRect(c, gradient, rect);
