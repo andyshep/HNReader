@@ -141,4 +141,18 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    // https://discussions.apple.com/thread/1727260
+    if (error.code == NSURLErrorCancelled) return;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
+                                                    message:[error localizedDescription] 
+                                                   delegate:nil 
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 @end

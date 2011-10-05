@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "SSDrawingUtilities.h"
 
 @interface HNReaderTheme : NSObject

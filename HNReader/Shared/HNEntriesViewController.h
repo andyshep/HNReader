@@ -14,6 +14,8 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"
 
+#import "ShadowedTableView.h"
+
 typedef enum  {
     HNLoadingNewEntriesStateIdentifier,
     HNLoadingMoreEntriesStateIdentifier,
@@ -31,7 +33,7 @@ typedef enum  {
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNReaderModel *model;
     
-    IBOutlet UITableView *tableView;
+    IBOutlet ShadowedTableView *tableView;
     IBOutlet UIToolbar *bottomToolbar;
 	UISegmentedControl *entriesControl;
     
@@ -41,7 +43,7 @@ typedef enum  {
 }
 
 @property (nonatomic, retain) HNReaderModel *model;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet ShadowedTableView *tableView;
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) UISegmentedControl *entriesControl;
 

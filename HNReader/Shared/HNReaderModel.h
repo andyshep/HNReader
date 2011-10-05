@@ -37,4 +37,6 @@ typedef enum  {
 - (void)loadMoreEntries;
 - (void)loadEntriesForRequest:(NSURLRequest *)request;
 
+- (NSError *)parserError;
+
 @end

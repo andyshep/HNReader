@@ -21,7 +21,7 @@
         self.moreEntriesLink = nil;
         
         opQueue = [[NSOperationQueue alloc] init];
-        entries = [[NSMutableArray alloc] initWithCapacity:25];
+        entries = [[NSMutableArray alloc] initWithCapacity:30];
     }
     
     return self;
@@ -93,14 +93,14 @@
         // NSLog(@"data: %@", data);
         
         if (!err) {
-            NSError *parserError;
+            NSError *aParserError = nil;
             NSString *rawHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
+            HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&aParserError];
             
-//            if (parserError) {
-//                NSLog(@"Error: %@", [parserError localizedDescription]);
-//                // return;
-//            }
+            if (aParserError) {
+                self.error = aParserError;
+                return;
+            }
             
             HTMLNode *bodyNode = [parser body];
             
@@ -121,19 +121,13 @@
                 
                 if ([titles count] > 1) {
                     
-                    // NSLog(@"%@", [_currentNode rawContents]);
-                    
                     HNEntry *aEntry = [[[HNEntry alloc] init] autorelease];
                     aEntry.title = [[[titles objectAtIndex:1] firstChild] contents];
                     aEntry.linkURL = [[[titles objectAtIndex:1] firstChild] getAttributeNamed:@"href"];
                     aEntry.siteDomainURL = [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents];
                     
-                    // NSLog(@"%@", aEntry.linkURL);
-                    
                     if ([aEntry.linkURL hasPrefix:@"item?id="]) {
-                        
                         NSString *baseURL = @"http://news.ycombinator.com/";
-                        
                         aEntry.linkURL = [baseURL stringByAppendingString:aEntry.linkURL];
                     }
                     
@@ -164,25 +158,28 @@
             }
             
             // after we have all the entries
-            // we grab the link the load the next 25 or so entries
-            // we will load these next 25 when the user selects the last table cell
+            // we grab the link the load the next 30 entries
+            // we will load these next 30 when the user selects the last table cell
             
             HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
             
             if (moreEntriesNode != NULL) {
-                // NSLog(@"%@", [[moreEntriesNode firstChild] getAttributeNamed:@"href"]);
-                
                 NSString *_moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
                 self.moreEntriesLink = _moreEntriesLink;
                 
                 // [_entries addObject:[NSString stringWithString:[[moreEntriesNode firstChild] getAttributeNamed:@"href"]]];
             }
-            
-            // self.entries = _entries;
+            else {
+                self.error = [self parserError];
+                return;
+            }
             
             [self didChangeValueForKey:@"entries"];
-            
             [parser release];
+        }
+        else {
+            // log network connection error;
+            self.error = err;
         }
     }];
     
@@ -193,6 +190,14 @@
 
 - (void)handleResponse {
     
+}
+
+- (NSError *)parserError {
+    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+    [errorDetail setValue:@"Error parsing HTML response" forKey:NSLocalizedDescriptionKey];
+    NSError *parserError = [NSError errorWithDomain:@"org.andyshep.HNReader" code:100 userInfo:errorDetail];
+    
+    return parserError;
 }
 
 @end
