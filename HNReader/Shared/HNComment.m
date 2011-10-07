@@ -10,12 +10,13 @@
 
 @implementation HNComment
 
-@synthesize username, commentString, padding, height;
+@synthesize username, commentString, timeSinceCreation, padding, height;
 
 - (id)init {
     if ((self = [super init])) {
         self.username = nil;
         self.commentString = nil;
+        self.timeSinceCreation = nil;
         self.padding = 0;
         self.height = 0.0f;
     }
@@ -26,6 +27,7 @@
 - (void)dealloc {
     [username release];
     [commentString release];
+    [timeSinceCreation release];
     [super dealloc];
 }
 

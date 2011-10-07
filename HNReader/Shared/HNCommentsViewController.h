@@ -11,17 +11,24 @@
 
 #import "HNCommentsModel.h"
 #import "HNCommentsTableViewCell.h"
+#import "HNEntriesTableViewCell.h"
 
-@interface HNCommentsViewController : UITableViewController {
+#import "ShadowedTableView.h"
+
+#import "HNWebViewController.h"
+
+@interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNEntry *entry;
     HNCommentsModel *model;
+    ShadowedTableView *tableView;
 }
 
 @property (nonatomic, retain) HNEntry *entry;
+@property (nonatomic, retain) ShadowedTableView *tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 
-- (NSString *)formatBodyText:(NSString *)bodyText;
-- (CGFloat)heightForBodyText:(NSString *)text withWidth:(CGFloat)width indentationLevel:(int)indentationLevel;
+- (NSArray *)indexPathsToInsert;
+- (NSArray *)indexPathsToDelete;
 
 @end

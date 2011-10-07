@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface HNComment : NSObject {
-    NSString *username;
+    NSString *username, *timeSinceCreation;
     NSString *commentString;
     NSInteger padding;
     CGFloat height;
 }
 
-@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSString *username, *timeSinceCreation;
 @property (nonatomic, retain) NSString *commentString;
 @property (assign) NSInteger padding;
 @property (assign) CGFloat height;

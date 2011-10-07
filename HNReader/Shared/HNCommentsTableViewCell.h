@@ -12,10 +12,12 @@
 
 @interface HNCommentsTableViewCell : UITableViewCell {
     UILabel *usernameLabel;
+    UILabel *timeLabel;
     UILabel *commentTextLabel;
 }
 
 @property (nonatomic, retain) UILabel *usernameLabel;
+@property (nonatomic, retain) UILabel *timeLabel;
 @property (nonatomic, retain) UILabel *commentTextLabel;
 
 @end

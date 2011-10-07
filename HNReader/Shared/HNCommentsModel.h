@@ -30,8 +30,11 @@
 @property (nonatomic, retain) HNEntry *entry;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
+- (void)loadComments;
 - (void)loadCommentsForRequest:(NSURLRequest *)request;
 
 - (NSString *)formatCommentText:(NSString *)commentText;
+
+- (void)cancelRequest;
 
 @end

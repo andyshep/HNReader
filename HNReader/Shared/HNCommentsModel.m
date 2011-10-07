@@ -48,8 +48,6 @@
 }
 
 - (void)loadComments {
-    
-    
     NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.entry.commentsPageURL]];
     NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
     
@@ -83,32 +81,58 @@
             NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
             
             NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-            
+            NSLog(@"tableNodes count: %d", [tableNodes count]);
             HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
-            HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
-            NSArray *commentsNodes = [commentsTable children];
-            int commentCount = [[commentsTable children] count];
+            NSLog(@"count is %d", [[[commentsTableRow firstChild] findChildTags:@"table"] count]);
             
-            NSMutableArray *_comments = [NSMutableArray arrayWithCapacity:commentCount];
+            NSMutableArray *_comments = nil;
+            NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
             
-            for (HTMLNode *comment in commentsNodes) {
+            // make sure we have comments
+            if ([commentsTableArray count]  > 1) {
+                HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
+                NSArray *commentsNodes = [commentsTable children];
+                int commentCount = [[commentsTable children] count];
                 
-                // NSString *commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
-                HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
-                int commentPaddding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
+                _comments = [NSMutableArray arrayWithCapacity:commentCount];
                 
-                
-                // NSLog(@"%@", [[commentTextSpan findChildTag:@"font"] contents]);
-                NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
-                NSString *commentString = [self formatCommentText:rawCommentHTML];
-                
-                HNComment *aComment = [[HNComment alloc] init];
-                aComment.username = @"Bob";
-                aComment.padding = commentPaddding;
-                aComment.commentString = commentString;
-
-                [_comments addObject:aComment];
-                [aComment release];
+                for (HTMLNode *comment in commentsNodes) {
+                    
+                    HTMLNode *comHead = [comment findChildOfClass:@"comhead"];
+                    NSString *commentUserName = nil;
+                    NSString *commentString = nil;
+                    NSString *timeSinceCreation = nil;
+                    int commentPadding = 0;
+                    
+                    // make sure comment wasn't deleted.
+                    if ([[comHead children] count] > 0) {
+                        commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
+                        HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
+                        commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
+                        
+                        
+                        // NSLog(@"%@", [[commentTextSpan findChildTag:@"font"] contents]);
+                        NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
+                        commentString = [self formatCommentText:rawCommentHTML];
+                        
+                        NSString *roughTime = [[[comHead children] objectAtIndex:1] rawContents];
+                        timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
+                    }
+                    else {
+                        commentUserName = @"";
+                        commentString = @"[deleted]";
+                        commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
+                    }
+                    
+                    HNComment *aComment = [[HNComment alloc] init];
+                    aComment.username = commentUserName;
+                    aComment.padding = commentPadding;
+                    aComment.commentString = commentString;
+                    aComment.timeSinceCreation = timeSinceCreation;
+                    
+                    [_comments addObject:aComment];
+                    [aComment release];
+                }
             }
             
             NSMutableDictionary *_commentsInfo = [NSMutableDictionary dictionaryWithCapacity:3];
@@ -127,6 +151,10 @@
     }];
     
     [opQueue addOperation:operation];
+}
+
+- (void)cancelRequest {
+    [opQueue cancelAllOperations];
 }
 
 - (NSString *)formatCommentText:(NSString *)commentText {

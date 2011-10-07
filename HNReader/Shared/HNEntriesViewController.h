@@ -52,4 +52,7 @@ typedef enum  {
 
 - (void)loadEntries;
 
+- (NSArray *)indexPathsToInsert;
+- (NSArray *)indexPathsToDelete;
+
 @end

@@ -243,6 +243,10 @@
             
             // implement
             [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
+            
+            HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
+            // nextController.entry = selectedEntry;
+            [self.navigationController pushViewController:nextController animated:YES];
         }
     }
 }
@@ -275,25 +279,28 @@
 //}
 
 - (void)entriesDidLoad {
-    // FIXME: only animate in the rows which are visible.
-//    int entriesToAdd = [model countOfEntries];
-//	int entriesToDelete = [self.tableView numberOfRowsInSection:0] - 1;
+//    // FIXME: only animate in the rows which are visible.
+//    NSArray *indexPathsToInsert = [self indexPathsToInsert];
+//    NSArray *indexPathsToDelete = [self indexPathsToDelete];
+//    
+//    UITableViewRowAnimation insertAnimation;
+//    UITableViewRowAnimation deleteAnimation;
+//    
+//    if ([tableView numberOfRowsInSection:0] <= 0) {
+//        insertAnimation = UITableViewRowAnimationTop;
+//        deleteAnimation = UITableViewRowAnimationBottom;
+//    }
+//    else {
+//        insertAnimation = UITableViewRowAnimationBottom;
+//        deleteAnimation = UITableViewRowAnimationTop;
+//    }
 //    
 //    [self.tableView beginUpdates];
-//	
-//	for (int i = 0; i < entriesToDelete; i++) {
-//		NSArray *delete = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
-//		[self.tableView deleteRowsAtIndexPaths:delete withRowAnimation:UITableViewRowAnimationBottom];
-//	}
-//    
-//    for (int i = 0; i < entriesToAdd; i++) {
-//		NSArray *insert = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:i inSection:0]];
-//		[self.tableView insertRowsAtIndexPaths:insert withRowAnimation:UITableViewRowAnimationTop];
-//	}
-//    
+//    [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
+//    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
 //    [self.tableView endUpdates];
 
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 - (void)operationDidFail {    
@@ -319,6 +326,30 @@
             [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
         }
     }
+}
+
+- (NSArray *)indexPathsToInsert {
+    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    int count = [model countOfEntries];
+    
+    for (int i = 0; i < count; i++) {
+        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [_indexPaths addObject:_indexPath];
+    }
+    
+    return [NSArray arrayWithArray:_indexPaths];
+}
+
+- (NSArray *)indexPathsToDelete {
+    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    int count = [tableView numberOfRowsInSection:0];
+    
+    for (int i = 0; i < count; i++) {
+        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [_indexPaths addObject:_indexPath];
+    }
+    
+    return [NSArray arrayWithArray:_indexPaths];
 }
 
 @end

@@ -13,10 +13,10 @@
 
 @implementation HNCommentsViewController
 
-@synthesize entry;
+@synthesize entry, tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry {
-    if ((self = [super initWithStyle:UITableViewStylePlain])) {
+    if ((self = [super init])) {
         model = [[HNCommentsModel alloc] initWithEntry:aEntry];
         
         [model addObserver:self 
@@ -28,6 +28,8 @@
                 forKeyPath:@"error" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(operationDidFail)];
+        
+        self.entry = aEntry;
     }
     
     return self;
@@ -35,6 +37,7 @@
 
 - (void)dealloc {
     [entry release];
+    [tableView release];
     
     [model removeObserver:self forKeyPath:@"commentsInfo"];
     [model removeObserver:self forKeyPath:@"error"];
@@ -50,14 +53,29 @@
     
 	[[self navigationItem] setTitle:NSLocalizedString(@"Hacker News", @"Hacker News Entries")];
     
-    [self.tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
     
-//    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
-//    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
-//    [refreshButton release];
+    CGRect frame = [self.view bounds];
+    tableView = [[ShadowedTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 44.0f) style:UITableViewStylePlain];
     
-    NSLog(@"%@", [entry description]);
+    [tableView setDelegate:self];
+    [tableView setDataSource:self];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
+    [self.view addSubview:tableView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // you end up loading comments twice...
+    // temp fix.
     [model loadComments];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [model cancelRequest];
 }
 
 - (void)viewDidUnload
@@ -76,60 +94,107 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 1;
+    }
+    
     return [[[model commentsInfo] objectForKey:@"entry_comments"] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     
-    NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
-    HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
-    
-    NSString *text = [aComment commentString];
-    
-    CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
-    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-    CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat height = MAX(size.height, 44.0f);
-    
-    return height + (CELL_CONTENT_MARGIN * 2);
+    if ([indexPath section] == 0) {
+        return 72.0f;
+    }
+    else {
+        NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
+        HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
+        
+        NSString *text = [aComment commentString];
+        
+        CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
+        CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+        CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+        CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] 
+                       constrainedToSize:constraint 
+                           lineBreakMode:UILineBreakModeWordWrap];
+        CGFloat height = MAX(size.height, 44.0f);
+        
+        return height + (CELL_CONTENT_MARGIN * 2);
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"HNCommentsTableViewCell";
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // DTAttributedTextCell *cell = (DTAttributedTextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[HNCommentsTableViewCell alloc] init];
-        // cell = [[[DTAttributedTextCell alloc] initWithReuseIdentifier:CellIdentifier accessoryType:UITableViewCellAccessoryDisclosureIndicator] autorelease];
+    if ([indexPath section] == 0) {
+        // return entry header cell
+        static NSString *CellIdentifier = @"HNEntriesTableViewCell";
+        
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[HNEntriesTableViewCell alloc] init];
+        }
+        
+        cell.siteTitleLabel.text = entry.title;
+        cell.siteDomainLabel.text = entry.siteDomainURL;
+        cell.totalPointsLabel.text = entry.totalPoints;
+        
+        return cell;
+    }
+    else {
+        static NSString *CellIdentifier = @"HNCommentsTableViewCell";
+        
+        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[HNCommentsTableViewCell alloc] init];
+        }
+        
+        NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
+        HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
+        
+        NSString *text = [aComment commentString];
+        
+        CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
+        CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+        CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+        
+        CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        // TODO: should set timeLabel frmae too
+        [[cell usernameLabel] setFrame:CGRectMake(padding, 4.0f, adjustedWidth, 12.0f)];
+        [[cell commentTextLabel] setFrame:CGRectMake(padding, 
+                                                     CELL_CONTENT_MARGIN + 6, 
+                                                     adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
+                                                     MAX(size.height, 44.0f))];
+        
+        cell.usernameLabel.text = aComment.username;
+        cell.commentTextLabel.text = aComment.commentString;
+        cell.timeLabel.text = aComment.timeSinceCreation;
+        
+        return cell;
     }
     
-    NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
-    HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
+}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *text = [aComment commentString];
-    
-    CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
-    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-    CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    
-    CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    [[cell usernameLabel] setFrame:CGRectMake(padding, 2.0f, adjustedWidth, 8.0f)];
-    [[cell commentTextLabel] setFrame:CGRectMake(padding, CELL_CONTENT_MARGIN + 2, adjustedWidth - (CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
-    
-    cell.usernameLabel.text = aComment.username;
-    cell.commentTextLabel.text = aComment.commentString;
-    
-    return cell;
+    if ([indexPath section] == 0) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            [model cancelRequest];
+            HNWebViewController *nextController = [[HNWebViewController alloc] init];
+            nextController.entry = [self entry];
+            [[self navigationController] pushViewController:nextController animated:YES];
+        }
+        else {
+            // do somethign else for the pad
+        }
+    }
 }
 
 #pragma mark - Model Observing and Reactions
@@ -140,10 +205,28 @@
 }
 
 - (void)commentsDidLoad {
-    NSLog(@"commentsDidLoad:");
-    
-    NSLog(@"%@", [[model commentsInfo] valueForKey:@"entry_title"]);
-    [self.tableView reloadData];
+//    // FIXME: only animate in the rows which are visible.
+//    NSArray *indexPathsToInsert = [self indexPathsToInsert];
+//    NSArray *indexPathsToDelete = [self indexPathsToDelete];
+//    
+//    UITableViewRowAnimation insertAnimation;
+//    UITableViewRowAnimation deleteAnimation;
+//    
+//    if ([tableView numberOfRowsInSection:0] <= 0) {
+//        insertAnimation = UITableViewRowAnimationTop;
+//        deleteAnimation = UITableViewRowAnimationBottom;
+//    }
+//    else {
+//        insertAnimation = UITableViewRowAnimationBottom;
+//        deleteAnimation = UITableViewRowAnimationTop;
+//    }
+//    
+//    [self.tableView beginUpdates];
+//    [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
+//    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
+//    [self.tableView endUpdates];
+
+    [tableView reloadData];
 }
 
 - (void)operationDidFail {    
@@ -154,6 +237,30 @@
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+}
+
+- (NSArray *)indexPathsToInsert {
+    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    int count = [[[model commentsInfo] objectForKey:@"entry_comments"] count];
+    
+    for (int i = 0; i < count; i++) {
+        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [_indexPaths addObject:_indexPath];
+    }
+    
+    return [NSArray arrayWithArray:_indexPaths];
+}
+
+- (NSArray *)indexPathsToDelete {
+    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    int count = [tableView numberOfRowsInSection:0];
+    
+    for (int i = 0; i < count; i++) {
+        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [_indexPaths addObject:_indexPath];
+    }
+    
+    return [NSArray arrayWithArray:_indexPaths];
 }
 
 @end

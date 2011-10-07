@@ -10,18 +10,22 @@
 
 @implementation HNCommentsTableViewCell
 
-@synthesize usernameLabel, commentTextLabel;
+@synthesize usernameLabel, timeLabel, commentTextLabel;
 
 - (id)init {
     if ((self = [super init])) {
         CGRect cellContainerFrame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
         UIView *containerView = [[[UIView alloc] initWithFrame:cellContainerFrame] autorelease];
         
-        usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, 272, 8)];
+        usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
         [usernameLabel setBackgroundColor:[UIColor clearColor]];
         [usernameLabel setFont:[HNReaderTheme tenPointlabelFont]];
         
-        commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 272, 60)];
+        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 4.0f, 100.0f, 12.0f)];
+        [timeLabel setBackgroundColor:[UIColor clearColor]];
+        [timeLabel setFont:[HNReaderTheme tenPointlabelFont]];
+        
+        commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 16.0f, 272.0f, 60.0f)];
         [commentTextLabel setBackgroundColor:[UIColor clearColor]];
         [commentTextLabel setFont:[HNReaderTheme tenPointlabelFont]];
         [commentTextLabel setLineBreakMode:UILineBreakModeWordWrap];
@@ -35,7 +39,10 @@
         [self setSelectedBackgroundView:selectedView];
         [selectedView release];
         
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
         [containerView addSubview:usernameLabel];
+        [containerView addSubview:timeLabel];
         [containerView addSubview:commentTextLabel];
         [self addSubview:containerView];
     }
