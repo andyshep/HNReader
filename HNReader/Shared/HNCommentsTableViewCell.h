@@ -13,13 +13,9 @@
 @interface HNCommentsTableViewCell : UITableViewCell {
     UILabel *usernameLabel;
     UILabel *commentTextLabel;
-    UIView *containerView;
-    CGRect cellContainerFrame;
 }
 
 @property (nonatomic, retain) UILabel *usernameLabel;
 @property (nonatomic, retain) UILabel *commentTextLabel;
-@property (nonatomic, retain) UIView *containerView;
-@property (assign) CGRect cellContainerFrame;
 
 @end

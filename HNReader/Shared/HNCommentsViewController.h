@@ -1,5 +1,5 @@
 //
-//  HNEntryViewController.h
+//  HNCommentsViewController.h
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
@@ -11,9 +11,6 @@
 
 #import "HNCommentsModel.h"
 #import "HNCommentsTableViewCell.h"
-// #import "DTAttributedTextCell.h"
-
-// #import "NSAttributedString+HTML.h"
 
 @interface HNCommentsViewController : UITableViewController {
     HNEntry *entry;
@@ -21,5 +18,10 @@
 }
 
 @property (nonatomic, retain) HNEntry *entry;
+
+- (id)initWithEntry:(HNEntry *)aEntry;
+
+- (NSString *)formatBodyText:(NSString *)bodyText;
+- (CGFloat)heightForBodyText:(NSString *)text withWidth:(CGFloat)width indentationLevel:(int)indentationLevel;
 
 @end

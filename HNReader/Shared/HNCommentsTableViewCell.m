@@ -10,12 +10,12 @@
 
 @implementation HNCommentsTableViewCell
 
-@synthesize usernameLabel, commentTextLabel, cellContainerFrame, containerView;
+@synthesize usernameLabel, commentTextLabel;
 
 - (id)init {
     if ((self = [super init])) {
-        cellContainerFrame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        containerView = [[[UIView alloc] initWithFrame:cellContainerFrame] autorelease];
+        CGRect cellContainerFrame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
+        UIView *containerView = [[[UIView alloc] initWithFrame:cellContainerFrame] autorelease];
         
         usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, 272, 8)];
         [usernameLabel setBackgroundColor:[UIColor clearColor]];
@@ -24,7 +24,8 @@
         commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 272, 60)];
         [commentTextLabel setBackgroundColor:[UIColor clearColor]];
         [commentTextLabel setFont:[HNReaderTheme tenPointlabelFont]];
-        [commentTextLabel setNumberOfLines:5];
+        [commentTextLabel setLineBreakMode:UILineBreakModeWordWrap];
+        [commentTextLabel setNumberOfLines:0];
         
         HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:cellContainerFrame];
         [self setBackgroundView:backgroundView];
@@ -45,7 +46,6 @@
 - (void)dealloc {
     [usernameLabel release];
     [commentTextLabel release];
-    [containerView release];
     [super dealloc];
 }
 

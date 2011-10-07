@@ -1,5 +1,5 @@
 //
-//  HNEntryViewController.m
+//  HNCommentsViewController.m
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
@@ -8,13 +8,16 @@
 
 #import "HNCommentsViewController.h"
 
+#define CELL_CONTENT_WIDTH 320.0f
+#define CELL_CONTENT_MARGIN 10.0f
+
 @implementation HNCommentsViewController
 
 @synthesize entry;
 
-- (id)init {
+- (id)initWithEntry:(HNEntry *)aEntry {
     if ((self = [super initWithStyle:UITableViewStylePlain])) {
-        model = [[HNCommentsModel alloc] init];
+        model = [[HNCommentsModel alloc] initWithEntry:aEntry];
         
         [model addObserver:self 
                 forKeyPath:@"commentsInfo" 
@@ -80,14 +83,20 @@
     return [[[model commentsInfo] objectForKey:@"entry_comments"] count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
+    
     NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
     HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
     
-    CGSize textSize = [[aComment commentString] sizeWithFont:[UIFont systemFontOfSize:12.0f] forWidth:320.f lineBreakMode:UILineBreakModeCharacterWrap];
-
-    // return textSize.height;
-    return 72.0f;
+    NSString *text = [aComment commentString];
+    
+    CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
+    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+    CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (CELL_CONTENT_MARGIN * 2);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,16 +114,20 @@
     NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
     HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
 
-    float frameFudge = aComment.padding / 7.0f;
     
-    CGRect usernameFrame = CGRectMake(10.0f + frameFudge, 4.0f, 272.0f - frameFudge, 8.0f);
-    CGRect commentsFrame = CGRectMake(10.0f + frameFudge, 10.0f, 272.0f - frameFudge, 60.0f);
+    NSString *text = [aComment commentString];
     
-    // cell.attributedString = aComment.commentString;
+    CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
+    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+    CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    
+    CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    [[cell usernameLabel] setFrame:CGRectMake(padding, 2.0f, adjustedWidth, 8.0f)];
+    [[cell commentTextLabel] setFrame:CGRectMake(padding, CELL_CONTENT_MARGIN + 2, adjustedWidth - (CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
+    
     cell.usernameLabel.text = aComment.username;
     cell.commentTextLabel.text = aComment.commentString;
-    [[cell commentTextLabel] setFrame:commentsFrame];
-    [[cell usernameLabel] setFrame:usernameFrame];
     
     return cell;
 }

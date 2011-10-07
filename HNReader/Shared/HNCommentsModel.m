@@ -10,15 +10,13 @@
 
 @implementation HNCommentsModel
 
-@synthesize commentsInfo, error;
+@synthesize commentsInfo, error, entry;
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
+- (id)initWithEntry:(HNEntry *)aEntry {
+    if ((self = [super init])) {
         self.commentsInfo = nil;
         self.error = nil;
+        self.entry = aEntry;
         
         opQueue = [[NSOperationQueue alloc] init];
     }
@@ -29,6 +27,7 @@
 - (void)dealloc {
     [commentsInfo release];
     [error release];
+    [entry release];
     [opQueue release];
     [super dealloc];
 }
@@ -49,14 +48,19 @@
 }
 
 - (void)loadComments {
-    [self loadCommentsForRequest:nil];
+    
+    
+    NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.entry.commentsPageURL]];
+    NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+    
+    [self loadCommentsForRequest:_request];
 }
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
     // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/rss"]];
-    NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/comments.html"]];
+    // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/comments.html"]];
     
-    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:_request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {
+    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {
         // NSLog(@"data: %@", data);
         
         if (!err) {
@@ -80,7 +84,7 @@
             
             NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
             
-            HTMLNode *commentsTableRow = [tableNodes objectAtIndex:4];
+            HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
             HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
             NSArray *commentsNodes = [commentsTable children];
             int commentCount = [[commentsTable children] count];
@@ -89,17 +93,19 @@
             
             for (HTMLNode *comment in commentsNodes) {
                 
-                NSString *commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
+                // NSString *commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
                 HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
                 int commentPaddding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                 
                 
                 // NSLog(@"%@", [[commentTextSpan findChildTag:@"font"] contents]);
+                NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
+                NSString *commentString = [self formatCommentText:rawCommentHTML];
                 
                 HNComment *aComment = [[HNComment alloc] init];
-                aComment.username = commentUserName;
+                aComment.username = @"Bob";
                 aComment.padding = commentPaddding;
-                aComment.commentString = [[commentTextSpan findChildTag:@"font"] rawContents];
+                aComment.commentString = commentString;
 
                 [_comments addObject:aComment];
                 [aComment release];
@@ -121,6 +127,15 @@
     }];
     
     [opQueue addOperation:operation];
+}
+
+- (NSString *)formatCommentText:(NSString *)commentText {
+    
+    commentText = [commentText stringByRemovingHTMLTags];
+    commentText = [commentText stringByDecodingHTMLEntities];
+    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return commentText;
 }
 
 @end

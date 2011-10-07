@@ -12,19 +12,26 @@
 #import "HTMLNode.h"
 
 #import "HNComment.h"
+#import "HNEntry.h"
 
-// #import "NSAttributedString+HTML.h"
+#import "NSString+Tags.h"
+#import "NSString+Entities.h"
 
 @interface HNCommentsModel : NSObject {
     NSMutableDictionary *commentsInfo;
     NSError *error;
     
     NSOperationQueue *opQueue;
+    HNEntry *entry;
 }
 
 @property (copy) NSMutableDictionary *commentsInfo;
 @property (copy) NSError *error;
+@property (nonatomic, retain) HNEntry *entry;
 
--(void)loadCommentsForRequest:(NSURLRequest *)request;
+- (id)initWithEntry:(HNEntry *)aEntry;
+- (void)loadCommentsForRequest:(NSURLRequest *)request;
+
+- (NSString *)formatCommentText:(NSString *)commentText;
 
 @end
