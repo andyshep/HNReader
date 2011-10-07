@@ -230,8 +230,9 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             // push on a new web view
             
-            HNWebViewController *nextController = [[HNWebViewController alloc] init];
-            nextController.entry = selectedEntry;
+            // HNWebViewController *nextController = [[HNWebViewController alloc] init];
+            HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
+            // nextController.entry = selectedEntry;
             [self.navigationController pushViewController:nextController animated:YES];
             
             // TODO: implement this correctly

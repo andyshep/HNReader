@@ -10,6 +10,7 @@
 #import "HNReaderTheme.h"
 
 #import "HNWebViewController.h"
+#import "HNCommentsViewController.h"
 
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"

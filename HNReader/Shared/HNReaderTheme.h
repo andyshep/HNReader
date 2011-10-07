@@ -11,6 +11,7 @@
 
 @interface HNReaderTheme : NSObject
 
++ (UIFont *)tenPointlabelFont;
 + (UIFont *)twelvePointlabelFont;
 + (UIFont *)fourteenPointlabelFont;
 

@@ -13,6 +13,10 @@
 #pragma mark -
 #pragma mark Fonts for UI elements
 
++ (UIFont *)tenPointlabelFont {
+	return [UIFont fontWithName:@"Verdana" size:10];
+}
+
 + (UIFont *)twelvePointlabelFont {
 	return [UIFont fontWithName:@"Verdana" size:12];
 }
