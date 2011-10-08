@@ -242,7 +242,7 @@
             // ask our delegate to load url
             
             // implement
-            [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
+            // [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
             
             HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
             // nextController.entry = selectedEntry;

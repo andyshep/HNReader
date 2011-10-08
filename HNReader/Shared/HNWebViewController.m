@@ -77,6 +77,12 @@
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     }
+    else {
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
+
+        [defaultCenter addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -91,6 +97,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -137,6 +145,8 @@
 }
 
 - (void)shouldStopLoading {
+    NSLog(@"shouldStopLoading:");
+    
     [webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
@@ -153,6 +163,16 @@
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
+}
+
+- (void)shouldLoadFromNotification:(NSNotification *)aNotification {
+    NSLog(@"shouldLoadFromNotification:");
+    
+    NSDictionary *extraInfo = [aNotification userInfo];
+    NSString *aURLString = [extraInfo objectForKey:@"kHNURL"];
+    NSURL *aURL = [NSURL URLWithString:aURLString];
+    
+    [self shouldLoadURL:aURL];
 }
 
 @end

@@ -28,4 +28,6 @@
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) NSMutableArray *items;
 
+- (void)shouldLoadFromNotification:(NSNotification *)aNotification;
+
 @end

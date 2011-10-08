@@ -76,6 +76,9 @@
     [super viewDidDisappear:animated];
     
     [model cancelRequest];
+    
+    NSNotification *aNote = [NSNotification notificationWithName:@"HNStopLoadingNotification" object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:aNote];
 }
 
 - (void)viewDidUnload
@@ -193,6 +196,12 @@
         }
         else {
             // do somethign else for the pad
+            // post a notification
+            NSString *urlString = [[self entry] linkURL];
+            NSDictionary *extraInfo = [NSDictionary dictionaryWithObject:urlString forKey:@"kHNURL"];
+            NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" object:self userInfo:extraInfo];
+            
+            [[NSNotificationCenter defaultCenter] postNotification:aNote];
         }
     }
 }
