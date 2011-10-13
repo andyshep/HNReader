@@ -1,6 +1,6 @@
 //
-//  HNReaderModel.h
-//  HNReader
+//  HNEntriesModel.h
+//  HNEntriesModel
 //
 //  Created by Andrew Shepard on 9/29/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -17,7 +17,7 @@ typedef enum  {
     HNEntriesBestPageIdentifier
 } HNEntriesPageIdentifier;
 
-@interface HNReaderModel : NSObject {
+@interface HNEntriesModel : NSObject {
     NSMutableArray *entries;
     NSError *error;
     NSString *moreEntriesLink;

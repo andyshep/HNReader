@@ -1,14 +1,14 @@
 //
-//  HNReaderModel.m
-//  HNReader
+//  HNEntriesModel.m
+//  HNEntriesModel
 //
 //  Created by Andrew Shepard on 9/29/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "HNReaderModel.h"
+#import "HNEntriesModel.h"
 
-@implementation HNReaderModel
+@implementation HNEntriesModel
 
 @synthesize entries, error, moreEntriesLink;
 

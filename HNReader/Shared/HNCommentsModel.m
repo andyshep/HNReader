@@ -72,18 +72,19 @@
             }
             
             HTMLNode *bodyNode = [parser body];
-
-            // NSLog(@"bodyNode: %@", [bodyNode rawContents]);
             
             // entries table is the third table on screen
+            // if there is a black banner, it is the forth table
+            // hackiness ensues...
             HTMLNode *titleNode = [[bodyNode findChildrenOfClass:@"title"] objectAtIndex:0];
             NSString *titleString = [[titleNode firstChild] contents];
             NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
-            
             NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-            NSLog(@"tableNodes count: %d", [tableNodes count]);
+            NSString *bgColor = [[tableNodes objectAtIndex:0] getAttributeNamed:@"bgcolor"];
+            
             HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
-            NSLog(@"count is %d", [[[commentsTableRow firstChild] findChildTags:@"table"] count]);
+            if ([bgColor compare:@"#000000"] == NSOrderedSame)
+                commentsTableRow = [tableNodes objectAtIndex:4];
             
             NSMutableArray *_comments = nil;
             NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
@@ -110,8 +111,6 @@
                         HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
                         commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                         
-                        
-                        // NSLog(@"%@", [[commentTextSpan findChildTag:@"font"] contents]);
                         NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
                         commentString = [self formatCommentText:rawCommentHTML];
                         

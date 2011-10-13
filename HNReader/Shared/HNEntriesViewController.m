@@ -18,7 +18,7 @@
 - (id)init {
     if ((self = [super initWithNibName:@"HNEntriesView" bundle:nil])) {
         
-        model = [[HNReaderModel alloc] init];
+        model = [[HNEntriesModel alloc] init];
         
         [model addObserver:self 
                 forKeyPath:@"entries" 

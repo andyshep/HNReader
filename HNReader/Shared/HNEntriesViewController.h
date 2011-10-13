@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "HNReaderModel.h"
+#import "HNEntriesModel.h"
 #import "HNReaderTheme.h"
 
 #import "HNWebViewController.h"
@@ -32,7 +32,7 @@ typedef enum  {
 
 
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    HNReaderModel *model;
+    HNEntriesModel *model;
     
     IBOutlet ShadowedTableView *tableView;
     IBOutlet UIToolbar *bottomToolbar;
@@ -43,7 +43,7 @@ typedef enum  {
     HNEntryLoadingStateIdentifier loadingState;
 }
 
-@property (nonatomic, retain) HNReaderModel *model;
+@property (nonatomic, retain) HNEntriesModel *model;
 @property (nonatomic, retain) IBOutlet ShadowedTableView *tableView;
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) UISegmentedControl *entriesControl;
