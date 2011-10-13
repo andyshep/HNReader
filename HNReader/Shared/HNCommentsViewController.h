@@ -31,4 +31,6 @@
 - (NSArray *)indexPathsToInsert;
 - (NSArray *)indexPathsToDelete;
 
+- (void)postLoadSiteNotification;
+
 @end

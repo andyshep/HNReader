@@ -51,7 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-	[[self navigationItem] setTitle:NSLocalizedString(@"Hacker News", @"Hacker News Entries")];
+	[[self navigationItem] setTitle:NSLocalizedString(@"News", @"Hacker News Entries")];
     
     
     CGRect frame = [self.view bounds];
@@ -67,8 +67,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // you end up loading comments twice...
-    // temp fix.
     [model loadComments];
 }
 
@@ -103,23 +101,23 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // first section is only the entry cell
+    // second section is zero or more comment cells
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        return 1;
-    }
-    
+    if (section == 0) return 1;
     return [[[model commentsInfo] objectForKey:@"entry_comments"] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
-    
+    // the entry cell is 72 pixels high
     if ([indexPath section] == 0) {
         return 72.0f;
     }
+    // but we calcuate the height of each comment cell dynamically
+    // based on the comment string height
     else {
         NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
         HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
@@ -201,13 +199,7 @@
             [[self navigationController] pushViewController:nextController animated:YES];
         }
         else {
-            // do somethign else for the pad
-            // post a notification
-            NSString *urlString = [[self entry] linkURL];
-            NSDictionary *extraInfo = [NSDictionary dictionaryWithObject:urlString forKey:@"kHNURL"];
-            NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" object:self userInfo:extraInfo];
-            
-            [[NSNotificationCenter defaultCenter] postNotification:aNote];
+            [self postLoadSiteNotification];
         }
     }
 }
@@ -242,6 +234,13 @@
 //    [self.tableView endUpdates];
 
     [tableView reloadData];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        // TODO: can we just do this ahead of time?
+        // two requests on teh wire on seperate threads is not good.
+        [self postLoadSiteNotification];
+    }
 }
 
 - (void)operationDidFail {    
@@ -276,6 +275,18 @@
     }
     
     return [NSArray arrayWithArray:_indexPaths];
+}
+
+- (void)postLoadSiteNotification {
+    
+    // post a notification that a site should be loaded
+    // the web view will respond to this notification and load the site
+    // this is for the pad only.  on the phone, the vc is pushed onto stack
+    NSString *urlString = [[self entry] linkURL];
+    NSDictionary *extraInfo = [NSDictionary dictionaryWithObject:urlString forKey:@"kHNURL"];
+    NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" object:self userInfo:extraInfo];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:aNote];
 }
 
 @end
