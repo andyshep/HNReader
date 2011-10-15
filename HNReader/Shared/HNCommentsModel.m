@@ -76,7 +76,7 @@
         
         // todo: set loadedd
         [self willChangeValueForKey:@"commentsInfo"];
-        [self.commentsInfo removeObjectsForKeys:[commentsInfo allKeys]];
+        // [self.commentsInfo removeObjectsForKeys:[commentsInfo allKeys]];
         self.commentsInfo = [NSMutableDictionary dictionaryWithDictionary:cachedComments];
         [self didChangeValueForKey:@"commentsInfo"];
         
@@ -100,11 +100,8 @@
 }
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
-    // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/rss"]];
-    // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/comments.html"]];
     
     AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {
-        // NSLog(@"data: %@", data);
         
         if (!err) {
             NSError *parserError = nil;
