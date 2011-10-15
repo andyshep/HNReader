@@ -83,7 +83,7 @@
             NSString *bgColor = [[tableNodes objectAtIndex:0] getAttributeNamed:@"bgcolor"];
             
             HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
-            if ([bgColor compare:@"#000000"] == NSOrderedSame)
+            if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame)
                 commentsTableRow = [tableNodes objectAtIndex:4];
             
             NSMutableArray *_comments = nil;

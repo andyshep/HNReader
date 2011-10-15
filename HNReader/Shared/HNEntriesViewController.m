@@ -8,12 +8,14 @@
 
 #import "HNEntriesViewController.h"
 
+#define DEFAULT_CELL_HEIGHT 72.0f
 
 @implementation HNEntriesViewController
 
 @synthesize model, tableView;
 @synthesize entriesControl, bottomToolbar;
 @synthesize delegate;
+@synthesize requestInProgress = _requestInProgress;
 
 - (id)init {
     if ((self = [super initWithNibName:@"HNEntriesView" bundle:nil])) {
@@ -31,7 +33,7 @@
                    context:@selector(operationDidFail)];
         
         self.delegate = nil;
-        loadingState = HNLoadingIdleState;
+        self.requestInProgress = NO;
     }
     
     return self;
@@ -85,6 +87,12 @@
     // CGRect rect = [[UIScreen mainScreen] bounds];
     // CGRect frame = [self.view bounds];
     
+    [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
+    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
+    [refreshButton release];
+    
     // make direction control
     NSArray *items = [NSArray arrayWithObjects:
                       NSLocalizedString(@"Front Page", @"Front Page"), 
@@ -123,14 +131,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	[[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
-    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
-    [refreshButton release];
-    
-    loadingState = HNLoadingNewEntriesStateIdentifier;
     [self loadEntries];
 }
 
@@ -179,7 +180,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 72.0f;
+    return DEFAULT_CELL_HEIGHT;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -264,11 +265,14 @@
 
 - (void)loadEntries {
     
+    if (_requestInProgress) return;
+    
+    self.requestInProgress = YES;
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [delegate shouldStopLoading];
     }
     
-    loadingState = HNLoadingNewEntriesStateIdentifier;
     [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
 }
 
@@ -300,6 +304,7 @@
 //    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
 //    [self.tableView endUpdates];
 
+    self.requestInProgress = NO;
     [tableView reloadData];
 }
 

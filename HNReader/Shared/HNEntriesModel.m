@@ -51,6 +51,69 @@
 	[entries getObjects:objects range:range];
 }
 
+#pragma mark - Cache Management
+
+//- (NSString *)bestPageCacheFilePath {
+//    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *bestPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
+//    
+//    return bestPageCacheFilePath;
+//}
+//
+//- (NSString *)newestPageCacheFilePath {
+//    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *newestPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
+//    
+//    return newestPageCacheFilePath;
+//}
+//
+- (NSString *)frontPageCacheFilePath {
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *frontPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
+    
+    return frontPageCacheFilePath;
+}
+
+- (NSString *)cacheFilePathForIndex:(NSUInteger)index {
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
+    
+    if (index == HNEntriesNewestPageIdentifier) {
+        cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
+    }
+    else if (index == HNEntriesBestPageIdentifier) {
+        cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
+    }
+    
+    return cacheFilePath;
+}
+
+- (NSURL *)pageURLForIndex:(NSUInteger)index {
+    NSURL *url = [NSURL URLWithString:@"http://news.ycombinator.com/"];
+    
+    if (index == HNEntriesNewestPageIdentifier) {
+        url = [NSURL URLWithString:@"http://news.ycombinator.com/newest"];
+    }
+    else if (index == HNEntriesBestPageIdentifier) {
+        url = [NSURL URLWithString:@"http://news.ycombinator.com/best"];
+    }
+    
+    return url;
+}
+
+- (int)cacheTimeForPageIndex:(NSUInteger)index {
+    int time = 180;
+    
+    if (index == HNEntriesNewestPageIdentifier) {
+        time = 60;
+    }
+    else if (index == HNEntriesBestPageIdentifier) {
+        time = 7200;
+    }
+    
+    return time;
+}
+
 #pragma mark - Network Requests
 
 - (void)loadEntriesForIndex:(NSUInteger)index {
@@ -63,18 +126,36 @@
         [self didChangeValueForKey:@"entries"];
     }
     
-    NSURL *url = [NSURL URLWithString:@"http://news.ycombinator.com/"];
-    
-    if (index == HNEntriesNewestPageIdentifier) {
-        url = [NSURL URLWithString:@"http://news.ycombinator.com/newest"];
+    // determine if the cache is valid
+    NSString *filePath = [self cacheFilePathForIndex:index];
+    NSError *err;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:&err];
+    if (attrs != nil && [attrs count] > 0) {
+        
+        // alway load from cache first
+        NSArray *cachedEntries = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        [self willChangeValueForKey:@"entries"];
+        [self.entries removeAllObjects];
+        [self.entries addObjectsFromArray:cachedEntries];
+        [self didChangeValueForKey:@"entries"];
+        
+        
+        NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
+        if (date != nil) {
+            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:date];
+            if (interval > [self cacheTimeForPageIndex:index]) {
+                NSURL *url = [self pageURLForIndex:index];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                [self loadEntriesForRequest:request atCachedFilePath:filePath];
+            }
+        }
     }
-    else if (index == HNEntriesBestPageIdentifier) {
-        url = [NSURL URLWithString:@"http://news.ycombinator.com/best"];
+    else {
+        NSURL *url = [self pageURLForIndex:index];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self loadEntriesForRequest:request atCachedFilePath:filePath];
     }
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    [self loadEntriesForRequest:request];
 }
 
 - (void)loadMoreEntries {
@@ -82,10 +163,11 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // we can keep the old entries around if we're loading more
-    [self loadEntriesForRequest:request];
+    // TODO: need to pass in an idnex or something here
+    // [self loadEntriesForRequest:request];
 }
 
--(void)loadEntriesForRequest:(NSURLRequest *)request {
+-(void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {
     // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/newest"]];
     // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
     
@@ -112,6 +194,7 @@
             HTMLNode *_currentNode = [tableNodes objectAtIndex:0];
             
             [self willChangeValueForKey:@"entries"];
+            [self.entries removeAllObjects];
             
             while ([_currentNode allContents] != NULL) {
                 
@@ -176,6 +259,10 @@
             
             [self didChangeValueForKey:@"entries"];
             [parser release];
+            
+            // try saving the file
+            // TODO: use legit file path
+            [NSKeyedArchiver archiveRootObject:entries toFile:cachedFilePath];
         }
         else {
             // log network connection error;

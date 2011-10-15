@@ -8,6 +8,7 @@
 
 #import "HNCommentsViewController.h"
 
+#define DEFAULT_CELL_HEIGHT 72.0f
 #define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
 
@@ -48,13 +49,17 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-	[[self navigationItem] setTitle:NSLocalizedString(@"News", @"Hacker News Entries")];
-    
+- (void)loadView {
+    [super loadView];
     
     CGRect frame = [self.view bounds];
+    
+    [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
+    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
+    [refreshButton release];
+    
     tableView = [[ShadowedTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 44.0f) style:UITableViewStylePlain];
     
     [tableView setDelegate:self];
@@ -66,6 +71,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    NSLog(@"%@", [self.entry.commentsPageURL substringFromIndex:8]);
     
     [model loadComments];
 }
@@ -114,7 +121,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     // the entry cell is 72 pixels high
     if ([indexPath section] == 0) {
-        return 72.0f;
+        return DEFAULT_CELL_HEIGHT;
     }
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
@@ -127,7 +134,7 @@
         CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
         CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
         CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-        CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] 
+        CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] 
                        constrainedToSize:constraint 
                            lineBreakMode:UILineBreakModeWordWrap];
         CGFloat height = MAX(size.height, 44.0f);
@@ -169,9 +176,11 @@
         
         CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
         CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-        CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+        CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);
         
-        CGSize size = [text sizeWithFont:[HNReaderTheme tenPointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        NSLog(@"cell contrained to size: %f, %f", constraint.width, constraint.height);
+        
+        CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
         // TODO: should set timeLabel frmae too
         [[cell usernameLabel] setFrame:CGRectMake(padding, 4.0f, adjustedWidth, 12.0f)];
@@ -202,6 +211,10 @@
             [self postLoadSiteNotification];
         }
     }
+}
+
+- (void)loadComments {
+    [model loadComments];
 }
 
 #pragma mark - Model Observing and Reactions
@@ -239,7 +252,7 @@
         
         // TODO: can we just do this ahead of time?
         // two requests on teh wire on seperate threads is not good.
-        [self postLoadSiteNotification];
+        // [self postLoadSiteNotification];
     }
 }
 

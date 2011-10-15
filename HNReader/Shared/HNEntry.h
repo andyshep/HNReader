@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HNEntry : NSObject {
+@interface HNEntry : NSObject <NSCoding> {
     NSString *title;
     NSString *linkURL, *commentsPageURL, *siteDomainURL;
     NSString *username, *commentsCount;

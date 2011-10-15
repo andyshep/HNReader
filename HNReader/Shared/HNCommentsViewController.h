@@ -28,6 +28,8 @@
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 
+- (void)loadComments;
+
 - (NSArray *)indexPathsToInsert;
 - (NSArray *)indexPathsToDelete;
 

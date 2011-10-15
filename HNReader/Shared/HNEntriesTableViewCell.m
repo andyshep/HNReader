@@ -66,17 +66,15 @@
 {
     [super setSelected:selected animated:animated];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if (selected) {
-            self.siteTitleLabel.textColor = [UIColor blackColor];
-            self.siteDomainLabel.textColor = [UIColor whiteColor];
-            self.totalPointsLabel.textColor = [UIColor whiteColor];
-        }
-        else {
-            self.siteTitleLabel.textColor = [UIColor blackColor];
-            self.siteDomainLabel.textColor = [UIColor grayColor];
-            self.totalPointsLabel.textColor = [UIColor grayColor];
-        }
+    if (selected) {
+        self.siteTitleLabel.textColor = [UIColor whiteColor];
+        self.siteDomainLabel.textColor = [UIColor whiteColor];
+        self.totalPointsLabel.textColor = [UIColor whiteColor];
+    }
+    else {
+        self.siteTitleLabel.textColor = [UIColor blackColor];
+        self.siteDomainLabel.textColor = [UIColor grayColor];
+        self.totalPointsLabel.textColor = [UIColor grayColor];
     }
 }
 
@@ -84,10 +82,12 @@
     [super setHighlighted:highlighted animated:animated];
     
     if (highlighted) {
-        self.siteDomainLabel.textColor = [UIColor blackColor];
-        self.totalPointsLabel.textColor = [UIColor blackColor];
+        self.siteTitleLabel.textColor = [UIColor whiteColor];
+        self.siteDomainLabel.textColor = [UIColor whiteColor];
+        self.totalPointsLabel.textColor = [UIColor whiteColor];
     }
     else {
+        self.siteTitleLabel.textColor = [UIColor blackColor];
         self.siteDomainLabel.textColor = [UIColor grayColor];
         self.totalPointsLabel.textColor = [UIColor grayColor];
     }

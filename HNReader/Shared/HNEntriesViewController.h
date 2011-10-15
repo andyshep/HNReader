@@ -17,17 +17,9 @@
 
 #import "ShadowedTableView.h"
 
-typedef enum  {
-    HNLoadingNewEntriesStateIdentifier,
-    HNLoadingMoreEntriesStateIdentifier,
-    HNLoadingIdleState
-} HNEntryLoadingStateIdentifier;
-
 @protocol HNEntriesViewControllerDelegate <NSObject>
-
 - (void)shouldLoadURL:(NSURL *)aURL;
 - (void)shouldStopLoading;
-
 @end
 
 
@@ -39,8 +31,6 @@ typedef enum  {
 	UISegmentedControl *entriesControl;
     
     id<HNEntriesViewControllerDelegate> delegate;
-    
-    HNEntryLoadingStateIdentifier loadingState;
 }
 
 @property (nonatomic, retain) HNEntriesModel *model;
@@ -49,6 +39,7 @@ typedef enum  {
 @property (nonatomic, retain) UISegmentedControl *entriesControl;
 
 @property (assign) id<HNEntriesViewControllerDelegate> delegate;
+@property (assign) BOOL requestInProgress;
 
 - (void)loadEntries;
 

@@ -145,8 +145,6 @@
 }
 
 - (void)shouldStopLoading {
-    NSLog(@"shouldStopLoading:");
-    
     [webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
@@ -166,8 +164,6 @@
 }
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification {
-    NSLog(@"shouldLoadFromNotification:");
-    
     NSDictionary *extraInfo = [aNotification userInfo];
     NSString *aURLString = [extraInfo objectForKey:@"kHNURL"];
     NSURL *aURL = [NSURL URLWithString:aURLString];

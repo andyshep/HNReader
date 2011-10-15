@@ -27,7 +27,7 @@
         
         commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 16.0f, 272.0f, 60.0f)];
         [commentTextLabel setBackgroundColor:[UIColor clearColor]];
-        [commentTextLabel setFont:[HNReaderTheme tenPointlabelFont]];
+        [commentTextLabel setFont:[HNReaderTheme twelvePointlabelFont]];
         [commentTextLabel setLineBreakMode:UILineBreakModeWordWrap];
         [commentTextLabel setNumberOfLines:0];
         

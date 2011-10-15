@@ -43,8 +43,32 @@
     [super dealloc];
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.linkURL = [aDecoder decodeObjectForKey:@"linkURL"];
+        self.siteDomainURL = [aDecoder decodeObjectForKey:@"siteDomainURL"];
+        self.commentsPageURL = [aDecoder decodeObjectForKey:@"commentsPageURL"];
+        self.commentsCount = [aDecoder decodeObjectForKey:@"commentsCount"];
+        self.totalPoints = [aDecoder decodeObjectForKey:@"totalPoints"];
+        self.username = [aDecoder decodeObjectForKey:@"username"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:title forKey:@"title"];
+    [aCoder encodeObject:linkURL forKey:@"linkURL"];
+    [aCoder encodeObject:siteDomainURL forKey:@"siteDomainURL"];
+    [aCoder encodeObject:commentsPageURL forKey:@"commentsPageURL"];
+    [aCoder encodeObject:commentsCount forKey:@"commentsCount"];
+    [aCoder encodeObject:totalPoints forKey:@"totalPoints"];
+    [aCoder encodeObject:username forKey:@"username"];
+}
+
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ :: %@", title, linkURL];
+    return [NSString stringWithFormat:@"%@ :: %@", title, commentsPageURL];
     //return [NSString stringWithFormat:@"%@", title];
 }
 

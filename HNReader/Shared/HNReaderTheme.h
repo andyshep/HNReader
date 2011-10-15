@@ -21,5 +21,6 @@
 
 + (CGGradientRef)tanGradientColor;
 + (CGGradientRef)blueishGradientColor;
++ (CGGradientRef)greyGradientColor;
 
 @end

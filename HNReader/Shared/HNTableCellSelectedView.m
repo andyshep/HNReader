@@ -16,7 +16,7 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code
-		gradient = [HNReaderTheme blueishGradientColor];
+		gradient = [HNReaderTheme greyGradientColor];
     }
     return self;
 }
