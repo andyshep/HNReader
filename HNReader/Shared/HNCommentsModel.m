@@ -50,19 +50,14 @@
 #pragma mark - Cache Management
 
 - (NSString *)cacheFilePath {
-    
-    NSString *commentId = [[entry commentsPageURL] substringFromIndex:8];
-    
-    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"comments_%@.plist", commentId]];
+    NSString *commentId = [[entry commentsPageURL] substringFromIndex:8];    
+    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"comments_%@.plist", commentId]];
     
     return cacheFilePath;
 }
 
 - (void)loadComments {
-    
-    
-    
     
     // determine if the cache is valid
     NSString *filePath = [self cacheFilePath];
@@ -74,11 +69,9 @@
         // alway load from cache first
         NSDictionary *cachedComments = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         
-        // todo: set loadedd
-        [self willChangeValueForKey:@"commentsInfo"];
-        // [self.commentsInfo removeObjectsForKeys:[commentsInfo allKeys]];
+        //[self willChangeValueForKey:@"commentsInfo"];
         self.commentsInfo = [NSMutableDictionary dictionaryWithDictionary:cachedComments];
-        [self didChangeValueForKey:@"commentsInfo"];
+        // [self didChangeValueForKey:@"commentsInfo"];
         
         NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
         if (date != nil) {
@@ -86,7 +79,7 @@
             if (interval > 120) {
                 NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", 
                                                     [entry commentsPageURL]]];
-                NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+                NSURLRequest *_request = [NSURLRequest requestWithURL:_url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
                 [self loadCommentsForRequest:_request];
             }
         }
@@ -94,7 +87,7 @@
     else {
         NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", 
                                             [entry commentsPageURL]]];
-        NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+        NSURLRequest *_request = [NSURLRequest requestWithURL:_url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
         [self loadCommentsForRequest:_request];
     }
 }

@@ -16,6 +16,9 @@
 - (id)init {
     if ((self = [super init])) {
         self.items = [NSMutableArray arrayWithCapacity:2];
+        self.webView = nil;
+        self.toolbar = nil;
+        self.entry = nil;
     }
     
     return self;
@@ -24,6 +27,9 @@
 - (void)dealloc {
     [webView release];
     [entry release];
+    if (toolbar != nil) {
+        [toolbar release];
+    }
     [super dealloc];
 }
 
@@ -44,6 +50,7 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
     self.view = contentView;
+    [contentView release];
     
     webView = [[UIWebView alloc] initWithFrame:frame];
     [webView setScalesPageToFit:YES];
@@ -51,20 +58,15 @@
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        // load a toolbar
-        
+        // load a toolbar for our splitview (pad only)
         toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
         [toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-        
         [webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
-        
         [self.view addSubview:toolbar];
     }
     
     [self.view addSubview:webView];
     [self.view setBackgroundColor:[HNReaderTheme lightTanColor]];
-    [webView release];
-    [contentView release];
 }
 
 

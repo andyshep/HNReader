@@ -54,14 +54,14 @@
 #pragma mark - Cache Management
 
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index {
-    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
+    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
     
     if (index == HNEntriesNewestPageIdentifier) {
-        cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
+        cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
     }
     else if (index == HNEntriesBestPageIdentifier) {
-        cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
+        cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
     }
     
     return cacheFilePath;
@@ -125,21 +125,21 @@
             NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:date];
             if (interval > [self cacheTimeForPageIndex:index]) {
                 NSURL *url = [self pageURLForIndex:index];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
                 [self loadEntriesForRequest:request atCachedFilePath:filePath];
             }
         }
     }
     else {
         NSURL *url = [self pageURLForIndex:index];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
         [self loadEntriesForRequest:request atCachedFilePath:filePath];
     }
 }
 
 - (void)loadMoreEntries {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", moreEntriesLink]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
     
     // we can keep the old entries around if we're loading more
     // TODO: need to pass in an idnex or something here

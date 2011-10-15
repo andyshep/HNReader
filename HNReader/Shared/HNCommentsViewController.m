@@ -175,10 +175,7 @@
         
         CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
         CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-        CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-        
-        NSLog(@"cell contrained to size: %f, %f", constraint.width, constraint.height);
-        
+        CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
         CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
         // TODO: should set timeLabel frmae too
