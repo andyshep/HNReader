@@ -63,6 +63,8 @@
     
     [self.view addSubview:webView];
     [self.view setBackgroundColor:[HNReaderTheme lightTanColor]];
+    [webView release];
+    [contentView release];
 }
 
 

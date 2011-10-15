@@ -53,27 +53,6 @@
 
 #pragma mark - Cache Management
 
-//- (NSString *)bestPageCacheFilePath {
-//    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//    NSString *bestPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
-//    
-//    return bestPageCacheFilePath;
-//}
-//
-//- (NSString *)newestPageCacheFilePath {
-//    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//    NSString *newestPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
-//    
-//    return newestPageCacheFilePath;
-//}
-//
-- (NSString *)frontPageCacheFilePath {
-    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *frontPageCacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
-    
-    return frontPageCacheFilePath;
-}
-
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index {
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
@@ -178,9 +157,11 @@
             NSError *aParserError = nil;
             NSString *rawHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&aParserError];
+            [rawHTML release];
             
             if (aParserError) {
                 self.error = aParserError;
+                [parser release];
                 return;
             }
             
@@ -193,8 +174,7 @@
             // NSMutableArray *_entries = [NSMutableArray arrayWithCapacity:20];
             HTMLNode *_currentNode = [tableNodes objectAtIndex:0];
             
-            [self willChangeValueForKey:@"entries"];
-            [self.entries removeAllObjects];
+            NSMutableArray *parsedEntries = [NSMutableArray arrayWithCapacity:30];
             
             while ([_currentNode allContents] != NULL) {
                 
@@ -204,7 +184,7 @@
                 
                 if ([titles count] > 1) {
                     
-                    HNEntry *aEntry = [[[HNEntry alloc] init] autorelease];
+                    HNEntry *aEntry = [[HNEntry alloc] init];
                     aEntry.title = [[[titles objectAtIndex:1] firstChild] contents];
                     aEntry.linkURL = [[[titles objectAtIndex:1] firstChild] getAttributeNamed:@"href"];
                     aEntry.siteDomainURL = [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents];
@@ -232,7 +212,8 @@
                     }
                     
                     // [_entries addObject:aEntry];
-                    [self.entries addObject:aEntry];
+                    [parsedEntries addObject:aEntry];
+                    [aEntry release];
                 }
                 
                 // move to the next node
@@ -243,7 +224,6 @@
             // after we have all the entries
             // we grab the link the load the next 30 entries
             // we will load these next 30 when the user selects the last table cell
-            
             HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
             
             if (moreEntriesNode != NULL) {
@@ -254,14 +234,19 @@
             }
             else {
                 self.error = [self parserError];
+                [parser release];
                 return;
             }
             
-            [self didChangeValueForKey:@"entries"];
             [parser release];
             
-            // try saving the file
-            // TODO: use legit file path
+            // now we set the entires
+            [self willChangeValueForKey:@"entries"];
+            [self.entries removeAllObjects];
+            [self.entries addObjectsFromArray:parsedEntries];
+            [self didChangeValueForKey:@"entries"];
+            
+            // save the entries the disk for next time
             [NSKeyedArchiver archiveRootObject:entries toFile:cachedFilePath];
         }
         else {

@@ -32,6 +32,7 @@
 - (id)initWithEntry:(HNEntry *)aEntry;
 - (void)loadComments;
 - (void)loadCommentsForRequest:(NSURLRequest *)request;
+- (NSString *)cacheFilePath;
 
 - (NSString *)formatCommentText:(NSString *)commentText;
 

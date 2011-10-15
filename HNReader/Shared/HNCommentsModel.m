@@ -47,11 +47,56 @@
 	[[commentsInfo objectForKey:@"comments"] getObjects:objects range:range];
 }
 
-- (void)loadComments {
-    NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", self.entry.commentsPageURL]];
-    NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+#pragma mark - Cache Management
+
+- (NSString *)cacheFilePath {
     
-    [self loadCommentsForRequest:_request];
+    NSString *commentId = [[entry commentsPageURL] substringFromIndex:8];
+    
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *cacheFilePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"comments_%@.plist", commentId]];
+    
+    return cacheFilePath;
+}
+
+- (void)loadComments {
+    
+    
+    
+    
+    // determine if the cache is valid
+    NSString *filePath = [self cacheFilePath];
+    NSError *err;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:&err];
+    if (attrs != nil && [attrs count] > 0) {
+        
+        // alway load from cache first
+        NSDictionary *cachedComments = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        
+        // todo: set loadedd
+        [self willChangeValueForKey:@"commentsInfo"];
+        [self.commentsInfo removeObjectsForKeys:[commentsInfo allKeys]];
+        self.commentsInfo = [NSMutableDictionary dictionaryWithDictionary:cachedComments];
+        [self didChangeValueForKey:@"commentsInfo"];
+        
+        NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
+        if (date != nil) {
+            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:date];
+            if (interval > 120) {
+                NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", 
+                                                    [entry commentsPageURL]]];
+                NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+                [self loadCommentsForRequest:_request];
+            }
+        }
+    }
+    else {
+        NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", 
+                                            [entry commentsPageURL]]];
+        NSURLRequest *_request = [NSURLRequest requestWithURL:_url];
+        [self loadCommentsForRequest:_request];
+    }
 }
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
@@ -65,6 +110,7 @@
             NSError *parserError = nil;
             NSString *rawHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
+            [rawHTML release];
             
             if (parserError != nil) {
                 NSLog(@"Error: %@", [parserError localizedDescription]);
@@ -140,6 +186,9 @@
             [_commentsInfo setValue:[NSArray arrayWithArray:_comments] forKey:@"entry_comments"];
             
             self.commentsInfo = _commentsInfo;
+            
+            // save the entries the disk for next time
+            [NSKeyedArchiver archiveRootObject:_commentsInfo toFile:[self cacheFilePath]];
             
             [parser release];
         }

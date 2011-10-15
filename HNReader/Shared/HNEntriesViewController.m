@@ -109,6 +109,7 @@
     [entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
     
     [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    [buttonItem release];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
@@ -192,7 +193,7 @@
         // so you can give it a gradient and matching style.
         HNLoadMoreTableViewCell *cell = (HNLoadMoreTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[HNLoadMoreTableViewCell alloc] init];
+            cell = [[[HNLoadMoreTableViewCell alloc] init] autorelease];
         }
         
         return cell;
@@ -202,7 +203,7 @@
         
         HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[HNEntriesTableViewCell alloc] init];
+            cell = [[[HNEntriesTableViewCell alloc] init] autorelease];
         }
         
         HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
@@ -235,6 +236,7 @@
             HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
             // nextController.entry = selectedEntry;
             [self.navigationController pushViewController:nextController animated:YES];
+            [nextController release];
             
             // TODO: implement this correctly
             // [aTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -248,6 +250,7 @@
             HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
             // nextController.entry = selectedEntry;
             [self.navigationController pushViewController:nextController animated:YES];
+            [nextController release];
         }
     }
 }

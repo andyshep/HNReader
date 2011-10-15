@@ -71,8 +71,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSLog(@"%@", [self.entry.commentsPageURL substringFromIndex:8]);
+
     
     [model loadComments];
 }
@@ -151,7 +150,7 @@
         
         HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[HNEntriesTableViewCell alloc] init];
+            cell = [[[HNEntriesTableViewCell alloc] init] autorelease];
         }
         
         cell.siteTitleLabel.text = entry.title;
@@ -166,7 +165,7 @@
         HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
-            cell = [[HNCommentsTableViewCell alloc] init];
+            cell = [[[HNCommentsTableViewCell alloc] init] autorelease];
         }
         
         NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
@@ -206,6 +205,7 @@
             HNWebViewController *nextController = [[HNWebViewController alloc] init];
             nextController.entry = [self entry];
             [[self navigationController] pushViewController:nextController animated:YES];
+            [nextController release];
         }
         else {
             [self postLoadSiteNotification];
