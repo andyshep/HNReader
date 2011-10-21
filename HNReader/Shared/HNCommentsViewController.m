@@ -131,7 +131,7 @@
         HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
             
         CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
-        CGFloat height = MAX(commentTextRect.size.height, 44.0f);
+        CGFloat height = MAX(commentTextRect.size.height, DEFAULT_CELL_HEIGHT);
         
         return height + (CELL_CONTENT_MARGIN * 2);
     }
@@ -279,7 +279,8 @@
     // this is for the pad only.  on the phone, the vc is pushed onto stack
     NSString *urlString = [[self entry] linkURL];
     NSDictionary *extraInfo = [NSDictionary dictionaryWithObject:urlString forKey:@"kHNURL"];
-    NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" object:self userInfo:extraInfo];
+    NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" 
+                                                          object:self userInfo:extraInfo];
     
     [[NSNotificationCenter defaultCenter] postNotification:aNote];
 }
@@ -296,28 +297,17 @@
         padding += 1;
     }
     
-    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-    
-    adjustedWidth = rintf(adjustedWidth);
-    int adjustedWidthAsInt = adjustedWidth;
-    
-    if (adjustedWidthAsInt % 2 != 0) {
+    int adjustedWidth = CELL_CONTENT_WIDTH - padding;
+    if (adjustedWidth % 2 != 0) {
         adjustedWidth += 1.0f;
     }
     
-    // NSLog(@"adjusted: %f", adjustedWidth);
-    
-    
     CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
-    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];    
-    
+    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     CGRect commentTextRect = CGRectMake(padding, 
                                         CELL_CONTENT_MARGIN + 6, 
-                                        adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
+                                        adjustedWidth - CELL_CONTENT_MARGIN, 
                                         size.height);
-    
-    //    NSLog(@"commentTextRect: %f %f %f %f", commentTextRect.origin.x, commentTextRect.origin.y, commentTextRect.size.width, commentTextRect.size.height);
-    
     return commentTextRect;
 }
 
