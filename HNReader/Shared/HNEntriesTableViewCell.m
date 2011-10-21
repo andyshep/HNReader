@@ -20,7 +20,7 @@
         
         siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 4, 272, 40)];
         siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 44, 162, 21)];
-        totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectMake(204, 44, 108, 21)];
+        totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectMake(204, 44, 80, 21)];
         
         siteTitleLabel.numberOfLines = 2;
         siteTitleLabel.font = [HNReaderTheme fourteenPointlabelFont];
@@ -35,6 +35,7 @@
         totalPointsLabel.font = [HNReaderTheme twelvePointlabelFont];
         totalPointsLabel.backgroundColor = [UIColor clearColor];
         totalPointsLabel.textColor = [UIColor grayColor];
+        [totalPointsLabel setTextAlignment:UITextAlignmentRight];
         
         [containerView addSubview:siteTitleLabel];
         [containerView addSubview:siteDomainLabel];

@@ -8,7 +8,7 @@
 
 #import "HNCommentsViewController.h"
 
-#define DEFAULT_CELL_HEIGHT 72.0f
+#define DEFAULT_CELL_HEIGHT 44.0f
 #define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
 
@@ -122,23 +122,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     // the entry cell is 72 pixels high
     if ([indexPath section] == 0) {
-        return DEFAULT_CELL_HEIGHT;
+        return 72.0f;
     }
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
     else {
         NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
         HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
-        
-        NSString *text = [aComment commentString];
-        
-        CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
-        CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-        CGSize constraint = CGSizeMake(adjustedWidth - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-        CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] 
-                       constrainedToSize:constraint 
-                           lineBreakMode:UILineBreakModeWordWrap];
-        CGFloat height = MAX(size.height, 44.0f);
+            
+        CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
+        CGFloat height = MAX(commentTextRect.size.height, 44.0f);
         
         return height + (CELL_CONTENT_MARGIN * 2);
     }
@@ -173,42 +166,9 @@
         NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
         HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
         
-        NSString *text = [aComment commentString];
-        
-        CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
-        padding = rintf(padding);
-        int paddingAsInt = padding;
-        if (paddingAsInt % 2 != 0) {
-            padding += 1.0f;
-        }
-        
-        CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
-        
-        adjustedWidth = rintf(adjustedWidth);
-        int adjustedWidthAsInt = adjustedWidth;
-        
-        if (adjustedWidthAsInt % 2 != 0) {
-            adjustedWidth += 1.0f;
-        }
-        
-        // NSLog(@"adjusted: %f", adjustedWidth);
-        
-        
-        CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
-        CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-        
-        // TODO: should set timeLabel frmae too
-        [[cell usernameLabel] setFrame:CGRectMake(padding, 4.0f, adjustedWidth, 12.0f)];
-        
-        
-        CGRect commentTextRect = CGRectMake(padding, 
-                                            CELL_CONTENT_MARGIN + 6, 
-                                            adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
-                                            MAX(size.height, 44.0f));
-        
-        NSLog(@"commentTextRect: %f %f %f %f", commentTextRect.origin.x, commentTextRect.origin.y, commentTextRect.size.width, commentTextRect.size.height);
-        
+        CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
         [[cell commentTextLabel] setFrame:commentTextRect];
+        [[cell usernameLabel] setFrame:CGRectMake(commentTextRect.origin.x, 4.0f, commentTextRect.size.width, 12.0f)];
         
         cell.usernameLabel.text = aComment.username;
         cell.commentTextLabel.text = aComment.commentString;
@@ -322,6 +282,43 @@
     NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" object:self userInfo:extraInfo];
     
     [[NSNotificationCenter defaultCenter] postNotification:aNote];
+}
+
+#pragma mark - HNCommentsTableViewCell height calculations
+
+- (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
+    
+    // knock the intentation padding down by a factor of 3
+    // then adjust for cell margin and make sure the padding is even.  
+    // otherwise the comment text is antialias'd
+    padding = CELL_CONTENT_MARGIN + (padding / 3);
+    if (padding % 2 != 0) {
+        padding += 1;
+    }
+    
+    CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+    
+    adjustedWidth = rintf(adjustedWidth);
+    int adjustedWidthAsInt = adjustedWidth;
+    
+    if (adjustedWidthAsInt % 2 != 0) {
+        adjustedWidth += 1.0f;
+    }
+    
+    // NSLog(@"adjusted: %f", adjustedWidth);
+    
+    
+    CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
+    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];    
+    
+    CGRect commentTextRect = CGRectMake(padding, 
+                                        CELL_CONTENT_MARGIN + 6, 
+                                        adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
+                                        size.height);
+    
+    //    NSLog(@"commentTextRect: %f %f %f %f", commentTextRect.origin.x, commentTextRect.origin.y, commentTextRect.size.width, commentTextRect.size.height);
+    
+    return commentTextRect;
 }
 
 @end

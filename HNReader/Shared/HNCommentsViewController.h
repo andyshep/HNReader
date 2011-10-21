@@ -33,5 +33,6 @@
 - (NSArray *)indexPathsToDelete;
 
 - (void)postLoadSiteNotification;
+- (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
 
 @end
