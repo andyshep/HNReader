@@ -14,6 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [super application:application didFinishLaunchingWithOptions:launchOptions];
+    
     entriesViewController = [[HNEntriesViewController alloc] init];
     UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:entriesViewController] autorelease];
     

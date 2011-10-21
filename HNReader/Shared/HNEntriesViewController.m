@@ -132,7 +132,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self loadEntries];
 }
 
@@ -237,9 +236,6 @@
             // nextController.entry = selectedEntry;
             [self.navigationController pushViewController:nextController animated:YES];
             [nextController release];
-            
-            // TODO: implement this correctly
-            // [aTableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         else {
             // ask our delegate to load url
@@ -271,6 +267,8 @@
     if (_requestInProgress) return;
     
     self.requestInProgress = YES;
+    [tableView setUserInteractionEnabled:NO];
+    [tableView setScrollEnabled:NO];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [delegate shouldStopLoading];
@@ -309,6 +307,8 @@
 
     self.requestInProgress = NO;
     [tableView reloadData];
+    [tableView setScrollEnabled:YES];
+    [tableView setUserInteractionEnabled:YES];
 }
 
 - (void)operationDidFail {    

@@ -21,7 +21,7 @@
         [usernameLabel setBackgroundColor:[UIColor clearColor]];
         [usernameLabel setFont:[HNReaderTheme tenPointlabelFont]];
         
-        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 4.0f, 100.0f, 12.0f)];
+        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 4.0f, 100.0f, 12.0f)];
         [timeLabel setBackgroundColor:[UIColor clearColor]];
         [timeLabel setFont:[HNReaderTheme tenPointlabelFont]];
         

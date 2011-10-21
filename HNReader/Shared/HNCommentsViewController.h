@@ -20,11 +20,10 @@
 @interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNEntry *entry;
     HNCommentsModel *model;
-    ShadowedTableView *tableView;
 }
 
 @property (nonatomic, retain) HNEntry *entry;
-@property (nonatomic, retain) ShadowedTableView *tableView;
+@property (nonatomic, retain) IBOutlet ShadowedTableView *tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 

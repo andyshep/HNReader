@@ -7,9 +7,9 @@
 //
 
 
-#import "SSDrawingUtilities.h"
+// #import "SSDrawingUtilities.h"
 #import "HNReaderTheme.h"
-
+#import "HNArtistTools.h"
 
 @interface HNTableCellBackgroundView : UIView {
 	UIColor *borderColor;

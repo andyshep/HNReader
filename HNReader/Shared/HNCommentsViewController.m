@@ -14,10 +14,11 @@
 
 @implementation HNCommentsViewController
 
-@synthesize entry, tableView;
+@synthesize entry;
+@synthesize tableView = _tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry {
-    if ((self = [super init])) {
+    if ((self = [super initWithNibName:@"HNCommentsView" bundle:nil])) {
         model = [[HNCommentsModel alloc] initWithEntry:aEntry];
         
         [model addObserver:self 
@@ -38,7 +39,7 @@
 
 - (void)dealloc {
     [entry release];
-    [tableView release];
+    [_tableView release];
     
     [model removeObserver:self forKeyPath:@"commentsInfo"];
     [model removeObserver:self forKeyPath:@"error"];
@@ -52,7 +53,7 @@
 - (void)loadView {
     [super loadView];
     
-    CGRect frame = [self.view bounds];
+    // CGRect frame = [self.view bounds];
     
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
@@ -60,13 +61,14 @@
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     [refreshButton release];
     
-    tableView = [[ShadowedTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 44.0f) style:UITableViewStylePlain];
-    
-    [tableView setDelegate:self];
-    [tableView setDataSource:self];
-    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
-    [self.view addSubview:tableView];
+//    self.tableView = [[[ShadowedTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 44.0f) style:UITableViewStylePlain] autorelease];
+//    
+//    [_tableView setDelegate:self];
+//    [_tableView setDataSource:self];
+//    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    // [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight)];
+    // [tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
+    [self.view addSubview:_tableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -89,8 +91,8 @@
     [super viewWillAppear:animated];
     
     // unselect the table cell, if need be.
-    if ([tableView indexPathForSelectedRow] != nil) {
-        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    if ([_tableView indexPathForSelectedRow] != nil) {
+        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     }
 }
 
@@ -174,16 +176,39 @@
         NSString *text = [aComment commentString];
         
         CGFloat padding = CELL_CONTENT_MARGIN + [aComment padding] / 3.0f;
+        padding = rintf(padding);
+        int paddingAsInt = padding;
+        if (paddingAsInt % 2 != 0) {
+            padding += 1.0f;
+        }
+        
         CGFloat adjustedWidth = CELL_CONTENT_WIDTH - padding;
+        
+        adjustedWidth = rintf(adjustedWidth);
+        int adjustedWidthAsInt = adjustedWidth;
+        
+        if (adjustedWidthAsInt % 2 != 0) {
+            adjustedWidth += 1.0f;
+        }
+        
+        // NSLog(@"adjusted: %f", adjustedWidth);
+        
+        
         CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
         CGSize size = [text sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
         // TODO: should set timeLabel frmae too
         [[cell usernameLabel] setFrame:CGRectMake(padding, 4.0f, adjustedWidth, 12.0f)];
-        [[cell commentTextLabel] setFrame:CGRectMake(padding, 
-                                                     CELL_CONTENT_MARGIN + 6, 
-                                                     adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
-                                                     MAX(size.height, 44.0f))];
+        
+        
+        CGRect commentTextRect = CGRectMake(padding, 
+                                            CELL_CONTENT_MARGIN + 6, 
+                                            adjustedWidth - (CELL_CONTENT_MARGIN * 2), 
+                                            MAX(size.height, 44.0f));
+        
+        NSLog(@"commentTextRect: %f %f %f %f", commentTextRect.origin.x, commentTextRect.origin.y, commentTextRect.size.width, commentTextRect.size.height);
+        
+        [[cell commentTextLabel] setFrame:commentTextRect];
         
         cell.usernameLabel.text = aComment.username;
         cell.commentTextLabel.text = aComment.commentString;
@@ -243,7 +268,7 @@
 //    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
 //    [self.tableView endUpdates];
 
-    [tableView reloadData];
+    [_tableView reloadData];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         
@@ -277,7 +302,7 @@
 
 - (NSArray *)indexPathsToDelete {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [tableView numberOfRowsInSection:0];
+    int count = [_tableView numberOfRowsInSection:0];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
