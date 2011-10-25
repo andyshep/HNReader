@@ -66,7 +66,6 @@
     }
     
     [self.view addSubview:webView];
-    [self.view setBackgroundColor:[HNReaderTheme lightTanColor]];
 }
 
 
@@ -151,6 +150,10 @@
 - (void)shouldStopLoading {
     [webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    // empty out the webview
+    // http://lists.apple.com/archives/cocoa-dev/2010/Nov/msg00680.html
+    [webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

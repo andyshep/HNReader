@@ -116,7 +116,7 @@
             NSString *titleString = [[titleNode firstChild] contents];
             NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
             NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-            NSString *bgColor = [[tableNodes objectAtIndex:0] getAttributeNamed:@"bgcolor"];
+            NSString *bgColor = [[[tableNodes objectAtIndex:0] firstChild] getAttributeNamed:@"bgcolor"];
             
             HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
             if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame)
