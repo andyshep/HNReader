@@ -7,6 +7,8 @@
 //
 
 #import "AFHTTPRequestOperation.h"
+#import "AFNetworkActivityIndicatorManager.h"
+
 #import "HNEntry.h"
 #import "HTMLParser.h"
 #import "HTMLNode.h"

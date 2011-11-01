@@ -94,98 +94,94 @@
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
     
-    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation operationWithRequest:request completion:^(NSURLRequest *request, NSHTTPURLResponse *response, NSData *data, NSError *err) {
+    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation HTTPRequestOperationWithRequest:request success:^(id object) {
+        NSError *parserError = nil;
+        NSString *rawHTML = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+        HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
+        [rawHTML release];
         
-        if (!err) {
-            NSError *parserError = nil;
-            NSString *rawHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
-            [rawHTML release];
+        if (parserError != nil) {
+            NSLog(@"Error: %@", [parserError localizedDescription]);
+            // return;
+        }
+        
+        HTMLNode *bodyNode = [parser body];
+        
+        // entries table is the third table on screen
+        // if there is a black banner, it is the forth table
+        // hackiness ensues...
+        HTMLNode *titleNode = [[bodyNode findChildrenOfClass:@"title"] objectAtIndex:0];
+        NSString *titleString = [[titleNode firstChild] contents];
+        NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
+        NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
+        NSString *bgColor = [[[tableNodes objectAtIndex:0] firstChild] getAttributeNamed:@"bgcolor"];
+        
+        HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
+        if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame)
+            commentsTableRow = [tableNodes objectAtIndex:4];
+        
+        NSMutableArray *_comments = nil;
+        NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
+        
+        // make sure we have comments
+        if ([commentsTableArray count]  > 1) {
+            HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
+            NSArray *commentsNodes = [commentsTable children];
+            int commentCount = [[commentsTable children] count];
             
-            if (parserError != nil) {
-                NSLog(@"Error: %@", [parserError localizedDescription]);
-                // return;
-            }
+            _comments = [NSMutableArray arrayWithCapacity:commentCount];
             
-            HTMLNode *bodyNode = [parser body];
-            
-            // entries table is the third table on screen
-            // if there is a black banner, it is the forth table
-            // hackiness ensues...
-            HTMLNode *titleNode = [[bodyNode findChildrenOfClass:@"title"] objectAtIndex:0];
-            NSString *titleString = [[titleNode firstChild] contents];
-            NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
-            NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-            NSString *bgColor = [[[tableNodes objectAtIndex:0] firstChild] getAttributeNamed:@"bgcolor"];
-            
-            HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
-            if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame)
-                commentsTableRow = [tableNodes objectAtIndex:4];
-            
-            NSMutableArray *_comments = nil;
-            NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
-            
-            // make sure we have comments
-            if ([commentsTableArray count]  > 1) {
-                HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
-                NSArray *commentsNodes = [commentsTable children];
-                int commentCount = [[commentsTable children] count];
+            for (HTMLNode *comment in commentsNodes) {
                 
-                _comments = [NSMutableArray arrayWithCapacity:commentCount];
+                HTMLNode *comHead = [comment findChildOfClass:@"comhead"];
+                NSString *commentUserName = nil;
+                NSString *commentString = nil;
+                NSString *timeSinceCreation = nil;
+                int commentPadding = 0;
                 
-                for (HTMLNode *comment in commentsNodes) {
+                // make sure comment wasn't deleted.
+                if ([[comHead children] count] > 0) {
+                    commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
+                    HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
+                    commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                     
-                    HTMLNode *comHead = [comment findChildOfClass:@"comhead"];
-                    NSString *commentUserName = nil;
-                    NSString *commentString = nil;
-                    NSString *timeSinceCreation = nil;
-                    int commentPadding = 0;
+                    NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
+                    commentString = [self formatCommentText:rawCommentHTML];
                     
-                    // make sure comment wasn't deleted.
-                    if ([[comHead children] count] > 0) {
-                        commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
-                        HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
-                        commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
-                        
-                        NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
-                        commentString = [self formatCommentText:rawCommentHTML];
-                        
-                        NSString *roughTime = [[[comHead children] objectAtIndex:1] rawContents];
-                        timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
-                    }
-                    else {
-                        commentUserName = @"";
-                        commentString = @"[deleted]";
-                        commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
-                    }
-                    
-                    HNComment *aComment = [[HNComment alloc] init];
-                    aComment.username = commentUserName;
-                    aComment.padding = commentPadding;
-                    aComment.commentString = commentString;
-                    aComment.timeSinceCreation = timeSinceCreation;
-                    
-                    [_comments addObject:aComment];
-                    [aComment release];
+                    NSString *roughTime = [[[comHead children] objectAtIndex:1] rawContents];
+                    timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
                 }
+                else {
+                    commentUserName = @"";
+                    commentString = @"[deleted]";
+                    commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
+                }
+                
+                HNComment *aComment = [[HNComment alloc] init];
+                aComment.username = commentUserName;
+                aComment.padding = commentPadding;
+                aComment.commentString = commentString;
+                aComment.timeSinceCreation = timeSinceCreation;
+                
+                [_comments addObject:aComment];
+                [aComment release];
             }
-            
-            NSMutableDictionary *_commentsInfo = [NSMutableDictionary dictionaryWithCapacity:3];
-            [_commentsInfo setValue:titleString forKey:@"entry_title"];
-            [_commentsInfo setValue:siteURL forKey:@"entry_url"];
-            [_commentsInfo setValue:[NSArray arrayWithArray:_comments] forKey:@"entry_comments"];
-            
-            self.commentsInfo = _commentsInfo;
-            
-            // save the entries the disk for next time
-            [NSKeyedArchiver archiveRootObject:_commentsInfo toFile:[self cacheFilePath]];
-            
-            [parser release];
         }
-        else {
-            // log network connection error;
-            self.error = err;
-        }
+        
+        NSMutableDictionary *_commentsInfo = [NSMutableDictionary dictionaryWithCapacity:3];
+        [_commentsInfo setValue:titleString forKey:@"entry_title"];
+        [_commentsInfo setValue:siteURL forKey:@"entry_url"];
+        [_commentsInfo setValue:[NSArray arrayWithArray:_comments] forKey:@"entry_comments"];
+        
+        self.commentsInfo = _commentsInfo;
+        
+        // save the entries the disk for next time
+        [NSKeyedArchiver archiveRootObject:_commentsInfo toFile:[self cacheFilePath]];
+        
+        [parser release];
+    } failure:^(NSHTTPURLResponse *response, NSError *err) {
+        // log network connection error;
+        self.error = err;
     }];
     
     [opQueue addOperation:operation];

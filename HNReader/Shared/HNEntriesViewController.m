@@ -132,6 +132,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self loadEntries];
 }
 
