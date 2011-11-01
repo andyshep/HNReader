@@ -123,14 +123,18 @@
 	barButtonItem.style = UIBarButtonItemStyleBordered;
 	
 	[self.items insertObject:barButtonItem atIndex:0];
-	[toolbar setItems:self.items animated:YES];
+    // don't use animation so there isn't a ui artifact when launching in landscape
+    // really don't need it here since this is called during rotations
+	[toolbar setItems:self.items animated:NO];
 	self.popoverController = pc;
 }
 
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
 	
 	[self.items removeObjectAtIndex:0];
-	[toolbar setItems:self.items animated:YES];
+    // don't use animation so there isn't a ui artifact when launching in landscape
+    // really don't need it here since this is called during rotations
+	[toolbar setItems:self.items animated:NO];
     popoverController = nil;
 }
 
