@@ -8,11 +8,13 @@
 
 #import "HNEntry.h"
 #import "HNReaderTheme.h"
-#import "HNEntriesViewController.h"
 
-@protocol HNEntriesViewControllerDelegate;
+@protocol HNEntryLoaderDelegate <NSObject>
+- (void)shouldLoadURL:(NSURL *)aURL;
+- (void)shouldStopLoading;
+@end
 
-@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntriesViewControllerDelegate> {
+@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntryLoaderDelegate> {
     UIWebView *webView;
     HNEntry *entry;
     

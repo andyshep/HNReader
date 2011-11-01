@@ -89,7 +89,7 @@
     
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadEntries)];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     [refreshButton release];
     
@@ -223,7 +223,7 @@
     
     if ([indexPath row] >= [model countOfEntries]) {
         // load more entries..
-        [model loadMoreEntries];
+        [model loadMoreEntriesForIndex:[entriesControl selectedSegmentIndex]];
         [[aTableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
@@ -277,6 +277,22 @@
     
     [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
 }
+
+- (void)reloadEntries {
+    if (_requestInProgress) return;
+    
+    self.requestInProgress = YES;
+    [tableView setUserInteractionEnabled:NO];
+    [tableView setScrollEnabled:NO];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [delegate shouldStopLoading];
+    }
+    
+    [model reloadEntriesForIndex:entriesControl.selectedSegmentIndex];
+}
+
+
 
 //- (IBAction)swapEntriesList:(id)sender {
 //	// tell the model we're switching directions

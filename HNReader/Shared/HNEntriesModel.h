@@ -13,8 +13,6 @@
 #import "HTMLParser.h"
 #import "HTMLNode.h"
 
-#define HN_CACHE_TIME_SECONDS   60
-
 typedef enum  {
     HNEntriesFrontPageIdentifier,
     HNEntriesNewestPageIdentifier,
@@ -38,15 +36,10 @@ typedef enum  {
 - (void)getEntriesObjects:(id *)objects range:(NSRange)range;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;
-- (void)loadMoreEntries;
+- (void)reloadEntriesForIndex:(NSUInteger)index;
 
--(void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath;
-
-// - (void)loadEntriesForRequest:(NSURLRequest *)request;
-
-//- (NSString *)bestPageCacheFilePath;
-//- (NSString *)newestPageCacheFilePath;
-//- (NSString *)frontPageCacheFilePath;
+- (void)loadMoreEntriesForIndex:(NSUInteger)index;
+- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath;
 
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index;
 - (NSURL *)pageURLForIndex:(NSUInteger)index;

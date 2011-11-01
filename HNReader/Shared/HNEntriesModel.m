@@ -134,19 +134,30 @@
         }
     }
     else {
-        NSURL *url = [self pageURLForIndex:index];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-        [self loadEntriesForRequest:request atCachedFilePath:filePath];
+        [self reloadEntriesForIndex:index];
     }
 }
 
-- (void)loadMoreEntries {
+- (void)reloadEntriesForIndex:(NSUInteger)index {
+    NSString *filePath = [self cacheFilePathForIndex:index];
+    NSURL *url = [self pageURLForIndex:index];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+    [self loadEntriesForRequest:request atCachedFilePath:filePath];
+}
+
+- (void)loadMoreEntriesForIndex:(NSUInteger)index {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", moreEntriesLink]];
+    
+//    if (![moreEntriesLink hasPrefix:@"/"]) {
+//        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", moreEntriesLink]];
+//    }
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
     
     // we can keep the old entries around if we're loading more
     // TODO: need to pass in an idnex or something here
-    // [self loadEntriesForRequest:request];
+    NSString *cachedFilePath = [self cacheFilePathForIndex:index];
+    [self loadEntriesForRequest:request atCachedFilePath:cachedFilePath];
 }
 
 -(void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {
@@ -230,6 +241,11 @@
         
         if (moreEntriesNode != NULL) {
             NSString *_moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
+            
+            if (![_moreEntriesLink hasPrefix:@"/"]) {
+                _moreEntriesLink = [NSString stringWithFormat:@"/%@", _moreEntriesLink];
+            }
+            
             self.moreEntriesLink = _moreEntriesLink;
             
             // [_entries addObject:[NSString stringWithString:[[moreEntriesNode firstChild] getAttributeNamed:@"href"]]];

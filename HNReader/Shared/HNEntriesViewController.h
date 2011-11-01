@@ -17,11 +17,6 @@
 
 #import "ShadowedTableView.h"
 
-@protocol HNEntriesViewControllerDelegate <NSObject>
-- (void)shouldLoadURL:(NSURL *)aURL;
-- (void)shouldStopLoading;
-@end
-
 
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNEntriesModel *model;
@@ -30,7 +25,7 @@
     IBOutlet UIToolbar *bottomToolbar;
 	UISegmentedControl *entriesControl;
     
-    id<HNEntriesViewControllerDelegate> delegate;
+    id<HNEntryLoaderDelegate> delegate;
 }
 
 @property (nonatomic, retain) HNEntriesModel *model;
@@ -38,7 +33,7 @@
 @property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, retain) UISegmentedControl *entriesControl;
 
-@property (assign) id<HNEntriesViewControllerDelegate> delegate;
+@property (assign) id<HNEntryLoaderDelegate> delegate;
 @property (assign) BOOL requestInProgress;
 
 - (void)loadEntries;
