@@ -7,7 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "SSDrawingUtilities.h"
+#import "HNArtistTools.h"
 
 @interface HNReaderTheme : NSObject
 

@@ -35,7 +35,7 @@
 	// Drawing code
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(c, [borderColor CGColor]);
-	SSDrawGradientInRect(c, gradient, rect);
+	HNDrawGradientInRect(c, gradient, rect);
    // CGContextStrokeRectWithWidth(c, rect, 1);
 }
 

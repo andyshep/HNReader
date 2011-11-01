@@ -48,7 +48,7 @@
     
     CGRect strokeRect = aRect;
     strokeRect.size.height -= 1;
-    strokeRect = ASRectForStroke(strokeRect);
+    strokeRect = HNRectForStroke(strokeRect);
 
     // calculate rect for separator
     CGPoint startPoint = CGPointMake(aRect.origin.x, 
@@ -57,10 +57,10 @@
                                    aRect.origin.y + aRect.size.height - 1);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    ASDrawLinearGradientInRect(context, aRect, whiteColor, lightGrayColor);
+    HNDrawLinearGradientInRect(context, aRect, whiteColor, lightGrayColor);
     CGContextSetStrokeColorWithColor(context, whiteColor);
     CGContextStrokeRect(context, strokeRect);
-    ASStrokeRect(context, startPoint, endPoint, separatorColor);
+    HNStrokeRect(context, startPoint, endPoint, separatorColor);
 }
 
 @end

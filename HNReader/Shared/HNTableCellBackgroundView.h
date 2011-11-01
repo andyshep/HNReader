@@ -6,10 +6,7 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-
-// #import "SSDrawingUtilities.h"
 #import "HNReaderTheme.h"
-#import "HNArtistTools.h"
 
 @interface HNTableCellBackgroundView : UIView {
 	UIColor *borderColor;

@@ -60,7 +60,7 @@
 											blue:(255.0f/255.0f) 
 										   alpha:(255.0f/255.0f)];
 	
-	return SSGradientWithColors(topColor, bottomColor);
+	return HNGradientWithColors(topColor, bottomColor);
 }
 
 + (CGGradientRef)tanGradientColor {
@@ -74,7 +74,7 @@
 											blue:(251.0f/255.0f) 
 										   alpha:(1.0f)];
 	
-	return SSGradientWithColors(bottomColor, topColor);
+	return HNGradientWithColors(bottomColor, topColor);
 }
 
 + (CGGradientRef)greyGradientColor {
@@ -88,7 +88,7 @@
 											blue:(138.0f/255.0f) 
 										   alpha:(1.0f)];
 	
-	return SSGradientWithColors(topColor, bottomColor);
+	return HNGradientWithColors(topColor, bottomColor);
 }
 
 @end
