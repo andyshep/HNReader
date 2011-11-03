@@ -50,31 +50,13 @@
 
 #pragma mark - View lifecycle
 
-- (void)loadView {
-    [super loadView];
-    
-    // CGRect frame = [self.view bounds];
-    
+- (void)viewDidLoad {
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     [refreshButton release];
-    
-//    self.tableView = [[[ShadowedTableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height - 44.0f) style:UITableViewStylePlain] autorelease];
-//    
-//    [_tableView setDelegate:self];
-//    [_tableView setDataSource:self];
-//    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    // [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight)];
-    // [tableView setBackgroundColor:[HNReaderTheme lightTanColor]];
-    [self.view addSubview:_tableView];
-}
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    
     [model loadComments];
 }
 
@@ -83,7 +65,9 @@
     
     [model cancelRequest];
     
-    NSNotification *aNote = [NSNotification notificationWithName:@"HNStopLoadingNotification" object:self userInfo:nil];
+    NSNotification *aNote = [NSNotification notificationWithName:@"HNStopLoadingNotification" 
+                                                          object:self 
+                                                        userInfo:nil];
     [[NSNotificationCenter defaultCenter] postNotification:aNote];
 }
 

@@ -46,13 +46,12 @@
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-    
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
     self.view = contentView;
     [contentView release];
     
-    webView = [[UIWebView alloc] initWithFrame:frame];
+    self.webView = [[[UIWebView alloc] initWithFrame:frame] autorelease];
     [webView setScalesPageToFit:YES];
     [webView setDelegate:self];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -65,7 +64,7 @@
         [self.view addSubview:toolbar];
     }
     
-    [self.view addSubview:webView];
+    self.view = webView;
 }
 
 

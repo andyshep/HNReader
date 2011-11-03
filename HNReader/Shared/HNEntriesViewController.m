@@ -81,11 +81,8 @@
 
 #pragma mark - View lifecycle
 
-- (void)loadView {
-    [super loadView];
-    
-    // CGRect rect = [[UIScreen mainScreen] bounds];
-    // CGRect frame = [self.view bounds];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
@@ -128,10 +125,6 @@
             [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
         }
     }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
     
     [self loadEntries];
 }
