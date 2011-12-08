@@ -12,6 +12,8 @@
 
 @synthesize webView, entry;
 @synthesize toolbar, popoverController, items;
+@synthesize readableButton;
+@synthesize displayedURL = _displayedURL;
 
 - (id)init {
     if ((self = [super init])) {
@@ -19,6 +21,7 @@
         self.webView = nil;
         self.toolbar = nil;
         self.entry = nil;
+        _displayedURL = nil;
     }
     
     return self;
@@ -27,9 +30,12 @@
 - (void)dealloc {
     [webView release];
     [entry release];
+    [readableButton release];
+    
     if (toolbar != nil) {
         [toolbar release];
     }
+    
     [super dealloc];
 }
 
@@ -48,8 +54,6 @@
 - (void)loadView {
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
-    self.view = contentView;
-    [contentView release];
     
     self.webView = [[[UIWebView alloc] initWithFrame:frame] autorelease];
     [webView setScalesPageToFit:YES];
@@ -60,11 +64,15 @@
         // load a toolbar for our splitview (pad only)
         toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
         [toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+        [toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
-        [self.view addSubview:toolbar];
+        [contentView addSubview:toolbar];
     }
     
-    self.view = webView;
+    [contentView addSubview:webView];
+    
+    self.view = contentView;
+    [contentView release];
 }
 
 
@@ -74,16 +82,32 @@
     [super viewDidLoad];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:entry.linkURL]];
-        [webView loadRequest:request];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:entry.linkURL]];
+//        [webView loadRequest:request];
+//        
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        // FIXME: use readable button here?
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"R" style:UIBarButtonItemStyleBordered target:self action:@selector(makeReadable)];
+        [[self navigationItem] setRightBarButtonItem:button];
+        [button release];
+        
+        //FIXME: don't need to track the entry anymore, do we?
+        self.displayedURL = [NSURL URLWithString:[entry linkURL]];
+        [self shouldLoadURL:_displayedURL];
     }
     else {
         NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
         [defaultCenter addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
 
         [defaultCenter addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
+    
+        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                target:nil 
+                                                                                action:nil];
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"R" style:UIBarButtonItemStyleBordered target:self action:@selector(makeReadable)];
+        [self.items addObject:spacer];
+        [self.items addObject:button];
     }
 }
 
@@ -143,10 +167,12 @@
 
 #pragma mark - HNEntriesViewControllerDelegate
 
-- (void)shouldLoadURL:(NSURL *)aURL {    
-    NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
-    [webView loadRequest:request];
+- (void)shouldLoadURL:(NSURL *)aURL {
     
+    self.displayedURL = aURL;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:_displayedURL];
+    [webView loadRequest:request];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
@@ -156,7 +182,7 @@
     
     // empty out the webview
     // http://lists.apple.com/archives/cocoa-dev/2010/Nov/msg00680.html
-    [webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
+    // [webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
@@ -179,6 +205,48 @@
     NSURL *aURL = [NSURL URLWithString:aURLString];
     
     [self shouldLoadURL:aURL];
+}
+
+- (void)makeReadable {
+    NSURL *aURL = _displayedURL;
+    NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
+    
+    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation HTTPRequestOperationWithRequest:request success:^(id object) {
+        NSString *rawHtmlString = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+        
+        const char *html_content = [rawHtmlString UTF8String];
+        char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
+        
+        if (readable_content != NULL) {
+            NSString *styleTag = @"<style>body { font-size: 28px; }</style>";
+            
+            // if this is a phone, we have a smaller screen
+            // so add the meta tag to specify the viewport
+            // 28 px is also too big for phone
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                styleTag = @"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\"/><style>body { font-size: 18px; }</style>";
+            }
+            
+            NSString *readableHTMLString = [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding];
+            NSString *html = [NSString stringWithFormat:@"%@%@", styleTag, readableHTMLString];
+            
+            [webView loadHTMLString:html baseURL:aURL];
+        }
+        
+        // NSLog(@"succuess: %@", [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding]);
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
+                                                        message:NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.") 
+                                                       delegate:nil 
+                                              cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }];
+    
+    NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
+    [queue addOperation:operation];
 }
 
 @end

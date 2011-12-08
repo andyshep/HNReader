@@ -213,13 +213,6 @@
 //    [self.tableView endUpdates];
 
     [_tableView reloadData];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        
-        // TODO: can we just do this ahead of time?
-        // two requests on teh wire on seperate threads is not good.
-        // [self postLoadSiteNotification];
-    }
 }
 
 - (void)operationDidFail {    

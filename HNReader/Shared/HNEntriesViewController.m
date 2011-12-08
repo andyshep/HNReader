@@ -39,27 +39,6 @@
     return self;
 }
 
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//    self = [super initWithStyle:style];
-//    if (self) {
-//        // TODO: title
-//        
-//        model = [[HNReaderModel alloc] init];
-//        
-//        [model addObserver:self 
-//                 forKeyPath:@"entries" 
-//                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-//                    context:@selector(entriesDidLoad)];
-//        
-//        [model addObserver:self 
-//                 forKeyPath:@"error" 
-//                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-//                    context:@selector(operationDidFail)];
-//    }
-//    return self;
-//}
-
 - (void)dealloc {
     
     [model removeObserver:self forKeyPath:@"entries"];
@@ -221,33 +200,11 @@
     }
     else {
         HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            // push on a new web view
-            
-            // HNWebViewController *nextController = [[HNWebViewController alloc] init];
-            HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
-            // nextController.entry = selectedEntry;
-            [self.navigationController pushViewController:nextController animated:YES];
-            [nextController release];
-        }
-        else {
-            // ask our delegate to load url
-            
-            // implement
-            // [self.delegate shouldLoadURL:[NSURL URLWithString:selectedEntry.linkURL]];
-            
-            HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
-            // nextController.entry = selectedEntry;
-            [self.navigationController pushViewController:nextController animated:YES];
-            [nextController release];
-        }
+        HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
+        [self.navigationController pushViewController:nextController animated:YES];
+        [nextController release];
     }
 }
-
-//- (void)tableView:(UITableView *)aTableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [aTableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
 
 #pragma mark - Model Observing and Reactions
 
@@ -284,14 +241,6 @@
     
     [model reloadEntriesForIndex:entriesControl.selectedSegmentIndex];
 }
-
-
-
-//- (IBAction)swapEntriesList:(id)sender {
-//	// tell the model we're switching directions
-//	// [model_ loadStopsForTagIndex:self.directionControl.selectedSegmentIndex];
-//    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
-//}
 
 - (void)entriesDidLoad {
 //    // FIXME: only animate in the rows which are visible.
