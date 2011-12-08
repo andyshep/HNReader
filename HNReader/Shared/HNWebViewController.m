@@ -218,17 +218,24 @@
         char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
         
         if (readable_content != NULL) {
-            NSString *styleTag = @"<style>body { font-size: 28px; }</style>";
             
-            // if this is a phone, we have a smaller screen
-            // so add the meta tag to specify the viewport
-            // 28 px is also too big for phone
+            // FIXME: cache teh file paths...
+            NSString *filePath = nil;
+            
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                styleTag = @"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\"/><style>body { font-size: 18px; }</style>";
+                
+                // if this is a phone, we have a smaller screen
+                // so add the meta tag to specify the viewport
+                // 28 px is also too big for phone
+                filePath = [[NSBundle mainBundle] pathForResource:@"iphone-formatting" ofType:@"html"];
+            }
+            else {
+                filePath = [[NSBundle mainBundle] pathForResource:@"ipad-formatting" ofType:@"html"];
             }
             
+            NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
             NSString *readableHTMLString = [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding];
-            NSString *html = [NSString stringWithFormat:@"%@%@", styleTag, readableHTMLString];
+            NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
             
             [webView loadHTMLString:html baseURL:aURL];
         }
