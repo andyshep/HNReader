@@ -87,23 +87,8 @@
     [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
     [buttonItem release];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-        [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
-    }
-    else {
-        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-        
-        // refactor and dry
-        if (UIInterfaceOrientationIsLandscape(orientation)) {
-            [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-            [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
-        }
-        else {
-            [bottomToolbar setTintColor:[HNReaderTheme veryDarkGrey]];
-            [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
-        }
-    }
+    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+    [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
     
     [self loadEntries];
 }
@@ -278,21 +263,6 @@
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-            // set tint color
-            [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-            [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
-        }
-        else {
-            // unset tint color
-            [bottomToolbar setTintColor:[HNReaderTheme veryDarkGrey]];
-            [entriesControl setTintColor:[HNReaderTheme veryDarkGrey]];
-        }
-    }
 }
 
 - (NSArray *)indexPathsToInsert {

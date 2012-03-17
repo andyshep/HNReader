@@ -110,6 +110,12 @@
         // entries table is the third table on screen
         // if there is a black banner, it is the forth table
         // hackiness ensues...
+        
+        // ignore anything without a title, like job postings from yc alum
+        if ([[bodyNode findChildrenOfClass:@"title"] count] <= 0) {
+            return;
+        }
+        
         HTMLNode *titleNode = [[bodyNode findChildrenOfClass:@"title"] objectAtIndex:0];
         NSString *titleString = [[titleNode firstChild] contents];
         NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
