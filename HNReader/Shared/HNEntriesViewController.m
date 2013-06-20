@@ -19,6 +19,18 @@
 
 #define DEFAULT_CELL_HEIGHT 72.0f
 
+@interface HNEntriesViewController ()
+
+@property (nonatomic, strong) HNEntriesModel *model;
+@property (nonatomic, assign) BOOL requestInProgress;
+
+- (void)loadEntries;
+
+- (NSArray *)indexPathsToInsert;
+- (NSArray *)indexPathsToDelete;
+
+@end
+
 @implementation HNEntriesViewController
 
 - (id)init {

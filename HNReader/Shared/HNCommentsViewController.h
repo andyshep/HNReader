@@ -11,9 +11,7 @@
 
 @interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) HNEntry *entry;
-@property (nonatomic, strong) HNCommentsModel *model;
+@property (nonatomic, strong) IBOutlet UITableView *tableView; 
 
 - (id)initWithEntry:(HNEntry *)entry;
 

@@ -7,32 +7,37 @@
 //
 
 #import "HNReaderAppDelegate_iPad.h"
+#import "HNEntriesViewController.h"
+#import "HNWebViewController.h"
+
+@interface HNReaderAppDelegate_iPad ()
+
+@property (nonatomic, strong) HNWebViewController *webViewController;
+
+@end
 
 @implementation HNReaderAppDelegate_iPad
 
-@synthesize splitViewController, entriesViewController;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
-    entriesViewController = [[HNEntriesViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
+    self.webViewController = [[HNWebViewController alloc] init];
+    self.entriesViewController = [[HNEntriesViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_entriesViewController];
     
-    // [navController setToolbarHidden:NO];
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
-    // [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
-    webViewController = [[HNWebViewController alloc] init];
+    self.splitViewController = [[UISplitViewController alloc] init];
+    [_splitViewController setViewControllers:@[navController, _webViewController]];
     
-    entriesViewController.delegate = webViewController;
+    [_entriesViewController setDelegate:_webViewController];
+    [_splitViewController setDelegate:_webViewController];
     
-    splitViewController = [[UISplitViewController alloc] init];
-    splitViewController.viewControllers = @[navController, webViewController];
-    splitViewController.delegate = webViewController;
+    [self.window addSubview:[_splitViewController view]];
     
-    [self.window addSubview:splitViewController.view];
+    [self.window setRootViewController:_splitViewController];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

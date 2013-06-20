@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HNReaderTheme.h"
 
 @interface HNReaderAppDelegate : NSObject <UIApplicationDelegate>
 

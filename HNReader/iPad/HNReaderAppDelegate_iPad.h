@@ -7,15 +7,10 @@
 //
 
 #import "HNReaderAppDelegate.h"
-#import "HNEntriesViewController.h"
-#import "HNWebViewController.h"
 
-@interface HNReaderAppDelegate_iPad : HNReaderAppDelegate {
-    UISplitViewController *splitViewController;
-    
-    HNEntriesViewController *entriesViewController;
-    HNWebViewController *webViewController;
-}
+@class HNEntriesViewController;
+
+@interface HNReaderAppDelegate_iPad : HNReaderAppDelegate
 
 @property (nonatomic, strong) UISplitViewController *splitViewController;
 @property (nonatomic, strong) HNEntriesViewController *entriesViewController;

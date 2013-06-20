@@ -23,6 +23,9 @@
 
 @interface HNCommentsViewController ()
 
+@property (nonatomic, strong) HNEntry *entry;
+@property (nonatomic, strong) HNCommentsModel *model;
+
 - (void)loadComments;
 
 - (NSArray *)indexPathsToInsert;

@@ -7,13 +7,9 @@
 //
 
 #import "HNReaderAppDelegate.h"
-#import "HNEntriesViewController.h"
 
+@interface HNReaderAppDelegate_iPhone : HNReaderAppDelegate
 
-@interface HNReaderAppDelegate_iPhone : HNReaderAppDelegate {
-    UINavigationController *navController;
-}
-
-@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) UINavigationController *navigationController;
 
 @end

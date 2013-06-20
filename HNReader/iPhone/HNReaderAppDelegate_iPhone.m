@@ -7,24 +7,22 @@
 //
 
 #import "HNReaderAppDelegate_iPhone.h"
+#import "HNEntriesViewController.h"
 
 @implementation HNReaderAppDelegate_iPhone
 
-@synthesize navController;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    HNEntriesViewController *rootController = [[HNEntriesViewController alloc] init];
-    navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
-    // [navController setToolbarHidden:NO];
-    [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
-    // [[navController toolbar] setTintColor:[HNReaderTheme brightOrangeColor]];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    HNEntriesViewController *entriesViewController = [[HNEntriesViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
+    [[_navigationController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
-    [self.window addSubview:navController.view];
+    [self.window addSubview:[_navigationController view]];
+    
+    [self.window setRootViewController:_navigationController];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

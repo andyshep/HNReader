@@ -16,14 +16,6 @@
 @property (nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, strong) UISegmentedControl *entriesControl;
 
-@property (nonatomic, strong) HNEntriesModel *model;
-
-@property (weak) id<HNEntryLoaderDelegate> delegate;
-@property (assign) BOOL requestInProgress;
-
-- (void)loadEntries;
-
-- (NSArray *)indexPathsToInsert;
-- (NSArray *)indexPathsToDelete;
+@property (nonatomic, weak) id<HNEntryLoaderDelegate> delegate;
 
 @end
