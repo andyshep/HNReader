@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface HNEntry : NSObject <NSCoding>
+@interface HNEntry : MTLModel
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *linkURL;
