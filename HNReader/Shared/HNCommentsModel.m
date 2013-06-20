@@ -24,13 +24,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [commentsInfo release];
-    [error release];
-    [entry release];
-    [opQueue release];
-    [super dealloc];
-}
 
 #pragma mark - KVC
 // our view controller uses these to display table data
@@ -44,7 +37,7 @@
 }
 
 - (void)getCommentsObjects:(id *)objects range:(NSRange)range {
-	[[commentsInfo objectForKey:@"comments"] getObjects:objects range:range];
+//	[[commentsInfo objectForKey:@"comments"] getObjects:objects range:range];
 }
 
 #pragma mark - Cache Management
@@ -99,7 +92,6 @@
         NSError *parserError = nil;
         NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
-        [rawHTML release];
         
         if (parserError != nil) {
             NSLog(@"Error: %@", [parserError localizedDescription]);
@@ -171,7 +163,6 @@
                 aComment.timeSinceCreation = timeSinceCreation;
                 
                 [_comments addObject:aComment];
-                [aComment release];
             }
         }
         
@@ -185,7 +176,6 @@
         // save the entries the disk for next time
         [NSKeyedArchiver archiveRootObject:_commentsInfo toFile:[self cacheFilePath]];
         
-        [parser release];
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         // log network connection error;
         self.error = err;

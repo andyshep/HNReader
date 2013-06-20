@@ -15,9 +15,9 @@
     NSString *totalPoints;
 }
 
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *linkURL, *commentsPageURL, *siteDomainURL;
-@property (nonatomic, retain) NSString *username, *commentsCount;
-@property (nonatomic, retain) NSString *totalPoints;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *linkURL, *commentsPageURL, *siteDomainURL;
+@property (nonatomic, strong) NSString *username, *commentsCount;
+@property (nonatomic, strong) NSString *totalPoints;
 
 @end

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
-		F7025DDA143CAFD80048892F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD7143CAFD80048892F /* GradientView.m */; };
-		F7025DDB143CAFD80048892F /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD9143CAFD80048892F /* ShadowedTableView.m */; };
+		F7025DDA143CAFD80048892F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD7143CAFD80048892F /* GradientView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7025DDB143CAFD80048892F /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD9143CAFD80048892F /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
-		F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = F70FE106143F5641002E7E22 /* NSString+Tags.m */; };
+		F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = F70FE106143F5641002E7E22 /* NSString+Tags.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F77143F6ABF00141BD9 /* HNComment.m */; };
 		F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */; };
 		F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */; };
@@ -26,8 +26,8 @@
 		F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */; };
 		F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */; };
 		F76ACA6614354265004CF9EA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
-		F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30B143606CD0083E7BB /* HTMLNode.m */; };
-		F774A30F143606CD0083E7BB /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30D143606CD0083E7BB /* HTMLParser.m */; };
+		F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30B143606CD0083E7BB /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F774A30F143606CD0083E7BB /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30D143606CD0083E7BB /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
 		F775DADE14340D7E00F93F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADD14340D7E00F93F48 /* CoreGraphics.framework */; };
@@ -49,12 +49,12 @@
 		F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6C81436615100DE8D6D /* HNWebViewController.m */; };
 		F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6D31436B82D00DE8D6D /* HNTableCellBackgroundView.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
-		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; };
-		F7A430F9146090B100290A73 /* NSString+Entities.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A430F8146090B100290A73 /* NSString+Entities.m */; };
+		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7A430F9146090B100290A73 /* NSString+Entities.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A430F8146090B100290A73 /* NSString+Entities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7BFE79D1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */; };
 		F7BFE79E1514EAEE0029AB9A /* Default~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */; };
-		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; };
-		F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */; };
+		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */; };
 		F7E86FC714364CD800A09334 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBF14364CD800A09334 /* HNEntriesViewController.m */; };
 		F7E86FC914364CD800A09334 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FC314364CD800A09334 /* HNReaderAppDelegate.m */; };
@@ -717,6 +717,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
@@ -736,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
@@ -755,6 +757,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HNReader.app/HNReader";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -772,6 +775,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HNReader.app/HNReader";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",

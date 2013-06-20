@@ -30,14 +30,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [entries release];
-    [error release];
-    [moreEntriesLink release];
-    
-    [opQueue release];
-    [super dealloc];
-}
 
 #pragma mark - KVC
 // our view controller uses these to display table data
@@ -51,7 +43,7 @@
 }
 
 - (void)getEntriesObjects:(id *)objects range:(NSRange)range {
-	[entries getObjects:objects range:range];
+	// [entries getObjects:objects range:range];
 }
 
 #pragma mark - Cache Management
@@ -171,11 +163,9 @@
         NSError *aParserError = nil;
         NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&aParserError];
-        [rawHTML release];
         
         if (aParserError) {
             self.error = aParserError;
-            [parser release];
             return;
         }
         
@@ -227,7 +217,6 @@
                 
                 // [_entries addObject:aEntry];
                 [parsedEntries addObject:aEntry];
-                [aEntry release];
             }
             
             // move to the next node
@@ -253,11 +242,9 @@
         }
         else {
             self.error = [self parserError];
-            [parser release];
             return;
         }
         
-        [parser release];
         
         // now we set the entires
         [self willChangeValueForKey:@"entries"];

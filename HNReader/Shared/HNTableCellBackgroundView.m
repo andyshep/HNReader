@@ -25,9 +25,7 @@
 }
 
 - (void)dealloc {
-    [borderColor release];
 	CGGradientRelease(gradient);
-    [super dealloc];
 }
 
 - (BOOL) isOpaque {

@@ -25,15 +25,15 @@
     IBOutlet UIToolbar *bottomToolbar;
 	UISegmentedControl *entriesControl;
     
-    id<HNEntryLoaderDelegate> delegate;
+    id<HNEntryLoaderDelegate> __weak delegate;
 }
 
-@property (nonatomic, retain) HNEntriesModel *model;
-@property (nonatomic, retain) IBOutlet ShadowedTableView *tableView;
-@property (nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
-@property (nonatomic, retain) UISegmentedControl *entriesControl;
+@property (nonatomic, strong) HNEntriesModel *model;
+@property (nonatomic, strong) IBOutlet ShadowedTableView *tableView;
+@property (nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic, strong) UISegmentedControl *entriesControl;
 
-@property (assign) id<HNEntryLoaderDelegate> delegate;
+@property (weak) id<HNEntryLoaderDelegate> delegate;
 @property (assign) BOOL requestInProgress;
 
 - (void)loadEntries;

@@ -22,8 +22,8 @@
     HNCommentsModel *model;
 }
 
-@property (nonatomic, retain) HNEntry *entry;
-@property (nonatomic, retain) IBOutlet ShadowedTableView *tableView;
+@property (nonatomic, strong) HNEntry *entry;
+@property (nonatomic, strong) IBOutlet ShadowedTableView *tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 

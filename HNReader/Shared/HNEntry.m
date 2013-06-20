@@ -30,18 +30,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [title release];
-    [linkURL release];
-    [siteDomainURL release];
-    
-    [commentsCount release];
-    [commentsPageURL release];
-    [totalPoints release];
-    
-    [username release];
-    [super dealloc];
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {

@@ -27,7 +27,7 @@
 
 @property (copy) NSMutableDictionary *commentsInfo;
 @property (copy) NSError *error;
-@property (nonatomic, retain) HNEntry *entry;
+@property (nonatomic, strong) HNEntry *entry;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 - (void)loadComments;

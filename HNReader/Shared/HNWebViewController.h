@@ -27,14 +27,14 @@
     NSMutableArray *items;
 }
 
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) HNEntry *entry;
-@property (assign) NSURL *displayedURL;
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) HNEntry *entry;
+@property (weak) NSURL *displayedURL;
 
-@property (nonatomic, retain) UIToolbar *toolbar;
-@property (nonatomic, retain) UIPopoverController *popoverController;
-@property (nonatomic, retain) UIBarButtonItem *readableButton;
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, strong) UIBarButtonItem *readableButton;
+@property (nonatomic, strong) NSMutableArray *items;
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification;
 

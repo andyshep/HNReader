@@ -15,7 +15,7 @@
 - (id)init {
     if ((self = [super init])) {
         CGRect cellContainerFrame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[[UIView alloc] initWithFrame:cellContainerFrame] autorelease];
+        UIView *containerView = [[UIView alloc] initWithFrame:cellContainerFrame];
         
         usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
         [usernameLabel setBackgroundColor:[UIColor clearColor]];
@@ -36,11 +36,9 @@
         
         HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:cellContainerFrame];
         [self setBackgroundView:backgroundView];
-        [backgroundView release];
         
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:cellContainerFrame];
         [self setSelectedBackgroundView:selectedView];
-        [selectedView release];
         
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         
@@ -53,11 +51,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [usernameLabel release];
-    [commentTextLabel release];
-    [super dealloc];
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

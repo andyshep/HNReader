@@ -14,8 +14,8 @@
     NSInteger padding;
 }
 
-@property (nonatomic, retain) NSString *username, *timeSinceCreation;
-@property (nonatomic, retain) NSString *commentString;
+@property (nonatomic, strong) NSString *username, *timeSinceCreation;
+@property (nonatomic, strong) NSString *commentString;
 @property (assign) NSInteger padding;
 
 @end

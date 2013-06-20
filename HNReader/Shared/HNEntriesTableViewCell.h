@@ -14,6 +14,6 @@
     UILabel *siteTitleLabel, *siteDomainLabel, *totalPointsLabel;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *siteTitleLabel, *siteDomainLabel, *totalPointsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *siteTitleLabel, *siteDomainLabel, *totalPointsLabel;
 
 @end

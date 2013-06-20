@@ -17,7 +17,7 @@
     HNWebViewController *webViewController;
 }
 
-@property (nonatomic, retain) UISplitViewController *splitViewController;
-@property (nonatomic, retain) HNEntriesViewController *entriesViewController;
+@property (nonatomic, strong) UISplitViewController *splitViewController;
+@property (nonatomic, strong) HNEntriesViewController *entriesViewController;
 
 @end

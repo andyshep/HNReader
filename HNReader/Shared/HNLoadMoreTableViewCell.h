@@ -14,6 +14,6 @@
     UILabel *loadMoreLabel;
 }
 
-@property (nonatomic, retain) UILabel *loadMoreLabel;
+@property (nonatomic, strong) UILabel *loadMoreLabel;
 
 @end

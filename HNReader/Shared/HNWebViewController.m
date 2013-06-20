@@ -27,17 +27,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [webView release];
-    [entry release];
-    [readableButton release];
-    
-    if (toolbar != nil) {
-        [toolbar release];
-    }
-    
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,7 +44,7 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
     
-    self.webView = [[[UIWebView alloc] initWithFrame:frame] autorelease];
+    self.webView = [[UIWebView alloc] initWithFrame:frame];
     [webView setScalesPageToFit:YES];
     [webView setDelegate:self];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -72,7 +61,6 @@
     [contentView addSubview:webView];
     
     self.view = contentView;
-    [contentView release];
 }
 
 
@@ -90,7 +78,6 @@
         // FIXME: use readable button here?
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"R" style:UIBarButtonItemStyleBordered target:self action:@selector(makeReadable)];
         [[self navigationItem] setRightBarButtonItem:button];
-        [button release];
         
         //FIXME: don't need to track the entry anymore, do we?
         self.displayedURL = [NSURL URLWithString:[entry linkURL]];
@@ -196,7 +183,6 @@
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification {
@@ -251,10 +237,9 @@
                                               cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                                               otherButtonTitles:nil];
         [alert show];
-        [alert release];
     }];
     
-    NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:operation];
 }
 

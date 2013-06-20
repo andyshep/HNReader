@@ -43,11 +43,8 @@
     
     [model removeObserver:self forKeyPath:@"entries"];
     [model removeObserver:self forKeyPath:@"error"];
-    [model release];
     
-    [tableView release];
     
-    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,7 +64,6 @@
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
-    [refreshButton release];
     
     // make direction control
     NSArray *items = [NSArray arrayWithObjects:
@@ -85,7 +81,6 @@
     [entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
     
     [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
-    [buttonItem release];
     
     [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
     [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
@@ -150,7 +145,7 @@
         // so you can give it a gradient and matching style.
         HNLoadMoreTableViewCell *cell = (HNLoadMoreTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[[HNLoadMoreTableViewCell alloc] init] autorelease];
+            cell = [[HNLoadMoreTableViewCell alloc] init];
         }
         
         return cell;
@@ -160,7 +155,7 @@
         
         HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[[HNEntriesTableViewCell alloc] init] autorelease];
+            cell = [[HNEntriesTableViewCell alloc] init];
         }
         
         HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
@@ -187,7 +182,6 @@
         HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
         HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
-        [nextController release];
     }
 }
 
@@ -262,7 +256,6 @@
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 - (NSArray *)indexPathsToInsert {

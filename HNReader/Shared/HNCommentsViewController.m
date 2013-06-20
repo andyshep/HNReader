@@ -38,14 +38,10 @@
 }
 
 - (void)dealloc {
-    [entry release];
-    [_tableView release];
     
     [model removeObserver:self forKeyPath:@"commentsInfo"];
     [model removeObserver:self forKeyPath:@"error"];
-    [model release];
     
-    [super dealloc];
 }
 
 #pragma mark - View lifecycle
@@ -55,7 +51,6 @@
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
-    [refreshButton release];
 
     [model loadComments];
 }
@@ -129,7 +124,7 @@
         
         HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            cell = [[[HNEntriesTableViewCell alloc] init] autorelease];
+            cell = [[HNEntriesTableViewCell alloc] init];
         }
         
         cell.siteTitleLabel.text = entry.title;
@@ -144,7 +139,7 @@
         HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
-            cell = [[[HNCommentsTableViewCell alloc] init] autorelease];
+            cell = [[HNCommentsTableViewCell alloc] init];
         }
         
         NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
@@ -171,7 +166,6 @@
             HNWebViewController *nextController = [[HNWebViewController alloc] init];
             nextController.entry = [self entry];
             [[self navigationController] pushViewController:nextController animated:YES];
-            [nextController release];
         }
         else {
             [self postLoadSiteNotification];
@@ -222,7 +216,6 @@
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 - (NSArray *)indexPathsToInsert {

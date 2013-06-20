@@ -16,7 +16,7 @@
 - (id)init {
     if ((self = [super init])) {
         CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
+        UIView *containerView = [[UIView alloc] initWithFrame:frame];
         
         siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 4, 272, 40)];
         siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 44, 162, 21)];
@@ -43,11 +43,9 @@
         
         HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:frame];
         [self setBackgroundView:backgroundView];
-        [backgroundView release];
         
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:frame];
         [self setSelectedBackgroundView:selectedView];
-        [selectedView release];
         
         [self addSubview:containerView];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -56,12 +54,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [siteTitleLabel release];
-    [siteDomainLabel release];
-    [totalPointsLabel release];
-    [super dealloc];
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

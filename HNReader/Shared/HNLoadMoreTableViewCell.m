@@ -15,7 +15,7 @@
 - (id)init {
     if ((self = [super init])) {
         CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
+        UIView *containerView = [[UIView alloc] initWithFrame:frame];
         
         loadMoreLabel = [[UILabel alloc] initWithFrame:frame];
         loadMoreLabel.textAlignment = NSTextAlignmentCenter;
@@ -26,11 +26,9 @@
         
         HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:frame];
         [self setBackgroundView:backgroundView];
-        [backgroundView release];
         
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:frame];
         [self setSelectedBackgroundView:selectedView];
-        [selectedView release];
         
         [self addSubview:containerView];
     }
@@ -38,10 +36,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [loadMoreLabel release];
-    [super dealloc];
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

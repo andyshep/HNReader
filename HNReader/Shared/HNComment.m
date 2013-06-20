@@ -23,12 +23,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [username release];
-    [commentString release];
-    [timeSinceCreation release];
-    [super dealloc];
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {

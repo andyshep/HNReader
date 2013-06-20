@@ -17,7 +17,7 @@
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
     entriesViewController = [[HNEntriesViewController alloc] init];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:entriesViewController] autorelease];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
     
     // [navController setToolbarHidden:NO];
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];

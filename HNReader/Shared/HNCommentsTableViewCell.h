@@ -16,8 +16,8 @@
     UILabel *commentTextLabel;
 }
 
-@property (nonatomic, retain) UILabel *usernameLabel;
-@property (nonatomic, retain) UILabel *timeLabel;
-@property (nonatomic, retain) UILabel *commentTextLabel;
+@property (nonatomic, strong) UILabel *usernameLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *commentTextLabel;
 
 @end

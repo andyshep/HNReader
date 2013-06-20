@@ -14,6 +14,6 @@
 	CGGradientRef gradient;
 }
 
-@property (nonatomic, retain) UIColor *borderColor;
+@property (nonatomic, strong) UIColor *borderColor;
 
 @end
