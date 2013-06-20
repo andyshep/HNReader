@@ -18,7 +18,7 @@
         UIView *containerView = [[[UIView alloc] initWithFrame:frame] autorelease];
         
         loadMoreLabel = [[UILabel alloc] initWithFrame:frame];
-        loadMoreLabel.textAlignment = UITextAlignmentCenter;
+        loadMoreLabel.textAlignment = NSTextAlignmentCenter;
         loadMoreLabel.text = NSLocalizedString(@"Load More Entries...", @"Load More Entries table cell text");
         loadMoreLabel.textColor = [UIColor darkGrayColor];
         

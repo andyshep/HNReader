@@ -35,7 +35,7 @@
         totalPointsLabel.font = [HNReaderTheme twelvePointlabelFont];
         totalPointsLabel.backgroundColor = [UIColor clearColor];
         totalPointsLabel.textColor = [UIColor grayColor];
-        [totalPointsLabel setTextAlignment:UITextAlignmentRight];
+        [totalPointsLabel setTextAlignment:NSTextAlignmentRight];
         
         [containerView addSubview:siteTitleLabel];
         [containerView addSubview:siteDomainLabel];

@@ -280,7 +280,7 @@
     }
     
     CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
-    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGRect commentTextRect = CGRectMake(padding, 
                                         CELL_CONTENT_MARGIN + 6, 
                                         adjustedWidth - CELL_CONTENT_MARGIN, 

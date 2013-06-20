@@ -25,13 +25,13 @@
         timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 4.0f, 115.0f, 12.0f)];
         [timeLabel setBackgroundColor:[UIColor clearColor]];
         [timeLabel setFont:[HNReaderTheme tenPointlabelFont]];
-        [timeLabel setTextAlignment:UITextAlignmentRight];
+        [timeLabel setTextAlignment:NSTextAlignmentRight];
         [timeLabel setTextColor:[UIColor lightGrayColor]];
         
         commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 16.0f, 272.0f, 60.0f)];
         [commentTextLabel setBackgroundColor:[UIColor clearColor]];
         [commentTextLabel setFont:[HNReaderTheme twelvePointlabelFont]];
-        [commentTextLabel setLineBreakMode:UILineBreakModeWordWrap];
+        [commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [commentTextLabel setNumberOfLines:0];
         
         HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:cellContainerFrame];
