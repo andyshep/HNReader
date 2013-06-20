@@ -8,21 +8,24 @@
 
 #import "HNTableCellSelectedView.h"
 
+@interface HNTableCellSelectedView ()
+
+@property (nonatomic, assign) CGGradientRef gradient;
+
+@end
 
 @implementation HNTableCellSelectedView
 
-@synthesize borderColor;
-
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-		gradient = [HNReaderTheme greyGradientColor];
+		self.gradient = [HNReaderTheme greyGradientColor];
     }
+    
     return self;
 }
 
 - (void)dealloc {
-	CGGradientRelease(gradient);
+	CGGradientRelease(_gradient);
 }
 
 - (BOOL) isOpaque {
@@ -30,10 +33,9 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	// Drawing code
     CGContextRef c = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(c, [borderColor CGColor]);
-	HNDrawGradientInRect(c, gradient, rect);
+    CGContextSetStrokeColorWithColor(c, [_borderColor CGColor]);
+	HNDrawGradientInRect(c, _gradient, rect);
    // CGContextStrokeRectWithWidth(c, rect, 1);
 }
 

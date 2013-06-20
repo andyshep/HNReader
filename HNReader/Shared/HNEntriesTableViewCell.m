@@ -3,55 +3,58 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/30/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNEntriesTableViewCell.h"
 
+#import "HNTableCellBackgroundView.h"
+#import "HNTableCellSelectedView.h"
 
 @implementation HNEntriesTableViewCell
 
-@synthesize siteTitleLabel, totalPointsLabel, siteDomainLabel;
-
 - (id)init {
     if ((self = [super init])) {
-        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[UIView alloc] initWithFrame:frame];
+        self.siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_siteTitleLabel setNumberOfLines:2];
+        [_siteTitleLabel setFont:[HNReaderTheme fourteenPointlabelFont]];
+        [_siteTitleLabel setAdjustsFontSizeToFitWidth:YES];
+        [_siteTitleLabel setBackgroundColor:[UIColor clearColor]];
         
-        siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 4, 272, 40)];
-        siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 44, 162, 21)];
-        totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectMake(204, 44, 80, 21)];
+        self.siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
+        [_siteDomainLabel setFont:[HNReaderTheme twelvePointlabelFont]];
+        [_siteDomainLabel setBackgroundColor:[UIColor clearColor]];
+        [_siteDomainLabel setTextColor:[UIColor grayColor]];
         
-        siteTitleLabel.numberOfLines = 2;
-        siteTitleLabel.font = [HNReaderTheme fourteenPointlabelFont];
-        siteTitleLabel.adjustsFontSizeToFitWidth = YES;
-        siteTitleLabel.backgroundColor = [UIColor clearColor];
+        self.totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_totalPointsLabel setTextAlignment:NSTextAlignmentRight];
+        [_totalPointsLabel setFont:[HNReaderTheme twelvePointlabelFont]];
+        [_totalPointsLabel setBackgroundColor:[UIColor clearColor]];
+        [_totalPointsLabel setTextColor:[UIColor grayColor]];
         
-        siteDomainLabel.font = [HNReaderTheme twelvePointlabelFont];
-        siteDomainLabel.backgroundColor = [UIColor clearColor];
-        siteDomainLabel.adjustsFontSizeToFitWidth = YES;
-        siteDomainLabel.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_siteTitleLabel];
+        [self.contentView addSubview:_siteDomainLabel];
+        [self.contentView addSubview:_totalPointsLabel];
         
-        totalPointsLabel.font = [HNReaderTheme twelvePointlabelFont];
-        totalPointsLabel.backgroundColor = [UIColor clearColor];
-        totalPointsLabel.textColor = [UIColor grayColor];
-        [totalPointsLabel setTextAlignment:NSTextAlignmentRight];
-        
-        [containerView addSubview:siteTitleLabel];
-        [containerView addSubview:siteDomainLabel];
-        [containerView addSubview:totalPointsLabel];
-        
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:frame];
+        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
         [self setBackgroundView:backgroundView];
         
-        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:frame];
+        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         
-        [self addSubview:containerView];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [_siteTitleLabel setFrame:CGRectMake(20.0f, 4.0f, 272.0f, 40.0f)];
+    [_siteDomainLabel setFrame:CGRectMake(20.0f, 44.0f, 162.0f, 21.0f)];
+    [_totalPointsLabel setFrame:CGRectMake(204.0f, 44.0f, 80.0f, 21.0f)];
 }
 
 

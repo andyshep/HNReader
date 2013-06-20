@@ -6,14 +6,8 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNReaderTheme.h"
+@interface HNTableCellSelectedView : UIView
 
-
-@interface HNTableCellSelectedView : UIView {
-	UIColor *borderColor;
-	CGGradientRef gradient;
-}
-
-@property (nonatomic, strong) UIColor *borderColor;
+@property (nonatomic, retain) UIColor *borderColor;
 
 @end

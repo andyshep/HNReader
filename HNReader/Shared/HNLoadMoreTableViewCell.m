@@ -3,42 +3,42 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 10/4/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNLoadMoreTableViewCell.h"
 
-@implementation HNLoadMoreTableViewCell
+#import "HNTableCellBackgroundView.h"
+#import "HNTableCellSelectedView.h"
 
-@synthesize loadMoreLabel;
+@implementation HNLoadMoreTableViewCell
 
 - (id)init {
     if ((self = [super init])) {
-        CGRect frame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[UIView alloc] initWithFrame:frame];
+        self.loadMoreLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_loadMoreLabel setTextAlignment:NSTextAlignmentCenter];
+        [_loadMoreLabel setTextColor:[UIColor darkGrayColor]];
+        [_loadMoreLabel setText:NSLocalizedString(@"Load More Entries...", @"Load More Entries table cell text")];
         
-        loadMoreLabel = [[UILabel alloc] initWithFrame:frame];
-        loadMoreLabel.textAlignment = NSTextAlignmentCenter;
-        loadMoreLabel.text = NSLocalizedString(@"Load More Entries...", @"Load More Entries table cell text");
-        loadMoreLabel.textColor = [UIColor darkGrayColor];
+        [self.contentView addSubview:_loadMoreLabel];
         
-        [containerView addSubview:loadMoreLabel];
-        
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:frame];
+        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
         [self setBackgroundView:backgroundView];
         
-        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:frame];
+        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
-        
-        [self addSubview:containerView];
     }
     
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [_loadMoreLabel setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 72.0f)];
+}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state

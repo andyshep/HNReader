@@ -3,60 +3,56 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 10/6/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNCommentsTableViewCell.h"
 
-@implementation HNCommentsTableViewCell
+#import "HNTableCellBackgroundView.h"
+#import "HNTableCellSelectedView.h"
 
-@synthesize usernameLabel, timeLabel, commentTextLabel;
+@implementation HNCommentsTableViewCell
 
 - (id)init {
     if ((self = [super init])) {
-        CGRect cellContainerFrame = CGRectMake(0.0f, 0.0f, 320.0f, 72.0f);
-        UIView *containerView = [[UIView alloc] initWithFrame:cellContainerFrame];
+        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_usernameLabel setBackgroundColor:[UIColor clearColor]];
+        [_usernameLabel setFont:[HNReaderTheme tenPointlabelFont]];
+        [_usernameLabel setTextColor:[UIColor lightGrayColor]];
         
-        usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
-        [usernameLabel setBackgroundColor:[UIColor clearColor]];
-        [usernameLabel setFont:[HNReaderTheme tenPointlabelFont]];
-        [usernameLabel setTextColor:[UIColor lightGrayColor]];
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_timeLabel setBackgroundColor:[UIColor clearColor]];
+        [_timeLabel setFont:[HNReaderTheme tenPointlabelFont]];
+        [_timeLabel setTextAlignment:NSTextAlignmentRight];
+        [_timeLabel setTextColor:[UIColor lightGrayColor]];
         
-        timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 4.0f, 115.0f, 12.0f)];
-        [timeLabel setBackgroundColor:[UIColor clearColor]];
-        [timeLabel setFont:[HNReaderTheme tenPointlabelFont]];
-        [timeLabel setTextAlignment:NSTextAlignmentRight];
-        [timeLabel setTextColor:[UIColor lightGrayColor]];
+        self.commentTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_commentTextLabel setBackgroundColor:[UIColor clearColor]];
+        [_commentTextLabel setFont:[HNReaderTheme twelvePointlabelFont]];
+        [_commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [_commentTextLabel setNumberOfLines:0];
         
-        commentTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 16.0f, 272.0f, 60.0f)];
-        [commentTextLabel setBackgroundColor:[UIColor clearColor]];
-        [commentTextLabel setFont:[HNReaderTheme twelvePointlabelFont]];
-        [commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
-        [commentTextLabel setNumberOfLines:0];
+        [self.contentView addSubview:_usernameLabel];
+        [self.contentView addSubview:_timeLabel];
+        [self.contentView addSubview:_commentTextLabel];
         
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:cellContainerFrame];
+        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
         [self setBackgroundView:backgroundView];
         
-        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:cellContainerFrame];
+        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        [containerView addSubview:usernameLabel];
-        [containerView addSubview:timeLabel];
-        [containerView addSubview:commentTextLabel];
-        [self addSubview:containerView];
     }
 
     return self;
 }
 
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [_usernameLabel setFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
+    [_timeLabel setFrame:CGRectMake(180.0f, 4.0f, 115.0f, 12.0f)];
 }
 
 @end

@@ -6,12 +6,7 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNReaderTheme.h"
-
-@interface HNTableCellBackgroundView : UIView {
-	UIColor *borderColor;
-	CGGradientRef gradient;
-}
+@interface HNTableCellBackgroundView : UIView
 
 @property (nonatomic, strong) UIColor *borderColor;
 

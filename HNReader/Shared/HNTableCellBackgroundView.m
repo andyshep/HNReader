@@ -12,20 +12,24 @@
 
 #import "HNTableCellBackgroundView.h"
 
+@interface HNTableCellBackgroundView ()
+
+@property (nonatomic, assign) CGGradientRef gradient;
+
+@end
 
 @implementation HNTableCellBackgroundView
 
-@synthesize borderColor;
-
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-		gradient = [HNReaderTheme tanGradientColor];
+		self.gradient = [HNReaderTheme tanGradientColor];
     }
+    
     return self;
 }
 
 - (void)dealloc {
-	CGGradientRelease(gradient);
+	CGGradientRelease(_gradient);
 }
 
 - (BOOL) isOpaque {
