@@ -191,7 +191,11 @@
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     SEL selector = (SEL)context;
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [self performSelector:selector];
+#pragma clang diagnostic pop    
 }
 
 - (void)commentsDidLoad {
