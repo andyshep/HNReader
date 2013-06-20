@@ -3,21 +3,19 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface HNEntry : NSObject <NSCoding> {
-    NSString *title;
-    NSString *linkURL, *commentsPageURL, *siteDomainURL;
-    NSString *username, *commentsCount;
-    NSString *totalPoints;
-}
+@interface HNEntry : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *linkURL, *commentsPageURL, *siteDomainURL;
-@property (nonatomic, strong) NSString *username, *commentsCount;
-@property (nonatomic, strong) NSString *totalPoints;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *linkURL;
+@property (nonatomic, copy) NSString *commentsPageURL;
+@property (nonatomic, copy) NSString *siteDomainURL;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *commentsCount;
+@property (nonatomic, copy) NSString *totalPoints;
 
 @end

@@ -3,33 +3,20 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNEntry.h"
 
 @implementation HNEntry
 
-@synthesize title, linkURL, siteDomainURL;
-@synthesize username;
-@synthesize commentsPageURL, commentsCount;
-@synthesize totalPoints;
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-        title = nil, linkURL = nil;
-        siteDomainURL = nil;
-        username = nil;
-        commentsPageURL = nil, commentsCount = nil;
-        totalPoints = nil;
+- (id)init {
+    if ((self = [super init])) {
+        //
     }
     
     return self;
 }
-
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -46,18 +33,17 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:title forKey:@"title"];
-    [aCoder encodeObject:linkURL forKey:@"linkURL"];
-    [aCoder encodeObject:siteDomainURL forKey:@"siteDomainURL"];
-    [aCoder encodeObject:commentsPageURL forKey:@"commentsPageURL"];
-    [aCoder encodeObject:commentsCount forKey:@"commentsCount"];
-    [aCoder encodeObject:totalPoints forKey:@"totalPoints"];
-    [aCoder encodeObject:username forKey:@"username"];
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.linkURL forKey:@"linkURL"];
+    [aCoder encodeObject:self.siteDomainURL forKey:@"siteDomainURL"];
+    [aCoder encodeObject:self.commentsPageURL forKey:@"commentsPageURL"];
+    [aCoder encodeObject:self.commentsCount forKey:@"commentsCount"];
+    [aCoder encodeObject:self.totalPoints forKey:@"totalPoints"];
+    [aCoder encodeObject:self.username forKey:@"username"];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ :: %@", title, commentsPageURL];
-    //return [NSString stringWithFormat:@"%@", title];
+    return [NSString stringWithFormat:@"%@ :: %@", _title, _commentsPageURL];
 }
 
 @end

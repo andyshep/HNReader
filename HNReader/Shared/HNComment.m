@@ -10,8 +10,6 @@
 
 @implementation HNComment
 
-@synthesize username, commentString, timeSinceCreation, padding;
-
 - (id)init {
     if ((self = [super init])) {
         self.username = nil;
@@ -22,7 +20,6 @@
     
     return self;
 }
-
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -37,10 +34,10 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     
-    [aCoder encodeObject:username forKey:@"username"];
-    [aCoder encodeObject:commentString forKey:@"commentString"];
-    [aCoder encodeObject:timeSinceCreation forKey:@"timeSinceCreation"];
-    [aCoder encodeInteger:padding forKey:@"padding"];
+    [aCoder encodeObject:self.username forKey:@"username"];
+    [aCoder encodeObject:self.commentString forKey:@"commentString"];
+    [aCoder encodeObject:self.timeSinceCreation forKey:@"timeSinceCreation"];
+    [aCoder encodeInteger:self.padding forKey:@"padding"];
 }
 
 @end

@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HNComment : NSObject <NSCoding> {
-    NSString *username, *timeSinceCreation;
-    NSString *commentString;
-    NSInteger padding;
-}
+@interface HNComment : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *username, *timeSinceCreation;
-@property (nonatomic, strong) NSString *commentString;
-@property (assign) NSInteger padding;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *timeSinceCreation;
+@property (nonatomic, copy) NSString *commentString;
+@property (nonatomic, assign) NSInteger padding;
 
 @end
