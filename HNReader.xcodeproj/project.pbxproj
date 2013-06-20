@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
-		F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = F70FE106143F5641002E7E22 /* NSString+Tags.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F77143F6ABF00141BD9 /* HNComment.m */; };
 		F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */; };
 		F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */; };
@@ -48,7 +47,6 @@
 		F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6D31436B82D00DE8D6D /* HNTableCellBackgroundView.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7A430F9146090B100290A73 /* NSString+Entities.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A430F8146090B100290A73 /* NSString+Entities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7BFE79D1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */; };
 		F7BFE79E1514EAEE0029AB9A /* Default~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -78,8 +76,6 @@
 		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F70FE105143F5641002E7E22 /* NSString+Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tags.h"; sourceTree = "<group>"; };
-		F70FE106143F5641002E7E22 /* NSString+Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tags.m"; sourceTree = "<group>"; };
 		F71E0F76143F6ABF00141BD9 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNComment.h; path = Shared/HNComment.h; sourceTree = "<group>"; };
 		F71E0F77143F6ABF00141BD9 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNComment.m; path = Shared/HNComment.m; sourceTree = "<group>"; };
 		F71E0F78143F6ABF00141BD9 /* HNCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsModel.h; path = Shared/HNCommentsModel.h; sourceTree = "<group>"; };
@@ -133,8 +129,6 @@
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7A24071147577B000004287 /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7A24072147577B000004287 /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
-		F7A430F7146090B100290A73 /* NSString+Entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Entities.h"; sourceTree = "<group>"; };
-		F7A430F8146090B100290A73 /* NSString+Entities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Entities.m"; sourceTree = "<group>"; };
 		F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad@2x.png"; path = "Resources/Default-Landscape~ipad@2x.png"; sourceTree = "<group>"; };
 		F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad@2x.png"; path = "Resources/Default~ipad@2x.png"; sourceTree = "<group>"; };
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
@@ -190,17 +184,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F70FE100143F5641002E7E22 /* newsyc */ = {
-			isa = PBXGroup;
-			children = (
-				F7A430F7146090B100290A73 /* NSString+Entities.h */,
-				F7A430F8146090B100290A73 /* NSString+Entities.m */,
-				F70FE105143F5641002E7E22 /* NSString+Tags.h */,
-				F70FE106143F5641002E7E22 /* NSString+Tags.m */,
-			);
-			path = newsyc;
-			sourceTree = "<group>";
-		};
 		F75D3683143A056D005BCA23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +372,6 @@
 			children = (
 				F7A24070147577A300004287 /* readable */,
 				F774A308143606160083E7BB /* Objective-C-HTML-Parser */,
-				F70FE100143F5641002E7E22 /* newsyc */,
 			);
 			name = Vendor;
 			path = HNReader/Vendor;
@@ -572,13 +554,11 @@
 				F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */,
 				F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */,
 				F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */,
-				F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */,
 				F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */,
 				F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */,
 				F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */,
 				F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */,
 				F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */,
-				F7A430F9146090B100290A73 /* NSString+Entities.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
 			);

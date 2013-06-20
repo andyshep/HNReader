@@ -16,8 +16,7 @@
 #import "HNComment.h"
 #import "HNEntry.h"
 
-#import "NSString+Tags.h"
-#import "NSString+Entities.h"
+#import "NSString+HTML.h"
 
 @interface HNCommentsModel ()
 
@@ -196,7 +195,7 @@
 }
 
 - (NSString *)formatedCommentText:(NSString *)commentText {
-    commentText = [commentText stringByRemovingHTMLTags];
+    commentText = [commentText stringByConvertingHTMLToPlainText];
     commentText = [commentText stringByDecodingHTMLEntities];
     commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
