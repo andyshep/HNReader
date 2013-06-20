@@ -18,7 +18,7 @@
 @synthesize tableView = _tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry {
-    if ((self = [super initWithNibName:@"HNCommentsView" bundle:nil])) {
+    if ((self = [super initWithNibName:@"HNCommentsViewController" bundle:nil])) {
         model = [[HNCommentsModel alloc] initWithEntry:aEntry];
         
         [model addObserver:self 

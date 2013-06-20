@@ -13,8 +13,6 @@
 #import "HNCommentsTableViewCell.h"
 #import "HNEntriesTableViewCell.h"
 
-#import "ShadowedTableView.h"
-
 #import "HNWebViewController.h"
 
 @interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
@@ -23,7 +21,7 @@
 }
 
 @property (nonatomic, strong) HNEntry *entry;
-@property (nonatomic, strong) IBOutlet ShadowedTableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 - (id)initWithEntry:(HNEntry *)aEntry;
 

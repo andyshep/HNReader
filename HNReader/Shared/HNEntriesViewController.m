@@ -18,7 +18,7 @@
 @synthesize requestInProgress = _requestInProgress;
 
 - (id)init {
-    if ((self = [super initWithNibName:@"HNEntriesView" bundle:nil])) {
+    if ((self = [super initWithNibName:@"HNEntriesViewController" bundle:nil])) {
         
         model = [[HNEntriesModel alloc] init];
         

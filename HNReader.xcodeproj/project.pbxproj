@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
-		F7025DDA143CAFD80048892F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD7143CAFD80048892F /* GradientView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7025DDB143CAFD80048892F /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD9143CAFD80048892F /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
 		F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = F70FE106143F5641002E7E22 /* NSString+Tags.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F77143F6ABF00141BD9 /* HNComment.m */; };
@@ -17,12 +15,12 @@
 		F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */; };
 		F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */; };
 		F71E0F8A143F6BAE00141BD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F71E0F87143F6BAE00141BD9 /* Default@2x.png */; };
-		F739A0451451A90600C88FA9 /* HNCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F739A0441451A90600C88FA9 /* HNCommentsView.xib */; };
+		F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */; };
 		F74361651462C27B00D25502 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F74361631462C27B00D25502 /* Default-Landscape~ipad.png */; };
 		F74361661462C27B00D25502 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F74361641462C27B00D25502 /* Default~ipad.png */; };
 		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
 		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
-		F75D3686143A0594005BCA23 /* HNEntriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75D3685143A0594005BCA23 /* HNEntriesView.xib */; };
+		F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */; };
 		F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */; };
 		F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */; };
 		F76ACA6614354265004CF9EA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
@@ -79,10 +77,6 @@
 /* Begin PBXFileReference section */
 		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7025DD6143CAFD80048892F /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
-		F7025DD7143CAFD80048892F /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
-		F7025DD8143CAFD80048892F /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedTableView.h; sourceTree = "<group>"; };
-		F7025DD9143CAFD80048892F /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedTableView.m; sourceTree = "<group>"; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F70FE105143F5641002E7E22 /* NSString+Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tags.h"; sourceTree = "<group>"; };
 		F70FE106143F5641002E7E22 /* NSString+Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tags.m"; sourceTree = "<group>"; };
@@ -95,12 +89,12 @@
 		F71E0F7C143F6AC100141BD9 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsViewController.h; path = Shared/HNCommentsViewController.h; sourceTree = "<group>"; };
 		F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsViewController.m; path = Shared/HNCommentsViewController.m; sourceTree = "<group>"; };
 		F71E0F87143F6BAE00141BD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
-		F739A0441451A90600C88FA9 /* HNCommentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsView.xib; path = Shared/HNCommentsView.xib; sourceTree = "<group>"; };
+		F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsViewController.xib; path = Shared/HNCommentsViewController.xib; sourceTree = "<group>"; };
 		F74361631462C27B00D25502 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		F74361641462C27B00D25502 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "Resources/Default~ipad.png"; sourceTree = "<group>"; };
 		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
-		F75D3685143A0594005BCA23 /* HNEntriesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesView.xib; path = Shared/HNEntriesView.xib; sourceTree = "<group>"; };
+		F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesViewController.xib; path = Shared/HNEntriesViewController.xib; sourceTree = "<group>"; };
 		F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLoadMoreTableViewCell.h; path = Shared/HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
 		F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNLoadMoreTableViewCell.m; path = Shared/HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
 		F7698825143B614300BD53F6 /* HNTableCellSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableCellSelectedView.h; path = Shared/HNTableCellSelectedView.h; sourceTree = "<group>"; };
@@ -196,17 +190,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F7025DD5143CAFD80048892F /* ShadowedTableView */ = {
-			isa = PBXGroup;
-			children = (
-				F7025DD6143CAFD80048892F /* GradientView.h */,
-				F7025DD7143CAFD80048892F /* GradientView.m */,
-				F7025DD8143CAFD80048892F /* ShadowedTableView.h */,
-				F7025DD9143CAFD80048892F /* ShadowedTableView.m */,
-			);
-			path = ShadowedTableView;
-			sourceTree = "<group>";
-		};
 		F70FE100143F5641002E7E22 /* newsyc */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,8 +214,8 @@
 				F74361641462C27B00D25502 /* Default~ipad.png */,
 				F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */,
 				F71E0F87143F6BAE00141BD9 /* Default@2x.png */,
-				F75D3685143A0594005BCA23 /* HNEntriesView.xib */,
-				F739A0441451A90600C88FA9 /* HNCommentsView.xib */,
+				F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */,
+				F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -406,7 +389,6 @@
 			children = (
 				F7A24070147577A300004287 /* readable */,
 				F774A308143606160083E7BB /* Objective-C-HTML-Parser */,
-				F7025DD5143CAFD80048892F /* ShadowedTableView */,
 				F70FE100143F5641002E7E22 /* newsyc */,
 			);
 			name = Vendor;
@@ -500,9 +482,9 @@
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F775DAF114340D7F00F93F48 /* MainWindow_iPhone.xib in Resources */,
 				F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */,
-				F75D3686143A0594005BCA23 /* HNEntriesView.xib in Resources */,
+				F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */,
 				F71E0F8A143F6BAE00141BD9 /* Default@2x.png in Resources */,
-				F739A0451451A90600C88FA9 /* HNCommentsView.xib in Resources */,
+				F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */,
 				F74361651462C27B00D25502 /* Default-Landscape~ipad.png in Resources */,
 				F74361661462C27B00D25502 /* Default~ipad.png in Resources */,
 				F7F0008D147C770100328C1D /* hn-icon-57.png in Resources */,
@@ -590,8 +572,6 @@
 				F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */,
 				F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */,
 				F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */,
-				F7025DDA143CAFD80048892F /* GradientView.m in Sources */,
-				F7025DDB143CAFD80048892F /* ShadowedTableView.m in Sources */,
 				F70FE10B143F5641002E7E22 /* NSString+Tags.m in Sources */,
 				F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */,
 				F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */,

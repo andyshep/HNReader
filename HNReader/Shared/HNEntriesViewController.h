@@ -15,13 +15,10 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"
 
-#import "ShadowedTableView.h"
-
-
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     HNEntriesModel *model;
     
-    IBOutlet ShadowedTableView *tableView;
+    IBOutlet UITableView *tableView;
     IBOutlet UIToolbar *bottomToolbar;
 	UISegmentedControl *entriesControl;
     
@@ -29,7 +26,7 @@
 }
 
 @property (nonatomic, strong) HNEntriesModel *model;
-@property (nonatomic, strong) IBOutlet ShadowedTableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
 @property (nonatomic, strong) UISegmentedControl *entriesControl;
 
