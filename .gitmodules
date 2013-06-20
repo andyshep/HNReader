@@ -1,6 +1,3 @@
-[submodule "HNReader/Vendor/AFNetworking"]
-	path = HNReader/Vendor/AFNetworking
-	url = git://github.com/gowalla/AFNetworking.git
 [submodule "HNReader/Vendor/readable"]
 	path = HNReader/Vendor/readable
 	url = git://github.com/fiam/readable.git

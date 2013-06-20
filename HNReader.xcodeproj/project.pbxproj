@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
 		F7025DDA143CAFD80048892F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD7143CAFD80048892F /* GradientView.m */; };
 		F7025DDB143CAFD80048892F /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7025DD9143CAFD80048892F /* ShadowedTableView.m */; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
@@ -87,6 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7025DD6143CAFD80048892F /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		F7025DD7143CAFD80048892F /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		F7025DD8143CAFD80048892F /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedTableView.h; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 				F775DB401434110700F93F48 /* SystemConfiguration.framework in Frameworks */,
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
 				F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */,
+				AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +322,7 @@
 				F775DB1F143410C500F93F48 /* Vendor */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
 				F775DAD614340D7E00F93F48 /* Products */,
+				8EDB044C889942B9B7B7B864 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -342,6 +347,7 @@
 				F70A0FF2143BF99100D61E8A /* QuartzCore.framework */,
 				F76ACA6514354265004CF9EA /* libxml2.2.dylib */,
 				F7A2406E1475704D00004287 /* libicucore.dylib */,
+				DBA80079524E4F5FBE1F3871 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -499,9 +505,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader" */;
 			buildPhases = (
+				534CD3E76477478099402D64 /* Check Pods Manifest.lock */,
 				F775DAD114340D7E00F93F48 /* Sources */,
 				F775DAD214340D7E00F93F48 /* Frameworks */,
 				F775DAD314340D7E00F93F48 /* Resources */,
+				C511BC34BE894F8FB00BD40A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -592,6 +600,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		534CD3E76477478099402D64 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		C511BC34BE894F8FB00BD40A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		F775DAFC14340D7F00F93F48 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,10 +799,15 @@
 		};
 		F775DB1314340D7F00F93F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"${PODS_HEADERS_SEARCH_PATHS}",
+				);
 				INFOPLIST_FILE = "HNReader/HNReader-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -777,10 +818,15 @@
 		};
 		F775DB1414340D7F00F93F48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"${PODS_HEADERS_SEARCH_PATHS}",
+				);
 				INFOPLIST_FILE = "HNReader/HNReader-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
