@@ -187,7 +187,7 @@
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification {
     NSDictionary *extraInfo = [aNotification userInfo];
-    NSString *aURLString = [extraInfo objectForKey:@"kHNURL"];
+    NSString *aURLString = extraInfo[@"kHNURL"];
     NSURL *aURL = [NSURL URLWithString:aURLString];
     
     [self shouldLoadURL:aURL];
@@ -222,7 +222,7 @@
             }
             
             NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-            NSString *readableHTMLString = [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding];
+            NSString *readableHTMLString = @(readable_content);
             NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
             
             [webView loadHTMLString:html baseURL:aURL];

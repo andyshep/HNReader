@@ -95,7 +95,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 1;
-    return [[[model commentsInfo] objectForKey:@"entry_comments"] count];
+    return [[model commentsInfo][@"entry_comments"] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -106,8 +106,8 @@
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
     else {
-        NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
-        HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
+        NSArray *_comments = (NSArray *)[model commentsInfo][@"entry_comments"];
+        HNComment *aComment = (HNComment *)_comments[[indexPath row]];
             
         CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
         CGFloat height = MAX(commentTextRect.size.height, DEFAULT_CELL_HEIGHT);
@@ -142,8 +142,8 @@
             cell = [[HNCommentsTableViewCell alloc] init];
         }
         
-        NSArray *_comments = (NSArray *)[[model commentsInfo] objectForKey:@"entry_comments"];
-        HNComment *aComment = (HNComment *)[_comments objectAtIndex:[indexPath row]];
+        NSArray *_comments = (NSArray *)[model commentsInfo][@"entry_comments"];
+        HNComment *aComment = (HNComment *)_comments[[indexPath row]];
         
         CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
         [[cell commentTextLabel] setFrame:commentTextRect];
@@ -220,7 +220,7 @@
 
 - (NSArray *)indexPathsToInsert {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [[[model commentsInfo] objectForKey:@"entry_comments"] count];
+    int count = [[model commentsInfo][@"entry_comments"] count];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
@@ -248,7 +248,7 @@
     // the web view will respond to this notification and load the site
     // this is for the pad only.  on the phone, the vc is pushed onto stack
     NSString *urlString = [[self entry] linkURL];
-    NSDictionary *extraInfo = [NSDictionary dictionaryWithObject:urlString forKey:@"kHNURL"];
+    NSDictionary *extraInfo = @{@"kHNURL": urlString};
     NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" 
                                                           object:self userInfo:extraInfo];
     

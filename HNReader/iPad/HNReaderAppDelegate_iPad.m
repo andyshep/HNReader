@@ -28,7 +28,7 @@
     entriesViewController.delegate = webViewController;
     
     splitViewController = [[UISplitViewController alloc] init];
-    splitViewController.viewControllers = [NSArray arrayWithObjects:navController, webViewController, nil];
+    splitViewController.viewControllers = @[navController, webViewController];
     splitViewController.delegate = webViewController;
     
     [self.window addSubview:splitViewController.view];

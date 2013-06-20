@@ -39,7 +39,7 @@
 }
 
 - (id)objectInEntriesAtIndex:(NSUInteger)index {
-	return [entries objectAtIndex:index];
+	return entries[index];
 }
 
 - (void)getEntriesObjects:(id *)objects range:(NSRange)range {
@@ -172,11 +172,11 @@
         HTMLNode *bodyNode = [parser body];
         
         // entries table is the third table on screen
-        HTMLNode *entiresTable = [[bodyNode findChildTags:@"table"] objectAtIndex:2];
+        HTMLNode *entiresTable = [bodyNode findChildTags:@"table"][2];
         NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
         
         // NSMutableArray *_entries = [NSMutableArray arrayWithCapacity:20];
-        HTMLNode *_currentNode = [tableNodes objectAtIndex:0];
+        HTMLNode *_currentNode = tableNodes[0];
         
         NSMutableArray *parsedEntries = [NSMutableArray arrayWithCapacity:30];
         
@@ -189,9 +189,9 @@
             if ([titles count] > 1) {
                 
                 HNEntry *aEntry = [[HNEntry alloc] init];
-                aEntry.title = [[[titles objectAtIndex:1] firstChild] contents];
-                aEntry.linkURL = [[[titles objectAtIndex:1] firstChild] getAttributeNamed:@"href"];
-                aEntry.siteDomainURL = [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents];
+                aEntry.title = [[titles[1] firstChild] contents];
+                aEntry.linkURL = [[titles[1] firstChild] getAttributeNamed:@"href"];
+                aEntry.siteDomainURL = [[titles[1] findChildOfClass:@"comhead"] contents];
                 
                 if ([aEntry.linkURL hasPrefix:@"item?id="]) {
                     NSString *baseURL = @"http://news.ycombinator.com/";
@@ -209,10 +209,10 @@
                 // YC alumi job posts
                 if ([[commentTdNode children] count] == 5) {
                     
-                    aEntry.totalPoints = [[[commentTdNode children] objectAtIndex:0] contents];
-                    aEntry.username = [[[commentTdNode children] objectAtIndex:2] contents];
-                    aEntry.commentsPageURL = [[[commentTdNode children] objectAtIndex:4] getAttributeNamed:@"href"];
-                    aEntry.commentsCount = [[[commentTdNode children] objectAtIndex:4] contents];
+                    aEntry.totalPoints = [[commentTdNode children][0] contents];
+                    aEntry.username = [[commentTdNode children][2] contents];
+                    aEntry.commentsPageURL = [[commentTdNode children][4] getAttributeNamed:@"href"];
+                    aEntry.commentsCount = [[commentTdNode children][4] contents];
                 }
                 
                 // [_entries addObject:aEntry];

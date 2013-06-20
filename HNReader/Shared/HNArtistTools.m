@@ -23,7 +23,7 @@ void HNDrawLinearGradientInRect(CGContextRef context, CGRect rect, CGColorRef st
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGFloat locations[] = { 0.0, 1.0 };
     
-    NSArray *colors = [NSArray arrayWithObjects:(id)startColor, (id)endColor, nil];
+    NSArray *colors = @[(id)startColor, (id)endColor];
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, 
                                                         (CFArrayRef) colors, locations);

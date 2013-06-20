@@ -29,11 +29,11 @@
 // our view controller uses these to display table data
 
 - (NSUInteger)countOfComments {
-	return [[commentsInfo objectForKey:@"comments"] count];
+	return [commentsInfo[@"comments"] count];
 }
 
 - (id)objectInCommentsAtIndex:(NSUInteger)index {
-	return [[commentsInfo objectForKey:@"comments"] objectAtIndex:index];
+	return commentsInfo[@"comments"][index];
 }
 
 - (void)getCommentsObjects:(id *)objects range:(NSRange)range {
@@ -109,22 +109,22 @@
             return;
         }
         
-        HTMLNode *titleNode = [[bodyNode findChildrenOfClass:@"title"] objectAtIndex:0];
+        HTMLNode *titleNode = [bodyNode findChildrenOfClass:@"title"][0];
         NSString *titleString = [[titleNode firstChild] contents];
         NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
         NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-        NSString *bgColor = [[[tableNodes objectAtIndex:0] firstChild] getAttributeNamed:@"bgcolor"];
+        NSString *bgColor = [[tableNodes[0] firstChild] getAttributeNamed:@"bgcolor"];
         
-        HTMLNode *commentsTableRow = [tableNodes objectAtIndex:3];
+        HTMLNode *commentsTableRow = tableNodes[3];
         if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame)
-            commentsTableRow = [tableNodes objectAtIndex:4];
+            commentsTableRow = tableNodes[4];
         
         NSMutableArray *_comments = nil;
         NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
         
         // make sure we have comments
         if ([commentsTableArray count]  > 1) {
-            HTMLNode *commentsTable = [[[commentsTableRow firstChild] findChildTags:@"table"] objectAtIndex:1];
+            HTMLNode *commentsTable = [[commentsTableRow firstChild] findChildTags:@"table"][1];
             NSArray *commentsNodes = [commentsTable children];
             int commentCount = [[commentsTable children] count];
             
@@ -147,7 +147,7 @@
                     NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
                     commentString = [self formatCommentText:rawCommentHTML];
                     
-                    NSString *roughTime = [[[comHead children] objectAtIndex:1] rawContents];
+                    NSString *roughTime = [[comHead children][1] rawContents];
                     timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
                 }
                 else {

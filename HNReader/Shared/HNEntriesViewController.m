@@ -66,11 +66,9 @@
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     
     // make direction control
-    NSArray *items = [NSArray arrayWithObjects:
-                      NSLocalizedString(@"Front Page", @"Front Page"), 
+    NSArray *items = @[NSLocalizedString(@"Front Page", @"Front Page"), 
                       NSLocalizedString(@"Newest", @"Newest"), 
-                      NSLocalizedString(@"Best", @"Best"), 
-                      nil];
+                      NSLocalizedString(@"Best", @"Best")];
 	entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
 	entriesControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	entriesControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -80,7 +78,7 @@
     
     [entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
     
-    [bottomToolbar setItems:[NSArray arrayWithObjects:buttonItem, nil]];
+    [bottomToolbar setItems:@[buttonItem]];
     
     [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
     [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
