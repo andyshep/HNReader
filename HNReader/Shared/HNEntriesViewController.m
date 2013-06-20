@@ -3,31 +3,34 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/28/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNEntriesViewController.h"
+
+#import "HNEntriesModel.h"
+#import "HNReaderTheme.h"
+
+#import "HNWebViewController.h"
+#import "HNCommentsViewController.h"
+
+#import "HNEntriesTableViewCell.h"
+#import "HNLoadMoreTableViewCell.h"
 
 #define DEFAULT_CELL_HEIGHT 72.0f
 
 @implementation HNEntriesViewController
 
-@synthesize model, tableView;
-@synthesize entriesControl, bottomToolbar;
-@synthesize delegate;
-@synthesize requestInProgress = _requestInProgress;
-
 - (id)init {
     if ((self = [super initWithNibName:@"HNEntriesViewController" bundle:nil])) {
+        self.model = [[HNEntriesModel alloc] init];
         
-        model = [[HNEntriesModel alloc] init];
-        
-        [model addObserver:self 
+        [_model addObserver:self
                 forKeyPath:@"entries" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(entriesDidLoad)];
         
-        [model addObserver:self 
+        [_model addObserver:self
                 forKeyPath:@"error" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(operationDidFail)];
@@ -40,22 +43,9 @@
 }
 
 - (void)dealloc {
-    
-    [model removeObserver:self forKeyPath:@"entries"];
-    [model removeObserver:self forKeyPath:@"error"];
-    
-    
+    [_model removeObserver:self forKeyPath:@"entries"];
+    [_model removeObserver:self forKeyPath:@"error"];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,40 +59,32 @@
     NSArray *items = @[NSLocalizedString(@"Front Page", @"Front Page"), 
                       NSLocalizedString(@"Newest", @"Newest"), 
                       NSLocalizedString(@"Best", @"Best")];
-	entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
-	entriesControl.segmentedControlStyle = UISegmentedControlStyleBar;
-	entriesControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	entriesControl.frame = CGRectMake(0, 0, 305, 30);
-	entriesControl.selectedSegmentIndex = 0;
-	UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:entriesControl];
+	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
+    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 305.0f, 30.0f)];
+    [_entriesControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
+    [_entriesControl setSelectedSegmentIndex:0];
     
-    [entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
+    [_entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
     
-    [bottomToolbar setItems:@[buttonItem]];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:_entriesControl];
+    [_bottomToolbar setItems:@[buttonItem]];
     
-    [bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-    [entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+    [_bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+    [_entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
     
     [self loadEntries];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([tableView indexPathForSelectedRow] != nil) {
-        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    if ([_tableView indexPathForSelectedRow] != nil) {
+        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
     }
@@ -111,32 +93,28 @@
     return YES;
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     // if the entries are empty return 0
     // do not show a single 'load more..' row.
-    if ([model countOfEntries] <= 0) {
-        return [model countOfEntries];
+    if ([_model countOfEntries] <= 0) {
+        return [_model countOfEntries];
     }
     
     // if we have the entries then show 'em
     // and plus one for the 'load more...' cell
-    return [model countOfEntries] + 1;
+    return [_model countOfEntries] + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return DEFAULT_CELL_HEIGHT;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([indexPath row] >= [model countOfEntries]) {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath row] >= [_model countOfEntries]) {
         static NSString *CellIdentifier = @"HNLoadMoreTableViewCell";
         
         // TODO: this should also be a custom cell
@@ -156,9 +134,8 @@
             cell = [[HNEntriesTableViewCell alloc] init];
         }
         
-        HNEntry *aEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
+        HNEntry *aEntry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
         
-        // Configure the cell...
         cell.siteTitleLabel.text = aEntry.title;
         cell.siteDomainLabel.text = aEntry.siteDomainURL;
         cell.totalPointsLabel.text = aEntry.totalPoints;
@@ -167,98 +144,78 @@
     }
 }
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if ([indexPath row] >= [model countOfEntries]) {
+    if ([indexPath row] >= [_model countOfEntries]) {
         // load more entries..
-        [model loadMoreEntriesForIndex:[entriesControl selectedSegmentIndex]];
+        [_model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
         [[aTableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
-        HNEntry *selectedEntry = (HNEntry *)[model objectInEntriesAtIndex:[indexPath row]];
+        HNEntry *selectedEntry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
         HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
 }
 
-#pragma mark - Model Observing and Reactions
-
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     SEL selector = (SEL)context;
     [self performSelector:selector];
 }
 
 - (void)loadEntries {
-    
-    if (_requestInProgress) return;
-    
-    self.requestInProgress = YES;
-    [tableView setUserInteractionEnabled:NO];
-    [tableView setScrollEnabled:NO];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [delegate shouldStopLoading];
+    if (_requestInProgress) {
+        return;
     }
     
-    [model loadEntriesForIndex:entriesControl.selectedSegmentIndex];
+    self.requestInProgress = YES;
+    [_tableView setUserInteractionEnabled:NO];
+    [_tableView setScrollEnabled:NO];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.delegate shouldStopLoading];
+    }
+    
+    [_model loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)reloadEntries {
-    if (_requestInProgress) return;
-    
-    self.requestInProgress = YES;
-    [tableView setUserInteractionEnabled:NO];
-    [tableView setScrollEnabled:NO];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [delegate shouldStopLoading];
+    if (_requestInProgress) {
+        return;
     }
     
-    [model reloadEntriesForIndex:entriesControl.selectedSegmentIndex];
+    self.requestInProgress = YES;
+    [_tableView setUserInteractionEnabled:NO];
+    [_tableView setScrollEnabled:NO];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.delegate shouldStopLoading];
+    }
+    
+    [_model reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)entriesDidLoad {
-//    // FIXME: only animate in the rows which are visible.
-//    NSArray *indexPathsToInsert = [self indexPathsToInsert];
-//    NSArray *indexPathsToDelete = [self indexPathsToDelete];
-//    
-//    UITableViewRowAnimation insertAnimation;
-//    UITableViewRowAnimation deleteAnimation;
-//    
-//    if ([tableView numberOfRowsInSection:0] <= 0) {
-//        insertAnimation = UITableViewRowAnimationTop;
-//        deleteAnimation = UITableViewRowAnimationBottom;
-//    }
-//    else {
-//        insertAnimation = UITableViewRowAnimationBottom;
-//        deleteAnimation = UITableViewRowAnimationTop;
-//    }
-//    
-//    [self.tableView beginUpdates];
-//    [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
-//    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
-//    [self.tableView endUpdates];
+    // TODO: animate
 
     self.requestInProgress = NO;
-    [tableView reloadData];
-    [tableView setScrollEnabled:YES];
-    [tableView setUserInteractionEnabled:YES];
+    [_tableView reloadData];
+    [_tableView setScrollEnabled:YES];
+    [_tableView setUserInteractionEnabled:YES];
 }
 
 - (void)operationDidFail {    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                    message:[[model error] localizedDescription] 
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
+                                                    message:[[_model error] localizedDescription]
                                                    delegate:nil 
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
                                           otherButtonTitles:nil];
     [alert show];
 }
 
 - (NSArray *)indexPathsToInsert {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [model countOfEntries];
+    int count = [_model countOfEntries];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
@@ -270,7 +227,7 @@
 
 - (NSArray *)indexPathsToDelete {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [tableView numberOfRowsInSection:0];
+    int count = [_tableView numberOfRowsInSection:0];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];

@@ -3,34 +3,18 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNEntry.h"
-#import "HNReaderTheme.h"
+@class HNEntry;
+@class HNCommentsModel;
 
-#import "HNCommentsModel.h"
-#import "HNCommentsTableViewCell.h"
-#import "HNEntriesTableViewCell.h"
+@interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-#import "HNWebViewController.h"
-
-@interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    HNEntry *entry;
-    HNCommentsModel *model;
-}
-
-@property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) HNEntry *entry;
+@property (nonatomic, strong) HNCommentsModel *model;
 
-- (id)initWithEntry:(HNEntry *)aEntry;
-
-- (void)loadComments;
-
-- (NSArray *)indexPathsToInsert;
-- (NSArray *)indexPathsToDelete;
-
-- (void)postLoadSiteNotification;
-- (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
+- (id)initWithEntry:(HNEntry *)entry;
 
 @end

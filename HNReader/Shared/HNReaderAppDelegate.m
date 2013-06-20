@@ -3,7 +3,7 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/28/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNReaderAppDelegate.h"
@@ -15,8 +15,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // cleanup the cache
-    // http://stackoverflow.com/questions/4793278/deleting-all-the-files-in-the-iphone-sandbox-documents-folder
-    // 
     NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     NSFileManager *fileMgr = [[NSFileManager alloc] init];
     NSError *error = nil;
@@ -27,11 +25,11 @@
             NSLog(@"%@", fullPath);
             BOOL removeSuccess = [fileMgr removeItemAtPath:fullPath error:&error];
             if (!removeSuccess) {
-                // Error handling
+                // TODO: implement
             }
         }
     } else {
-        // Error handling
+        // TODO: implement
     }
     
     return YES;

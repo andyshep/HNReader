@@ -3,48 +3,60 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNCommentsViewController.h"
+
+#import "HNEntry.h"
+#import "HNCommentsModel.h"
+
+#import "HNCommentsTableViewCell.h"
+#import "HNEntriesTableViewCell.h"
+#import "HNWebViewController.h"
+#import "HNReaderTheme.h"
 
 #define DEFAULT_CELL_HEIGHT 44.0f
 #define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
 
+@interface HNCommentsViewController ()
+
+- (void)loadComments;
+
+- (NSArray *)indexPathsToInsert;
+- (NSArray *)indexPathsToDelete;
+
+- (void)postLoadSiteNotification;
+- (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
+
+@end
+
 @implementation HNCommentsViewController
 
-@synthesize entry;
-@synthesize tableView = _tableView;
-
-- (id)initWithEntry:(HNEntry *)aEntry {
+- (id)initWithEntry:(HNEntry *)entry {
     if ((self = [super initWithNibName:@"HNCommentsViewController" bundle:nil])) {
-        model = [[HNCommentsModel alloc] initWithEntry:aEntry];
+        self.entry = entry;
+        self.model = [[HNCommentsModel alloc] initWithEntry:entry];
         
-        [model addObserver:self 
+        [_model addObserver:self
                 forKeyPath:@"commentsInfo" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(commentsDidLoad)];
         
-        [model addObserver:self 
+        [_model addObserver:self
                 forKeyPath:@"error" 
                    options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
                    context:@selector(operationDidFail)];
-        
-        self.entry = aEntry;
     }
     
     return self;
 }
 
 - (void)dealloc {
-    
-    [model removeObserver:self forKeyPath:@"commentsInfo"];
-    [model removeObserver:self forKeyPath:@"error"];
-    
+    [_model removeObserver:self forKeyPath:@"commentsInfo"];
+    [_model removeObserver:self forKeyPath:@"error"];
 }
-
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
@@ -52,18 +64,18 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
 
-    [model loadComments];
+    [_model loadComments];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [model cancelRequest];
+    [_model cancelRequest];
     
-    NSNotification *aNote = [NSNotification notificationWithName:@"HNStopLoadingNotification" 
+    NSNotification *note = [NSNotification notificationWithName:@"HNStopLoadingNotification"
                                                           object:self 
                                                         userInfo:nil];
-    [[NSNotificationCenter defaultCenter] postNotification:aNote];
+    [[NSNotificationCenter defaultCenter] postNotification:note];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,7 +88,6 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
     }
@@ -85,8 +96,7 @@
     return YES;
 }
 
-#pragma mark - Table view data source
-
+#pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // first section is only the entry cell
     // second section is zero or more comment cells
@@ -95,7 +105,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 1;
-    return [[model commentsInfo][@"entry_comments"] count];
+    return [[_model commentsInfo][@"entry_comments"] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -106,10 +116,10 @@
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
     else {
-        NSArray *_comments = (NSArray *)[model commentsInfo][@"entry_comments"];
-        HNComment *aComment = (HNComment *)_comments[[indexPath row]];
+        NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
+        HNComment *comment = (HNComment *)comments[indexPath.row];
             
-        CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
+        CGRect commentTextRect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
         CGFloat height = MAX(commentTextRect.size.height, DEFAULT_CELL_HEIGHT);
         
         return height + (CELL_CONTENT_MARGIN * 2);
@@ -117,7 +127,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if ([indexPath section] == 0) {
         // return entry header cell
         static NSString *CellIdentifier = @"HNEntriesTableViewCell";
@@ -127,9 +136,9 @@
             cell = [[HNEntriesTableViewCell alloc] init];
         }
         
-        cell.siteTitleLabel.text = entry.title;
-        cell.siteDomainLabel.text = entry.siteDomainURL;
-        cell.totalPointsLabel.text = entry.totalPoints;
+        cell.siteTitleLabel.text = self.entry.title;
+        cell.siteDomainLabel.text = self.entry.siteDomainURL;
+        cell.totalPointsLabel.text = self.entry.totalPoints;
         
         return cell;
     }
@@ -142,27 +151,25 @@
             cell = [[HNCommentsTableViewCell alloc] init];
         }
         
-        NSArray *_comments = (NSArray *)[model commentsInfo][@"entry_comments"];
-        HNComment *aComment = (HNComment *)_comments[[indexPath row]];
+        NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
+        HNComment *comment = (HNComment *)comments[indexPath.row];
         
-        CGRect commentTextRect = [self sizeForString:[aComment commentString] withIndentPadding:[aComment padding]];
+        CGRect commentTextRect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
         [[cell commentTextLabel] setFrame:commentTextRect];
         [[cell usernameLabel] setFrame:CGRectMake(commentTextRect.origin.x, 4.0f, commentTextRect.size.width, 12.0f)];
         
-        cell.usernameLabel.text = aComment.username;
-        cell.commentTextLabel.text = aComment.commentString;
-        cell.timeLabel.text = aComment.timeSinceCreation;
+        cell.usernameLabel.text = comment.username;
+        cell.commentTextLabel.text = comment.commentString;
+        cell.timeLabel.text = comment.timeSinceCreation;
         
         return cell;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if ([indexPath section] == 0) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            [model cancelRequest];
+            [_model cancelRequest];
             HNWebViewController *nextController = [[HNWebViewController alloc] init];
             nextController.entry = [self entry];
             [[self navigationController] pushViewController:nextController animated:YES];
@@ -174,44 +181,23 @@
 }
 
 - (void)loadComments {
-    [model loadComments];
+    [_model loadComments];
 }
 
-#pragma mark - Model Observing and Reactions
-
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     SEL selector = (SEL)context;
     [self performSelector:selector];
 }
 
 - (void)commentsDidLoad {
-//    // FIXME: only animate in the rows which are visible.
-//    NSArray *indexPathsToInsert = [self indexPathsToInsert];
-//    NSArray *indexPathsToDelete = [self indexPathsToDelete];
-//    
-//    UITableViewRowAnimation insertAnimation;
-//    UITableViewRowAnimation deleteAnimation;
-//    
-//    if ([tableView numberOfRowsInSection:0] <= 0) {
-//        insertAnimation = UITableViewRowAnimationTop;
-//        deleteAnimation = UITableViewRowAnimationBottom;
-//    }
-//    else {
-//        insertAnimation = UITableViewRowAnimationBottom;
-//        deleteAnimation = UITableViewRowAnimationTop;
-//    }
-//    
-//    [self.tableView beginUpdates];
-//    [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
-//    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:deleteAnimation];
-//    [self.tableView endUpdates];
-
+    // TODO: animate
     [_tableView reloadData];
 }
 
 - (void)operationDidFail {    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                    message:[[model error] localizedDescription] 
+                                                    message:[[_model error] localizedDescription]
                                                    delegate:nil 
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];
@@ -220,7 +206,7 @@
 
 - (NSArray *)indexPathsToInsert {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [[model commentsInfo][@"entry_comments"] count];
+    int count = [[_model commentsInfo][@"entry_comments"] count];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
@@ -243,7 +229,6 @@
 }
 
 - (void)postLoadSiteNotification {
-    
     // post a notification that a site should be loaded
     // the web view will respond to this notification and load the site
     // this is for the pad only.  on the phone, the vc is pushed onto stack
@@ -255,10 +240,7 @@
     [[NSNotificationCenter defaultCenter] postNotification:aNote];
 }
 
-#pragma mark - HNCommentsTableViewCell height calculations
-
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
-    
     // knock the intentation padding down by a factor of 3
     // then adjust for cell margin and make sure the padding is even.  
     // otherwise the comment text is antialias'd
