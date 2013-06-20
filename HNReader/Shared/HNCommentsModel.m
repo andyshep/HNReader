@@ -93,10 +93,11 @@
 }
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
-    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation HTTPRequestOperationWithRequest:request success:^(id object) {
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *parserError = nil;
-        NSString *rawHTML = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+        NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&parserError];
         [rawHTML release];
         
@@ -185,7 +186,7 @@
         [NSKeyedArchiver archiveRootObject:_commentsInfo toFile:[self cacheFilePath]];
         
         [parser release];
-    } failure:^(NSHTTPURLResponse *response, NSError *err) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         // log network connection error;
         self.error = err;
     }];

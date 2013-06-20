@@ -165,10 +165,11 @@
     // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
     
     
-    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation HTTPRequestOperationWithRequest:request success:^(id object) {
-        
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *aParserError = nil;
-        NSString *rawHTML = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+        NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&aParserError];
         [rawHTML release];
         
@@ -266,8 +267,7 @@
         
         // save the entries the disk for next time
         [NSKeyedArchiver archiveRootObject:entries toFile:cachedFilePath];
-        
-    } failure:^(NSHTTPURLResponse *response, NSError *err) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         // log network connection error;
         self.error = err;
     }];

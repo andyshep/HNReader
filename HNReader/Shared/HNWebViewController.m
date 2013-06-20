@@ -211,8 +211,10 @@
     NSURL *aURL = _displayedURL;
     NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
     
-    AFHTTPRequestOperation *operation = [AFHTTPRequestOperation HTTPRequestOperationWithRequest:request success:^(id object) {
-        NSString *rawHtmlString = [[NSString alloc] initWithData:object encoding:NSUTF8StringEncoding];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *rawHtmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
         const char *html_content = [rawHtmlString UTF8String];
         char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
@@ -241,12 +243,12 @@
         }
         
         // NSLog(@"succuess: %@", [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding]);
-        
-    } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                        message:NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.") 
-                                                       delegate:nil 
-                                              cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
+    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
+        NSString *message = NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error")
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
                                               otherButtonTitles:nil];
         [alert show];
         [alert release];
