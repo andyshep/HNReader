@@ -1,3 +1,0 @@
-[submodule "HNReader/Vendor/readable"]
-	path = HNReader/Vendor/readable
-	url = git://github.com/fiam/readable.git
