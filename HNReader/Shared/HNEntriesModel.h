@@ -22,10 +22,6 @@
 - (void)loadMoreEntriesForIndex:(NSUInteger)index;
 - (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath;
 
-- (NSString *)cacheFilePathForIndex:(NSUInteger)index;
-- (NSURL *)pageURLForIndex:(NSUInteger)index;
-- (int)cacheTimeForPageIndex:(NSUInteger)index;
-
 - (NSError *)parserError;
 
 @end

@@ -25,6 +25,10 @@ typedef enum  {
 
 @property (nonatomic, strong) NSOperationQueue *queue;
 
+- (NSString *)cacheFilePathForIndex:(NSUInteger)index;
+- (NSURL *)pageURLForIndex:(NSUInteger)index;
+- (int)cacheTimeForPageIndex:(NSUInteger)index;
+
 @end
 
 @implementation HNEntriesModel

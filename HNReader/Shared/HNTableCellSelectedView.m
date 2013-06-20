@@ -36,7 +36,6 @@
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(c, [_borderColor CGColor]);
 	HNDrawGradientInRect(c, _gradient, rect);
-   // CGContextStrokeRectWithWidth(c, rect, 1);
 }
 
 @end

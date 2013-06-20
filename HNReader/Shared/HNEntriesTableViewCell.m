@@ -57,9 +57,7 @@
     [_totalPointsLabel setFrame:CGRectMake(204.0f, 44.0f, 80.0f, 21.0f)];
 }
 
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
     if (selected) {

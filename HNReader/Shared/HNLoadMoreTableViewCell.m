@@ -38,10 +38,4 @@
     [_loadMoreLabel setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 72.0f)];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

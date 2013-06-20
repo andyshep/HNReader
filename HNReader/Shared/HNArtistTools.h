@@ -3,7 +3,7 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 10/18/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Andrew Shepard. All rights reserved.
 //
 
 // based on code and examples from:

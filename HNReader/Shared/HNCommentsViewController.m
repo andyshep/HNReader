@@ -9,6 +9,7 @@
 #import "HNCommentsViewController.h"
 
 #import "HNEntry.h"
+#import "HNComment.h"
 #import "HNCommentsModel.h"
 
 #import "HNCommentsTableViewCell.h"
