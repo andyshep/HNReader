@@ -3,51 +3,61 @@
 //  HNEntriesModel
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
 #import "HNEntriesModel.h"
 
+#import "AFHTTPRequestOperation.h"
+#import "AFNetworkActivityIndicatorManager.h"
+
+#import "HNEntry.h"
+#import "HTMLParser.h"
+#import "HTMLNode.h"
+
+typedef enum  {
+    HNEntriesFrontPageIdentifier,
+    HNEntriesNewestPageIdentifier,
+    HNEntriesBestPageIdentifier
+} HNEntriesPageIdentifier;
+
+@interface HNEntriesModel ()
+
+@property (nonatomic, strong) NSOperationQueue *queue;
+
+@end
+
 @implementation HNEntriesModel
 
-@synthesize entries, error, moreEntriesLink;
+- (void)setEntries:(NSMutableArray *)entries {
+    _entries = [entries mutableCopy];
+}
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.entries = nil;
-        self.error = nil;
-        self.moreEntriesLink = nil;
+- (id)init {
+    if ((self = [super init])) {
+        self.queue = [[NSOperationQueue alloc] init];
+        self.entries = [[NSMutableArray alloc] initWithCapacity:30];
         
-        opQueue = [[NSOperationQueue alloc] init];
-        entries = [[NSMutableArray alloc] initWithCapacity:30];
-        
-        // https://github.com/gowalla/AFNetworking/issues/47
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     
     return self;
 }
 
-
 #pragma mark - KVC
-// our view controller uses these to display table data
-
 - (NSUInteger)countOfEntries {
-	return [entries count];
+	return self.entries.count;
 }
 
 - (id)objectInEntriesAtIndex:(NSUInteger)index {
-	return entries[index];
+	return self.entries[index];
 }
 
-- (void)getEntriesObjects:(id *)objects range:(NSRange)range {
-	// [entries getObjects:objects range:range];
+- (void)getEntriesObjects:(__unsafe_unretained id *)objects range:(NSRange)range {
+    [self.entries getObjects:objects range:range];
 }
 
 #pragma mark - Cache Management
-
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index {
     NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     NSString *cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
@@ -89,14 +99,12 @@
 }
 
 #pragma mark - Network Requests
-
 - (void)loadEntriesForIndex:(NSUInteger)index {
-    
     // remove all entries
     // presumably we've switched pages via teh control
-    if ([entries count] > 0) {
+    if ([_entries count] > 0) {
         [self willChangeValueForKey:@"entries"];
-        [entries removeAllObjects];
+        [_entries removeAllObjects];
         [self didChangeValueForKey:@"entries"];
     }
     
@@ -110,10 +118,9 @@
         // alway load from cache first
         NSArray *cachedEntries = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         [self willChangeValueForKey:@"entries"];
-        [self.entries removeAllObjects];
-        [self.entries addObjectsFromArray:cachedEntries];
+        [_entries removeAllObjects];
+        [_entries addObjectsFromArray:cachedEntries];
         [self didChangeValueForKey:@"entries"];
-        
         
         NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
         if (date != nil) {
@@ -138,13 +145,9 @@
 }
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", moreEntriesLink]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", _moreEntriesLink]];
     
-//    if (![moreEntriesLink hasPrefix:@"/"]) {
-//        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", moreEntriesLink]];
-//    }
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0f];
     
     // we can keep the old entries around if we're loading more
     // TODO: need to pass in an idnex or something here
@@ -152,11 +155,7 @@
     [self loadEntriesForRequest:request atCachedFilePath:cachedFilePath];
 }
 
--(void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {
-    // NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://news.ycombinator.com/newest"]];
-    // NSURLRequest *_request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/best.html"]];
-    
-    
+- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -175,9 +174,7 @@
         HTMLNode *entiresTable = [bodyNode findChildTags:@"table"][2];
         NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
         
-        // NSMutableArray *_entries = [NSMutableArray arrayWithCapacity:20];
         HTMLNode *_currentNode = tableNodes[0];
-        
         NSMutableArray *parsedEntries = [NSMutableArray arrayWithCapacity:30];
         
         while ([_currentNode allContents] != NULL) {
@@ -187,18 +184,15 @@
             NSArray *titles = [_currentNode findChildrenOfClass:@"title"];
             
             if ([titles count] > 1) {
+                HNEntry *entry = [[HNEntry alloc] init];
+                entry.title = [[titles[1] firstChild] contents];
+                entry.linkURL = [[titles[1] firstChild] getAttributeNamed:@"href"];
+                entry.siteDomainURL = [[titles[1] findChildOfClass:@"comhead"] contents];
                 
-                HNEntry *aEntry = [[HNEntry alloc] init];
-                aEntry.title = [[titles[1] firstChild] contents];
-                aEntry.linkURL = [[titles[1] firstChild] getAttributeNamed:@"href"];
-                aEntry.siteDomainURL = [[titles[1] findChildOfClass:@"comhead"] contents];
-                
-                if ([aEntry.linkURL hasPrefix:@"item?id="]) {
+                if ([entry.linkURL hasPrefix:@"item?id="]) {
                     NSString *baseURL = @"http://news.ycombinator.com/";
-                    aEntry.linkURL = [baseURL stringByAppendingString:aEntry.linkURL];
+                    entry.linkURL = [baseURL stringByAppendingString:entry.linkURL];
                 }
-                
-                // NSLog(@"%@", [[[titles objectAtIndex:1] findChildOfClass:@"comhead"] contents]);
                 
                 // after the title <td>, the next child is a commment <td>
                 // we move to the next child and extract comments
@@ -208,15 +202,13 @@
                 // some stories don't have comments
                 // YC alumi job posts
                 if ([[commentTdNode children] count] == 5) {
-                    
-                    aEntry.totalPoints = [[commentTdNode children][0] contents];
-                    aEntry.username = [[commentTdNode children][2] contents];
-                    aEntry.commentsPageURL = [[commentTdNode children][4] getAttributeNamed:@"href"];
-                    aEntry.commentsCount = [[commentTdNode children][4] contents];
+                    entry.totalPoints = [[commentTdNode children][0] contents];
+                    entry.username = [[commentTdNode children][2] contents];
+                    entry.commentsPageURL = [[commentTdNode children][4] getAttributeNamed:@"href"];
+                    entry.commentsCount = [[commentTdNode children][4] contents];
                 }
                 
-                // [_entries addObject:aEntry];
-                [parsedEntries addObject:aEntry];
+                [parsedEntries addObject:entry];
             }
             
             // move to the next node
@@ -228,23 +220,19 @@
         // we grab the link the load the next 30 entries
         // we will load these next 30 when the user selects the last table cell
         HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
-        
         if (moreEntriesNode != NULL) {
-            NSString *_moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
+            NSString *moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
             
-            if (![_moreEntriesLink hasPrefix:@"/"]) {
-                _moreEntriesLink = [NSString stringWithFormat:@"/%@", _moreEntriesLink];
+            if (![moreEntriesLink hasPrefix:@"/"]) {
+                moreEntriesLink = [NSString stringWithFormat:@"/%@", _moreEntriesLink];
             }
             
-            self.moreEntriesLink = _moreEntriesLink;
-            
-            // [_entries addObject:[NSString stringWithString:[[moreEntriesNode firstChild] getAttributeNamed:@"href"]]];
+            self.moreEntriesLink = moreEntriesLink;
         }
         else {
             self.error = [self parserError];
             return;
         }
-        
         
         // now we set the entires
         [self willChangeValueForKey:@"entries"];
@@ -253,19 +241,17 @@
         [self didChangeValueForKey:@"entries"];
         
         // save the entries the disk for next time
-        [NSKeyedArchiver archiveRootObject:entries toFile:cachedFilePath];
+        [NSKeyedArchiver archiveRootObject:_entries toFile:cachedFilePath];
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         // log network connection error;
         self.error = err;
     }];
         
-    [opQueue addOperation:operation];
+    [_queue addOperation:operation];
 }
 
-#pragma mark - Response Parsing
-
 - (void)handleResponse {
-    
+    // TODO:
 }
 
 - (NSError *)parserError {

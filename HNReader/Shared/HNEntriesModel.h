@@ -3,37 +3,18 @@
 //  HNEntriesModel
 //
 //  Created by Andrew Shepard on 9/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "AFHTTPRequestOperation.h"
-#import "AFNetworkActivityIndicatorManager.h"
+@interface HNEntriesModel : NSObject
 
-#import "HNEntry.h"
-#import "HTMLParser.h"
-#import "HTMLNode.h"
-
-typedef enum  {
-    HNEntriesFrontPageIdentifier,
-    HNEntriesNewestPageIdentifier,
-    HNEntriesBestPageIdentifier
-} HNEntriesPageIdentifier;
-
-@interface HNEntriesModel : NSObject {
-    NSMutableArray *entries;
-    NSError *error;
-    NSString *moreEntriesLink;
-    
-    NSOperationQueue *opQueue;
-}
-
-@property (copy) NSMutableArray *entries;
-@property (copy) NSError *error;
-@property (copy) NSString *moreEntriesLink;
+@property (nonatomic, copy) NSMutableArray *entries;
+@property (nonatomic, copy) NSError *error;
+@property (nonatomic, copy) NSString *moreEntriesLink;
 
 - (NSUInteger)countOfEntries;
 - (id)objectInEntriesAtIndex:(NSUInteger)index;
-- (void)getEntriesObjects:(id *)objects range:(NSRange)range;
+- (void)getEntriesObjects:(__unsafe_unretained id *)objects range:(NSRange)range;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;
 - (void)reloadEntriesForIndex:(NSUInteger)index;

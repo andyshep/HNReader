@@ -3,39 +3,21 @@
 //  HNReader
 //
 //  Created by Andrew Shepard on 10/6/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "AFHTTPRequestOperation.h"
-#import "HNEntry.h"
-#import "HTMLParser.h"
-#import "HTMLNode.h"
+@class HNEntry;
 
-#import "HNComment.h"
-#import "HNEntry.h"
+@interface HNCommentsModel : NSObject
 
-#import "NSString+Tags.h"
-#import "NSString+Entities.h"
-
-@interface HNCommentsModel : NSObject {
-    NSMutableDictionary *commentsInfo;
-    NSError *error;
-    
-    NSOperationQueue *opQueue;
-    HNEntry *entry;
-}
-
-@property (copy) NSMutableDictionary *commentsInfo;
-@property (copy) NSError *error;
+@property (nonatomic, copy) NSMutableDictionary *commentsInfo;
+@property (nonatomic, copy) NSError *error;
 @property (nonatomic, strong) HNEntry *entry;
 
-- (id)initWithEntry:(HNEntry *)aEntry;
-- (void)loadComments;
-- (void)loadCommentsForRequest:(NSURLRequest *)request;
-- (NSString *)cacheFilePath;
-
-- (NSString *)formatCommentText:(NSString *)commentText;
+- (id)initWithEntry:(HNEntry *)entry;
 
 - (void)cancelRequest;
+- (void)loadComments;
+- (void)loadCommentsForRequest:(NSURLRequest *)request;
 
 @end
