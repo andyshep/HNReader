@@ -10,9 +10,7 @@
 
 @implementation HNReaderTheme
 
-#pragma mark -
-#pragma mark Fonts for UI elements
-
+#pragma mark - Fonts
 + (UIFont *)tenPointlabelFont {
 	return [UIFont fontWithName:@"Verdana" size:10];
 }
@@ -25,9 +23,7 @@
 	return [UIFont fontWithName:@"Verdana" size:14];
 }
 
-#pragma mark -
-#pragma mark Colors for UI elements
-
+#pragma mark - Colors
 + (UIColor *)brightOrangeColor {
     return [UIColor colorWithRed:1.0f 
                            green:102.0f/255.0f 

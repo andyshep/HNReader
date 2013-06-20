@@ -6,35 +6,22 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNEntry.h"
-#import "HNReaderTheme.h"
-
-#import "readable.h"
-#import "AFHTTPRequestOperation.h"
+@class HNEntry;
 
 @protocol HNEntryLoaderDelegate <NSObject>
+
 - (void)shouldLoadURL:(NSURL *)aURL;
 - (void)shouldStopLoading;
+
 @end
 
-@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntryLoaderDelegate> {
-    UIWebView *webView;
-    HNEntry *entry;
-    
-    UIToolbar *toolbar;
-    UIPopoverController *popoverController;
-    UIBarButtonItem *readableButton;
-    NSMutableArray *items;
-}
+@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntryLoaderDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) HNEntry *entry;
-@property (weak) NSURL *displayedURL;
-
 @property (nonatomic, strong) UIToolbar *toolbar;
-@property (nonatomic, strong) UIPopoverController *popoverController;
 @property (nonatomic, strong) UIBarButtonItem *readableButton;
-@property (nonatomic, strong) NSMutableArray *items;
+
+@property (nonatomic, strong) HNEntry *entry;
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification;
 

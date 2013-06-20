@@ -8,6 +8,7 @@
 
 #import "HNEntriesViewController.h"
 
+#import "HNEntry.h"
 #import "HNEntriesModel.h"
 #import "HNReaderTheme.h"
 
@@ -71,6 +72,7 @@
     NSArray *items = @[NSLocalizedString(@"Front Page", @"Front Page"), 
                       NSLocalizedString(@"Newest", @"Newest"), 
                       NSLocalizedString(@"Best", @"Best")];
+    
 	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
     [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 305.0f, 30.0f)];
     [_entriesControl setSegmentedControlStyle:UISegmentedControlStyleBar];
