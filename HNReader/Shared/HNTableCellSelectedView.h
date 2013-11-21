@@ -8,6 +8,4 @@
 
 @interface HNTableCellSelectedView : UIView
 
-@property (nonatomic, retain) UIColor *borderColor;
-
 @end

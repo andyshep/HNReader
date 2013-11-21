@@ -22,13 +22,16 @@
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
     self.webViewController = [[HNWebViewController alloc] init];
+    
     self.entriesViewController = [[HNEntriesViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_entriesViewController];
+    UINavigationController *webNavController = [[UINavigationController alloc] initWithRootViewController:_webViewController];
     
     [[navController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
+    [[webNavController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
     self.splitViewController = [[UISplitViewController alloc] init];
-    [_splitViewController setViewControllers:@[navController, _webViewController]];
+    [_splitViewController setViewControllers:@[navController, webNavController]];
     
     [_entriesViewController setDelegate:_webViewController];
     [_splitViewController setDelegate:_webViewController];

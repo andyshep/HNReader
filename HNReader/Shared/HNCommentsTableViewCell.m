@@ -8,7 +8,6 @@
 
 #import "HNCommentsTableViewCell.h"
 
-#import "HNTableCellBackgroundView.h"
 #import "HNTableCellSelectedView.h"
 
 @implementation HNCommentsTableViewCell
@@ -36,9 +35,6 @@
         [self.contentView addSubview:_timeLabel];
         [self.contentView addSubview:_commentTextLabel];
         
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
-        [self setBackgroundView:backgroundView];
-        
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         
@@ -51,8 +47,12 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    CGRect rect = self.contentView.frame;
+    
     [_usernameLabel setFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
-    [_timeLabel setFrame:CGRectMake(180.0f, 4.0f, 115.0f, 12.0f)];
+    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(rect) - 150.0f, 4.0f, 100.0f, 12.0f)];
+//    [_commentTextLabel setFrame:CGRectMake(10.0f, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
+    
 }
 
 @end

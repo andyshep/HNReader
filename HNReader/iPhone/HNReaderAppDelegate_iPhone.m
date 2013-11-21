@@ -16,7 +16,7 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
     [[_navigationController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     [self.window addSubview:[_navigationController view]];
     

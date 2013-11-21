@@ -100,6 +100,10 @@
     return YES;
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [_tableView reloadRowsAtIndexPaths:[_tableView ind] withRowAnimation:<#(UITableViewRowAnimation)#>]
+}
+
 #pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // first section is only the entry cell
@@ -257,13 +261,23 @@
         padding += 1;
     }
     
-    int adjustedWidth = CELL_CONTENT_WIDTH - padding;
+    CGFloat width = CELL_CONTENT_WIDTH;
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && UIInterfaceOrientationIsLandscape(orientation)) {
+//        width = CGRectGetHeight(self.view.frame) - 30.0f;
+        width = 550.0f;
+    }
+    
+    int adjustedWidth = width - padding;
     if (adjustedWidth % 2 != 0) {
         adjustedWidth += 1.0f;
     }
     
-    CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);        
-    CGSize size = [string sizeWithFont:[HNReaderTheme twelvePointlabelFont] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [HNReaderTheme twelvePointlabelFont]};
+    NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
+    CGSize size = [string boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
     CGRect commentTextRect = CGRectMake(padding, 
                                         CELL_CONTENT_MARGIN + 6, 
                                         adjustedWidth - CELL_CONTENT_MARGIN, 

@@ -13,13 +13,11 @@
 		F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */; };
 		F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */; };
 		F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */; };
-		F71E0F8A143F6BAE00141BD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F71E0F87143F6BAE00141BD9 /* Default@2x.png */; };
 		F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */; };
-		F74361651462C27B00D25502 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F74361631462C27B00D25502 /* Default-Landscape~ipad.png */; };
-		F74361661462C27B00D25502 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F74361641462C27B00D25502 /* Default~ipad.png */; };
 		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
 		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
 		F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */; };
+		F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F765CA02183C6F1200A76DBD /* Default-568h@2x.png */; };
 		F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */; };
 		F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */; };
 		F76ACA6614354265004CF9EA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
@@ -43,12 +41,14 @@
 		F775DB0F14340D7F00F93F48 /* HNReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DB0E14340D7F00F93F48 /* HNReaderTests.m */; };
 		F775DB3F1434110700F93F48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3D1434110700F93F48 /* MobileCoreServices.framework */; };
 		F775DB401434110700F93F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3E1434110700F93F48 /* SystemConfiguration.framework */; };
+		F7895D28183D9CE500677396 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D26183D9CE500677396 /* Default.png */; };
+		F7895D29183D9CE500677396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D27183D9CE500677396 /* Default@2x.png */; };
+		F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D2A183DC1E300677396 /* 163-glasses-1.png */; };
+		F7895D2D183DC29D00677396 /* 164-glasses-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D2C183DC29D00677396 /* 164-glasses-2.png */; };
 		F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6C81436615100DE8D6D /* HNWebViewController.m */; };
-		F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6D31436B82D00DE8D6D /* HNTableCellBackgroundView.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7BFE79D1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */; };
-		F7BFE79E1514EAEE0029AB9A /* Default~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */; };
+		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */; };
@@ -84,13 +84,11 @@
 		F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsTableViewCell.m; path = Shared/HNCommentsTableViewCell.m; sourceTree = "<group>"; };
 		F71E0F7C143F6AC100141BD9 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsViewController.h; path = Shared/HNCommentsViewController.h; sourceTree = "<group>"; };
 		F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsViewController.m; path = Shared/HNCommentsViewController.m; sourceTree = "<group>"; };
-		F71E0F87143F6BAE00141BD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsViewController.xib; path = Shared/HNCommentsViewController.xib; sourceTree = "<group>"; };
-		F74361631462C27B00D25502 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		F74361641462C27B00D25502 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "Resources/Default~ipad.png"; sourceTree = "<group>"; };
 		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
 		F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesViewController.xib; path = Shared/HNEntriesViewController.xib; sourceTree = "<group>"; };
+		F765CA02183C6F1200A76DBD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLoadMoreTableViewCell.h; path = Shared/HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
 		F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNLoadMoreTableViewCell.m; path = Shared/HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
 		F7698825143B614300BD53F6 /* HNTableCellSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableCellSelectedView.h; path = Shared/HNTableCellSelectedView.h; sourceTree = "<group>"; };
@@ -122,15 +120,16 @@
 		F775DB0E14340D7F00F93F48 /* HNReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReaderTests.m; sourceTree = "<group>"; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F7895D26183D9CE500677396 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
+		F7895D27183D9CE500677396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		F7895D2A183DC1E300677396 /* 163-glasses-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "163-glasses-1.png"; sourceTree = SOURCE_ROOT; };
+		F7895D2C183DC29D00677396 /* 164-glasses-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "164-glasses-2.png"; sourceTree = SOURCE_ROOT; };
 		F790C6C71436615000DE8D6D /* HNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNWebViewController.h; path = Shared/HNWebViewController.h; sourceTree = "<group>"; };
 		F790C6C81436615100DE8D6D /* HNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNWebViewController.m; path = Shared/HNWebViewController.m; sourceTree = "<group>"; };
-		F790C6D21436B82D00DE8D6D /* HNTableCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableCellBackgroundView.h; path = Shared/HNTableCellBackgroundView.h; sourceTree = "<group>"; };
-		F790C6D31436B82D00DE8D6D /* HNTableCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNTableCellBackgroundView.m; path = Shared/HNTableCellBackgroundView.m; sourceTree = "<group>"; };
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7A24071147577B000004287 /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7A24072147577B000004287 /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
-		F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad@2x.png"; path = "Resources/Default-Landscape~ipad@2x.png"; sourceTree = "<group>"; };
-		F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad@2x.png"; path = "Resources/Default~ipad@2x.png"; sourceTree = "<group>"; };
+		F7C4EEAB183D47DA001036E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
 		F7CD38F01475F9ED00EB57B5 /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
@@ -187,16 +186,16 @@
 		F75D3683143A056D005BCA23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7895D2C183DC29D00677396 /* 164-glasses-2.png */,
+				F7895D2A183DC1E300677396 /* 163-glasses-1.png */,
+				F7895D26183D9CE500677396 /* Default.png */,
+				F7895D27183D9CE500677396 /* Default@2x.png */,
+				F765CA02183C6F1200A76DBD /* Default-568h@2x.png */,
 				F747AAF81491358600F3C84F /* ipad-formatting.html */,
 				F747AAF91491358600F3C84F /* iphone-formatting.html */,
 				F7F0008A147C770100328C1D /* hn-icon-57.png */,
 				F7F0008B147C770100328C1D /* hn-icon-72.png */,
 				F7F0008C147C770100328C1D /* hn-icon-114.png */,
-				F74361631462C27B00D25502 /* Default-Landscape~ipad.png */,
-				F7BFE79B1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png */,
-				F74361641462C27B00D25502 /* Default~ipad.png */,
-				F7BFE79C1514EAEE0029AB9A /* Default~ipad@2x.png */,
-				F71E0F87143F6BAE00141BD9 /* Default@2x.png */,
 				F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */,
 				F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */,
 			);
@@ -212,8 +211,6 @@
 				F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */,
 				F7E86FBC14364CD800A09334 /* HNEntriesTableViewCell.h */,
 				F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */,
-				F790C6D21436B82D00DE8D6D /* HNTableCellBackgroundView.h */,
-				F790C6D31436B82D00DE8D6D /* HNTableCellBackgroundView.m */,
 				F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */,
 				F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */,
 			);
@@ -290,6 +287,7 @@
 				F775DB1814340EFF00F93F48 /* Shared */,
 				F775DAEB14340D7F00F93F48 /* iPhone */,
 				F775DAF214340D7F00F93F48 /* iPad */,
+				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);
 			path = HNReader;
@@ -436,7 +434,7 @@
 		F775DACC14340D7E00F93F48 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -462,20 +460,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
+				F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */,
+				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
 				F775DAF114340D7F00F93F48 /* MainWindow_iPhone.xib in Resources */,
 				F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */,
 				F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */,
-				F71E0F8A143F6BAE00141BD9 /* Default@2x.png in Resources */,
 				F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */,
-				F74361651462C27B00D25502 /* Default-Landscape~ipad.png in Resources */,
-				F74361661462C27B00D25502 /* Default~ipad.png in Resources */,
+				F7895D28183D9CE500677396 /* Default.png in Resources */,
 				F7F0008D147C770100328C1D /* hn-icon-57.png in Resources */,
 				F7F0008E147C770100328C1D /* hn-icon-72.png in Resources */,
+				F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */,
 				F7F0008F147C770100328C1D /* hn-icon-114.png in Resources */,
 				F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */,
+				F7895D2D183DC29D00677396 /* 164-glasses-2.png in Resources */,
+				F7895D29183D9CE500677396 /* Default@2x.png in Resources */,
 				F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */,
-				F7BFE79D1514EAEE0029AB9A /* Default-Landscape~ipad@2x.png in Resources */,
-				F7BFE79E1514EAEE0029AB9A /* Default~ipad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +550,6 @@
 				F7E86FCF14364CE100A09334 /* HNEntry.m in Sources */,
 				F7E86FD014364CE100A09334 /* HNEntriesModel.m in Sources */,
 				F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */,
-				F790C6D41436B82E00DE8D6D /* HNTableCellBackgroundView.m in Sources */,
 				F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */,
 				F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */,
 				F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */,
@@ -622,7 +620,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -633,12 +636,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -650,7 +658,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -658,12 +671,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "READABLE_USE_LIBICU=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -677,6 +695,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -686,6 +706,7 @@
 					"${PODS_HEADERS_SEARCH_PATHS}",
 				);
 				INFOPLIST_FILE = "HNReader/HNReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -697,6 +718,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EDB044C889942B9B7B7B864 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -706,6 +729,7 @@
 					"${PODS_HEADERS_SEARCH_PATHS}",
 				);
 				INFOPLIST_FILE = "HNReader/HNReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

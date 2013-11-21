@@ -8,7 +8,6 @@
 
 #import "HNEntriesTableViewCell.h"
 
-#import "HNTableCellBackgroundView.h"
 #import "HNTableCellSelectedView.h"
 
 @implementation HNEntriesTableViewCell
@@ -37,9 +36,6 @@
         [self.contentView addSubview:_siteDomainLabel];
         [self.contentView addSubview:_totalPointsLabel];
         
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
-        [self setBackgroundView:backgroundView];
-        
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         
@@ -52,9 +48,12 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [_siteTitleLabel setFrame:CGRectMake(20.0f, 4.0f, 272.0f, 40.0f)];
-    [_siteDomainLabel setFrame:CGRectMake(20.0f, 44.0f, 162.0f, 21.0f)];
-    [_totalPointsLabel setFrame:CGRectMake(204.0f, 44.0f, 80.0f, 21.0f)];
+    // TODO: set based on orientation
+    CGRect rect = self.contentView.frame;
+    
+    [_siteTitleLabel setFrame:CGRectMake(10.0f, 4.0f, CGRectGetWidth(rect) - 10.0f, 40.0f)];
+    [_siteDomainLabel setFrame:CGRectMake(10.0f, 44.0f, CGRectGetWidth(rect) - 100.0f, 21.0f)];
+    [_totalPointsLabel setFrame:CGRectMake(CGRectGetWidth(rect) - 100.0f, 44.0f, 80.0f, 21.0f)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

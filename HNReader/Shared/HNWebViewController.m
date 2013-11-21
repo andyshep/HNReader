@@ -31,9 +31,9 @@
         [_webView setDelegate:self];
         [_webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
-        self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
-        [_toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-        [_toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+//        self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+//        [_toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+//        [_toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     }
     
     return self;
@@ -44,29 +44,37 @@
 }
 
 - (void)loadView {
+    [super loadView];
+    
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
     
     [_webView setFrame:frame];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        // load a toolbar for our splitview (pad only)
-
-        [_toolbar setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
-        [_webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
-        [contentView addSubview:_toolbar];
-    }
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//        // load a toolbar for our splitview (pad only)
+//
+//        [_toolbar setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
+//        [_webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
+//        [contentView addSubview:_toolbar];
+//    }
     
     [contentView addSubview:_webView];
+    [self.view addSubview:contentView];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    NSLog(@"webView: %@", NSStringFromCGRect(self.webView.frame));
     
-    self.view = contentView;
+    [self.webView setFrame:self.view.bounds];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"R" style:UIBarButtonItemStyleBordered target:self action:@selector(makeReadable)];
+        UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
         [[self navigationItem] setRightBarButtonItem:button];
         
         // WTF
@@ -76,11 +84,11 @@
         NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
         [defaultCenter addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
         [defaultCenter addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
-    
-        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"R" style:UIBarButtonItemStyleBordered target:self action:@selector(makeReadable)];
-        [self.items addObject:spacer];
-        [self.items addObject:button];
+        
+        UIImage *image = [UIImage imageNamed:@"163-glasses-1.png"];
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
+
+        [[self navigationItem] setRightBarButtonItem:button];
     }
 }
 
@@ -105,20 +113,23 @@
 	barButtonItem.title = NSLocalizedString(@"News", @"News popover title");
 	barButtonItem.style = UIBarButtonItemStyleBordered;
 	
-	[self.items insertObject:barButtonItem atIndex:0];
+//	[self.items insertObject:barButtonItem atIndex:0];
+    
+    [[self navigationItem] setLeftBarButtonItem:barButtonItem];
     
     // don't use animation so there isn't a ui artifact when launching in landscape
     // really don't need it here since this is called during rotations
-	[_toolbar setItems:self.items animated:NO];
+//	[_toolbar setItems:self.items animated:NO];
 	self.popoverViewController = pc;
 }
 
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-	[self.items removeObjectAtIndex:0];
+    
+    [[self navigationItem] setLeftBarButtonItem:nil];
     
     // don't use animation so there isn't a ui artifact when launching in landscape
     // really don't need it here since this is called during rotations
-	[_toolbar setItems:self.items animated:NO];
+//	[_toolbar setItems:self.items animated:NO];
     self.popoverViewController = nil;
 }
 

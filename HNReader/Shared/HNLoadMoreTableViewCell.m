@@ -8,7 +8,6 @@
 
 #import "HNLoadMoreTableViewCell.h"
 
-#import "HNTableCellBackgroundView.h"
 #import "HNTableCellSelectedView.h"
 
 @implementation HNLoadMoreTableViewCell
@@ -22,9 +21,6 @@
         
         [self.contentView addSubview:_loadMoreLabel];
         
-        HNTableCellBackgroundView *backgroundView = [[HNTableCellBackgroundView alloc] initWithFrame:CGRectZero];
-        [self setBackgroundView:backgroundView];
-        
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
     }
@@ -34,8 +30,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    CGRect rect = self.contentView.frame;
     
-    [_loadMoreLabel setFrame:CGRectMake(0.0f, 0.0f, 320.0f, 72.0f)];
+    [_loadMoreLabel setFrame:CGRectMake(0.0f, 0.0f, CGRectGetWidth(rect), 72.0f)];
 }
 
 @end

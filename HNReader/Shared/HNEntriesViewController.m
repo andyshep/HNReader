@@ -74,8 +74,7 @@
                       NSLocalizedString(@"Best", @"Best")];
     
 	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
-    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 305.0f, 30.0f)];
-    [_entriesControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 309.0f, 30.0f)];
     [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
     [_entriesControl setSelectedSegmentIndex:0];
     
