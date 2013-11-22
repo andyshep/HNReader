@@ -130,8 +130,6 @@
     if ([indexPath row] >= [_model countOfEntries]) {
         static NSString *CellIdentifier = @"HNLoadMoreTableViewCell";
         
-        // TODO: this should also be a custom cell
-        // so you can give it a gradient and matching style.
         HNLoadMoreTableViewCell *cell = (HNLoadMoreTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[HNLoadMoreTableViewCell alloc] init];

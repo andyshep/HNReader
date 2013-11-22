@@ -17,8 +17,9 @@
 #import "HNWebViewController.h"
 #import "HNReaderTheme.h"
 
+#import "HNCommentTools.h"
+
 #define DEFAULT_CELL_HEIGHT 44.0f
-#define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
 
 @interface HNCommentsViewController ()
@@ -101,7 +102,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [_tableView reloadRowsAtIndexPaths:[_tableView ind] withRowAnimation:<#(UITableViewRowAnimation)#>]
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - UITableView
@@ -127,8 +128,8 @@
         NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
         HNComment *comment = (HNComment *)comments[indexPath.row];
             
-        CGRect commentTextRect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
-        CGFloat height = MAX(commentTextRect.size.height, DEFAULT_CELL_HEIGHT);
+        CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
+        CGFloat height = MAX(rect.size.height, DEFAULT_CELL_HEIGHT);
         
         return height + (CELL_CONTENT_MARGIN * 2);
     }
@@ -164,6 +165,7 @@
         
         CGRect commentTextRect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
         [[cell commentTextLabel] setFrame:commentTextRect];
+//        [[cell commentTextLabel] setBackgroundColor:[UIColor yellowColor]];
         [[cell usernameLabel] setFrame:CGRectMake(commentTextRect.origin.x, 4.0f, commentTextRect.size.width, 12.0f)];
         
         cell.usernameLabel.text = comment.username;
@@ -253,36 +255,7 @@
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
-    // knock the intentation padding down by a factor of 3
-    // then adjust for cell margin and make sure the padding is even.  
-    // otherwise the comment text is antialias'd
-    padding = CELL_CONTENT_MARGIN + (padding / 3);
-    if (padding % 2 != 0) {
-        padding += 1;
-    }
-    
-    CGFloat width = CELL_CONTENT_WIDTH;
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && UIInterfaceOrientationIsLandscape(orientation)) {
-//        width = CGRectGetHeight(self.view.frame) - 30.0f;
-        width = 550.0f;
-    }
-    
-    int adjustedWidth = width - padding;
-    if (adjustedWidth % 2 != 0) {
-        adjustedWidth += 1.0f;
-    }
-    
-    CGSize constraint = CGSizeMake(floorf(adjustedWidth) - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [HNReaderTheme twelvePointlabelFont]};
-    NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
-    CGSize size = [string boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
-    CGRect commentTextRect = CGRectMake(padding, 
-                                        CELL_CONTENT_MARGIN + 6, 
-                                        adjustedWidth - CELL_CONTENT_MARGIN, 
-                                        size.height);
-    return commentTextRect;
+    return [HNCommentTools frameForString:string withIndentPadding:padding];
 }
 
 @end

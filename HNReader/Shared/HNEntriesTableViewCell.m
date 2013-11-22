@@ -16,19 +16,19 @@
     if ((self = [super init])) {
         self.siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_siteTitleLabel setNumberOfLines:2];
-        [_siteTitleLabel setFont:[HNReaderTheme fourteenPointlabelFont]];
+        [_siteTitleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
         [_siteTitleLabel setAdjustsFontSizeToFitWidth:YES];
         [_siteTitleLabel setBackgroundColor:[UIColor clearColor]];
         
         self.siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
-        [_siteDomainLabel setFont:[HNReaderTheme twelvePointlabelFont]];
+        [_siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
         [_siteDomainLabel setBackgroundColor:[UIColor clearColor]];
         [_siteDomainLabel setTextColor:[UIColor grayColor]];
         
         self.totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_totalPointsLabel setTextAlignment:NSTextAlignmentRight];
-        [_totalPointsLabel setFont:[HNReaderTheme twelvePointlabelFont]];
+        [_totalPointsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
         [_totalPointsLabel setBackgroundColor:[UIColor clearColor]];
         [_totalPointsLabel setTextColor:[UIColor grayColor]];
         
