@@ -12,15 +12,15 @@
 
 #pragma mark - Fonts
 + (UIFont *)tenPointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:10];
+	return [UIFont fontWithName:@"Verdana" size:10.0f];
 }
 
 + (UIFont *)twelvePointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:12];
+	return [UIFont fontWithName:@"Verdana" size:12.0f];
 }
 
 + (UIFont *)fourteenPointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:14];
+	return [UIFont fontWithName:@"Verdana" size:14.0f];
 }
 
 #pragma mark - Colors

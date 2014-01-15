@@ -11,5 +11,8 @@
 @property (nonatomic, strong) UILabel *usernameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *commentTextLabel;
+@property (nonatomic, assign) NSInteger padding;
+
+- (void)setCommentText:(NSString *)commentText;
 
 @end

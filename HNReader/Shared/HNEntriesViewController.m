@@ -34,7 +34,7 @@
 
 @implementation HNEntriesViewController
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super initWithNibName:@"HNEntriesViewController" bundle:nil])) {
         self.model = [[HNEntriesModel alloc] init];
         
@@ -65,6 +65,9 @@
     
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
+    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
+    [self.tableView registerClass:[HNLoadMoreTableViewCell class] forCellReuseIdentifier:@"HNLoadMoreTableViewCell"];
+    
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     
@@ -74,8 +77,8 @@
                       NSLocalizedString(@"Best", @"Best")];
     
 	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
-    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 309.0f, 30.0f)];
-    [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
+    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 290.0f, 30.0f)];
+    [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
     [_entriesControl setSelectedSegmentIndex:0];
     
     [_entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
@@ -126,40 +129,26 @@
     return DEFAULT_CELL_HEIGHT;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= [_model countOfEntries]) {
-        static NSString *CellIdentifier = @"HNLoadMoreTableViewCell";
+        return [tableView dequeueReusableCellWithIdentifier:@"HNLoadMoreTableViewCell"];
+    } else {
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNEntriesTableViewCell"];
+        HNEntry *entry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
         
-        HNLoadMoreTableViewCell *cell = (HNLoadMoreTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[HNLoadMoreTableViewCell alloc] init];
-        }
-        
-        return cell;
-    }
-    else {
-        static NSString *CellIdentifier = @"HNEntriesTableViewCell";
-        
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[HNEntriesTableViewCell alloc] init];
-        }
-        
-        HNEntry *aEntry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
-        
-        cell.siteTitleLabel.text = aEntry.title;
-        cell.siteDomainLabel.text = aEntry.siteDomainURL;
-        cell.totalPointsLabel.text = aEntry.totalPoints;
+        cell.siteTitleLabel.text = entry.title;
+        cell.siteDomainLabel.text = entry.siteDomainURL;
+        cell.totalPointsLabel.text = entry.totalPoints;
         
         return cell;
     }
 }
 
-- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= [_model countOfEntries]) {
         // load more entries..
         [_model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
-        [[aTableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
         HNEntry *selectedEntry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];

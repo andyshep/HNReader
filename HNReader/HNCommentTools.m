@@ -21,11 +21,11 @@
         padding += 1;
     }
     
-    CGFloat width = 320.0f;
+    CGFloat width = 310.0f;
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && UIInterfaceOrientationIsLandscape(orientation)) {
         // width = CGRectGetHeight(self.view.frame) - 30.0f;
-        width = 550.0f;
+        width = 560.0f;
     }
     
     int adjustedWidth = width - padding;
@@ -34,16 +34,11 @@
     }
     
     CGSize constraint = CGSizeMake(floorf(adjustedWidth) - COMMENT_CELL_MARGIN, 20000.0f);
-    
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]};
-    
-    CGSize anotherSize = [string sizeWithAttributes:attributes];
-    NSLog(@"constraint: %@", NSStringFromCGSize(constraint));
-    NSLog(@"anotherSize: %@", NSStringFromCGSize(anotherSize));
     
     NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
     CGSize size = [string boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
-    return CGRectMake(padding, COMMENT_CELL_MARGIN + 6, adjustedWidth - COMMENT_CELL_MARGIN, size.height);
+    return CGRectMake(padding, 0.0f, adjustedWidth, size.height);
 }
 
 @end

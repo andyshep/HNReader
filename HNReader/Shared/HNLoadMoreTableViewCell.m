@@ -12,8 +12,8 @@
 
 @implementation HNLoadMoreTableViewCell
 
-- (id)init {
-    if ((self = [super init])) {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         self.loadMoreLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_loadMoreLabel setTextAlignment:NSTextAlignmentCenter];
         [_loadMoreLabel setTextColor:[UIColor darkGrayColor]];

@@ -20,7 +20,7 @@
 #import "HNCommentTools.h"
 
 #define DEFAULT_CELL_HEIGHT 44.0f
-#define CELL_CONTENT_MARGIN 10.0f
+#define CELL_CONTENT_MARGIN 20.0f
 
 @interface HNCommentsViewController ()
 
@@ -64,12 +64,13 @@
 }
 
 - (void)viewDidLoad {
-    [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
-    
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
 
     [_model loadComments];
+    
+    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
+    [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -101,10 +102,6 @@
     return YES;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
-}
-
 #pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // first section is only the entry cell
@@ -131,46 +128,28 @@
         CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
         CGFloat height = MAX(rect.size.height, DEFAULT_CELL_HEIGHT);
         
-        return height + (CELL_CONTENT_MARGIN * 2);
+        return height + (CELL_CONTENT_MARGIN + 3.0f);
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        // return entry header cell
-        static NSString *CellIdentifier = @"HNEntriesTableViewCell";
-        
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[HNEntriesTableViewCell alloc] init];
-        }
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNEntriesTableViewCell"];
         
         cell.siteTitleLabel.text = self.entry.title;
         cell.siteDomainLabel.text = self.entry.siteDomainURL;
         cell.totalPointsLabel.text = self.entry.totalPoints;
         
         return cell;
-    }
-    else {
-        static NSString *CellIdentifier = @"HNCommentsTableViewCell";
-        
-        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[HNCommentsTableViewCell alloc] init];
-        }
-        
+    } else {
+        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
         NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
         HNComment *comment = (HNComment *)comments[indexPath.row];
         
-        CGRect commentTextRect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
-        [[cell commentTextLabel] setFrame:commentTextRect];
-//        [[cell commentTextLabel] setBackgroundColor:[UIColor yellowColor]];
-        [[cell usernameLabel] setFrame:CGRectMake(commentTextRect.origin.x, 4.0f, commentTextRect.size.width, 12.0f)];
-        
-        cell.usernameLabel.text = comment.username;
-        cell.commentTextLabel.text = comment.commentString;
-        cell.timeLabel.text = comment.timeSinceCreation;
+        [cell.usernameLabel setText:comment.username];
+        [cell.timeLabel setText:comment.timeSinceCreation];
+        [cell setCommentText:comment.commentString];
+        [cell setPadding:comment.padding];
         
         return cell;
     }
@@ -205,7 +184,6 @@
 }
 
 - (void)commentsDidLoad {
-    // TODO: animate
     [_tableView reloadData];
 }
 

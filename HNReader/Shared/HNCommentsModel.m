@@ -146,7 +146,7 @@
                 int commentPadding = 0;
                 
                 // make sure comment wasn't deleted.
-                if ([[comHead children] count] > 0) {
+                if ([[comHead children] count] > 1) {
                     commentUserName = [[[comment findChildOfClass:@"comhead"] firstChild] contents];
                     HTMLNode *commentTextSpan = [comment findChildOfClass:@"comment"];
                     commentPadding = [[[comment findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];

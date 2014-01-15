@@ -37,7 +37,7 @@ typedef enum  {
     _entries = [entries mutableCopy];
 }
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         self.queue = [[NSOperationQueue alloc] init];
         self.entries = [[NSMutableArray alloc] initWithCapacity:30];

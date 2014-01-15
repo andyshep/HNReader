@@ -7,13 +7,13 @@
 //
 
 #import "HNCommentsTableViewCell.h"
-
 #import "HNTableCellSelectedView.h"
+#import "HNCommentTools.h"
 
 @implementation HNCommentsTableViewCell
 
-- (id)init {
-    if ((self = [super init])) {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_usernameLabel setBackgroundColor:[UIColor clearColor]];
         [_usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
@@ -37,22 +37,33 @@
         
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
-        
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-
+    
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGRect rect = self.contentView.frame;
-    
-//    [_usernameLabel setFrame:CGRectMake(10.0f, 4.0f, 100.0f, 12.0f)];
-    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(rect) - 150.0f, 4.0f, 100.0f, 12.0f)];
-//    [_commentTextLabel setFrame:CGRectMake(10.0f, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
-    
+    CGRect rect = [HNCommentTools frameForString:self.commentTextLabel.text withIndentPadding:self.padding];
+    [_usernameLabel setFrame:CGRectMake(CGRectGetMinX(rect), 4.0f, 100.0f, 15.0f)];
+    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(self.contentView.frame) - 150.0f, 4.0f, 100.0f, 15.0f)];
+    [_commentTextLabel setFrame:CGRectMake(CGRectGetMinX(rect), 20.0f, CGRectGetWidth(rect), CGRectGetHeight(rect))];
+}
+
+- (NSString *)reuseIdentifier {
+    return NSStringFromClass([self class]);
+}
+
+- (void)setCommentText:(NSString *)commentText {
+    self.commentTextLabel.text = commentText;
+    [self setNeedsLayout];
+}
+
+- (void)setPadding:(NSInteger)padding {
+    _padding = padding;
+    [self setNeedsLayout];
 }
 
 @end

@@ -22,7 +22,7 @@
 
 @implementation HNWebViewController
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         self.items = [NSMutableArray arrayWithCapacity:2];
         
