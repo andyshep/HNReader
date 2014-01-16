@@ -12,5 +12,7 @@
     @import UIKit;
     @import Foundation;
 
+    #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import <AFNetworking/AFNetworking.h>
     #import "HNReaderTheme.h"
 #endif

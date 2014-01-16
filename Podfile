@@ -1,6 +1,7 @@
-platform :ios, '6.0'
+platform :ios, '7.0'
 
 pod 'TTTAttributedLabel'
-pod 'AFNetworking', '~> 1.3.0'
+pod 'AFNetworking'
 pod 'Mantle'
 pod 'MWFeedParser'
+pod 'ReactiveCocoa'

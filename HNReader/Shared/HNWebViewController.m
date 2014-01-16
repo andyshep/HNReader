@@ -30,10 +30,6 @@
         [_webView setScalesPageToFit:YES];
         [_webView setDelegate:self];
         [_webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-        
-//        self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
-//        [_toolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-//        [_toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     }
     
     return self;
@@ -51,21 +47,11 @@
     
     [_webView setFrame:frame];
     
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//        // load a toolbar for our splitview (pad only)
-//
-//        [_toolbar setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 44.0f)];
-//        [_webView setFrame:CGRectMake(frame.origin.x, 44.0f, frame.size.width, frame.size.height - 44.0f)];
-//        [contentView addSubview:_toolbar];
-//    }
-    
     [contentView addSubview:_webView];
     [self.view addSubview:contentView];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    NSLog(@"webView: %@", NSStringFromCGRect(self.webView.frame));
-    
     [self.webView setFrame:self.view.bounds];
 }
 

@@ -17,6 +17,7 @@
 		F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */; };
 		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
 		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
+		F7595C4B18879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F7595C4A18879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.m */; };
 		F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */; };
 		F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F765CA02183C6F1200A76DBD /* Default-568h@2x.png */; };
 		F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */; };
@@ -90,6 +91,8 @@
 		F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsViewController.xib; path = Shared/HNCommentsViewController.xib; sourceTree = "<group>"; };
 		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
+		F7595C4918879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+HNReactiveExtension.h"; sourceTree = "<group>"; };
+		F7595C4A18879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+HNReactiveExtension.m"; sourceTree = "<group>"; };
 		F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesViewController.xib; path = Shared/HNEntriesViewController.xib; sourceTree = "<group>"; };
 		F765CA02183C6F1200A76DBD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLoadMoreTableViewCell.h; path = Shared/HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 				F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */,
 				F71A8495183EBE61009AF2D7 /* HNCommentTools.h */,
 				F71A8496183EBE61009AF2D7 /* HNCommentTools.m */,
+				F7595C4918879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.h */,
+				F7595C4A18879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
+				F7595C4B18879A8F000CB1BB /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
