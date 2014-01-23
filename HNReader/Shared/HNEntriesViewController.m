@@ -18,7 +18,7 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"
 
-#define DEFAULT_CELL_HEIGHT 72.0f
+const CGFloat HNDefaultCellHeight = 72.0f;
 
 @interface HNEntriesViewController ()
 
@@ -26,7 +26,6 @@
 @property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
-
 - (NSArray *)indexPathsToInsert;
 - (NSArray *)indexPathsToDelete;
 
@@ -37,27 +36,11 @@
 - (instancetype)init {
     if ((self = [super initWithNibName:@"HNEntriesViewController" bundle:nil])) {
         self.model = [[HNEntriesModel alloc] init];
-        
-        [_model addObserver:self
-                forKeyPath:@"entries" 
-                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                   context:@selector(entriesDidLoad)];
-        
-        [_model addObserver:self
-                forKeyPath:@"error" 
-                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                   context:@selector(operationDidFail)];
-        
         self.delegate = nil;
         self.requestInProgress = NO;
     }
     
     return self;
-}
-
-- (void)dealloc {
-    [_model removeObserver:self forKeyPath:@"entries"];
-    [_model removeObserver:self forKeyPath:@"error"];
 }
 
 - (void)viewDidLoad {
@@ -81,15 +64,25 @@
     [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
     [_entriesControl setSelectedSegmentIndex:0];
     
-    [_entriesControl addTarget:self action:@selector(loadEntries) forControlEvents:UIControlEventValueChanged];
-    
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:_entriesControl];
     [_bottomToolbar setItems:@[buttonItem]];
     
     [_bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
     [_entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
     
-    [self loadEntries];
+    [RACObserve(self.model, entries) subscribeNext:^(NSArray *entries) {
+        [self entriesDidLoad];
+    }];
+    
+    [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+        if (error) {
+            [self operationDidFail];
+        }
+    }];
+    
+    [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
+        [self loadEntries];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -126,7 +119,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return DEFAULT_CELL_HEIGHT;
+    return HNDefaultCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,16 +150,7 @@
     }
 }
 
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    SEL selector = (SEL)context;
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [self performSelector:selector];
-#pragma clang diagnostic pop
-}
-
+// TODO: refactor and cancel operations
 - (void)loadEntries {
     if (_requestInProgress) {
         return;
@@ -218,27 +202,27 @@
 }
 
 - (NSArray *)indexPathsToInsert {
-    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *indexPaths = [NSMutableArray array];
     int count = [_model countOfEntries];
     
     for (int i = 0; i < count; i++) {
-        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [_indexPaths addObject:_indexPath];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [indexPaths addObject:indexPath];
     }
     
-    return [NSArray arrayWithArray:_indexPaths];
+    return [NSArray arrayWithArray:indexPaths];
 }
 
 - (NSArray *)indexPathsToDelete {
-    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *indexPaths = [NSMutableArray array];
     int count = [_tableView numberOfRowsInSection:0];
     
     for (int i = 0; i < count; i++) {
-        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [_indexPaths addObject:_indexPath];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [indexPaths addObject:indexPath];
     }
     
-    return [NSArray arrayWithArray:_indexPaths];
+    return [NSArray arrayWithArray:indexPaths];
 }
 
 @end

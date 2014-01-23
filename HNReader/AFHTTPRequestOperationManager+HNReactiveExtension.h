@@ -10,7 +10,6 @@
 
 @interface AFHTTPRequestOperationManager (HNReactiveExtension)
 
-//- (RACSignal *)signalForGET:(NSString *)URLString parameters:(NSDictionary *)parameters;
 - (RACSignal *)signalForRequest:(NSURLRequest *)request;
 
 @end

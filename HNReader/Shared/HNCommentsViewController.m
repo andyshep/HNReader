@@ -43,24 +43,9 @@
     if ((self = [super initWithNibName:@"HNCommentsViewController" bundle:nil])) {
         self.entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:entry];
-        
-        [_model addObserver:self
-                forKeyPath:@"commentsInfo" 
-                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                   context:@selector(commentsDidLoad)];
-        
-        [_model addObserver:self
-                forKeyPath:@"error" 
-                   options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) 
-                   context:@selector(operationDidFail)];
     }
     
     return self;
-}
-
-- (void)dealloc {
-    [_model removeObserver:self forKeyPath:@"commentsInfo"];
-    [_model removeObserver:self forKeyPath:@"error"];
 }
 
 - (void)viewDidLoad {
@@ -71,6 +56,16 @@
     
     [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
     [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
+    
+    [RACObserve(self.model, commentsInfo) subscribeNext:^(id commentsInfo) {
+        [self commentsDidLoad];
+    }];
+    
+    [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+        if (error) {
+            [self operationDidFail];
+        }
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -171,16 +166,6 @@
 
 - (void)loadComments {
     [_model loadComments];
-}
-
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    SEL selector = (SEL)context;
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [self performSelector:selector];
-#pragma clang diagnostic pop    
 }
 
 - (void)commentsDidLoad {

@@ -8,7 +8,6 @@
 
 #import "HNCommentsModel.h"
 
-#import "AFHTTPRequestOperation.h"
 #import "HNEntry.h"
 #import "HTMLParser.h"
 #import "HTMLNode.h"
@@ -20,10 +19,9 @@
 
 @interface HNCommentsModel ()
 
-@property (nonatomic, strong) NSOperationQueue *queue;
-
 - (NSString *)cacheFilePath;
 - (NSString *)formatedCommentText:(NSString *)commentText;
+- (NSOperationQueue *)operationQueue;
 
 @end
 
@@ -32,7 +30,6 @@
 - (id)initWithEntry:(HNEntry *)entry {
     if ((self = [super init])) {
         self.entry = entry;
-        self.queue = [[NSOperationQueue alloc] init];
     }
     
     return self;
@@ -94,7 +91,6 @@
 
 -(void)loadCommentsForRequest:(NSURLRequest *)request {
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *parserError = nil;
         NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -187,11 +183,11 @@
         self.error = err;
     }];
     
-    [_queue addOperation:operation];
+    [[self operationQueue] addOperation:operation];
 }
 
 - (void)cancelRequest {
-    [_queue cancelAllOperations];
+//    [[self operationQueue] cancelAllOperations];
 }
 
 - (NSString *)formatedCommentText:(NSString *)commentText {
@@ -200,6 +196,10 @@
     commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     return commentText;
+}
+
+- (NSOperationQueue *)operationQueue {
+    return [[AFHTTPRequestOperationManager manager] operationQueue];
 }
 
 @end

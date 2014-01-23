@@ -10,6 +10,7 @@
 
 #import "AFHTTPRequestOperation.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "AFHTTPRequestOperationManager+HNReactiveExtension.h"
 
 #import "HNEntry.h"
 #import "HTMLParser.h"
@@ -23,11 +24,10 @@ typedef enum  {
 
 @interface HNEntriesModel ()
 
-@property (nonatomic, strong) NSOperationQueue *queue;
-
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index;
 - (NSURL *)pageURLForIndex:(NSUInteger)index;
 - (int)cacheTimeForPageIndex:(NSUInteger)index;
+- (NSOperationQueue *)operationQueue;
 
 @end
 
@@ -39,9 +39,7 @@ typedef enum  {
 
 - (instancetype)init {
     if ((self = [super init])) {
-        self.queue = [[NSOperationQueue alloc] init];
-        self.entries = [[NSMutableArray alloc] initWithCapacity:30];
-        
+        self.entries = [NSMutableArray array];
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     
@@ -150,7 +148,6 @@ typedef enum  {
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", _moreEntriesLink]];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0f];
     
     // we can keep the old entries around if we're loading more
@@ -159,19 +156,33 @@ typedef enum  {
     [self loadEntriesForRequest:request atCachedFilePath:cachedFilePath];
 }
 
-- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSError *aParserError = nil;
-        NSString *rawHTML = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&aParserError];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [[manager signalForRequest:request] subscribeNext:^(AFHTTPRequestOperation *operation) {
+//        NSLog(@"obj: %@", operation.responseString);
         
-        if (aParserError) {
-            self.error = aParserError;
-            return;
-        }
-        
+        [self parseResponse:operation.responseData withCachedFilePath:cachedFilePath];
+    } error:^(NSError *err) {
+        // log network connection error;
+        self.error = err;
+    } completed:^{
+        //
+    }];
+    
+    [manager signalForRequest:request];
+}
+
+- (void)handleResponse {
+    // TODO:
+}
+
+- (void)parseResponse:(NSData *)response withCachedFilePath:(NSString *)cachedFilePath {
+    NSError *error = nil;
+    NSString *rawHTML = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+    HTMLParser *parser = [[HTMLParser alloc] initWithString:rawHTML error:&error];
+    
+    if (!error) {
         HTMLNode *bodyNode = [parser body];
         
         // entries table is the third table on screen
@@ -179,7 +190,7 @@ typedef enum  {
         NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
         
         HTMLNode *_currentNode = tableNodes[0];
-        NSMutableArray *parsedEntries = [NSMutableArray arrayWithCapacity:30];
+        NSMutableArray *entries = [NSMutableArray arrayWithCapacity:30];
         
         while ([_currentNode allContents] != NULL) {
             
@@ -212,7 +223,7 @@ typedef enum  {
                     entry.commentsCount = [[commentTdNode children][4] contents];
                 }
                 
-                [parsedEntries addObject:entry];
+                [entries addObject:entry];
             }
             
             // move to the next node
@@ -226,36 +237,21 @@ typedef enum  {
         HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
         if (moreEntriesNode != NULL) {
             NSString *moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
-            
             if (![moreEntriesLink hasPrefix:@"/"]) {
-                moreEntriesLink = [NSString stringWithFormat:@"/%@", _moreEntriesLink];
+                moreEntriesLink = [NSString stringWithFormat:@"/%@", moreEntriesLink];
             }
             
             self.moreEntriesLink = moreEntriesLink;
         }
-        else {
-            self.error = [self parserError];
-            return;
-        }
         
-        // now we set the entires
         [self willChangeValueForKey:@"entries"];
         [self.entries removeAllObjects];
-        [self.entries addObjectsFromArray:parsedEntries];
+        [self.entries addObjectsFromArray:[NSArray arrayWithArray:entries]];
         [self didChangeValueForKey:@"entries"];
         
         // save the entries the disk for next time
         [NSKeyedArchiver archiveRootObject:_entries toFile:cachedFilePath];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        // log network connection error;
-        self.error = err;
-    }];
-        
-    [_queue addOperation:operation];
-}
-
-- (void)handleResponse {
-    // TODO:
+    }
 }
 
 - (NSError *)parserError {
@@ -264,6 +260,10 @@ typedef enum  {
     NSError *parserError = [NSError errorWithDomain:@"org.andyshep.HNReader" code:100 userInfo:errorDetail];
     
     return parserError;
+}
+
+- (NSOperationQueue *)operationQueue {
+    return [[AFHTTPRequestOperationManager manager] operationQueue];
 }
 
 @end
