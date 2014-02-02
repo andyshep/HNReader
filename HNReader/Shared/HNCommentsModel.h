@@ -10,13 +10,12 @@
 
 @interface HNCommentsModel : NSObject
 
-@property (nonatomic, copy) NSMutableDictionary *commentsInfo;
+@property (nonatomic, copy, readonly) NSDictionary *comments;
 @property (nonatomic, copy) NSError *error;
 @property (nonatomic, strong) HNEntry *entry;
 
 - (id)initWithEntry:(HNEntry *)entry;
 
-- (void)cancelRequest;
 - (void)loadComments;
 - (void)loadCommentsForRequest:(NSURLRequest *)request;
 

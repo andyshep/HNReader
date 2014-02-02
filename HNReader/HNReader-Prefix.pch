@@ -14,5 +14,6 @@
 
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <AFNetworking/AFNetworking.h>
+    #import <libextobjc/EXTScope.h>
     #import "HNReaderTheme.h"
 #endif

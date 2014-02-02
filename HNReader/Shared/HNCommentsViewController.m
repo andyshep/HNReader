@@ -57,11 +57,14 @@
     [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
     [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
     
-    [RACObserve(self.model, commentsInfo) subscribeNext:^(id commentsInfo) {
+    @weakify(self);
+    [RACObserve(self.model, comments) subscribeNext:^(id comments) {
+        @strongify(self);
         [self commentsDidLoad];
     }];
     
     [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+        @strongify(self);
         if (error) {
             [self operationDidFail];
         }
@@ -70,13 +73,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
-    [_model cancelRequest];
-    
-    NSNotification *note = [NSNotification notificationWithName:@"HNStopLoadingNotification"
-                                                          object:self 
-                                                        userInfo:nil];
-    [[NSNotificationCenter defaultCenter] postNotification:note];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HNStopLoadingNotification" object:self userInfo:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -104,7 +101,7 @@
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
     else {
-        NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
+        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
         HNComment *comment = (HNComment *)comments[indexPath.row];
             
         CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
@@ -125,7 +122,7 @@
         return cell;
     } else {
         HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
-        NSArray *comments = (NSArray *)[_model commentsInfo][@"entry_comments"];
+        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
         HNComment *comment = (HNComment *)comments[indexPath.row];
         
         [cell.usernameLabel setText:comment.username];
@@ -140,7 +137,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            [_model cancelRequest];
             HNWebViewController *nextController = [[HNWebViewController alloc] init];
             nextController.entry = [self entry];
             [[self navigationController] pushViewController:nextController animated:YES];
@@ -161,7 +157,7 @@
 
 - (void)operationDidFail {    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                    message:[[_model error] localizedDescription]
+                                                    message:[self.model.error localizedDescription]
                                                    delegate:nil 
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];

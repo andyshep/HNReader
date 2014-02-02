@@ -8,13 +8,8 @@
 
 @interface HNEntriesModel : NSObject
 
-@property (nonatomic, copy) NSMutableArray *entries;
 @property (nonatomic, copy) NSError *error;
 @property (nonatomic, copy) NSString *moreEntriesLink;
-
-- (NSUInteger)countOfEntries;
-- (id)objectInEntriesAtIndex:(NSUInteger)index;
-- (void)getEntriesObjects:(__unsafe_unretained id *)objects range:(NSRange)range;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;
 - (void)reloadEntriesForIndex:(NSUInteger)index;
@@ -22,6 +17,10 @@
 - (void)loadMoreEntriesForIndex:(NSUInteger)index;
 - (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath;
 
-- (NSError *)parserError;
+@end
+
+@interface HNEntriesModel (HNCollections)
+
+@property (nonatomic, strong, readonly) NSArray *entries;
 
 @end

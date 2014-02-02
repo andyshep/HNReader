@@ -68,17 +68,21 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     [_bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
     [_entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
     
+    @weakify(self);
     [RACObserve(self.model, entries) subscribeNext:^(NSArray *entries) {
+        @strongify(self);
         [self entriesDidLoad];
     }];
     
     [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+        @strongify(self);
         if (error) {
             [self operationDidFail];
         }
     }];
     
     [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
+        @strongify(self);
         [self loadEntries];
     }];
 }
@@ -95,13 +99,13 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // if the entries are empty return 0
     // do not show a single 'load more..' row.
-    if ([_model countOfEntries] <= 0) {
-        return [_model countOfEntries];
+    if (self.model.entries.count <= 0) {
+        return self.model.entries.count;
     }
     
-    // if we have the entries then show 'em
+    // if we have the entries then show
     // and plus one for the 'load more...' cell
-    return [_model countOfEntries] + 1;
+    return self.model.entries.count + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,11 +113,11 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row] >= [_model countOfEntries]) {
+    if ([indexPath row] >= self.model.entries.count) {
         return [tableView dequeueReusableCellWithIdentifier:@"HNLoadMoreTableViewCell"];
     } else {
         HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNEntriesTableViewCell"];
-        HNEntry *entry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
+        HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
         
         cell.siteTitleLabel.text = entry.title;
         cell.siteDomainLabel.text = entry.siteDomainURL;
@@ -124,13 +128,13 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row] >= [_model countOfEntries]) {
+    if ([indexPath row] >= self.model.entries.count) {
         // load more entries..
         [_model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
-        HNEntry *selectedEntry = (HNEntry *)[_model objectInEntriesAtIndex:indexPath.row];
+        HNEntry *selectedEntry = (HNEntry *)self.model.entries[indexPath.row];
         HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
