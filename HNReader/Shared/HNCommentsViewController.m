@@ -81,20 +81,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    // unselect the table cell, if need be.
-    if ([_tableView indexPathForSelectedRow] != nil) {
-        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
-    }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    }
-    
-    // support all orientation on the pad
-    return YES;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - UITableView
@@ -106,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 1;
-    return [[_model commentsInfo][@"entry_comments"] count];
+    return [self.model.comments[@"entry_comments"] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
@@ -183,8 +170,7 @@
 
 - (NSArray *)indexPathsToInsert {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [[_model commentsInfo][@"entry_comments"] count];
-    
+    NSUInteger count = [self.model.comments[@"entry_comments"] count];
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [_indexPaths addObject:_indexPath];
@@ -195,8 +181,7 @@
 
 - (NSArray *)indexPathsToDelete {
     NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    int count = [_tableView numberOfRowsInSection:0];
-    
+    NSUInteger count = [_tableView numberOfRowsInSection:0];
     for (int i = 0; i < count; i++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [_indexPaths addObject:_indexPath];
@@ -210,11 +195,8 @@
     // the web view will respond to this notification and load the site
     // this is for the pad only.  on the phone, the vc is pushed onto stack
     NSString *urlString = [[self entry] linkURL];
-    NSDictionary *extraInfo = @{@"kHNURL": urlString};
-    NSNotification *aNote = [NSNotification notificationWithName:@"HNLoadSiteNotification" 
-                                                          object:self userInfo:extraInfo];
-    
-    [[NSNotificationCenter defaultCenter] postNotification:aNote];
+    NSDictionary *userInfo = @{@"kHNURL": urlString};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HNLoadSiteNotification" object:self userInfo:userInfo];
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {

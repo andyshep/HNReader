@@ -24,8 +24,7 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        self.items = [NSMutableArray arrayWithCapacity:2];
-        
+        self.items = [NSMutableArray array];
         self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         [_webView setScalesPageToFit:YES];
         [_webView setDelegate:self];
@@ -45,14 +44,15 @@
     CGRect frame = [[UIScreen mainScreen] bounds];
     UIView *contentView = [[UIView alloc] initWithFrame:frame];
     
-    [_webView setFrame:frame];
-    
-    [contentView addSubview:_webView];
+    [self.webView setFrame:frame];
+    [contentView addSubview:self.webView];
     [self.view addSubview:contentView];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.webView setFrame:self.view.bounds];
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [UIView animateWithDuration:duration animations:^{
+        [self.webView setFrame:self.view.bounds];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -79,14 +79,10 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [_webView stopLoading];
+    [self.webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -98,24 +94,13 @@
 - (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
 	barButtonItem.title = NSLocalizedString(@"News", @"News popover title");
 	barButtonItem.style = UIBarButtonItemStyleBordered;
-	
-//	[self.items insertObject:barButtonItem atIndex:0];
     
     [[self navigationItem] setLeftBarButtonItem:barButtonItem];
-    
-    // don't use animation so there isn't a ui artifact when launching in landscape
-    // really don't need it here since this is called during rotations
-//	[_toolbar setItems:self.items animated:NO];
 	self.popoverViewController = pc;
 }
 
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-    
     [[self navigationItem] setLeftBarButtonItem:nil];
-    
-    // don't use animation so there isn't a ui artifact when launching in landscape
-    // really don't need it here since this is called during rotations
-//	[_toolbar setItems:self.items animated:NO];
     self.popoverViewController = nil;
 }
 
@@ -165,17 +150,12 @@
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *rawHtmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        
         const char *html_content = [rawHtmlString UTF8String];
         char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
         
         if (readable_content != NULL) {
-            
-            // FIXME: cache teh file paths...
             NSString *filePath = nil;
-            
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                
                 // if this is a phone, we have a smaller screen
                 // so add the meta tag to specify the viewport
                 // 28 px is also too big for phone
@@ -191,8 +171,6 @@
             
             [_webView loadHTMLString:html baseURL:aURL];
         }
-        
-        // NSLog(@"succuess: %@", [NSString stringWithCString:readable_content encoding:NSUTF8StringEncoding]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         NSString *message = NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error")

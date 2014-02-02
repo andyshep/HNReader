@@ -55,13 +55,11 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     
     // make direction control
-    NSArray *items = @[NSLocalizedString(@"Front Page", @"Front Page"), 
-                      NSLocalizedString(@"Newest", @"Newest"), 
-                      NSLocalizedString(@"Best", @"Best")];
-    
+    NSArray *items = @[NSLocalizedString(@"Top", @"Top"), NSLocalizedString(@"Newest", @"Newest"), NSLocalizedString(@"Best", @"Best")];
 	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
     [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 290.0f, 30.0f)];
     [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
+    
     [_entriesControl setSelectedSegmentIndex:0];
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:_entriesControl];
@@ -87,19 +85,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    if ([_tableView indexPathForSelectedRow] != nil) {
-        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
-    }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    }
-    
-    // support all orientation on the pad
-    return YES;
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -203,7 +189,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 
 - (NSArray *)indexPathsToInsert {
     NSMutableArray *indexPaths = [NSMutableArray array];
-    int count = [_model countOfEntries];
+    NSUInteger count = self.model.entries.count;
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
@@ -215,7 +201,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 
 - (NSArray *)indexPathsToDelete {
     NSMutableArray *indexPaths = [NSMutableArray array];
-    int count = [_tableView numberOfRowsInSection:0];
+    NSUInteger count = [_tableView numberOfRowsInSection:0];
     
     for (int i = 0; i < count; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
