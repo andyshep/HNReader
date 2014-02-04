@@ -53,6 +53,7 @@
 		F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6C81436615100DE8D6D /* HNWebViewController.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */; };
 		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -142,6 +143,8 @@
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7A24071147577B000004287 /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7A24072147577B000004287 /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
+		F7BE527718A0AD9900EF91B6 /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
+		F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7C4EEAB183D47DA001036E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 		F76ACA591434F9E1004CF9EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7BE527718A0AD9900EF91B6 /* HNCacheManager.h */,
+				F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */,
 				F77319CE189EC5E100C360F1 /* HNParser.h */,
 				F77319CF189EC5E100C360F1 /* HNParser.m */,
 				F7E86FCB14364CE100A09334 /* HNEntry.h */,
@@ -585,6 +590,7 @@
 				F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
+				F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

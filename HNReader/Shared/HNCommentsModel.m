@@ -12,6 +12,8 @@
 #import "HNEntry.h"
 #import "HNComment.h"
 
+#import "HNCacheManager.h"
+
 @interface HNCommentsModel ()
 
 @property (nonatomic, copy, readwrite) NSDictionary *comments;
@@ -41,25 +43,17 @@
 }
 
 - (void)loadComments {
-    // determine if the cache is valid
-    NSString *filePath = [self cacheFilePath];
-    NSError *err;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:&err];
-    if (attrs != nil && [attrs count] > 0) {
-        // alway load from cache first
-        NSDictionary *cachedComments = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-        self.comments = [NSDictionary dictionaryWithDictionary:cachedComments];
+    
+    NSString *commentId = [[_entry commentsPageURL] substringFromIndex:8];
+    id cachedObj = [[HNCacheManager sharedManager] cachedCommentsForKey:commentId];
+    if (cachedObj) {
+        NSLog(@"cached for %@: %@", commentId, cachedObj);
         
-        NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
-        if (date != nil) {
-            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:date];
-            if (interval > 120.0f) {
-                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", [_entry commentsPageURL]]];
-                [self loadCommentsForRequest:[NSURLRequest requestWithURL:url]];
-            }
-        }
+        NSDictionary *comments = (NSDictionary *)cachedObj;
+        self.comments = [NSDictionary dictionaryWithDictionary:comments];
     } else {
+        NSLog(@"nothing cached for %@", commentId);
+        
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", [_entry commentsPageURL]]];
         [self loadCommentsForRequest:[NSURLRequest requestWithURL:url]];
     }
@@ -72,7 +66,8 @@
         @strongify(self);
         NSDictionary *comments = [HNParser parsedCommentsFromResponse:responseObject];
         self.comments = [NSDictionary dictionaryWithDictionary:comments];
-        [NSKeyedArchiver archiveRootObject:self.comments toFile:[self cacheFilePath]];
+        NSString *commentId = [self.entry.commentsPageURL substringFromIndex:8];
+        [[HNCacheManager sharedManager] cacheComments:comments forKey:commentId];
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         @strongify(self);
         self.error = err;

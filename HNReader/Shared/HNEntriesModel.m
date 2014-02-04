@@ -14,12 +14,13 @@
 
 #import "HNEntry.h"
 #import "HNParser.h"
+#import "HNCacheManager.h"
 
-typedef enum  {
+typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     HNEntriesFrontPageIdentifier,
     HNEntriesNewestPageIdentifier,
     HNEntriesBestPageIdentifier
-} HNEntriesPageIdentifier;
+};
 
 @interface HNEntriesModel ()
 
@@ -38,6 +39,7 @@ typedef enum  {
     if ((self = [super init])) {
         self.moreEntriesLink = @"/news2";
         self.entries = [NSMutableArray array];
+        
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     
@@ -66,6 +68,22 @@ typedef enum  {
     }
 }
 
+- (NSString *)cacheKeyForPageIdentifier:(HNEntriesPageIdentifier)identifier {
+    if (identifier == HNEntriesFrontPageIdentifier) {
+        return @"front";
+    } else if (identifier == HNEntriesNewestPageIdentifier) {
+        return @"newest";
+    } else if (identifier == HNEntriesBestPageIdentifier) {
+        return @"best";
+    } else {
+        return nil;
+    }
+}
+
+- (NSString *)cacheKeyForFilePath:(NSString *)filePath {
+    return [[[filePath lastPathComponent] componentsSeparatedByString:@"."] firstObject];
+}
+
 - (NSTimeInterval)cacheTimeForPageIndex:(NSUInteger)index {
     if (index == HNEntriesNewestPageIdentifier) {
         return 60.0f;
@@ -84,31 +102,21 @@ typedef enum  {
         [self didChangeValueForKey:@"entries"];
     }
     
-    // determine if the cache is valid
-    NSString *filePath = [self cacheFilePathForIndex:index];
-    NSError *err;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:&err];
-    if (attrs != nil && [attrs count] > 0) {
+    // look in cache manager
+    NSString *key = [self cacheKeyForPageIdentifier:index];
+    
+    id cachedObj = [[HNCacheManager sharedManager] cachedEntriesForKey:key];
+    if (cachedObj) {
+        NSLog(@"cached for %@: %d", key, [cachedObj count]);
         
-        // alway load from cache first
-        NSArray *cachedEntries = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        NSArray *entries = (NSArray *)cachedObj;
         [self willChangeValueForKey:@"entries"];
         [self.entries removeAllObjects];
-        [self.entries addObjectsFromArray:cachedEntries];
+        [self.entries addObjectsFromArray:entries];
         [self didChangeValueForKey:@"entries"];
+    } else {
+        NSLog(@"nothing cached for %@", key);
         
-        NSDate *date = [attrs valueForKey:@"NSFileModificationDate"];
-        if (date != nil) {
-            NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:date];
-            if (interval > [self cacheTimeForPageIndex:index]) {
-                NSURL *url = [self pageURLForIndex:index];
-                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-                [self loadEntriesForRequest:request atCachedFilePath:filePath];
-            }
-        }
-    }
-    else {
         [self reloadEntriesForIndex:index];
     }
 }
@@ -156,8 +164,8 @@ typedef enum  {
     
     self.moreEntriesLink = [parsedResponse objectForKey:@"next"];
     
-    // save the entries the disk for next time
-    [NSKeyedArchiver archiveRootObject:self.entries toFile:cachedFilePath];
+    NSString *key = [self cacheKeyForFilePath:cachedFilePath];
+    [[HNCacheManager sharedManager] cacheEntries:entries forKey:key];
 }
 
 - (NSOperationQueue *)operationQueue {
