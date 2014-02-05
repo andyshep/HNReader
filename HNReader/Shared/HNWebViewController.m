@@ -38,25 +38,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)loadView {
-    [super loadView];
-    
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    UIView *contentView = [[UIView alloc] initWithFrame:frame];
-    
-    [self.webView setFrame:frame];
-    [contentView addSubview:self.webView];
-    [self.view addSubview:contentView];
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [UIView animateWithDuration:duration animations:^{
-        [self.webView setFrame:self.view.bounds];
-    }];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.webView setFrame:self.view.frame];
+    [self.view addSubview:self.webView];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
@@ -67,9 +53,8 @@
         self.displayedURL = [NSURL URLWithString:[_entry linkURL]];
         [self shouldLoadURL:_displayedURL];
     } else {
-        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-        [defaultCenter addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
-        [defaultCenter addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
         
         UIImage *image = [UIImage imageNamed:@"163-glasses-1.png"];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
@@ -83,6 +68,12 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     [super viewDidDisappear:animated];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [UIView animateWithDuration:duration animations:^{
+        [self.webView setFrame:self.view.bounds];
+    }];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -136,16 +127,12 @@
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification {
     NSDictionary *extraInfo = [aNotification userInfo];
-    NSString *aURLString = extraInfo[@"kHNURL"];
-    NSURL *aURL = [NSURL URLWithString:aURLString];
-    
-    [self shouldLoadURL:aURL];
+    NSURL *url = [NSURL URLWithString:extraInfo[@"kHNURL"]];
+    [self shouldLoadURL:url];
 }
 
 - (void)makeReadable {
-    NSURL *aURL = _displayedURL;
-    NSURLRequest *request = [NSURLRequest requestWithURL:aURL];
-    
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -169,7 +156,7 @@
             NSString *readableHTMLString = @(readable_content);
             NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
             
-            [_webView loadHTMLString:html baseURL:aURL];
+            [_webView loadHTMLString:html baseURL:self.displayedURL];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
         NSString *message = NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.");
