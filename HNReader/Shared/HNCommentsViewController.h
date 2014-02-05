@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView; 
 
-- (id)initWithEntry:(HNEntry *)entry;
+- (instancetype)initWithEntry:(HNEntry *)entry;
 
 @end

@@ -28,6 +28,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 - (void)loadEntries;
 - (NSArray *)indexPathsToInsert;
 - (NSArray *)indexPathsToDelete;
+- (void)handleContentSizeChangeNotification:(NSNotification *)notification;
 
 @end
 
@@ -43,6 +44,10 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,6 +55,8 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     
     [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
     [self.tableView registerClass:[HNLoadMoreTableViewCell class] forCellReuseIdentifier:@"HNLoadMoreTableViewCell"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
@@ -213,6 +220,10 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     }
     
     return [NSArray arrayWithArray:indexPaths];
+}
+
+- (void)handleContentSizeChangeNotification:(NSNotification *)notification {
+    [self.tableView reloadData];
 }
 
 @end

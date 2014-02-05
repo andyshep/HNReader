@@ -16,19 +16,16 @@
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         self.siteTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_siteTitleLabel setNumberOfLines:2];
-        [_siteTitleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
         [_siteTitleLabel setAdjustsFontSizeToFitWidth:YES];
         [_siteTitleLabel setBackgroundColor:[UIColor clearColor]];
         
         self.siteDomainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
-        [_siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
         [_siteDomainLabel setBackgroundColor:[UIColor clearColor]];
         [_siteDomainLabel setTextColor:[UIColor grayColor]];
         
         self.totalPointsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_totalPointsLabel setTextAlignment:NSTextAlignmentRight];
-        [_totalPointsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
         [_totalPointsLabel setBackgroundColor:[UIColor clearColor]];
         [_totalPointsLabel setTextColor:[UIColor grayColor]];
         
@@ -39,6 +36,8 @@
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        
+        [self setup];
     }
     
     return self;
@@ -85,6 +84,17 @@
 
 - (NSString *)reuseIdentifier {
     return NSStringFromClass([self class]);
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self setup];
+}
+
+- (void)setup {
+    [_siteTitleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [_siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
+    [_totalPointsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
 }
 
 @end

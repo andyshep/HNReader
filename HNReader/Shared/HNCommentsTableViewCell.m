@@ -16,18 +16,15 @@
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_usernameLabel setBackgroundColor:[UIColor clearColor]];
-        [_usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
         [_usernameLabel setTextColor:[UIColor lightGrayColor]];
         
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_timeLabel setBackgroundColor:[UIColor clearColor]];
-        [_timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
         [_timeLabel setTextAlignment:NSTextAlignmentRight];
         [_timeLabel setTextColor:[UIColor lightGrayColor]];
         
         self.commentTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_commentTextLabel setBackgroundColor:[UIColor clearColor]];
-        [_commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
         [_commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [_commentTextLabel setNumberOfLines:0];
         
@@ -38,6 +35,8 @@
         HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
         [self setSelectedBackgroundView:selectedView];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        [self setup];
     }
     
     return self;
@@ -56,6 +55,11 @@
     return NSStringFromClass([self class]);
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self setup];
+}
+
 - (void)setCommentText:(NSString *)commentText {
     self.commentTextLabel.text = commentText;
     [self setNeedsLayout];
@@ -64,6 +68,12 @@
 - (void)setPadding:(NSInteger)padding {
     _padding = padding;
     [self setNeedsLayout];
+}
+
+- (void)setup {
+    [_usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
+    [_timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
+    [_commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
 }
 
 @end

@@ -34,12 +34,13 @@
 
 - (void)postLoadSiteNotification;
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
+- (void)handleContentSizeChangeNotification:(NSNotification *)notification;
 
 @end
 
 @implementation HNCommentsViewController
 
-- (id)initWithEntry:(HNEntry *)entry {
+- (instancetype)initWithEntry:(HNEntry *)entry {
     if ((self = [super initWithNibName:@"HNCommentsViewController" bundle:nil])) {
         self.entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:entry];
@@ -48,9 +49,15 @@
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
+}
+
 - (void)viewDidLoad {
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 
     [_model loadComments];
     
@@ -197,6 +204,10 @@
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
     return [HNCommentTools frameForString:string withIndentPadding:padding];
+}
+
+- (void)handleContentSizeChangeNotification:(NSNotification *)notification {
+    [self.tableView reloadData];
 }
 
 @end
