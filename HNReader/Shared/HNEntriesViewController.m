@@ -198,30 +198,6 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     [alert show];
 }
 
-- (NSArray *)indexPathsToInsert {
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    NSUInteger count = self.model.entries.count;
-    
-    for (int i = 0; i < count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [indexPaths addObject:indexPath];
-    }
-    
-    return [NSArray arrayWithArray:indexPaths];
-}
-
-- (NSArray *)indexPathsToDelete {
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    NSUInteger count = [_tableView numberOfRowsInSection:0];
-    
-    for (int i = 0; i < count; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [indexPaths addObject:indexPath];
-    }
-    
-    return [NSArray arrayWithArray:indexPaths];
-}
-
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
     [self.tableView reloadData];
 }

@@ -7,8 +7,13 @@
 //
 
 #import "HNEntriesTableViewCell.h"
-
 #import "HNTableCellSelectedView.h"
+
+@interface HNEntriesTableViewCell ()
+
+- (void)applyHighlightAndSelectionStyle:(BOOL)apply;
+
+@end
 
 @implementation HNEntriesTableViewCell
 
@@ -54,32 +59,12 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    if (selected) {
-        self.siteTitleLabel.textColor = [UIColor whiteColor];
-        self.siteDomainLabel.textColor = [UIColor whiteColor];
-        self.totalPointsLabel.textColor = [UIColor whiteColor];
-    }
-    else {
-        self.siteTitleLabel.textColor = [UIColor blackColor];
-        self.siteDomainLabel.textColor = [UIColor grayColor];
-        self.totalPointsLabel.textColor = [UIColor grayColor];
-    }
+    [self applyHighlightAndSelectionStyle:selected];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     [super setHighlighted:highlighted animated:animated];
-    
-    if (highlighted) {
-        self.siteTitleLabel.textColor = [UIColor whiteColor];
-        self.siteDomainLabel.textColor = [UIColor whiteColor];
-        self.totalPointsLabel.textColor = [UIColor whiteColor];
-    }
-    else {
-        self.siteTitleLabel.textColor = [UIColor blackColor];
-        self.siteDomainLabel.textColor = [UIColor grayColor];
-        self.totalPointsLabel.textColor = [UIColor grayColor];
-    }
+    [self applyHighlightAndSelectionStyle:highlighted];
 }
 
 - (NSString *)reuseIdentifier {
@@ -91,10 +76,25 @@
     [self setup];
 }
 
+#pragma mark - Private
 - (void)setup {
     [_siteTitleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     [_siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
     [_totalPointsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
+}
+
+- (void)applyHighlightAndSelectionStyle:(BOOL)apply {
+    if (apply) {
+        // apply styling for selection and highlight
+        self.siteTitleLabel.textColor = [UIColor whiteColor];
+        self.siteDomainLabel.textColor = [UIColor whiteColor];
+        self.totalPointsLabel.textColor = [UIColor whiteColor];
+    }
+    else {
+        self.siteTitleLabel.textColor = [UIColor blackColor];
+        self.siteDomainLabel.textColor = [UIColor grayColor];
+        self.totalPointsLabel.textColor = [UIColor grayColor];
+    }
 }
 
 @end

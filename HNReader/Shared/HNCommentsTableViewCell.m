@@ -45,10 +45,14 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    CGSize usernameSize = [self.usernameLabel.text sizeWithAttributes:@{NSFontAttributeName: self.usernameLabel.font}];
+    CGSize timeSize = [self.timeLabel.text sizeWithAttributes:@{NSFontAttributeName: self.timeLabel.font}];
+    CGFloat yOffet = MAX(timeSize.height, usernameSize.height);
+    
     CGRect rect = [HNCommentTools frameForString:self.commentTextLabel.text withIndentPadding:self.padding];
-    [_usernameLabel setFrame:CGRectMake(CGRectGetMinX(rect), 4.0f, 100.0f, 15.0f)];
-    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(self.contentView.frame) - 150.0f, 4.0f, 100.0f, 15.0f)];
-    [_commentTextLabel setFrame:CGRectMake(CGRectGetMinX(rect), 20.0f, CGRectGetWidth(rect), CGRectGetHeight(rect))];
+    [_usernameLabel setFrame:CGRectMake(CGRectGetMinX(rect), 4.0f, usernameSize.width, yOffet)];
+    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(self.contentView.frame) - 150.0f, 4.0f, 100.0f, yOffet)];
+    [_commentTextLabel setFrame:CGRectMake(CGRectGetMinX(rect), yOffet + 3.0f, CGRectGetWidth(rect), CGRectGetHeight(rect))];
 }
 
 - (NSString *)reuseIdentifier {
