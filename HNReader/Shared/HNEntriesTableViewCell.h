@@ -8,8 +8,8 @@
 
 @interface HNEntriesTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *siteTitleLabel;
-@property (nonatomic, strong) UILabel *siteDomainLabel;
-@property (nonatomic, strong) UILabel *totalPointsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *siteTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *siteDomainLabel;
+@property (nonatomic, strong) IBOutlet UILabel *totalPointsLabel;
 
 @end

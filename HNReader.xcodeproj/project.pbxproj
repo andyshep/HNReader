@@ -34,7 +34,6 @@
 		F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F775DAE214340D7E00F93F48 /* InfoPlist.strings */; };
 		F775DAE614340D7E00F93F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAE514340D7E00F93F48 /* main.m */; };
 		F775DAEE14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */; };
-		F775DAF114340D7F00F93F48 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F775DAEF14340D7F00F93F48 /* MainWindow_iPhone.xib */; };
 		F775DAF514340D7F00F93F48 /* HNReaderAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAF414340D7F00F93F48 /* HNReaderAppDelegate_iPad.m */; };
 		F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F775DAF614340D7F00F93F48 /* MainWindow_iPad.xib */; };
 		F775DB0014340D7F00F93F48 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */; };
@@ -46,6 +45,7 @@
 		F775DB0F14340D7F00F93F48 /* HNReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DB0E14340D7F00F93F48 /* HNReaderTests.m */; };
 		F775DB3F1434110700F93F48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3D1434110700F93F48 /* MobileCoreServices.framework */; };
 		F775DB401434110700F93F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3E1434110700F93F48 /* SystemConfiguration.framework */; };
+		F78529CC18A84DE20023DCE5 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */; };
 		F7895D28183D9CE500677396 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D26183D9CE500677396 /* Default.png */; };
 		F7895D29183D9CE500677396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D27183D9CE500677396 /* Default@2x.png */; };
 		F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D2A183DC1E300677396 /* 163-glasses-1.png */; };
@@ -122,7 +122,6 @@
 		F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNReader-Prefix.pch"; sourceTree = "<group>"; };
 		F775DAEC14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate_iPhone.h; path = iPhone/HNReaderAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate_iPhone.m; path = iPhone/HNReaderAppDelegate_iPhone.m; sourceTree = "<group>"; };
-		F775DAF014340D7F00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
 		F775DAF314340D7F00F93F48 /* HNReaderAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate_iPad.h; path = iPad/HNReaderAppDelegate_iPad.h; sourceTree = "<group>"; };
 		F775DAF414340D7F00F93F48 /* HNReaderAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate_iPad.m; path = iPad/HNReaderAppDelegate_iPad.m; sourceTree = "<group>"; };
 		F775DAF714340D7F00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		F775DB0E14340D7F00F93F48 /* HNReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReaderTests.m; sourceTree = "<group>"; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhoneStoryboard.storyboard; path = iPhone/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		F7895D26183D9CE500677396 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		F7895D27183D9CE500677396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		F7895D2A183DC1E300677396 /* 163-glasses-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "163-glasses-1.png"; sourceTree = SOURCE_ROOT; };
@@ -333,7 +333,7 @@
 			children = (
 				F775DAEC14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.h */,
 				F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */,
-				F775DAEF14340D7F00F93F48 /* MainWindow_iPhone.xib */,
+				F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -490,12 +490,12 @@
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
-				F775DAF114340D7F00F93F48 /* MainWindow_iPhone.xib in Resources */,
 				F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */,
 				F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */,
 				F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */,
 				F7895D28183D9CE500677396 /* Default.png in Resources */,
 				F7F0008D147C770100328C1D /* hn-icon-57.png in Resources */,
+				F78529CC18A84DE20023DCE5 /* iPhoneStoryboard.storyboard in Resources */,
 				F7F0008E147C770100328C1D /* hn-icon-72.png in Resources */,
 				F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */,
 				F7F0008F147C770100328C1D /* hn-icon-114.png in Resources */,
@@ -619,14 +619,6 @@
 				F775DAE314340D7E00F93F48 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F775DAEF14340D7F00F93F48 /* MainWindow_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F775DAF014340D7F00F93F48 /* en */,
-			);
-			name = MainWindow_iPhone.xib;
 			sourceTree = "<group>";
 		};
 		F775DAF614340D7F00F93F48 /* MainWindow_iPad.xib */ = {

@@ -8,6 +8,6 @@
 
 @interface HNLoadMoreTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *loadMoreLabel;
+@property (nonatomic, weak) IBOutlet UILabel *loadMoreLabel;
 
 @end

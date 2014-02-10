@@ -62,9 +62,10 @@ static const CGFloat maxCacheInterval = 360.0f;
     }];
     
     if (shouldExpireCache) {
-        [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-            [transaction removeObjectForKey:key inCollection:@"entries"];
-        }];
+        NSLog(@"expiring cache for %@...", key);
+//        [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+//            [transaction removeObjectForKey:key inCollection:@"entries"];
+//        }];
     }
     
     return entries;

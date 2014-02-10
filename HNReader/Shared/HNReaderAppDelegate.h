@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HNReaderAppDelegate : NSObject <UIApplicationDelegate>
+@interface HNReaderAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 

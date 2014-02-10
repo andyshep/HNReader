@@ -12,9 +12,9 @@
 
 @interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
-@property (nonatomic, strong) UISegmentedControl *entriesControl;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *entriesControl;
 
 @property (nonatomic, weak) id<HNEntryLoaderDelegate> delegate;
 

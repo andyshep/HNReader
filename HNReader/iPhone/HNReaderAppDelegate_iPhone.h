@@ -10,6 +10,4 @@
 
 @interface HNReaderAppDelegate_iPhone : HNReaderAppDelegate
 
-@property (nonatomic, strong) UINavigationController *navigationController;
-
 @end

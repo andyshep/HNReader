@@ -12,17 +12,6 @@
 @implementation HNReaderAppDelegate_iPhone
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    HNEntriesViewController *entriesViewController = [[HNEntriesViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:entriesViewController];
-    [[_navigationController navigationBar] setTintColor:[HNReaderTheme brightOrangeColor]];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
-    [self.window addSubview:[_navigationController view]];
-    
-    [self.window setRootViewController:_navigationController];
-    [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

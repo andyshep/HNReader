@@ -26,22 +26,18 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 @property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
-- (NSArray *)indexPathsToInsert;
-- (NSArray *)indexPathsToDelete;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
 
 @end
 
 @implementation HNEntriesViewController
 
-- (instancetype)init {
-    if ((self = [super initWithNibName:@"HNEntriesViewController" bundle:nil])) {
-        self.model = [[HNEntriesModel alloc] init];
-        self.delegate = nil;
-        self.requestInProgress = NO;
+- (HNEntriesModel *)model {
+    if (!_model) {
+        _model = [[HNEntriesModel alloc] init];
     }
     
-    return self;
+    return _model;
 }
 
 - (void)dealloc {
@@ -53,27 +49,19 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
-    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
-    [self.tableView registerClass:[HNLoadMoreTableViewCell class] forCellReuseIdentifier:@"HNLoadMoreTableViewCell"];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     
-    // make direction control
-    NSArray *items = @[NSLocalizedString(@"Top", @"Top"), NSLocalizedString(@"Newest", @"Newest"), NSLocalizedString(@"Best", @"Best")];
-	self.entriesControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithArray:items]];
-    [_entriesControl setFrame:CGRectMake(0.0f, 0.0f, 290.0f, 30.0f)];
-    [_entriesControl setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
-    
+    [self.entriesControl setTitle:NSLocalizedString(@"Top", @"Top") forSegmentAtIndex:0];
+    [self.entriesControl setTitle:NSLocalizedString(@"Newest", @"Newest") forSegmentAtIndex:1];
+    [self.entriesControl setTitle:NSLocalizedString(@"Best", @"Best") forSegmentAtIndex:2];
+    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [_entriesControl setSelectedSegmentIndex:0];
     
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:_entriesControl];
-    [_bottomToolbar setItems:@[buttonItem]];
-    
-    [_bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-    [_entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+    [self.bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
+    [self.entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
     
     @weakify(self);
     [RACObserve(self.model, entries) subscribeNext:^(NSArray *entries) {
@@ -97,6 +85,10 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsLayout)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -137,7 +129,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= self.model.entries.count) {
         // load more entries..
-        [_model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+        [self.model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
@@ -154,14 +146,14 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     }
     
     self.requestInProgress = YES;
-    [_tableView setUserInteractionEnabled:NO];
-    [_tableView setScrollEnabled:NO];
+    [self.tableView setUserInteractionEnabled:NO];
+    [self.tableView setScrollEnabled:NO];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.delegate shouldStopLoading];
     }
     
-    [_model loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+    [self.model loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)reloadEntries {
@@ -170,23 +162,23 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     }
     
     self.requestInProgress = YES;
-    [_tableView setUserInteractionEnabled:NO];
-    [_tableView setScrollEnabled:NO];
+    [self.tableView setUserInteractionEnabled:NO];
+    [self.tableView setScrollEnabled:NO];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.delegate shouldStopLoading];
     }
     
-    [_model reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+    [self.model reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)entriesDidLoad {
     // TODO: animate
 
     self.requestInProgress = NO;
-    [_tableView reloadData];
-    [_tableView setScrollEnabled:YES];
-    [_tableView setUserInteractionEnabled:YES];
+    [self.tableView reloadData];
+    [self.tableView setScrollEnabled:YES];
+    [self.tableView setUserInteractionEnabled:YES];
 }
 
 - (void)operationDidFail {    
