@@ -20,23 +20,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.siteTitleLabel setNumberOfLines:2];
-    [self.siteTitleLabel setBackgroundColor:[UIColor clearColor]];
+//    [self.siteTitleLabel setNumberOfLines:2];
     
     HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
     [self setSelectedBackgroundView:selectedView];
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     [self setup];
-    
-    [self.siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
-    [self.siteDomainLabel setBackgroundColor:[UIColor clearColor]];
-    [self.siteDomainLabel setTextColor:[UIColor grayColor]];
-    
-    [self.totalPointsLabel setAdjustsFontSizeToFitWidth:YES];
-    [self.totalPointsLabel setTextAlignment:NSTextAlignmentRight];
-    [self.totalPointsLabel setBackgroundColor:[UIColor clearColor]];
-    [self.totalPointsLabel setTextColor:[UIColor grayColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -60,6 +50,13 @@
 
 #pragma mark - Private
 - (void)setup {
+//    [self.siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.siteDomainLabel setTextColor:[UIColor grayColor]];
+    
+//    [self.totalPointsLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.totalPointsLabel setTextAlignment:NSTextAlignmentRight];
+    [self.totalPointsLabel setTextColor:[UIColor grayColor]];
+    
     [self.siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     [self.siteDomainLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
     [self.totalPointsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];

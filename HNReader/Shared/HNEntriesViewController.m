@@ -88,7 +88,8 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsLayout)];
+//    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
+    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -134,7 +135,10 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     }
     else {
         HNEntry *selectedEntry = (HNEntry *)self.model.entries[indexPath.row];
-        HNCommentsViewController *nextController = [[HNCommentsViewController alloc] initWithEntry:selectedEntry];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhoneStoryboard" bundle:nil];
+        HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:@"HNCommentsViewController"];
+        [nextController setEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
 }

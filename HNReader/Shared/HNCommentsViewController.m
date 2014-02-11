@@ -24,13 +24,9 @@
 
 @interface HNCommentsViewController ()
 
-@property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, strong) HNCommentsModel *model;
 
 - (void)loadComments;
-
-- (NSArray *)indexPathsToInsert;
-- (NSArray *)indexPathsToDelete;
 
 - (void)postLoadSiteNotification;
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
@@ -40,13 +36,11 @@
 
 @implementation HNCommentsViewController
 
-- (instancetype)initWithEntry:(HNEntry *)entry {
-    if ((self = [super initWithNibName:@"HNCommentsViewController" bundle:nil])) {
-        self.entry = entry;
+- (void)setEntry:(HNEntry *)entry {
+    if (_entry != entry) {
+        _entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:entry];
     }
-    
-    return self;
 }
 
 - (void)dealloc {
@@ -61,8 +55,8 @@
 
     [_model loadComments];
     
-    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
-    [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
+//    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
+//    [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
     
     @weakify(self);
     [RACObserve(self.model, comments) subscribeNext:^(id comments) {
@@ -169,28 +163,6 @@
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
                                           otherButtonTitles:nil];
     [alert show];
-}
-
-- (NSArray *)indexPathsToInsert {
-    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    NSUInteger count = [self.model.comments[@"entry_comments"] count];
-    for (int i = 0; i < count; i++) {
-        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [_indexPaths addObject:_indexPath];
-    }
-    
-    return [NSArray arrayWithArray:_indexPaths];
-}
-
-- (NSArray *)indexPathsToDelete {
-    NSMutableArray *_indexPaths = [NSMutableArray arrayWithCapacity:10];
-    NSUInteger count = [_tableView numberOfRowsInSection:0];
-    for (int i = 0; i < count; i++) {
-        NSIndexPath *_indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [_indexPaths addObject:_indexPath];
-    }
-    
-    return [NSArray arrayWithArray:_indexPaths];
 }
 
 - (void)postLoadSiteNotification {

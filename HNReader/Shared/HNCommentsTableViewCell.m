@@ -12,47 +12,10 @@
 
 @implementation HNCommentsTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-        self.usernameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_usernameLabel setBackgroundColor:[UIColor clearColor]];
-        [_usernameLabel setTextColor:[UIColor lightGrayColor]];
-        
-        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_timeLabel setBackgroundColor:[UIColor clearColor]];
-        [_timeLabel setTextAlignment:NSTextAlignmentRight];
-        [_timeLabel setTextColor:[UIColor lightGrayColor]];
-        
-        self.commentTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [_commentTextLabel setBackgroundColor:[UIColor clearColor]];
-        [_commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
-        [_commentTextLabel setNumberOfLines:0];
-        
-        [self.contentView addSubview:_usernameLabel];
-        [self.contentView addSubview:_timeLabel];
-        [self.contentView addSubview:_commentTextLabel];
-        
-        HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
-        [self setSelectedBackgroundView:selectedView];
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        [self setup];
-    }
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    CGSize usernameSize = [self.usernameLabel.text sizeWithAttributes:@{NSFontAttributeName: self.usernameLabel.font}];
-    CGSize timeSize = [self.timeLabel.text sizeWithAttributes:@{NSFontAttributeName: self.timeLabel.font}];
-    CGFloat yOffet = MAX(timeSize.height, usernameSize.height);
-    
-    CGRect rect = [HNCommentTools frameForString:self.commentTextLabel.text withIndentPadding:self.padding];
-    [_usernameLabel setFrame:CGRectMake(CGRectGetMinX(rect), 4.0f, usernameSize.width, yOffet)];
-    [_timeLabel setFrame:CGRectMake(CGRectGetWidth(self.contentView.frame) - 150.0f, 4.0f, 100.0f, yOffet)];
-    [_commentTextLabel setFrame:CGRectMake(CGRectGetMinX(rect), yOffet + 3.0f, CGRectGetWidth(rect), CGRectGetHeight(rect))];
+    [self setup];
 }
 
 - (NSString *)reuseIdentifier {
@@ -66,18 +29,27 @@
 
 - (void)setCommentText:(NSString *)commentText {
     self.commentTextLabel.text = commentText;
-    [self setNeedsLayout];
 }
 
 - (void)setPadding:(NSInteger)padding {
-    _padding = padding;
+    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
+    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
+    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
+    [self setNeedsUpdateConstraints];
     [self setNeedsLayout];
 }
 
 - (void)setup {
-    [_usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
-    [_timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
-    [_commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    [self.usernameLabel setTextColor:[UIColor lightGrayColor]];
+    [self.timeLabel setTextColor:[UIColor lightGrayColor]];
+    [self.timeLabel setTextAlignment:NSTextAlignmentRight];
+    [self.commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    
+    [self.usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
+    [self.timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
+    [self.commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
 }
 
 @end

@@ -8,9 +8,11 @@
 
 @interface HNCommentsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *usernameLabel;
-@property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *commentTextLabel;
+@property (nonatomic, weak) IBOutlet UILabel *usernameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *commentTextLabel;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForCommentLabel;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForUsernameLabel;
 @property (nonatomic, assign) NSInteger padding;
 
 - (void)setCommentText:(NSString *)commentText;
