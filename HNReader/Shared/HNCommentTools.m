@@ -16,7 +16,7 @@
     // knock the intentation padding down by a factor of 3
     // then adjust for cell margin and make sure the padding is even.
     // otherwise the comment text is antialias'd
-    padding = COMMENT_CELL_MARGIN + (padding / 3);
+    padding = COMMENT_CELL_MARGIN + (padding * 0.3f);
     if (padding % 2 != 0) {
         padding += 1;
     }

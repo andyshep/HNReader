@@ -47,7 +47,7 @@
     NSString *commentId = [[_entry commentsPageURL] substringFromIndex:8];
     id cachedObj = [[HNCacheManager sharedManager] cachedCommentsForKey:commentId];
     if (cachedObj) {
-        NSLog(@"cached for %@: %@", commentId, cachedObj);
+//        NSLog(@"cached for %@: %@", commentId, cachedObj);
         
         NSDictionary *comments = (NSDictionary *)cachedObj;
         self.comments = [NSDictionary dictionaryWithDictionary:comments];

@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     
     id cachedObj = [[HNCacheManager sharedManager] cachedEntriesForKey:key];
     if (cachedObj) {
-        NSLog(@"cached for %@: %d", key, [cachedObj count]);
+        NSLog(@"cached for %@: %lu", key, (unsigned long)[cachedObj count]);
         
         NSArray *entries = (NSArray *)cachedObj;
         [self willChangeValueForKey:@"entries"];

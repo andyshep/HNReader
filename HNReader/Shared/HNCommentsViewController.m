@@ -19,12 +19,13 @@
 
 #import "HNCommentTools.h"
 
-#define DEFAULT_CELL_HEIGHT 44.0f
-#define CELL_CONTENT_MARGIN 20.0f
+#define MIN_CELL_HEIGHT 8.0f
+#define CELL_CONTENT_MARGIN 41.0f
 
 @interface HNCommentsViewController ()
 
 @property (nonatomic, strong) HNCommentsModel *model;
+@property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
 
 - (void)loadComments;
 
@@ -102,14 +103,35 @@
     // but we calcuate the height of each comment cell dynamically
     // based on the comment string height
     else {
-        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
-        HNComment *comment = (HNComment *)comments[indexPath.row];
-            
-        CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
-        CGFloat height = MAX(rect.size.height, DEFAULT_CELL_HEIGHT);
+//        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
+//        HNComment *comment = (HNComment *)comments[indexPath.row];
+//        
+//        CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
+//        CGFloat height = rect.size.height;
+//        
+//        return height + CELL_CONTENT_MARGIN;
         
-        return height + (CELL_CONTENT_MARGIN + 3.0f);
+        if (!_stubCell) {
+            self.stubCell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
+        }
+        
+        [self configureCommentCell:self.stubCell forIndexPath:indexPath];
+        
+        [self.stubCell layoutSubviews];
+        self.stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(self.stubCell.bounds));
+        [self.stubCell layoutSubviews];
+        
+        NSLog(@"stubCell: %@", NSStringFromCGRect(self.stubCell.bounds));
+        
+        CGFloat height = [self.stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        height += 1.0f;
+        
+        return height;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 72.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,13 +145,7 @@
         return cell;
     } else {
         HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
-        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
-        HNComment *comment = (HNComment *)comments[indexPath.row];
-        
-        [cell.usernameLabel setText:comment.username];
-        [cell.timeLabel setText:comment.timeSinceCreation];
-        [cell setCommentText:comment.commentString];
-        [cell setPadding:comment.padding];
+        [self configureCommentCell:cell forIndexPath:indexPath];
         
         return cell;
     }
@@ -146,6 +162,10 @@
             [self postLoadSiteNotification];
         }
     }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
 }
 
 - (void)loadComments {
@@ -180,6 +200,16 @@
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
     [self.tableView reloadData];
+}
+
+- (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
+    HNComment *comment = (HNComment *)comments[indexPath.row];
+    
+    [cell.usernameLabel setText:comment.username];
+    [cell.timeLabel setText:comment.timeSinceCreation];
+    [cell setCommentText:comment.commentString];
+    [cell setPadding:comment.padding];
 }
 
 @end

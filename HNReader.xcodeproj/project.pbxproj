@@ -462,6 +462,7 @@
 		F775DACC14340D7E00F93F48 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */;

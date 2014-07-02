@@ -32,15 +32,17 @@
 }
 
 - (void)setPadding:(NSInteger)padding {
-    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
-    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
-    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
+//    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
+//    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
+//    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
     [self setNeedsUpdateConstraints];
     [self setNeedsLayout];
 }
 
 - (void)setup {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+//    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.usernameLabel setTextColor:[UIColor lightGrayColor]];
     [self.timeLabel setTextColor:[UIColor lightGrayColor]];
