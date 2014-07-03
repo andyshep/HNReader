@@ -9,23 +9,17 @@
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
-		F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F77143F6ABF00141BD9 /* HNComment.m */; };
-		F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */; };
-		F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */; };
-		F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */; };
-		F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */; };
+		F72BC9D3196608A500CA1161 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */; };
+		F72BC9D9196608DB00CA1161 /* 163-glasses-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D4196608DB00CA1161 /* 163-glasses-1.png */; };
+		F72BC9DA196608DB00CA1161 /* 164-glasses-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D5196608DB00CA1161 /* 164-glasses-2.png */; };
+		F72BC9DB196608DB00CA1161 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */; };
+		F72BC9DC196608DB00CA1161 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D7196608DB00CA1161 /* Default.png */; };
+		F72BC9DD196608DB00CA1161 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D8196608DB00CA1161 /* Default@2x.png */; };
 		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
 		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
 		F759AEA6189EC28400BD46D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
-		F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */; };
-		F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F765CA02183C6F1200A76DBD /* Default-568h@2x.png */; };
-		F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */; };
-		F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */; };
 		F76ACA6614354265004CF9EA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F77319C8189EC2AC00C360F1 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
-		F77319D1189EC5E100C360F1 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F77319CF189EC5E100C360F1 /* HNParser.m */; };
-		F77319D4189EC5F300C360F1 /* HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F77319D3189EC5F300C360F1 /* HNCommentTools.m */; };
-		F77319D7189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F77319D6189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */; };
 		F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30B143606CD0083E7BB /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F774A30F143606CD0083E7BB /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F774A30D143606CD0083E7BB /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
@@ -33,79 +27,51 @@
 		F775DADE14340D7E00F93F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADD14340D7E00F93F48 /* CoreGraphics.framework */; };
 		F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F775DAE214340D7E00F93F48 /* InfoPlist.strings */; };
 		F775DAE614340D7E00F93F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAE514340D7E00F93F48 /* main.m */; };
-		F775DB0014340D7F00F93F48 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */; };
-		F775DB0114340D7F00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
-		F775DB0214340D7F00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
-		F775DB0314340D7F00F93F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADD14340D7E00F93F48 /* CoreGraphics.framework */; };
-		F775DB0B14340D7F00F93F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F775DB0914340D7F00F93F48 /* InfoPlist.strings */; };
-		F775DB0D14340D7F00F93F48 /* HNReaderTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F775DB0C14340D7F00F93F48 /* HNReaderTests.h */; };
-		F775DB0F14340D7F00F93F48 /* HNReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DB0E14340D7F00F93F48 /* HNReaderTests.m */; };
 		F775DB3F1434110700F93F48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3D1434110700F93F48 /* MobileCoreServices.framework */; };
 		F775DB401434110700F93F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3E1434110700F93F48 /* SystemConfiguration.framework */; };
 		F778DE211965F9A2008765D2 /* HNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F778DE201965F9A2008765D2 /* HNLabel.m */; };
-		F78529CC18A84DE20023DCE5 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */; };
-		F7895D28183D9CE500677396 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D26183D9CE500677396 /* Default.png */; };
-		F7895D29183D9CE500677396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D27183D9CE500677396 /* Default@2x.png */; };
-		F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D2A183DC1E300677396 /* 163-glasses-1.png */; };
-		F7895D2D183DC29D00677396 /* 164-glasses-2.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D2C183DC29D00677396 /* 164-glasses-2.png */; };
-		F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F790C6C81436615100DE8D6D /* HNWebViewController.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */; };
 		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DF2AA81965FFA6004DF35D /* HNConstants.m */; };
-		F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */; };
-		F7E86FC714364CD800A09334 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBF14364CD800A09334 /* HNEntriesViewController.m */; };
-		F7E86FC914364CD800A09334 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FC314364CD800A09334 /* HNReaderAppDelegate.m */; };
-		F7E86FCA14364CD800A09334 /* HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FC514364CD800A09334 /* HNReaderTheme.m */; };
-		F7E86FCF14364CE100A09334 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FCC14364CE100A09334 /* HNEntry.m */; };
-		F7E86FD014364CE100A09334 /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FCE14364CE100A09334 /* HNEntriesModel.m */; };
+		F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B51196606C100041006 /* HNReaderAppDelegate.m */; };
+		F7E42B57196606D500041006 /* HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B54196606D500041006 /* HNCommentTools.m */; };
+		F7E42B58196606D500041006 /* HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B56196606D500041006 /* HNReaderTheme.m */; };
+		F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5A196606E600041006 /* HNCommentsViewController.m */; };
+		F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5C196606E600041006 /* HNEntriesViewController.m */; };
+		F7E42B60196606E600041006 /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5D196606E600041006 /* HNWebViewController.m */; };
+		F7E42B6C1966071800041006 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B631966071800041006 /* HNCacheManager.m */; };
+		F7E42B6D1966071800041006 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B651966071800041006 /* HNComment.m */; };
+		F7E42B6E1966071800041006 /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B671966071800041006 /* HNEntriesModel.m */; };
+		F7E42B6F1966071800041006 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B691966071800041006 /* HNEntry.m */; };
+		F7E42B701966071800041006 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B6B1966071800041006 /* HNParser.m */; };
+		F7E42B791966072900041006 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B721966072900041006 /* HNCommentsTableViewCell.m */; };
+		F7E42B7A1966072900041006 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B741966072900041006 /* HNEntriesTableViewCell.m */; };
+		F7E42B7B1966072900041006 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B761966072900041006 /* HNLoadMoreTableViewCell.m */; };
+		F7E42B7C1966072900041006 /* HNTableCellSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B781966072900041006 /* HNTableCellSelectedView.m */; };
+		F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B7E1966073D00041006 /* HNCommentsModel.m */; };
+		F7E42B821966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B811966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */; };
 		F7F0008D147C770100328C1D /* hn-icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F0008A147C770100328C1D /* hn-icon-57.png */; };
 		F7F0008E147C770100328C1D /* hn-icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F0008B147C770100328C1D /* hn-icon-72.png */; };
 		F7F0008F147C770100328C1D /* hn-icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F0008C147C770100328C1D /* hn-icon-114.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F775DB0414340D7F00F93F48 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F775DAD414340D7E00F93F48;
-			remoteInfo = HNReader;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F71E0F76143F6ABF00141BD9 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNComment.h; path = Shared/HNComment.h; sourceTree = "<group>"; };
-		F71E0F77143F6ABF00141BD9 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNComment.m; path = Shared/HNComment.m; sourceTree = "<group>"; };
-		F71E0F78143F6ABF00141BD9 /* HNCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsModel.h; path = Shared/HNCommentsModel.h; sourceTree = "<group>"; };
-		F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsModel.m; path = Shared/HNCommentsModel.m; sourceTree = "<group>"; };
-		F71E0F7A143F6AC000141BD9 /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsTableViewCell.h; path = Shared/HNCommentsTableViewCell.h; sourceTree = "<group>"; };
-		F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsTableViewCell.m; path = Shared/HNCommentsTableViewCell.m; sourceTree = "<group>"; };
-		F71E0F7C143F6AC100141BD9 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsViewController.h; path = Shared/HNCommentsViewController.h; sourceTree = "<group>"; };
-		F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsViewController.m; path = Shared/HNCommentsViewController.m; sourceTree = "<group>"; };
-		F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsViewController.xib; path = Shared/HNCommentsViewController.xib; sourceTree = "<group>"; };
+		F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		F72BC9D4196608DB00CA1161 /* 163-glasses-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "163-glasses-1.png"; path = "Resources/163-glasses-1.png"; sourceTree = "<group>"; };
+		F72BC9D5196608DB00CA1161 /* 164-glasses-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "164-glasses-2.png"; path = "Resources/164-glasses-2.png"; sourceTree = "<group>"; };
+		F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
+		F72BC9D7196608DB00CA1161 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		F72BC9D8196608DB00CA1161 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
 		F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesViewController.xib; path = Shared/HNEntriesViewController.xib; sourceTree = "<group>"; };
-		F765CA02183C6F1200A76DBD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLoadMoreTableViewCell.h; path = Shared/HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
-		F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNLoadMoreTableViewCell.m; path = Shared/HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
-		F7698825143B614300BD53F6 /* HNTableCellSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNTableCellSelectedView.h; path = Shared/HNTableCellSelectedView.h; sourceTree = "<group>"; };
-		F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNTableCellSelectedView.m; path = Shared/HNTableCellSelectedView.m; sourceTree = "<group>"; };
 		F76ACA6514354265004CF9EA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		F77319C7189EC2AC00C360F1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		F77319CE189EC5E100C360F1 /* HNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNParser.h; path = Shared/HNParser.h; sourceTree = "<group>"; };
-		F77319CF189EC5E100C360F1 /* HNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNParser.m; path = Shared/HNParser.m; sourceTree = "<group>"; };
-		F77319D2189EC5F300C360F1 /* HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentTools.h; path = Shared/HNCommentTools.h; sourceTree = "<group>"; };
-		F77319D3189EC5F300C360F1 /* HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentTools.m; path = Shared/HNCommentTools.m; sourceTree = "<group>"; };
-		F77319D5189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFHTTPRequestOperationManager+HNReactiveExtension.h"; path = "Shared/AFHTTPRequestOperationManager+HNReactiveExtension.h"; sourceTree = "<group>"; };
-		F77319D6189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPRequestOperationManager+HNReactiveExtension.m"; path = "Shared/AFHTTPRequestOperationManager+HNReactiveExtension.m"; sourceTree = "<group>"; };
 		F774A30A143606CD0083E7BB /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = "Objective-C-HTML-Parser/HTMLNode.h"; sourceTree = "<group>"; };
 		F774A30B143606CD0083E7BB /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = "Objective-C-HTML-Parser/HTMLNode.m"; sourceTree = "<group>"; };
 		F774A30C143606CD0083E7BB /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = "Objective-C-HTML-Parser/HTMLParser.h"; sourceTree = "<group>"; };
@@ -118,7 +84,6 @@
 		F775DAE314340D7E00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F775DAE514340D7E00F93F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNReader-Prefix.pch"; sourceTree = "<group>"; };
-		F775DAFE14340D7F00F93F48 /* HNReaderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HNReaderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F775DB0814340D7F00F93F48 /* HNReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HNReaderTests-Info.plist"; sourceTree = "<group>"; };
 		F775DB0A14340D7F00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -128,36 +93,49 @@
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F778DE1F1965F9A2008765D2 /* HNLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLabel.h; sourceTree = "<group>"; };
 		F778DE201965F9A2008765D2 /* HNLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLabel.m; sourceTree = "<group>"; };
-		F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhoneStoryboard.storyboard; path = iPhone/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
-		F7895D26183D9CE500677396 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
-		F7895D27183D9CE500677396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
-		F7895D2A183DC1E300677396 /* 163-glasses-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "163-glasses-1.png"; sourceTree = SOURCE_ROOT; };
-		F7895D2C183DC29D00677396 /* 164-glasses-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "164-glasses-2.png"; sourceTree = SOURCE_ROOT; };
-		F790C6C71436615000DE8D6D /* HNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNWebViewController.h; path = Shared/HNWebViewController.h; sourceTree = "<group>"; };
-		F790C6C81436615100DE8D6D /* HNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNWebViewController.m; path = Shared/HNWebViewController.m; sourceTree = "<group>"; };
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7A24071147577B000004287 /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7A24072147577B000004287 /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
-		F7BE527718A0AD9900EF91B6 /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
-		F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7C4EEAB183D47DA001036E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
 		F7CD38F01475F9ED00EB57B5 /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
 		F7DF2AA71965FFA6004DF35D /* HNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNConstants.h; sourceTree = "<group>"; };
 		F7DF2AA81965FFA6004DF35D /* HNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNConstants.m; sourceTree = "<group>"; };
-		F7E86FBC14364CD800A09334 /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableViewCell.h; path = Shared/HNEntriesTableViewCell.h; sourceTree = "<group>"; };
-		F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableViewCell.m; path = Shared/HNEntriesTableViewCell.m; sourceTree = "<group>"; };
-		F7E86FBE14364CD800A09334 /* HNEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesViewController.h; path = Shared/HNEntriesViewController.h; sourceTree = "<group>"; };
-		F7E86FBF14364CD800A09334 /* HNEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesViewController.m; path = Shared/HNEntriesViewController.m; sourceTree = "<group>"; };
-		F7E86FC214364CD800A09334 /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate.h; path = Shared/HNReaderAppDelegate.h; sourceTree = "<group>"; };
-		F7E86FC314364CD800A09334 /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate.m; path = Shared/HNReaderAppDelegate.m; sourceTree = "<group>"; };
-		F7E86FC414364CD800A09334 /* HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNReaderTheme.h; path = Shared/HNReaderTheme.h; sourceTree = "<group>"; };
-		F7E86FC514364CD800A09334 /* HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNReaderTheme.m; path = Shared/HNReaderTheme.m; sourceTree = "<group>"; };
-		F7E86FCB14364CE100A09334 /* HNEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntry.h; path = Shared/HNEntry.h; sourceTree = "<group>"; };
-		F7E86FCC14364CE100A09334 /* HNEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntry.m; path = Shared/HNEntry.m; sourceTree = "<group>"; };
-		F7E86FCD14364CE100A09334 /* HNEntriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesModel.h; path = Shared/HNEntriesModel.h; sourceTree = "<group>"; };
-		F7E86FCE14364CE100A09334 /* HNEntriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesModel.m; path = Shared/HNEntriesModel.m; sourceTree = "<group>"; };
+		F7E42B50196606C100041006 /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReaderAppDelegate.h; sourceTree = "<group>"; };
+		F7E42B51196606C100041006 /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReaderAppDelegate.m; sourceTree = "<group>"; };
+		F7E42B53196606D500041006 /* HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTools.h; sourceTree = "<group>"; };
+		F7E42B54196606D500041006 /* HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTools.m; sourceTree = "<group>"; };
+		F7E42B55196606D500041006 /* HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReaderTheme.h; sourceTree = "<group>"; };
+		F7E42B56196606D500041006 /* HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReaderTheme.m; sourceTree = "<group>"; };
+		F7E42B59196606E600041006 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsViewController.h; sourceTree = "<group>"; };
+		F7E42B5A196606E600041006 /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsViewController.m; sourceTree = "<group>"; };
+		F7E42B5B196606E600041006 /* HNEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesViewController.h; sourceTree = "<group>"; };
+		F7E42B5C196606E600041006 /* HNEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesViewController.m; sourceTree = "<group>"; };
+		F7E42B5D196606E600041006 /* HNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebViewController.m; sourceTree = "<group>"; };
+		F7E42B61196606F100041006 /* HNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebViewController.h; sourceTree = "<group>"; };
+		F7E42B621966071800041006 /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCacheManager.h; sourceTree = "<group>"; };
+		F7E42B631966071800041006 /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCacheManager.m; sourceTree = "<group>"; };
+		F7E42B641966071800041006 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNComment.h; sourceTree = "<group>"; };
+		F7E42B651966071800041006 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNComment.m; sourceTree = "<group>"; };
+		F7E42B661966071800041006 /* HNEntriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesModel.h; sourceTree = "<group>"; };
+		F7E42B671966071800041006 /* HNEntriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesModel.m; sourceTree = "<group>"; };
+		F7E42B681966071800041006 /* HNEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntry.h; sourceTree = "<group>"; };
+		F7E42B691966071800041006 /* HNEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntry.m; sourceTree = "<group>"; };
+		F7E42B6A1966071800041006 /* HNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNParser.h; sourceTree = "<group>"; };
+		F7E42B6B1966071800041006 /* HNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNParser.m; sourceTree = "<group>"; };
+		F7E42B711966072900041006 /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsTableViewCell.h; sourceTree = "<group>"; };
+		F7E42B721966072900041006 /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsTableViewCell.m; sourceTree = "<group>"; };
+		F7E42B731966072900041006 /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesTableViewCell.h; sourceTree = "<group>"; };
+		F7E42B741966072900041006 /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesTableViewCell.m; sourceTree = "<group>"; };
+		F7E42B751966072900041006 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
+		F7E42B761966072900041006 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
+		F7E42B771966072900041006 /* HNTableCellSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTableCellSelectedView.h; sourceTree = "<group>"; };
+		F7E42B781966072900041006 /* HNTableCellSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTableCellSelectedView.m; sourceTree = "<group>"; };
+		F7E42B7D1966073D00041006 /* HNCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsModel.h; sourceTree = "<group>"; };
+		F7E42B7E1966073D00041006 /* HNCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsModel.m; sourceTree = "<group>"; };
+		F7E42B801966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+HNReactiveExtension.h"; sourceTree = "<group>"; };
+		F7E42B811966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+HNReactiveExtension.m"; sourceTree = "<group>"; };
 		F7F0008A147C770100328C1D /* hn-icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hn-icon-57.png"; path = "Resources/hn-icon-57.png"; sourceTree = "<group>"; };
 		F7F0008B147C770100328C1D /* hn-icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hn-icon-72.png"; path = "Resources/hn-icon-72.png"; sourceTree = "<group>"; };
 		F7F0008C147C770100328C1D /* hn-icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hn-icon-114.png"; path = "Resources/hn-icon-114.png"; sourceTree = "<group>"; };
@@ -182,69 +160,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F775DAFA14340D7F00F93F48 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F775DB0014340D7F00F93F48 /* SenTestingKit.framework in Frameworks */,
-				F775DB0114340D7F00F93F48 /* UIKit.framework in Frameworks */,
-				F775DB0214340D7F00F93F48 /* Foundation.framework in Frameworks */,
-				F775DB0314340D7F00F93F48 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		F75D3683143A056D005BCA23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F7895D2C183DC29D00677396 /* 164-glasses-2.png */,
-				F7895D2A183DC1E300677396 /* 163-glasses-1.png */,
-				F7895D26183D9CE500677396 /* Default.png */,
-				F7895D27183D9CE500677396 /* Default@2x.png */,
-				F765CA02183C6F1200A76DBD /* Default-568h@2x.png */,
+				F72BC9D4196608DB00CA1161 /* 163-glasses-1.png */,
+				F72BC9D5196608DB00CA1161 /* 164-glasses-2.png */,
+				F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */,
+				F72BC9D7196608DB00CA1161 /* Default.png */,
+				F72BC9D8196608DB00CA1161 /* Default@2x.png */,
+				F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */,
 				F747AAF81491358600F3C84F /* ipad-formatting.html */,
 				F747AAF91491358600F3C84F /* iphone-formatting.html */,
 				F7F0008A147C770100328C1D /* hn-icon-57.png */,
 				F7F0008B147C770100328C1D /* hn-icon-72.png */,
 				F7F0008C147C770100328C1D /* hn-icon-114.png */,
-				F75D3685143A0594005BCA23 /* HNEntriesViewController.xib */,
-				F739A0441451A90600C88FA9 /* HNCommentsViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		F769881C143B5D1A00BD53F6 /* TableViewCells */ = {
+		F769881C143B5D1A00BD53F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F71E0F7A143F6AC000141BD9 /* HNCommentsTableViewCell.h */,
-				F71E0F7B143F6AC000141BD9 /* HNCommentsTableViewCell.m */,
-				F7698825143B614300BD53F6 /* HNTableCellSelectedView.h */,
-				F7698826143B614300BD53F6 /* HNTableCellSelectedView.m */,
-				F7E86FBC14364CD800A09334 /* HNEntriesTableViewCell.h */,
-				F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */,
-				F769881E143B5D5000BD53F6 /* HNLoadMoreTableViewCell.h */,
-				F769881F143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m */,
+				F7E42B711966072900041006 /* HNCommentsTableViewCell.h */,
+				F7E42B721966072900041006 /* HNCommentsTableViewCell.m */,
+				F7E42B731966072900041006 /* HNEntriesTableViewCell.h */,
+				F7E42B741966072900041006 /* HNEntriesTableViewCell.m */,
+				F7E42B751966072900041006 /* HNLoadMoreTableViewCell.h */,
+				F7E42B761966072900041006 /* HNLoadMoreTableViewCell.m */,
+				F7E42B771966072900041006 /* HNTableCellSelectedView.h */,
+				F7E42B781966072900041006 /* HNTableCellSelectedView.m */,
+				F778DE1F1965F9A2008765D2 /* HNLabel.h */,
+				F778DE201965F9A2008765D2 /* HNLabel.m */,
 			);
-			name = TableViewCells;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F76ACA591434F9E1004CF9EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F7BE527718A0AD9900EF91B6 /* HNCacheManager.h */,
-				F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */,
-				F77319CE189EC5E100C360F1 /* HNParser.h */,
-				F77319CF189EC5E100C360F1 /* HNParser.m */,
-				F7E86FCB14364CE100A09334 /* HNEntry.h */,
-				F7E86FCC14364CE100A09334 /* HNEntry.m */,
-				F7E86FCD14364CE100A09334 /* HNEntriesModel.h */,
-				F7E86FCE14364CE100A09334 /* HNEntriesModel.m */,
-				F71E0F76143F6ABF00141BD9 /* HNComment.h */,
-				F71E0F77143F6ABF00141BD9 /* HNComment.m */,
-				F71E0F78143F6ABF00141BD9 /* HNCommentsModel.h */,
-				F71E0F79143F6AC000141BD9 /* HNCommentsModel.m */,
+				F7E42B7D1966073D00041006 /* HNCommentsModel.h */,
+				F7E42B7E1966073D00041006 /* HNCommentsModel.m */,
+				F7E42B621966071800041006 /* HNCacheManager.h */,
+				F7E42B631966071800041006 /* HNCacheManager.m */,
+				F7E42B641966071800041006 /* HNComment.h */,
+				F7E42B651966071800041006 /* HNComment.m */,
+				F7E42B661966071800041006 /* HNEntriesModel.h */,
+				F7E42B671966071800041006 /* HNEntriesModel.m */,
+				F7E42B681966071800041006 /* HNEntry.h */,
+				F7E42B691966071800041006 /* HNEntry.m */,
+				F7E42B6A1966071800041006 /* HNParser.h */,
+				F7E42B6B1966071800041006 /* HNParser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				F775DAD514340D7E00F93F48 /* HNReader.app */,
-				F775DAFE14340D7F00F93F48 /* HNReaderTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,8 +270,19 @@
 		F775DADF14340D7E00F93F48 /* HNReader */ = {
 			isa = PBXGroup;
 			children = (
-				F775DB1814340EFF00F93F48 /* Shared */,
-				F775DAEB14340D7F00F93F48 /* iPhone */,
+				F7E42B50196606C100041006 /* HNReaderAppDelegate.h */,
+				F7E42B51196606C100041006 /* HNReaderAppDelegate.m */,
+				F7DF2AAA196605D7004DF35D /* Controllers */,
+				F769881C143B5D1A00BD53F6 /* Views */,
+				F76ACA591434F9E1004CF9EA /* Model */,
+				F7E42B831966078B00041006 /* Categories */,
+				F7E42B53196606D500041006 /* HNCommentTools.h */,
+				F7E42B54196606D500041006 /* HNCommentTools.m */,
+				F7E42B55196606D500041006 /* HNReaderTheme.h */,
+				F7E42B56196606D500041006 /* HNReaderTheme.m */,
+				F75D3683143A056D005BCA23 /* Resources */,
+				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
+				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);
@@ -320,14 +298,6 @@
 				F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F775DAEB14340D7F00F93F48 /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */,
-			);
-			name = iPhone;
 			sourceTree = "<group>";
 		};
 		F775DB0614340D7F00F93F48 /* HNReaderTests */ = {
@@ -347,34 +317,6 @@
 				F775DB0914340D7F00F93F48 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F775DB1814340EFF00F93F48 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				F769881C143B5D1A00BD53F6 /* TableViewCells */,
-				F76ACA591434F9E1004CF9EA /* Model */,
-				F75D3683143A056D005BCA23 /* Resources */,
-				F7E86FC214364CD800A09334 /* HNReaderAppDelegate.h */,
-				F7E86FC314364CD800A09334 /* HNReaderAppDelegate.m */,
-				F7E86FBE14364CD800A09334 /* HNEntriesViewController.h */,
-				F7E86FBF14364CD800A09334 /* HNEntriesViewController.m */,
-				F71E0F7C143F6AC100141BD9 /* HNCommentsViewController.h */,
-				F71E0F7D143F6AC100141BD9 /* HNCommentsViewController.m */,
-				F790C6C71436615000DE8D6D /* HNWebViewController.h */,
-				F790C6C81436615100DE8D6D /* HNWebViewController.m */,
-				F7E86FC414364CD800A09334 /* HNReaderTheme.h */,
-				F7E86FC514364CD800A09334 /* HNReaderTheme.m */,
-				F77319D2189EC5F300C360F1 /* HNCommentTools.h */,
-				F77319D3189EC5F300C360F1 /* HNCommentTools.m */,
-				F77319D5189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */,
-				F77319D6189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */,
-				F778DE1F1965F9A2008765D2 /* HNLabel.h */,
-				F778DE201965F9A2008765D2 /* HNLabel.m */,
-				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
-				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
-			);
-			name = Shared;
 			sourceTree = "<group>";
 		};
 		F775DB1F143410C500F93F48 /* Vendor */ = {
@@ -399,6 +341,28 @@
 			name = readable;
 			sourceTree = "<group>";
 		};
+		F7DF2AAA196605D7004DF35D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7E42B61196606F100041006 /* HNWebViewController.h */,
+				F7E42B59196606E600041006 /* HNCommentsViewController.h */,
+				F7E42B5A196606E600041006 /* HNCommentsViewController.m */,
+				F7E42B5B196606E600041006 /* HNEntriesViewController.h */,
+				F7E42B5C196606E600041006 /* HNEntriesViewController.m */,
+				F7E42B5D196606E600041006 /* HNWebViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F7E42B831966078B00041006 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F7E42B801966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */,
+				F7E42B811966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,25 +384,6 @@
 			productName = HNReader;
 			productReference = F775DAD514340D7E00F93F48 /* HNReader.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F775DAFD14340D7F00F93F48 /* HNReaderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F775DB1514340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReaderTests" */;
-			buildPhases = (
-				F775DAF914340D7F00F93F48 /* Sources */,
-				F775DAFA14340D7F00F93F48 /* Frameworks */,
-				F775DAFB14340D7F00F93F48 /* Resources */,
-				F775DAFC14340D7F00F93F48 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F775DB0514340D7F00F93F48 /* PBXTargetDependency */,
-			);
-			name = HNReaderTests;
-			productName = HNReaderTests;
-			productReference = F775DAFE14340D7F00F93F48 /* HNReaderTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -462,7 +407,6 @@
 			projectRoot = "";
 			targets = (
 				F775DAD414340D7E00F93F48 /* HNReader */,
-				F775DAFD14340D7F00F93F48 /* HNReaderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -473,29 +417,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
-				F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */,
+				F72BC9DB196608DB00CA1161 /* Default-568h@2x.png in Resources */,
+				F72BC9DA196608DB00CA1161 /* 164-glasses-2.png in Resources */,
+				F72BC9D9196608DB00CA1161 /* 163-glasses-1.png in Resources */,
+				F72BC9DD196608DB00CA1161 /* Default@2x.png in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
-				F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */,
-				F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */,
-				F7895D28183D9CE500677396 /* Default.png in Resources */,
 				F7F0008D147C770100328C1D /* hn-icon-57.png in Resources */,
-				F78529CC18A84DE20023DCE5 /* iPhoneStoryboard.storyboard in Resources */,
 				F7F0008E147C770100328C1D /* hn-icon-72.png in Resources */,
-				F7895D2B183DC1E300677396 /* 163-glasses-1.png in Resources */,
+				F72BC9DC196608DB00CA1161 /* Default.png in Resources */,
 				F7F0008F147C770100328C1D /* hn-icon-114.png in Resources */,
 				F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */,
-				F7895D2D183DC29D00677396 /* 164-glasses-2.png in Resources */,
-				F7895D29183D9CE500677396 /* Default@2x.png in Resources */,
+				F72BC9D3196608A500CA1161 /* iPhoneStoryboard.storyboard in Resources */,
 				F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F775DAFB14340D7F00F93F48 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F775DB0B14340D7F00F93F48 /* InfoPlist.strings in Resources */,
-				F775DB0D14340D7F00F93F48 /* HNReaderTests.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,19 +463,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
-		F775DAFC14340D7F00F93F48 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -550,50 +470,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F77319D1189EC5E100C360F1 /* HNParser.m in Sources */,
-				F77319D4189EC5F300C360F1 /* HNCommentTools.m in Sources */,
+				F7E42B701966071800041006 /* HNParser.m in Sources */,
 				F775DAE614340D7E00F93F48 /* main.m in Sources */,
-				F77319D7189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */,
+				F7E42B7B1966072900041006 /* HNLoadMoreTableViewCell.m in Sources */,
 				F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */,
+				F7E42B6F1966071800041006 /* HNEntry.m in Sources */,
+				F7E42B58196606D500041006 /* HNReaderTheme.m in Sources */,
+				F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */,
+				F7E42B6D1966071800041006 /* HNComment.m in Sources */,
+				F7E42B6C1966071800041006 /* HNCacheManager.m in Sources */,
 				F774A30F143606CD0083E7BB /* HTMLParser.m in Sources */,
+				F7E42B791966072900041006 /* HNCommentsTableViewCell.m in Sources */,
+				F7E42B821966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */,
+				F7E42B60196606E600041006 /* HNWebViewController.m in Sources */,
 				F778DE211965F9A2008765D2 /* HNLabel.m in Sources */,
-				F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */,
-				F7E86FC714364CD800A09334 /* HNEntriesViewController.m in Sources */,
-				F7E86FC914364CD800A09334 /* HNReaderAppDelegate.m in Sources */,
-				F7E86FCA14364CD800A09334 /* HNReaderTheme.m in Sources */,
-				F7E86FCF14364CE100A09334 /* HNEntry.m in Sources */,
-				F7E86FD014364CE100A09334 /* HNEntriesModel.m in Sources */,
-				F790C6C91436615100DE8D6D /* HNWebViewController.m in Sources */,
-				F7698820143B5D5000BD53F6 /* HNLoadMoreTableViewCell.m in Sources */,
-				F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */,
-				F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */,
-				F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */,
+				F7E42B57196606D500041006 /* HNCommentTools.m in Sources */,
 				F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */,
-				F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */,
-				F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */,
+				F7E42B7A1966072900041006 /* HNEntriesTableViewCell.m in Sources */,
+				F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */,
+				F7E42B6E1966071800041006 /* HNEntriesModel.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
+				F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */,
+				F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */,
+				F7E42B7C1966072900041006 /* HNTableCellSelectedView.m in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
-				F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F775DAF914340D7F00F93F48 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F775DB0F14340D7F00F93F48 /* HNReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F775DB0514340D7F00F93F48 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F775DAD414340D7E00F93F48 /* HNReader */;
-			targetProxy = F775DB0414340D7F00F93F48 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F775DAE214340D7E00F93F48 /* InfoPlist.strings */ = {
@@ -770,42 +674,6 @@
 			};
 			name = Release;
 		};
-		F775DB1614340D7F00F93F48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HNReader.app/HNReader";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
-				INFOPLIST_FILE = "HNReaderTests/HNReaderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		F775DB1714340D7F00F93F48 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HNReader.app/HNReader";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HNReader/HNReader-Prefix.pch";
-				INFOPLIST_FILE = "HNReaderTests/HNReaderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -823,15 +691,6 @@
 			buildConfigurations = (
 				F775DB1314340D7F00F93F48 /* Debug */,
 				F775DB1414340D7F00F93F48 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F775DB1514340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReaderTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F775DB1614340D7F00F93F48 /* Debug */,
-				F775DB1714340D7F00F93F48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
