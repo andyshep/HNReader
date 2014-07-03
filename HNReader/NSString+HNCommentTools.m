@@ -1,21 +1,21 @@
 //
-//  HNCommentTools.m
+//  NSString+HNCommentTools.m
 //  HNReader
 //
-//  Created by Andrew Shepard on 11/21/13.
+//  Created by Andrew Shepard on 7/3/14.
 //
 //
 
-#import "HNCommentTools.h"
+#import "NSString+HNCommentTools.h"
 
 #define COMMENT_CELL_MARGIN 10.0f
 
-@implementation HNCommentTools
+@implementation NSString (HNCommentTools)
 
-+ (CGRect)frameForString:(NSString *)string withIndentPadding:(NSInteger)padding {
+- (CGRect)hn_frameForStringWithIndentPadding:(NSInteger)padding {
     // knock the intentation padding down by a factor of 3
     // then adjust for cell margin and make sure the padding is even.
-    // otherwise the comment text is antialias'd
+    // otherwise the comment text is antialiased
     padding = COMMENT_CELL_MARGIN + (padding * 0.3f);
     if (padding % 2 != 0) {
         padding += 1;
@@ -37,7 +37,7 @@
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]};
     
     NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
-    CGSize size = [string boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
+    CGSize size = [self boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
     return CGRectMake(padding, 0.0f, adjustedWidth, size.height);
 }
 

@@ -17,6 +17,13 @@ extern NSString * const HNCommentsTableViewCellIdentifier;
 extern NSString * const HNLoadMoreTableViewCellIdentifier;
 
 extern NSString * const HNEntryCommentsKey;
-extern NSString * const HNWebSiteURLKey;
+extern NSString * const HNWebsiteURLKey;
+
+extern NSString * const HNWebsiteBaseURL;
+extern NSString * const HNWebsitePlaceholderURL;
+
+extern NSString * const HNFrontPageKey;
+extern NSString * const HNBestPageKey;
+extern NSString * const HNNewestPageKey;
 
 extern CGFloat const HNDefaultTableCellHeight;

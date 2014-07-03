@@ -7,12 +7,13 @@
 //
 
 #import "HNTableCellSelectedView.h"
+#import "UIColor+HNReaderTheme.h"
 
 @implementation HNTableCellSelectedView
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        [self setBackgroundColor:[HNReaderTheme brightOrangeColor]];
+        [self setBackgroundColor:[UIColor hn_brightOrangeColor]];
     }
     
     return self;

@@ -17,6 +17,13 @@ NSString * const HNCommentsTableViewCellIdentifier = @"HNCommentsTableViewCell";
 NSString * const HNLoadMoreTableViewCellIdentifier = @"HNLoadMoreTableViewCell";
 
 NSString * const HNEntryCommentsKey = @"entry_comments";
-NSString * const HNWebSiteURLKey = @"HNWebSiteURLKey";
+NSString * const HNWebsiteURLKey = @"HNWebSiteURLKey";
+
+NSString * const HNFrontPageKey = @"front";
+NSString * const HNBestPageKey = @"best";
+NSString * const HNNewestPageKey = @"newest";
+
+NSString * const HNWebsiteBaseURL = @"http://news.ycombinator.com";
+NSString * const HNWebsitePlaceholderURL = @"http://news.ycombinator.com/%@";
 
 CGFloat const HNDefaultTableCellHeight = 72.0f;

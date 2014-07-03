@@ -16,6 +16,8 @@
 #import "HNParser.h"
 #import "HNCacheManager.h"
 
+#import "HNConstants.h"
+
 typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     HNEntriesFrontPageIdentifier,
     HNEntriesNewestPageIdentifier,
@@ -60,21 +62,21 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 
 - (NSURL *)pageURLForIndex:(NSUInteger)index {
     if (index == HNEntriesFrontPageIdentifier) {
-        return [NSURL URLWithString:@"http://news.ycombinator.com/"];
+        return [NSURL URLWithString:HNWebsiteBaseURL];
     } else if (index == HNEntriesBestPageIdentifier) {
-        return [NSURL URLWithString:@"http://news.ycombinator.com/best"];
+        return [NSURL URLWithString:[NSString stringWithFormat:HNWebsitePlaceholderURL, HNBestPageKey]];
     } else {
-        return [NSURL URLWithString:@"http://news.ycombinator.com/newest"];
+        return [NSURL URLWithString:[NSString stringWithFormat:HNWebsitePlaceholderURL, HNNewestPageKey]];
     }
 }
 
 - (NSString *)cacheKeyForPageIdentifier:(HNEntriesPageIdentifier)identifier {
     if (identifier == HNEntriesFrontPageIdentifier) {
-        return @"front";
+        return HNFrontPageKey;
     } else if (identifier == HNEntriesNewestPageIdentifier) {
-        return @"newest";
+        return HNNewestPageKey;
     } else if (identifier == HNEntriesBestPageIdentifier) {
-        return @"best";
+        return HNBestPageKey;
     } else {
         return nil;
     }
@@ -102,21 +104,15 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
         [self didChangeValueForKey:@"entries"];
     }
     
-    // look in cache manager
     NSString *key = [self cacheKeyForPageIdentifier:index];
-    
     id cachedObj = [[HNCacheManager sharedManager] cachedEntriesForKey:key];
-    if (cachedObj) {
-        NSLog(@"cached for %@: %lu", key, (unsigned long)[cachedObj count]);
-        
+    if (cachedObj && [cachedObj isKindOfClass:[NSArray class]]) {
         NSArray *entries = (NSArray *)cachedObj;
         [self willChangeValueForKey:@"entries"];
         [self.entries removeAllObjects];
         [self.entries addObjectsFromArray:entries];
         [self didChangeValueForKey:@"entries"];
     } else {
-        NSLog(@"nothing cached for %@", key);
-        
         [self reloadEntriesForIndex:index];
     }
 }
@@ -124,13 +120,13 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 - (void)reloadEntriesForIndex:(NSUInteger)index {
     NSString *filePath = [self cacheFilePathForIndex:index];
     NSURL *url = [self pageURLForIndex:index];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self loadEntriesForRequest:request atCachedFilePath:filePath];
 }
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com%@", self.moreEntriesLink]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0f];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", HNWebsiteBaseURL, self.moreEntriesLink]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // we can keep the old entries around if we're loading more
     NSString *cachedFilePath = [self cacheFilePathForIndex:index];

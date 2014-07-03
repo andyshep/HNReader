@@ -20,8 +20,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-//    [self.siteTitleLabel setNumberOfLines:2];
-    
     HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
     [self setSelectedBackgroundView:selectedView];
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -50,10 +48,8 @@
 
 #pragma mark - Private
 - (void)setup {
-//    [self.siteDomainLabel setAdjustsFontSizeToFitWidth:YES];
     [self.siteDomainLabel setTextColor:[UIColor grayColor]];
     
-//    [self.totalPointsLabel setAdjustsFontSizeToFitWidth:YES];
     [self.totalPointsLabel setTextAlignment:NSTextAlignmentRight];
     [self.totalPointsLabel setTextColor:[UIColor grayColor]];
     
@@ -64,7 +60,6 @@
 
 - (void)applyHighlightAndSelectionStyle:(BOOL)apply {
     if (apply) {
-        // apply styling for selection and highlight
         self.siteTitleLabel.textColor = [UIColor whiteColor];
         self.siteDomainLabel.textColor = [UIColor whiteColor];
         self.totalPointsLabel.textColor = [UIColor whiteColor];

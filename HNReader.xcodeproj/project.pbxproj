@@ -15,6 +15,8 @@
 		F72BC9DB196608DB00CA1161 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */; };
 		F72BC9DC196608DB00CA1161 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D7196608DB00CA1161 /* Default.png */; };
 		F72BC9DD196608DB00CA1161 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D8196608DB00CA1161 /* Default@2x.png */; };
+		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
+		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
 		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
 		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
 		F759AEA6189EC28400BD46D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
@@ -36,8 +38,6 @@
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DF2AA81965FFA6004DF35D /* HNConstants.m */; };
 		F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B51196606C100041006 /* HNReaderAppDelegate.m */; };
-		F7E42B57196606D500041006 /* HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B54196606D500041006 /* HNCommentTools.m */; };
-		F7E42B58196606D500041006 /* HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B56196606D500041006 /* HNReaderTheme.m */; };
 		F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5A196606E600041006 /* HNCommentsViewController.m */; };
 		F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5C196606E600041006 /* HNEntriesViewController.m */; };
 		F7E42B60196606E600041006 /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5D196606E600041006 /* HNWebViewController.m */; };
@@ -67,6 +67,10 @@
 		F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		F72BC9D7196608DB00CA1161 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		F72BC9D8196608DB00CA1161 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
+		F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
+		F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
+		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
+		F73D24E2196614730046E941 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
 		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
 		F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -104,10 +108,6 @@
 		F7DF2AA81965FFA6004DF35D /* HNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNConstants.m; sourceTree = "<group>"; };
 		F7E42B50196606C100041006 /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReaderAppDelegate.h; sourceTree = "<group>"; };
 		F7E42B51196606C100041006 /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReaderAppDelegate.m; sourceTree = "<group>"; };
-		F7E42B53196606D500041006 /* HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentTools.h; sourceTree = "<group>"; };
-		F7E42B54196606D500041006 /* HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentTools.m; sourceTree = "<group>"; };
-		F7E42B55196606D500041006 /* HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReaderTheme.h; sourceTree = "<group>"; };
-		F7E42B56196606D500041006 /* HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReaderTheme.m; sourceTree = "<group>"; };
 		F7E42B59196606E600041006 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsViewController.h; sourceTree = "<group>"; };
 		F7E42B5A196606E600041006 /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsViewController.m; sourceTree = "<group>"; };
 		F7E42B5B196606E600041006 /* HNEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesViewController.h; sourceTree = "<group>"; };
@@ -201,14 +201,14 @@
 		F76ACA591434F9E1004CF9EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F7E42B7D1966073D00041006 /* HNCommentsModel.h */,
-				F7E42B7E1966073D00041006 /* HNCommentsModel.m */,
 				F7E42B621966071800041006 /* HNCacheManager.h */,
 				F7E42B631966071800041006 /* HNCacheManager.m */,
 				F7E42B641966071800041006 /* HNComment.h */,
 				F7E42B651966071800041006 /* HNComment.m */,
 				F7E42B661966071800041006 /* HNEntriesModel.h */,
 				F7E42B671966071800041006 /* HNEntriesModel.m */,
+				F7E42B7D1966073D00041006 /* HNCommentsModel.h */,
+				F7E42B7E1966073D00041006 /* HNCommentsModel.m */,
 				F7E42B681966071800041006 /* HNEntry.h */,
 				F7E42B691966071800041006 /* HNEntry.m */,
 				F7E42B6A1966071800041006 /* HNParser.h */,
@@ -276,10 +276,6 @@
 				F769881C143B5D1A00BD53F6 /* Views */,
 				F76ACA591434F9E1004CF9EA /* Model */,
 				F7E42B831966078B00041006 /* Categories */,
-				F7E42B53196606D500041006 /* HNCommentTools.h */,
-				F7E42B54196606D500041006 /* HNCommentTools.m */,
-				F7E42B55196606D500041006 /* HNReaderTheme.h */,
-				F7E42B56196606D500041006 /* HNReaderTheme.m */,
 				F75D3683143A056D005BCA23 /* Resources */,
 				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
 				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
@@ -359,6 +355,10 @@
 			children = (
 				F7E42B801966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */,
 				F7E42B811966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */,
+				F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */,
+				F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */,
+				F73D24E1196614730046E941 /* NSString+HNCommentTools.h */,
+				F73D24E2196614730046E941 /* NSString+HNCommentTools.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -474,8 +474,8 @@
 				F775DAE614340D7E00F93F48 /* main.m in Sources */,
 				F7E42B7B1966072900041006 /* HNLoadMoreTableViewCell.m in Sources */,
 				F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */,
+				F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */,
 				F7E42B6F1966071800041006 /* HNEntry.m in Sources */,
-				F7E42B58196606D500041006 /* HNReaderTheme.m in Sources */,
 				F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */,
 				F7E42B6D1966071800041006 /* HNComment.m in Sources */,
 				F7E42B6C1966071800041006 /* HNCacheManager.m in Sources */,
@@ -484,7 +484,6 @@
 				F7E42B821966074500041006 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */,
 				F7E42B60196606E600041006 /* HNWebViewController.m in Sources */,
 				F778DE211965F9A2008765D2 /* HNLabel.m in Sources */,
-				F7E42B57196606D500041006 /* HNCommentTools.m in Sources */,
 				F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */,
 				F7E42B7A1966072900041006 /* HNEntriesTableViewCell.m in Sources */,
 				F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */,
@@ -492,6 +491,7 @@
 				F7A24073147577B000004287 /* readable.c in Sources */,
 				F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */,
 				F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */,
+				F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */,
 				F7E42B7C1966072900041006 /* HNTableCellSelectedView.m in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
 			);
@@ -525,9 +525,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -538,18 +545,26 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "READABLE_USE_LIBICU=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -563,9 +578,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -573,19 +595,26 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "READABLE_USE_LIBICU=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_CFLAGS = "";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;

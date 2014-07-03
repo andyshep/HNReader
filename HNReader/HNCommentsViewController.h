@@ -7,7 +7,6 @@
 //
 
 @class HNEntry;
-@class HNCommentsModel;
 
 @interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

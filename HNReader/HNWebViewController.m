@@ -28,16 +28,16 @@
     if ((self = [super init])) {
         self.items = [NSMutableArray array];
         self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        [_webView setScalesPageToFit:YES];
-        [_webView setDelegate:self];
-        [_webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [self.webView setScalesPageToFit:YES];
+        [self.webView setDelegate:self];
+        [self.webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     }
     
     return self;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HNStopLoadingNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -50,12 +50,9 @@
         UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
         [[self navigationItem] setRightBarButtonItem:button];
-        
-        // WTF
-        self.displayedURL = [NSURL URLWithString:[_entry linkURL]];
-        [self shouldLoadURL:_displayedURL];
+        self.displayedURL = [NSURL URLWithString:self.entry.linkURL];
+        [self shouldLoadURL:self.displayedURL];
     } else {
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldStopLoading) name:HNStopLoadingNotification object:nil];
         
         UIImage *image = [UIImage imageNamed:@"163-glasses-1.png"];
@@ -98,16 +95,16 @@
 }
 
 #pragma mark - HNEntriesViewControllerDelegate
-- (void)shouldLoadURL:(NSURL *)aURL {
-    self.displayedURL = aURL;
+- (void)shouldLoadURL:(NSURL *)url {
+    self.displayedURL = url;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:_displayedURL];
-    [_webView loadRequest:request];
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
+    [self.webView loadRequest:request];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void)shouldStopLoading {
-    [_webView stopLoading];
+    [self.webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     // empty out the webview
@@ -127,9 +124,8 @@
     [alert show];
 }
 
-- (void)shouldLoadFromNotification:(NSNotification *)aNotification {
-    NSDictionary *extraInfo = [aNotification userInfo];
-    NSURL *url = [NSURL URLWithString:extraInfo[HNWebSiteURLKey]];
+- (void)shouldLoadFromNotification:(NSNotification *)notification {
+    NSURL *url = [NSURL URLWithString:notification.userInfo[HNWebsiteURLKey]];
     [self shouldLoadURL:url];
 }
 
@@ -148,7 +144,7 @@
             NSString *readableHTMLString = @(readable_content);
             NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
             
-            [_webView loadHTMLString:html baseURL:self.displayedURL];
+            [self.webView loadHTMLString:html baseURL:self.displayedURL];
         } else {
             [self showReadableAlertWithError:nil];
         }

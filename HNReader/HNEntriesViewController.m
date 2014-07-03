@@ -10,7 +10,6 @@
 
 #import "HNEntry.h"
 #import "HNEntriesModel.h"
-#import "HNReaderTheme.h"
 
 #import "HNWebViewController.h"
 #import "HNCommentsViewController.h"
@@ -19,6 +18,7 @@
 #import "HNLoadMoreTableViewCell.h"
 
 #import "HNConstants.h"
+#import "UIColor+HNReaderTheme.h"
 
 @interface HNEntriesViewController ()
 
@@ -60,8 +60,8 @@
     [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [self.entriesControl setSelectedSegmentIndex:0];
     
-    [self.bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
-    [self.entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
+    [self.bottomToolbar setTintColor:[UIColor hn_brightOrangeColor]];
+    [self.entriesControl setTintColor:[UIColor hn_brightOrangeColor]];
     
     @weakify(self);
     [RACObserve(self.model, entries) subscribeNext:^(NSArray *entries) {

@@ -10,7 +10,7 @@
 
 @protocol HNEntryLoaderDelegate <NSObject>
 
-- (void)shouldLoadURL:(NSURL *)aURL;
+- (void)shouldLoadURL:(NSURL *)url;
 - (void)shouldStopLoading;
 
 @end
@@ -23,6 +23,6 @@
 
 @property (nonatomic, strong) HNEntry *entry;
 
-- (void)shouldLoadFromNotification:(NSNotification *)aNotification;
+- (void)shouldLoadFromNotification:(NSNotification *)notification;
 
 @end

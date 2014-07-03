@@ -16,5 +16,4 @@
     #import <AFNetworking/AFNetworking.h>
     #import <libextobjc/EXTScope.h>
     #import <YapDatabase.h>
-    #import "HNReaderTheme.h"
 #endif

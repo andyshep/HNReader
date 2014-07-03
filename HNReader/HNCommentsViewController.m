@@ -15,10 +15,10 @@
 #import "HNCommentsTableViewCell.h"
 #import "HNEntriesTableViewCell.h"
 #import "HNWebViewController.h"
-#import "HNReaderTheme.h"
 
-#import "HNCommentTools.h"
 #import "HNConstants.h"
+
+#import "NSString+HNCommentTools.h"
 
 @interface HNCommentsViewController ()
 
@@ -52,10 +52,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 
-    [_model loadComments];
-    
-//    [self.tableView registerClass:[HNEntriesTableViewCell class] forCellReuseIdentifier:@"HNEntriesTableViewCell"];
-//    [self.tableView registerClass:[HNCommentsTableViewCell class] forCellReuseIdentifier:@"HNCommentsTableViewCell"];
+    [self.model loadComments];
     
     @weakify(self);
     [RACObserve(self.model, comments) subscribeNext:^(id comments) {
@@ -107,6 +104,8 @@
         
         [self configureCommentCell:stubCell forIndexPath:indexPath];
         
+        stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+        
         [stubCell setNeedsLayout];
         [stubCell layoutIfNeeded];
         
@@ -118,7 +117,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 72.0f;
+    return HNDefaultTableCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,8 +143,7 @@
             HNWebViewController *nextController = [[HNWebViewController alloc] init];
             nextController.entry = [self entry];
             [[self navigationController] pushViewController:nextController animated:YES];
-        }
-        else {
+        } else {
             [self postLoadSiteNotification];
         }
     }
@@ -176,13 +174,12 @@
     // post a notification that a site should be loaded
     // the web view will respond to this notification and load the site
     // this is for the pad only.  on the phone, the vc is pushed onto stack
-    NSString *urlString = [[self entry] linkURL];
-    NSDictionary *userInfo = @{HNWebSiteURLKey: urlString};
+    NSDictionary *userInfo = @{HNWebsiteURLKey: self.entry.linkURL};
     [[NSNotificationCenter defaultCenter] postNotificationName:HNStopLoadingNotification object:self userInfo:userInfo];
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
-    return [HNCommentTools frameForString:string withIndentPadding:padding];
+    return [string hn_frameForStringWithIndentPadding:padding];
 }
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {

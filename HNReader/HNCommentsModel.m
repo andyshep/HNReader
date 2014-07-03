@@ -13,6 +13,7 @@
 #import "HNComment.h"
 
 #import "HNCacheManager.h"
+#import "HNConstants.h"
 
 @interface HNCommentsModel ()
 
@@ -25,7 +26,7 @@
 
 @implementation HNCommentsModel
 
-- (id)initWithEntry:(HNEntry *)entry {
+- (instancetype)initWithEntry:(HNEntry *)entry {
     if ((self = [super init])) {
         self.entry = entry;
     }
@@ -47,14 +48,10 @@
     NSString *commentId = [[_entry commentsPageURL] substringFromIndex:8];
     id cachedObj = [[HNCacheManager sharedManager] cachedCommentsForKey:commentId];
     if (cachedObj) {
-//        NSLog(@"cached for %@: %@", commentId, cachedObj);
-        
         NSDictionary *comments = (NSDictionary *)cachedObj;
         self.comments = [NSDictionary dictionaryWithDictionary:comments];
     } else {
-        NSLog(@"nothing cached for %@", commentId);
-        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://news.ycombinator.com/%@", [_entry commentsPageURL]]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:HNWebsitePlaceholderURL, [_entry commentsPageURL]]];
         [self loadCommentsForRequest:[NSURLRequest requestWithURL:url]];
     }
 }
