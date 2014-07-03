@@ -33,9 +33,6 @@
 		F775DADE14340D7E00F93F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADD14340D7E00F93F48 /* CoreGraphics.framework */; };
 		F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F775DAE214340D7E00F93F48 /* InfoPlist.strings */; };
 		F775DAE614340D7E00F93F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAE514340D7E00F93F48 /* main.m */; };
-		F775DAEE14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */; };
-		F775DAF514340D7F00F93F48 /* HNReaderAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DAF414340D7F00F93F48 /* HNReaderAppDelegate_iPad.m */; };
-		F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F775DAF614340D7F00F93F48 /* MainWindow_iPad.xib */; };
 		F775DB0014340D7F00F93F48 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */; };
 		F775DB0114340D7F00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DB0214340D7F00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
@@ -45,6 +42,7 @@
 		F775DB0F14340D7F00F93F48 /* HNReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F775DB0E14340D7F00F93F48 /* HNReaderTests.m */; };
 		F775DB3F1434110700F93F48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3D1434110700F93F48 /* MobileCoreServices.framework */; };
 		F775DB401434110700F93F48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DB3E1434110700F93F48 /* SystemConfiguration.framework */; };
+		F778DE211965F9A2008765D2 /* HNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F778DE201965F9A2008765D2 /* HNLabel.m */; };
 		F78529CC18A84DE20023DCE5 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */; };
 		F7895D28183D9CE500677396 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D26183D9CE500677396 /* Default.png */; };
 		F7895D29183D9CE500677396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7895D27183D9CE500677396 /* Default@2x.png */; };
@@ -56,7 +54,7 @@
 		F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BE527818A0AD9900EF91B6 /* HNCacheManager.m */; };
 		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DF2AA81965FFA6004DF35D /* HNConstants.m */; };
 		F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */; };
 		F7E86FC714364CD800A09334 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FBF14364CD800A09334 /* HNEntriesViewController.m */; };
 		F7E86FC914364CD800A09334 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E86FC314364CD800A09334 /* HNReaderAppDelegate.m */; };
@@ -120,11 +118,6 @@
 		F775DAE314340D7E00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F775DAE514340D7E00F93F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNReader-Prefix.pch"; sourceTree = "<group>"; };
-		F775DAEC14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate_iPhone.h; path = iPhone/HNReaderAppDelegate_iPhone.h; sourceTree = "<group>"; };
-		F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate_iPhone.m; path = iPhone/HNReaderAppDelegate_iPhone.m; sourceTree = "<group>"; };
-		F775DAF314340D7F00F93F48 /* HNReaderAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate_iPad.h; path = iPad/HNReaderAppDelegate_iPad.h; sourceTree = "<group>"; };
-		F775DAF414340D7F00F93F48 /* HNReaderAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate_iPad.m; path = iPad/HNReaderAppDelegate_iPad.m; sourceTree = "<group>"; };
-		F775DAF714340D7F00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
 		F775DAFE14340D7F00F93F48 /* HNReaderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HNReaderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F775DB0814340D7F00F93F48 /* HNReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HNReaderTests-Info.plist"; sourceTree = "<group>"; };
@@ -133,6 +126,8 @@
 		F775DB0E14340D7F00F93F48 /* HNReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReaderTests.m; sourceTree = "<group>"; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F778DE1F1965F9A2008765D2 /* HNLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLabel.h; sourceTree = "<group>"; };
+		F778DE201965F9A2008765D2 /* HNLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLabel.m; sourceTree = "<group>"; };
 		F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhoneStoryboard.storyboard; path = iPhone/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		F7895D26183D9CE500677396 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		F7895D27183D9CE500677396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -149,8 +144,8 @@
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
 		F7CD38F01475F9ED00EB57B5 /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
-		F7D9E72D144E5C5500C82C40 /* HNArtistTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNArtistTools.h; path = Shared/HNArtistTools.h; sourceTree = "<group>"; };
-		F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNArtistTools.m; path = Shared/HNArtistTools.m; sourceTree = "<group>"; };
+		F7DF2AA71965FFA6004DF35D /* HNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNConstants.h; sourceTree = "<group>"; };
+		F7DF2AA81965FFA6004DF35D /* HNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNConstants.m; sourceTree = "<group>"; };
 		F7E86FBC14364CD800A09334 /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableViewCell.h; path = Shared/HNEntriesTableViewCell.h; sourceTree = "<group>"; };
 		F7E86FBD14364CD800A09334 /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableViewCell.m; path = Shared/HNEntriesTableViewCell.m; sourceTree = "<group>"; };
 		F7E86FBE14364CD800A09334 /* HNEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesViewController.h; path = Shared/HNEntriesViewController.h; sourceTree = "<group>"; };
@@ -310,7 +305,6 @@
 			children = (
 				F775DB1814340EFF00F93F48 /* Shared */,
 				F775DAEB14340D7F00F93F48 /* iPhone */,
-				F775DAF214340D7F00F93F48 /* iPad */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);
@@ -331,21 +325,9 @@
 		F775DAEB14340D7F00F93F48 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				F775DAEC14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.h */,
-				F775DAED14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m */,
 				F78529CB18A84DE20023DCE5 /* iPhoneStoryboard.storyboard */,
 			);
 			name = iPhone;
-			sourceTree = "<group>";
-		};
-		F775DAF214340D7F00F93F48 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				F775DAF314340D7F00F93F48 /* HNReaderAppDelegate_iPad.h */,
-				F775DAF414340D7F00F93F48 /* HNReaderAppDelegate_iPad.m */,
-				F775DAF614340D7F00F93F48 /* MainWindow_iPad.xib */,
-			);
-			name = iPad;
 			sourceTree = "<group>";
 		};
 		F775DB0614340D7F00F93F48 /* HNReaderTests */ = {
@@ -383,12 +365,14 @@
 				F790C6C81436615100DE8D6D /* HNWebViewController.m */,
 				F7E86FC414364CD800A09334 /* HNReaderTheme.h */,
 				F7E86FC514364CD800A09334 /* HNReaderTheme.m */,
-				F7D9E72D144E5C5500C82C40 /* HNArtistTools.h */,
-				F7D9E72E144E5C5500C82C40 /* HNArtistTools.m */,
 				F77319D2189EC5F300C360F1 /* HNCommentTools.h */,
 				F77319D3189EC5F300C360F1 /* HNCommentTools.m */,
 				F77319D5189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.h */,
 				F77319D6189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m */,
+				F778DE1F1965F9A2008765D2 /* HNLabel.h */,
+				F778DE201965F9A2008765D2 /* HNLabel.m */,
+				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
+				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -491,7 +475,6 @@
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F765CA03183C6F1200A76DBD /* Default-568h@2x.png in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
-				F775DAF814340D7F00F93F48 /* MainWindow_iPad.xib in Resources */,
 				F75D3686143A0594005BCA23 /* HNEntriesViewController.xib in Resources */,
 				F739A0451451A90600C88FA9 /* HNCommentsViewController.xib in Resources */,
 				F7895D28183D9CE500677396 /* Default.png in Resources */,
@@ -570,11 +553,10 @@
 				F77319D1189EC5E100C360F1 /* HNParser.m in Sources */,
 				F77319D4189EC5F300C360F1 /* HNCommentTools.m in Sources */,
 				F775DAE614340D7E00F93F48 /* main.m in Sources */,
-				F775DAEE14340D7F00F93F48 /* HNReaderAppDelegate_iPhone.m in Sources */,
 				F77319D7189EC61500C360F1 /* AFHTTPRequestOperationManager+HNReactiveExtension.m in Sources */,
-				F775DAF514340D7F00F93F48 /* HNReaderAppDelegate_iPad.m in Sources */,
 				F774A30E143606CD0083E7BB /* HTMLNode.m in Sources */,
 				F774A30F143606CD0083E7BB /* HTMLParser.m in Sources */,
+				F778DE211965F9A2008765D2 /* HNLabel.m in Sources */,
 				F7E86FC614364CD800A09334 /* HNEntriesTableViewCell.m in Sources */,
 				F7E86FC714364CD800A09334 /* HNEntriesViewController.m in Sources */,
 				F7E86FC914364CD800A09334 /* HNReaderAppDelegate.m in Sources */,
@@ -586,9 +568,9 @@
 				F7698827143B614400BD53F6 /* HNTableCellSelectedView.m in Sources */,
 				F71E0F7E143F6AC200141BD9 /* HNComment.m in Sources */,
 				F71E0F7F143F6AC200141BD9 /* HNCommentsModel.m in Sources */,
+				F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */,
 				F71E0F80143F6AC200141BD9 /* HNCommentsTableViewCell.m in Sources */,
 				F71E0F81143F6AC200141BD9 /* HNCommentsViewController.m in Sources */,
-				F7D9E72F144E5C5500C82C40 /* HNArtistTools.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
 				F7BE527918A0AD9900EF91B6 /* HNCacheManager.m in Sources */,
@@ -620,14 +602,6 @@
 				F775DAE314340D7E00F93F48 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F775DAF614340D7F00F93F48 /* MainWindow_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F775DAF714340D7F00F93F48 /* en */,
-			);
-			name = MainWindow_iPad.xib;
 			sourceTree = "<group>";
 		};
 		F775DB0914340D7F00F93F48 /* InfoPlist.strings */ = {
@@ -675,7 +649,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -711,7 +685,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -10,19 +10,6 @@
 
 @implementation HNReaderTheme
 
-#pragma mark - Fonts
-+ (UIFont *)tenPointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:10.0f];
-}
-
-+ (UIFont *)twelvePointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:12.0f];
-}
-
-+ (UIFont *)fourteenPointlabelFont {
-	return [UIFont fontWithName:@"Verdana" size:14.0f];
-}
-
 #pragma mark - Colors
 + (UIColor *)brightOrangeColor {
     return [UIColor colorWithRed:1.0f 
@@ -43,48 +30,6 @@
                            green:15.0f/255.0f 
                             blue:42.0f/255.0f 
                            alpha:0.0f];
-}
-
-+ (CGGradientRef)blueishGradientColor {
-	UIColor *topColor = [UIColor colorWithRed:(122.0f/255.f) 
-                                        green:(202.0f/255.0f) 
-                                         blue:(255.0f/255.0f) 
-                                        alpha:(255.0f/255.0f)];
-	
-	UIColor *bottomColor = [UIColor colorWithRed:(0.0f/255.f) 
-										   green:(153.0f/255.0f) 
-											blue:(255.0f/255.0f) 
-										   alpha:(255.0f/255.0f)];
-	
-	return HNGradientWithColors(topColor, bottomColor);
-}
-
-+ (CGGradientRef)tanGradientColor {
-	UIColor *topColor = [UIColor colorWithRed:242.0f/255.0f 
-                                         green:242.0f/255.0f 
-                                          blue:239.0f/255.0f 
-                                         alpha:1.0f];
-	
-	UIColor *bottomColor = [UIColor colorWithRed:(252.0f/255.f) 
-										   green:(252.0f/255.0f) 
-											blue:(251.0f/255.0f) 
-										   alpha:(1.0f)];
-	
-	return HNGradientWithColors(bottomColor, topColor);
-}
-
-+ (CGGradientRef)greyGradientColor {
-	UIColor *topColor = [UIColor colorWithRed:152.0f/255.0f 
-                                        green:169.0f/255.0f 
-                                         blue:179.0f/255.0f 
-                                        alpha:1.0f];
-	
-	UIColor *bottomColor = [UIColor colorWithRed:(124.0f/255.f) 
-										   green:(133.0f/255.0f) 
-											blue:(138.0f/255.0f) 
-										   alpha:(1.0f)];
-	
-	return HNGradientWithColors(topColor, bottomColor);
 }
 
 @end

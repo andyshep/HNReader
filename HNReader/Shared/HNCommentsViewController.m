@@ -18,9 +18,7 @@
 #import "HNReaderTheme.h"
 
 #import "HNCommentTools.h"
-
-#define MIN_CELL_HEIGHT 8.0f
-#define CELL_CONTENT_MARGIN 41.0f
+#import "HNConstants.h"
 
 @interface HNCommentsViewController ()
 
@@ -75,7 +73,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HNStopLoadingNotification" object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HNStopLoadingNotification object:self userInfo:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,40 +89,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) return 1;
-    return [self.model.comments[@"entry_comments"] count];
+    if (section == 0) {
+        return 1;
+    }
+    return [self.model.comments[HNEntryCommentsKey] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
-    // the entry cell is 72 pixels high
     if ([indexPath section] == 0) {
-        return 72.0f;
-    }
-    // but we calcuate the height of each comment cell dynamically
-    // based on the comment string height
-    else {
-//        NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
-//        HNComment *comment = (HNComment *)comments[indexPath.row];
-//        
-//        CGRect rect = [self sizeForString:comment.commentString withIndentPadding:comment.padding];
-//        CGFloat height = rect.size.height;
-//        
-//        return height + CELL_CONTENT_MARGIN;
+        return HNDefaultTableCellHeight;
+    } else {
+        static HNCommentsTableViewCell *stubCell = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            stubCell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
+        });
         
-        if (!_stubCell) {
-            self.stubCell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
-        }
+        [self configureCommentCell:stubCell forIndexPath:indexPath];
         
-        [self configureCommentCell:self.stubCell forIndexPath:indexPath];
+        [stubCell setNeedsLayout];
+        [stubCell layoutIfNeeded];
         
-        [self.stubCell layoutSubviews];
-        self.stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(self.stubCell.bounds));
-        [self.stubCell layoutSubviews];
-        
-        NSLog(@"stubCell: %@", NSStringFromCGRect(self.stubCell.bounds));
-        
-        CGFloat height = [self.stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        height += 1.0f;
+        CGSize size = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        CGFloat height = size.height;
         
         return height;
     }
@@ -136,7 +123,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNEntriesTableViewCell"];
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         
         cell.siteTitleLabel.text = self.entry.title;
         cell.siteDomainLabel.text = self.entry.siteDomainURL;
@@ -144,7 +131,7 @@
         
         return cell;
     } else {
-        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNCommentsTableViewCell"];
+        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
         [self configureCommentCell:cell forIndexPath:indexPath];
         
         return cell;
@@ -165,15 +152,15 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
+    [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
 }
 
 - (void)loadComments {
-    [_model loadComments];
+    [self.model loadComments];
 }
 
 - (void)commentsDidLoad {
-    [_tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)operationDidFail {    
@@ -190,8 +177,8 @@
     // the web view will respond to this notification and load the site
     // this is for the pad only.  on the phone, the vc is pushed onto stack
     NSString *urlString = [[self entry] linkURL];
-    NSDictionary *userInfo = @{@"kHNURL": urlString};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HNLoadSiteNotification" object:self userInfo:userInfo];
+    NSDictionary *userInfo = @{HNWebSiteURLKey: urlString};
+    [[NSNotificationCenter defaultCenter] postNotificationName:HNStopLoadingNotification object:self userInfo:userInfo];
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
@@ -203,7 +190,7 @@
 }
 
 - (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    NSArray *comments = (NSArray *)self.model.comments[@"entry_comments"];
+    NSArray *comments = (NSArray *)self.model.comments[HNEntryCommentsKey];
     HNComment *comment = (HNComment *)comments[indexPath.row];
     
     [cell.usernameLabel setText:comment.username];

@@ -10,6 +10,8 @@
 
 #import "AFHTTPRequestOperation.h"
 #import "HNEntry.h"
+#import "HNConstants.h"
+
 #import "readable.h"
 
 @interface HNWebViewController ()
@@ -53,8 +55,8 @@
         self.displayedURL = [NSURL URLWithString:[_entry linkURL]];
         [self shouldLoadURL:_displayedURL];
     } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldStopLoading) name:@"HNStopLoadingNotification" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldLoadFromNotification:) name:@"HNLoadSiteNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldStopLoading) name:HNStopLoadingNotification object:nil];
         
         UIImage *image = [UIImage imageNamed:@"163-glasses-1.png"];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
@@ -127,7 +129,7 @@
 
 - (void)shouldLoadFromNotification:(NSNotification *)aNotification {
     NSDictionary *extraInfo = [aNotification userInfo];
-    NSURL *url = [NSURL URLWithString:extraInfo[@"kHNURL"]];
+    NSURL *url = [NSURL URLWithString:extraInfo[HNWebSiteURLKey]];
     [self shouldLoadURL:url];
 }
 
@@ -141,35 +143,31 @@
         char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
         
         if (readable_content != NULL) {
-            NSString *filePath = nil;
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                // if this is a phone, we have a smaller screen
-                // so add the meta tag to specify the viewport
-                // 28 px is also too big for phone
-                filePath = [[NSBundle mainBundle] pathForResource:@"iphone-formatting" ofType:@"html"];
-            }
-            else {
-                filePath = [[NSBundle mainBundle] pathForResource:@"ipad-formatting" ofType:@"html"];
-            }
-            
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"iphone-formatting" ofType:@"html"];
             NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
             NSString *readableHTMLString = @(readable_content);
             NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
             
             [_webView loadHTMLString:html baseURL:self.displayedURL];
+        } else {
+            [self showReadableAlertWithError:nil];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        NSString *message = NSLocalizedString(@"Could not find readable content on the page", @"Could not find readable content on the page.");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error")
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                                              otherButtonTitles:nil];
-        [alert show];
+        [self showReadableAlertWithError:err];
     }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:operation];
+}
+
+- (void)showReadableAlertWithError:(NSError *)error {
+    NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops, sorry!", @"error")
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

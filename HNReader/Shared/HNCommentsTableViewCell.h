@@ -6,13 +6,15 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
+#import "HNLabel.h"
+
 @interface HNCommentsTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *usernameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
-@property (nonatomic, weak) IBOutlet UILabel *commentTextLabel;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForCommentLabel;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForUsernameLabel;
+@property (nonatomic, weak) IBOutlet HNLabel *usernameLabel;
+@property (nonatomic, weak) IBOutlet HNLabel *timeLabel;
+@property (nonatomic, weak) IBOutlet HNLabel *commentTextLabel;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForCommentLabel;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leadingSpaceForUsernameLabel;
 @property (nonatomic, assign) NSInteger padding;
 
 - (void)setCommentText:(NSString *)commentText;

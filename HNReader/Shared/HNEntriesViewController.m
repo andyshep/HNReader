@@ -18,7 +18,7 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"
 
-const CGFloat HNDefaultCellHeight = 72.0f;
+#import "HNConstants.h"
 
 @interface HNEntriesViewController ()
 
@@ -58,7 +58,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
     [self.entriesControl setTitle:NSLocalizedString(@"Newest", @"Newest") forSegmentAtIndex:1];
     [self.entriesControl setTitle:NSLocalizedString(@"Best", @"Best") forSegmentAtIndex:2];
     [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [_entriesControl setSelectedSegmentIndex:0];
+    [self.entriesControl setSelectedSegmentIndex:0];
     
     [self.bottomToolbar setTintColor:[HNReaderTheme brightOrangeColor]];
     [self.entriesControl setTintColor:[HNReaderTheme brightOrangeColor]];
@@ -109,14 +109,14 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return HNDefaultCellHeight;
+    return HNDefaultTableCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= self.model.entries.count) {
-        return [tableView dequeueReusableCellWithIdentifier:@"HNLoadMoreTableViewCell"];
+        return [tableView dequeueReusableCellWithIdentifier:HNLoadMoreTableViewCellIdentifier];
     } else {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"HNEntriesTableViewCell"];
+        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
         
         cell.siteTitleLabel.text = entry.title;
@@ -137,26 +137,18 @@ const CGFloat HNDefaultCellHeight = 72.0f;
         HNEntry *selectedEntry = (HNEntry *)self.model.entries[indexPath.row];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhoneStoryboard" bundle:nil];
-        HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:@"HNCommentsViewController"];
+        HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNCommentsViewControllerIdentifier];
         [nextController setEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
 }
 
-// TODO: refactor and cancel operations
 - (void)loadEntries {
     if (_requestInProgress) {
         return;
     }
     
-    self.requestInProgress = YES;
-    [self.tableView setUserInteractionEnabled:NO];
-    [self.tableView setScrollEnabled:NO];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.delegate shouldStopLoading];
-    }
-    
+    [self prepareForRequest];
     [self.model loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
@@ -165,14 +157,7 @@ const CGFloat HNDefaultCellHeight = 72.0f;
         return;
     }
     
-    self.requestInProgress = YES;
-    [self.tableView setUserInteractionEnabled:NO];
-    [self.tableView setScrollEnabled:NO];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.delegate shouldStopLoading];
-    }
-    
+    [self prepareForRequest];
     [self.model reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
@@ -196,6 +181,16 @@ const CGFloat HNDefaultCellHeight = 72.0f;
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
     [self.tableView reloadData];
+}
+
+- (void)prepareForRequest {
+    self.requestInProgress = YES;
+    [self.tableView setUserInteractionEnabled:NO];
+    [self.tableView setScrollEnabled:NO];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.delegate shouldStopLoading];
+    }
 }
 
 @end
