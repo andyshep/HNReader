@@ -16,4 +16,7 @@
     #import <AFNetworking/AFNetworking.h>
     #import <libextobjc/EXTScope.h>
     #import <YapDatabase.h>
+
+    #import "HNConstants.h"
+    #import "UIColor+HNReaderTheme.h"
 #endif

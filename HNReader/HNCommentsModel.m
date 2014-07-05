@@ -13,7 +13,6 @@
 #import "HNComment.h"
 
 #import "HNCacheManager.h"
-#import "HNConstants.h"
 
 @interface HNCommentsModel ()
 

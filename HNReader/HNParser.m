@@ -15,6 +15,7 @@
 #import "HNComment.h"
 
 #import "NSString+HTML.h"
+#import "NSString+HNCommentTools.h"
 
 @implementation HNParser
 
@@ -87,7 +88,7 @@
         }
     }
     
-    return @{@"entries": [NSArray arrayWithArray:entries], @"next": next};
+    return @{HNEntriesKey: [NSArray arrayWithArray:entries], HNEntryNextKey: next};
 }
 
 + (NSDictionary *)parsedCommentsFromResponse:(id)response {
@@ -139,7 +140,7 @@
                         commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                         
                         NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
-                        commentString = [self formatedCommentText:rawCommentHTML];
+                        commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
                         
                         NSString *roughTime = [[comHead children][1] rawContents];
                         timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
@@ -159,22 +160,13 @@
                 }];
             }
             
-            [commentsInfo setValue:titleString forKey:@"entry_title"];
-            [commentsInfo setValue:siteURL forKey:@"entry_url"];
-            [commentsInfo setValue:[NSArray arrayWithArray:comments] forKey:@"entry_comments"];
+            [commentsInfo setValue:titleString forKey:HNEntryTitleKey];
+            [commentsInfo setValue:siteURL forKey:HNEntryURLKey];
+            [commentsInfo setValue:[NSArray arrayWithArray:comments] forKey:HNEntryCommentsKey];
         }
     }
     
     return [NSDictionary dictionaryWithDictionary:commentsInfo];
-}
-
-// TODO: move to HNComment, set raw html text instead.
-+ (NSString *)formatedCommentText:(NSString *)commentText {
-    commentText = [commentText stringByConvertingHTMLToPlainText];
-    commentText = [commentText stringByDecodingHTMLEntities];
-    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    return commentText;
 }
 
 @end

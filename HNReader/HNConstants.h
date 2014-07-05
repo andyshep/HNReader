@@ -16,7 +16,15 @@ extern NSString * const HNEntriesTableViewCellIdentifier;
 extern NSString * const HNCommentsTableViewCellIdentifier;
 extern NSString * const HNLoadMoreTableViewCellIdentifier;
 
+extern NSString * const HNEntriesKeyPath;
+extern NSString * const HNCommentsKeyPath;
+
+extern NSString * const HNEntriesKey;
 extern NSString * const HNEntryCommentsKey;
+extern NSString * const HNEntryTitleKey;
+extern NSString * const HNEntryURLKey;
+extern NSString * const HNEntryNextKey;
+
 extern NSString * const HNWebsiteURLKey;
 
 extern NSString * const HNWebsiteBaseURL;

@@ -90,7 +90,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="fjn-jI-BNv" id="5uc-Tp-7Rk"/>
                                     <outlet property="delegate" destination="fjn-jI-BNv" id="nEA-SW-B7c"/>
                                 </connections>
                             </tableView>

@@ -16,8 +16,6 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNWebViewController.h"
 
-#import "HNConstants.h"
-
 #import "NSString+HNCommentTools.h"
 
 @interface HNCommentsViewController ()

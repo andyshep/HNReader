@@ -11,5 +11,6 @@
 @interface NSString (HNCommentTools)
 
 - (CGRect)hn_frameForStringWithIndentPadding:(NSInteger)padding;
+- (NSString *)hn_stringAsFormatedCommentText;
 
 @end

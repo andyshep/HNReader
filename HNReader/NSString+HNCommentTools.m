@@ -7,6 +7,7 @@
 //
 
 #import "NSString+HNCommentTools.h"
+#import "NSString+HTML.h"
 
 #define COMMENT_CELL_MARGIN 10.0f
 
@@ -39,6 +40,16 @@
     NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin;
     CGSize size = [self boundingRectWithSize:constraint options:options attributes:attributes context:nil].size;
     return CGRectMake(padding, 0.0f, adjustedWidth, size.height);
+}
+
+- (NSString *)hn_stringAsFormatedCommentText {
+    NSString *commentText = self;
+    
+    commentText = [commentText stringByConvertingHTMLToPlainText];
+    commentText = [commentText stringByDecodingHTMLEntities];
+    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return commentText;
 }
 
 @end
