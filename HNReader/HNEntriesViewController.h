@@ -10,7 +10,7 @@
 
 @protocol HNEntryLoaderDelegate;
 
-@interface HNEntriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HNEntriesViewController : UIViewController <UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIToolbar *bottomToolbar;

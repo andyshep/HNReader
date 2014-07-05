@@ -8,7 +8,7 @@
 
 @interface HNEntriesModel : NSObject
 
-@property (nonatomic, copy) NSError *error;
+@property (nonatomic, copy, readonly) NSError *error;
 @property (nonatomic, copy) NSString *moreEntriesLink;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;

@@ -34,6 +34,7 @@
 		F778DE211965F9A2008765D2 /* HNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F778DE201965F9A2008765D2 /* HNLabel.m */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7A24073147577B000004287 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7A24071147577B000004287 /* readable.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F7A9112C19687A2B00F7FAFE /* HNEntriesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A9112B19687A2B00F7FAFE /* HNEntriesDataSource.m */; };
 		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DF2AA81965FFA6004DF35D /* HNConstants.m */; };
@@ -100,6 +101,8 @@
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7A24071147577B000004287 /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7A24072147577B000004287 /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
+		F7A9112A19687A2B00F7FAFE /* HNEntriesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesDataSource.h; sourceTree = "<group>"; };
+		F7A9112B19687A2B00F7FAFE /* HNEntriesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesDataSource.m; sourceTree = "<group>"; };
 		F7C4EEAB183D47DA001036E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 				F7DF2AAA196605D7004DF35D /* Controllers */,
 				F769881C143B5D1A00BD53F6 /* Views */,
 				F76ACA591434F9E1004CF9EA /* Model */,
+				F7A9112D196881C700F7FAFE /* Data Sources */,
 				F7E42B831966078B00041006 /* Categories */,
 				F75D3683143A056D005BCA23 /* Resources */,
 				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
@@ -335,6 +339,15 @@
 				F7A24072147577B000004287 /* readable.h */,
 			);
 			name = readable;
+			sourceTree = "<group>";
+		};
+		F7A9112D196881C700F7FAFE /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F7A9112A19687A2B00F7FAFE /* HNEntriesDataSource.h */,
+				F7A9112B19687A2B00F7FAFE /* HNEntriesDataSource.m */,
+			);
+			name = "Data Sources";
 			sourceTree = "<group>";
 		};
 		F7DF2AAA196605D7004DF35D /* Controllers */ = {
@@ -489,6 +502,7 @@
 				F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */,
 				F7E42B6E1966071800041006 /* HNEntriesModel.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
+				F7A9112C19687A2B00F7FAFE /* HNEntriesDataSource.m in Sources */,
 				F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */,
 				F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */,
 				F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */,

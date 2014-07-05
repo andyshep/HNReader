@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 
 @interface HNEntriesModel ()
 
+@property (nonatomic, copy, readwrite) NSError *error;
 @property (nonatomic, strong, readwrite) NSMutableArray *entries;
 
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index;
@@ -99,19 +100,19 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 #pragma mark - Network Requests
 - (void)loadEntriesForIndex:(NSUInteger)index {
     if (self.entries.count > 0) {
-        [self willChangeValueForKey:@"entries"];
+        [self willChangeValueForKey:HNEntriesKeyPath];
         [self.entries removeAllObjects];
-        [self didChangeValueForKey:@"entries"];
+        [self didChangeValueForKey:HNEntriesKeyPath];
     }
     
     NSString *key = [self cacheKeyForPageIdentifier:index];
     id cachedObj = [[HNCacheManager sharedManager] cachedEntriesForKey:key];
     if (cachedObj && [cachedObj isKindOfClass:[NSArray class]]) {
         NSArray *entries = (NSArray *)cachedObj;
-        [self willChangeValueForKey:@"entries"];
+        [self willChangeValueForKey:HNEntriesKeyPath];
         [self.entries removeAllObjects];
         [self.entries addObjectsFromArray:entries];
-        [self didChangeValueForKey:@"entries"];
+        [self didChangeValueForKey:HNEntriesKeyPath];
     } else {
         [self reloadEntriesForIndex:index];
     }
@@ -152,13 +153,13 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 - (void)parseResponse:(NSData *)response withCachedFilePath:(NSString *)cachedFilePath {
     NSDictionary *parsedResponse = [HNParser parsedEntriesFromResponse:response];
     
-    NSArray *entries = [parsedResponse objectForKey:@"entries"];
-    [self willChangeValueForKey:@"entries"];
+    NSArray *entries = [parsedResponse objectForKey:HNEntriesKey];
+    [self willChangeValueForKey:HNEntriesKeyPath];
     [self.entries removeAllObjects];
     [self.entries addObjectsFromArray:[NSArray arrayWithArray:entries]];
-    [self didChangeValueForKey:@"entries"];
+    [self didChangeValueForKey:HNEntriesKeyPath];
     
-    self.moreEntriesLink = [parsedResponse objectForKey:@"next"];
+    self.moreEntriesLink = [parsedResponse objectForKey:HNEntryNextKey];
     
     NSString *key = [self cacheKeyForFilePath:cachedFilePath];
     [[HNCacheManager sharedManager] cacheEntries:entries forKey:key];

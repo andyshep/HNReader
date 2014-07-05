@@ -7,22 +7,17 @@
 //
 
 #import "HNEntriesViewController.h"
-
-#import "HNEntry.h"
-#import "HNEntriesModel.h"
-
-#import "HNWebViewController.h"
 #import "HNCommentsViewController.h"
 
 #import "HNEntriesTableViewCell.h"
 #import "HNLoadMoreTableViewCell.h"
 
-#import "HNConstants.h"
-#import "UIColor+HNReaderTheme.h"
+#import "HNEntry.h"
+#import "HNEntriesDataSource.h"
 
 @interface HNEntriesViewController ()
 
-@property (nonatomic, strong) HNEntriesModel *model;
+@property (nonatomic, strong) HNEntriesDataSource *dataSource;
 @property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
@@ -31,14 +26,6 @@
 @end
 
 @implementation HNEntriesViewController
-
-- (HNEntriesModel *)model {
-    if (!_model) {
-        _model = [[HNEntriesModel alloc] init];
-    }
-    
-    return _model;
-}
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -63,21 +50,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
+    self.tableView.dataSource = self.dataSource;
+    
     [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
-    
-//    NSArray *items = @[NSLocalizedString(@"Front", @"Front"),
-//                       NSLocalizedString(@"Newest", @"Newest"),
-//                       NSLocalizedString(@"Best", @"Best")];
-//    
-//    self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
-//    [self.entriesControl setFrame:CGRectMake(0.0f, 0.0f, 287.0f, 30.0f)];
-//    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-//    [self.entriesControl setSelectedSegmentIndex:0];
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:self.entriesControl];
     [self.bottomToolbar setItems:@[buttonItem]];
@@ -86,12 +67,12 @@
     [self.entriesControl setTintColor:[UIColor hn_brightOrangeColor]];
     
     @weakify(self);
-    [RACObserve(self.model, entries) subscribeNext:^(NSArray *entries) {
+    [RACObserve(self.dataSource, entries) subscribeNext:^(NSArray *entries) {
         @strongify(self);
         [self entriesDidLoad];
     }];
     
-    [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
         @strongify(self);
         if (error) {
             [self operationDidFail];
@@ -114,49 +95,18 @@
     [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // if the entries are empty return 0
-    // do not show a single 'load more..' row.
-    if (self.model.entries.count <= 0) {
-        return self.model.entries.count;
-    }
-    
-    // if we have the entries then show
-    // and plus one for the 'load more...' cell
-    return self.model.entries.count + 1;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return HNDefaultTableCellHeight;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row] >= self.model.entries.count) {
-        return [tableView dequeueReusableCellWithIdentifier:HNLoadMoreTableViewCellIdentifier];
-    } else {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
-        
-        cell.siteTitleLabel.text = entry.title;
-        cell.siteDomainLabel.text = entry.siteDomainURL;
-        cell.totalPointsLabel.text = entry.totalPoints;
-        
-        return cell;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row] >= self.model.entries.count) {
+    if ([indexPath row] >= self.dataSource.entries.count) {
         // load more entries..
-        [self.model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+//        [self.model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
-        HNEntry *selectedEntry = (HNEntry *)self.model.entries[indexPath.row];
+        HNEntry *selectedEntry = (HNEntry *)self.dataSource.entries[indexPath.row];
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhoneStoryboard" bundle:nil];
         HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNCommentsViewControllerIdentifier];
@@ -171,7 +121,7 @@
     }
     
     [self prepareForRequest];
-    [self.model loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+    [self.dataSource loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)reloadEntries {
@@ -180,7 +130,7 @@
     }
     
     [self prepareForRequest];
-    [self.model reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+    [self.dataSource reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)entriesDidLoad {
@@ -192,9 +142,10 @@
     [self.tableView setUserInteractionEnabled:YES];
 }
 
-- (void)operationDidFail {    
+- (void)operationDidFail {
+    NSString *message = self.dataSource.error.localizedDescription;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
-                                                    message:[[_model error] localizedDescription]
+                                                    message:message
                                                    delegate:nil 
                                           cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
                                           otherButtonTitles:nil];
@@ -209,10 +160,6 @@
     self.requestInProgress = YES;
     [self.tableView setUserInteractionEnabled:NO];
     [self.tableView setScrollEnabled:NO];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.delegate shouldStopLoading];
-    }
 }
 
 @end
