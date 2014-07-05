@@ -40,6 +40,22 @@
     return _model;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        NSArray *items = @[NSLocalizedString(@"Front", @"Front"),
+                           NSLocalizedString(@"Newest", @"Newest"),
+                           NSLocalizedString(@"Best", @"Best")];
+        
+        self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
+        [self.entriesControl setFrame:CGRectMake(0.0f, 0.0f, 287.0f, 30.0f)];
+        [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        [self.entriesControl setSelectedSegmentIndex:0];
+    }
+    return self;
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
@@ -54,11 +70,17 @@
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
     [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
     
-    [self.entriesControl setTitle:NSLocalizedString(@"Top", @"Top") forSegmentAtIndex:0];
-    [self.entriesControl setTitle:NSLocalizedString(@"Newest", @"Newest") forSegmentAtIndex:1];
-    [self.entriesControl setTitle:NSLocalizedString(@"Best", @"Best") forSegmentAtIndex:2];
-    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [self.entriesControl setSelectedSegmentIndex:0];
+//    NSArray *items = @[NSLocalizedString(@"Front", @"Front"),
+//                       NSLocalizedString(@"Newest", @"Newest"),
+//                       NSLocalizedString(@"Best", @"Best")];
+//    
+//    self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
+//    [self.entriesControl setFrame:CGRectMake(0.0f, 0.0f, 287.0f, 30.0f)];
+//    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+//    [self.entriesControl setSelectedSegmentIndex:0];
+    
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:self.entriesControl];
+    [self.bottomToolbar setItems:@[buttonItem]];
     
     [self.bottomToolbar setTintColor:[UIColor hn_brightOrangeColor]];
     [self.entriesControl setTintColor:[UIColor hn_brightOrangeColor]];

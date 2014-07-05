@@ -171,7 +171,6 @@
 				F72BC9D6196608DB00CA1161 /* Default-568h@2x.png */,
 				F72BC9D7196608DB00CA1161 /* Default.png */,
 				F72BC9D8196608DB00CA1161 /* Default@2x.png */,
-				F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */,
 				F747AAF81491358600F3C84F /* ipad-formatting.html */,
 				F747AAF91491358600F3C84F /* iphone-formatting.html */,
 				F7F0008A147C770100328C1D /* hn-icon-57.png */,
@@ -279,6 +278,7 @@
 				F75D3683143A056D005BCA23 /* Resources */,
 				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
 				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
+				F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);

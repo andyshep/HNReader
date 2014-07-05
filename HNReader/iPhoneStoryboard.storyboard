@@ -96,19 +96,7 @@
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oc1-yu-Z33">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem width="290" style="plain" id="ExO-G7-VPo">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="FV1-Iy-0MV">
-                                            <rect key="frame" x="16" y="8" width="290" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
-                                                <segment title="Third"/>
-                                            </segments>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -129,7 +117,6 @@
                     <navigationItem key="navigationItem" id="nSf-fL-XI8"/>
                     <connections>
                         <outlet property="bottomToolbar" destination="oc1-yu-Z33" id="u9G-St-rvs"/>
-                        <outlet property="entriesControl" destination="FV1-Iy-0MV" id="97a-Qm-cPM"/>
                         <outlet property="tableView" destination="0gT-2l-MrM" id="VOB-Dj-aci"/>
                     </connections>
                 </viewController>
