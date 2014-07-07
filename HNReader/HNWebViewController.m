@@ -47,7 +47,7 @@
     [self.webView setFrame:self.view.frame];
     [self.view addSubview:self.webView];
     
-    UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
+    UIImage *image = [UIImage imageNamed:@"glasses.png"];
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
     [button setTintColor:[UIColor redColor]];
     [self.navigationItem setRightBarButtonItem:button];
