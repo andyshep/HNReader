@@ -12,20 +12,21 @@
 #import "HNComment.h"
 #import "HNCommentsModel.h"
 
+#import "HNCommentsDataSource.h"
+
 #import "HNCommentsTableViewCell.h"
 #import "HNEntriesTableViewCell.h"
 #import "HNWebViewController.h"
 
 #import "NSString+HNCommentTools.h"
+#import "UIAlertView+HNAlertView.h"
 
 @interface HNCommentsViewController ()
 
-@property (nonatomic, strong) HNCommentsModel *model;
+
+@property (nonatomic, strong) HNCommentsDataSource *dataSource;
 @property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
 
-- (void)loadComments;
-
-- (void)postLoadSiteNotification;
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
 
@@ -33,42 +34,35 @@
 
 @implementation HNCommentsViewController
 
-- (void)setEntry:(HNEntry *)entry {
-    if (_entry != entry) {
-        _entry = entry;
-        self.model = [[HNCommentsModel alloc] initWithEntry:entry];
-    }
-}
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)viewDidLoad {
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadComments)];
-    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
+    [super viewDidLoad];
+    
+    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.dataSource action:@selector(reloadComments)];
+    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-
-    [self.model loadComments];
+    
+    self.dataSource = [[HNCommentsDataSource alloc] initWithTableView:self.tableView entry:self.entry];
+    self.tableView.dataSource = self.dataSource;
     
     @weakify(self);
-    [RACObserve(self.model, comments) subscribeNext:^(id comments) {
+    [RACObserve(self.dataSource, comments) subscribeNext:^(id comments) {
         @strongify(self);
-        [self commentsDidLoad];
+        [self.tableView reloadData];
     }];
     
-    [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
-        @strongify(self);
+    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
         if (error) {
-            [self operationDidFail];
+            UIAlertView *alertView = [UIAlertView hn_alertViewWithError:error];
+            [alertView show];
         }
     }];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:HNStopLoadingNotification object:self userInfo:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,19 +71,6 @@
 }
 
 #pragma mark - UITableView
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // first section is only the entry cell
-    // second section is zero or more comment cells
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }
-    return [self.model.comments[HNEntryCommentsKey] count];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     if ([indexPath section] == 0) {
         return HNDefaultTableCellHeight;
@@ -100,16 +81,14 @@
             stubCell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
         });
         
-        [self configureCommentCell:stubCell forIndexPath:indexPath];
+        [self.dataSource configureCommentCell:stubCell forIndexPath:indexPath];
         
         stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
         
         [stubCell setNeedsLayout];
         [stubCell layoutIfNeeded];
         
-        CGSize size = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        CGFloat height = size.height;
-        
+        CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         return height;
     }
 }
@@ -118,62 +97,15 @@
     return HNDefaultTableCellHeight;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath section] == 0) {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        
-        cell.siteTitleLabel.text = self.entry.title;
-        cell.siteDomainLabel.text = self.entry.siteDomainURL;
-        cell.totalPointsLabel.text = self.entry.totalPoints;
-        
-        return cell;
-    } else {
-        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
-        [self configureCommentCell:cell forIndexPath:indexPath];
-        
-        return cell;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            HNWebViewController *nextController = [[HNWebViewController alloc] init];
-            nextController.entry = [self entry];
-            [[self navigationController] pushViewController:nextController animated:YES];
-        } else {
-            [self postLoadSiteNotification];
-        }
+        HNWebViewController *nextController = [[HNWebViewController alloc] initWithEntry:self.entry];
+        [self.navigationController pushViewController:nextController animated:YES];
     }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
-}
-
-- (void)loadComments {
-    [self.model loadComments];
-}
-
-- (void)commentsDidLoad {
-    [self.tableView reloadData];
-}
-
-- (void)operationDidFail {    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                    message:[self.model.error localizedDescription]
-                                                   delegate:nil 
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void)postLoadSiteNotification {
-    // post a notification that a site should be loaded
-    // the web view will respond to this notification and load the site
-    // this is for the pad only.  on the phone, the vc is pushed onto stack
-    NSDictionary *userInfo = @{HNWebsiteURLKey: self.entry.linkURL};
-    [[NSNotificationCenter defaultCenter] postNotificationName:HNStopLoadingNotification object:self userInfo:userInfo];
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {
@@ -182,16 +114,6 @@
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
     [self.tableView reloadData];
-}
-
-- (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    NSArray *comments = (NSArray *)self.model.comments[HNEntryCommentsKey];
-    HNComment *comment = (HNComment *)comments[indexPath.row];
-    
-    [cell.usernameLabel setText:comment.username];
-    [cell.timeLabel setText:comment.timeSinceCreation];
-    [cell setCommentText:comment.commentString];
-    [cell setPadding:comment.padding];
 }
 
 @end

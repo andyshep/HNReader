@@ -7,7 +7,6 @@
 //
 
 #import "HNEntriesTableViewCell.h"
-#import "HNTableCellSelectedView.h"
 
 @interface HNEntriesTableViewCell ()
 
@@ -20,7 +19,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
+    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectZero];
+    [selectedView setBackgroundColor:[UIColor hn_brightOrangeColor]];
     [self setSelectedBackgroundView:selectedView];
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     

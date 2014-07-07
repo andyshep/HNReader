@@ -7,7 +7,6 @@
 //
 
 #import "HNCommentsTableViewCell.h"
-#import "HNTableCellSelectedView.h"
 
 @implementation HNCommentsTableViewCell
 

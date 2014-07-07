@@ -16,28 +16,29 @@
 
 @interface HNWebViewController ()
 
+@property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, strong) NSURL *displayedURL;
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
+
+@property (nonatomic, assign) BOOL showReadableContent;
 
 @end
 
 @implementation HNWebViewController
 
-- (instancetype)init {
+- (instancetype)initWithEntry:(HNEntry *)entry {
     if ((self = [super init])) {
         self.items = [NSMutableArray array];
         self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         [self.webView setScalesPageToFit:YES];
         [self.webView setDelegate:self];
         [self.webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        
+        self.showReadableContent = NO;
     }
     
     return self;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:HNStopLoadingNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -46,20 +47,13 @@
     [self.webView setFrame:self.view.frame];
     [self.view addSubview:self.webView];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
-        [[self navigationItem] setRightBarButtonItem:button];
-        self.displayedURL = [NSURL URLWithString:self.entry.linkURL];
-        [self shouldLoadURL:self.displayedURL];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldStopLoading) name:HNStopLoadingNotification object:nil];
-        
-        UIImage *image = [UIImage imageNamed:@"163-glasses-1.png"];
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
-
-        [[self navigationItem] setRightBarButtonItem:button];
-    }
+    UIImage *image = [UIImage imageNamed:@"164-glasses-2.png"];
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
+    [button setTintColor:[UIColor redColor]];
+    [self.navigationItem setRightBarButtonItem:button];
+    
+    self.displayedURL = [NSURL URLWithString:self.entry.linkURL];
+    [self shouldLoadURL:self.displayedURL];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -80,18 +74,16 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
-#pragma mark - UISplitViewController
-- (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
-	barButtonItem.title = NSLocalizedString(@"News", @"News popover title");
-	barButtonItem.style = UIBarButtonItemStyleBordered;
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    // https://discussions.apple.com/thread/1727260
+    if (error.code == NSURLErrorCancelled) return;
     
-    [[self navigationItem] setLeftBarButtonItem:barButtonItem];
-	self.popoverViewController = pc;
-}
-
-- (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-    [[self navigationItem] setLeftBarButtonItem:nil];
-    self.popoverViewController = nil;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title")
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title")
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - HNEntriesViewControllerDelegate
@@ -103,7 +95,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
-- (void)shouldStopLoading {
+- (void)shouldStopLoadingURL {
     [self.webView stopLoading];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
@@ -112,23 +104,7 @@
     // [webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    // https://discussions.apple.com/thread/1727260
-    if (error.code == NSURLErrorCancelled) return;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title") 
-                                                    message:[error localizedDescription] 
-                                                   delegate:nil 
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title") 
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void)shouldLoadFromNotification:(NSNotification *)notification {
-    NSURL *url = [NSURL URLWithString:notification.userInfo[HNWebsiteURLKey]];
-    [self shouldLoadURL:url];
-}
-
+#pragma mark - Readable
 - (void)makeReadable {
     NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

@@ -10,8 +10,6 @@
 
 NSString * const HNCommentsViewControllerIdentifier = @"HNCommentsViewController";
 
-NSString * const HNStopLoadingNotification = @"HNStopLoadingNotification";
-
 NSString * const HNEntriesTableViewCellIdentifier = @"HNEntriesTableViewCell";
 NSString * const HNCommentsTableViewCellIdentifier = @"HNCommentsTableViewCell";
 NSString * const HNLoadMoreTableViewCellIdentifier = @"HNLoadMoreTableViewCell";

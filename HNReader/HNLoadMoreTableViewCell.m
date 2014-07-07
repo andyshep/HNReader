@@ -7,7 +7,6 @@
 //
 
 #import "HNLoadMoreTableViewCell.h"
-#import "HNTableCellSelectedView.h"
 
 @implementation HNLoadMoreTableViewCell
 
@@ -18,7 +17,8 @@
     [self.loadMoreLabel setTextColor:[UIColor darkGrayColor]];
     [self.loadMoreLabel setText:NSLocalizedString(@"Load More Entries...", @"Load More Entries table cell text")];
     
-    HNTableCellSelectedView *selectedView = [[HNTableCellSelectedView alloc] initWithFrame:CGRectZero];
+    UIView *selectedView = [[UIView alloc] initWithFrame:CGRectZero];
+    [selectedView setBackgroundColor:[UIColor hn_brightOrangeColor]];
     [self setSelectedBackgroundView:selectedView];
 }
 

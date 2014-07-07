@@ -11,18 +11,16 @@
 @protocol HNEntryLoaderDelegate <NSObject>
 
 - (void)shouldLoadURL:(NSURL *)url;
-- (void)shouldStopLoading;
+- (void)shouldStopLoadingURL;
 
 @end
 
-@interface HNWebViewController : UIViewController <UIWebViewDelegate, UISplitViewControllerDelegate, HNEntryLoaderDelegate>
+@interface HNWebViewController : UIViewController <UIWebViewDelegate, HNEntryLoaderDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *readableButton;
 
-@property (nonatomic, strong) HNEntry *entry;
-
-- (void)shouldLoadFromNotification:(NSNotification *)notification;
+- (instancetype)initWithEntry:(HNEntry *)entry;
 
 @end

@@ -8,7 +8,7 @@
 
 @class HNEntry;
 
-@interface HNCommentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HNCommentsViewController : UIViewController <UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) HNEntry *entry;

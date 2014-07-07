@@ -225,7 +225,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="nBM-q0-jmz" id="O12-J3-15d"/>
                                     <outlet property="delegate" destination="nBM-q0-jmz" id="mCr-pQ-yHR"/>
                                 </connections>
                             </tableView>

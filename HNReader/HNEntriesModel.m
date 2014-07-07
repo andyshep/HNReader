@@ -53,11 +53,11 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 - (NSString *)cacheFilePathForIndex:(NSUInteger)index {
     NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     if (index == HNEntriesFrontPageIdentifier) {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"front.plist"]];
+        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNFrontPageKey]];
     } else if (index == HNEntriesBestPageIdentifier) {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"best.plist"]];
+        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNBestPageKey]];
     } else {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"newest.plist"]];
+        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNNewestPageKey]];
     }
 }
 

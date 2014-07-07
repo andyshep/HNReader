@@ -15,6 +15,8 @@
 #import "HNEntry.h"
 #import "HNEntriesDataSource.h"
 
+#import "UIAlertView+HNAlertView.h"
+
 @interface HNEntriesViewController ()
 
 @property (nonatomic, strong) HNEntriesDataSource *dataSource;
@@ -53,12 +55,12 @@
     self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
     
-    [[self navigationItem] setTitle:NSLocalizedString(@"News", @"News Entries")];
+    [self.navigationItem setTitle:NSLocalizedString(@"News", @"News Entries")];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
-    [[self navigationItem] setRightBarButtonItem:refreshButton animated:YES];
+    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:self.entriesControl];
     [self.bottomToolbar setItems:@[buttonItem]];
@@ -73,9 +75,9 @@
     }];
     
     [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
-        @strongify(self);
         if (error) {
-            [self operationDidFail];
+            UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
+            [alert show];
         }
     }];
     
@@ -153,6 +155,7 @@
 }
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
+    // TODO: document
     [self.tableView reloadData];
 }
 

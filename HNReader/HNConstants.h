@@ -10,8 +10,6 @@
 
 extern NSString * const HNCommentsViewControllerIdentifier;
 
-extern NSString * const HNStopLoadingNotification;
-
 extern NSString * const HNEntriesTableViewCellIdentifier;
 extern NSString * const HNCommentsTableViewCellIdentifier;
 extern NSString * const HNLoadMoreTableViewCellIdentifier;
