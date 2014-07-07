@@ -99,7 +99,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        HNWebViewController *nextController = [[HNWebViewController alloc] initWithEntry:self.entry];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        HNWebViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNWebViewControllerIdentifier];
+        [nextController setEntry:self.entry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
 }

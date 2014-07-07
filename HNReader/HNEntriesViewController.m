@@ -146,12 +146,7 @@
 }
 
 - (void)operationDidFail {
-    NSString *message = self.dataSource.error.localizedDescription;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
-                                                    message:message
-                                                   delegate:nil 
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK") 
-                                          otherButtonTitles:nil];
+    UIAlertView *alert = [UIAlertView hn_alertViewWithError:self.dataSource.error];
     [alert show];
 }
 

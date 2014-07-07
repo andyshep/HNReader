@@ -9,6 +9,7 @@
 #import "HNConstants.h"
 
 NSString * const HNCommentsViewControllerIdentifier = @"HNCommentsViewController";
+NSString * const HNWebViewControllerIdentifier = @"HNWebViewController";
 
 NSString * const HNEntriesTableViewCellIdentifier = @"HNEntriesTableViewCell";
 NSString * const HNCommentsTableViewCellIdentifier = @"HNCommentsTableViewCell";

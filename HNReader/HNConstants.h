@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const HNCommentsViewControllerIdentifier;
+extern NSString * const HNWebViewControllerIdentifier;
 
 extern NSString * const HNEntriesTableViewCellIdentifier;
 extern NSString * const HNCommentsTableViewCellIdentifier;

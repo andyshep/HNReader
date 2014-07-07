@@ -8,19 +8,12 @@
 
 @class HNEntry;
 
-@protocol HNEntryLoaderDelegate <NSObject>
+@interface HNWebViewController : UIViewController <UIWebViewDelegate>
 
-- (void)shouldLoadURL:(NSURL *)url;
-- (void)shouldStopLoadingURL;
-
-@end
-
-@interface HNWebViewController : UIViewController <UIWebViewDelegate, HNEntryLoaderDelegate>
-
-@property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, strong) UIBarButtonItem *readableButton;
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
 
-- (instancetype)initWithEntry:(HNEntry *)entry;
+- (IBAction)toggleReadableDisplay:(id)sender;
 
 @end

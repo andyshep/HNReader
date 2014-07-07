@@ -12,11 +12,12 @@
 #import "HNEntry.h"
 #import "HNConstants.h"
 
+#import "UIAlertView+HNAlertView.h"
+
 #import "readable.h"
 
 @interface HNWebViewController ()
 
-@property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, strong) NSURL *displayedURL;
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) UIPopoverController *popoverViewController;
@@ -27,8 +28,15 @@
 
 @implementation HNWebViewController
 
-- (instancetype)initWithEntry:(HNEntry *)entry {
-    if ((self = [super init])) {
+- (void)setEntry:(HNEntry *)entry {
+    if (_entry != entry) {
+        _entry = entry;
+        self.displayedURL = [NSURL URLWithString:_entry.linkURL];
+    }
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
         self.items = [NSMutableArray array];
         self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         [self.webView setScalesPageToFit:YES];
@@ -44,16 +52,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
+    NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
+    
     [self.webView setFrame:self.view.frame];
     [self.view addSubview:self.webView];
     
     UIImage *image = [UIImage imageNamed:@"glasses.png"];
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(makeReadable)];
-    [button setTintColor:[UIColor redColor]];
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(toggleReadableDisplay:)];
+    [button setTintColor:[UIColor blueColor]];
     [self.navigationItem setRightBarButtonItem:button];
     
-    self.displayedURL = [NSURL URLWithString:self.entry.linkURL];
-    [self shouldLoadURL:self.displayedURL];
+    // TODO: reactive?
+    [self loadHTMLContent];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -75,37 +86,35 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
     // https://discussions.apple.com/thread/1727260
     if (error.code == NSURLErrorCancelled) return;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"error alert view title")
-                                                    message:[error localizedDescription]
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"ok button title")
-                                          otherButtonTitles:nil];
+    UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
     [alert show];
 }
 
-#pragma mark - HNEntriesViewControllerDelegate
-- (void)shouldLoadURL:(NSURL *)url {
-    self.displayedURL = url;
+#pragma mark - HTML and Readable Content Loading
+- (void)toggleReadableDisplay:(id)sender {
+    self.showReadableContent = !self.showReadableContent;
     
+    if (self.showReadableContent) {
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor hn_brightOrangeColor]];
+        [self loadReadableContent];
+    } else {
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blueColor]];
+        [self loadHTMLContent];
+    }
+}
+
+- (void)loadHTMLContent {
     NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     [self.webView loadRequest:request];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
-- (void)shouldStopLoadingURL {
-    [self.webView stopLoading];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
-    // empty out the webview
-    // http://lists.apple.com/archives/cocoa-dev/2010/Nov/msg00680.html
-    // [webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
-}
-
-#pragma mark - Readable
-- (void)makeReadable {
+- (void)loadReadableContent {
     NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
@@ -134,11 +143,7 @@
 
 - (void)showReadableAlertWithError:(NSError *)error {
     NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops, sorry!", @"error")
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
-                                          otherButtonTitles:nil];
+    UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
     [alert show];
 }
 

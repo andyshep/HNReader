@@ -11,5 +11,6 @@
 @interface UIAlertView (HNAlertView)
 
 + (UIAlertView *)hn_alertViewWithError:(NSError *)error;
++ (UIAlertView *)hn_alertViewWithMessage:(NSString *)message;
 
 @end

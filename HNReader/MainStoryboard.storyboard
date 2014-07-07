@@ -7,7 +7,7 @@
         <!--Entries View Controller-->
         <scene sceneID="XQb-Ts-HBG">
             <objects>
-                <viewController id="fjn-jI-BNv" customClass="HNEntriesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HNEntriesViewController" id="fjn-jI-BNv" customClass="HNEntriesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MDq-r6-VJX"/>
                         <viewControllerLayoutGuide type="bottom" id="1eh-Tz-1Mc"/>
@@ -246,6 +246,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMU-Pw-q5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1577" y="131"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="r6a-5p-foH">
+            <objects>
+                <viewController storyboardIdentifier="HNWebViewController" id="KCi-ZJ-PJq" customClass="HNWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U9b-MN-b8J"/>
+                        <viewControllerLayoutGuide type="bottom" id="il7-5Y-7WN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pGe-Km-c5k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-oY-IIi">
+                                <rect key="frame" x="-1" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fve-7n-4hL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ovj-db-AJI">
