@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
 		F70A0FF3143BF99100D61E8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70A0FF2143BF99100D61E8A /* QuartzCore.framework */; };
-		F72BC9D3196608A500CA1161 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */; };
+		F72BC9D3196608A500CA1161 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */; };
 		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
 		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
-		F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF81491358600F3C84F /* ipad-formatting.html */; };
-		F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* iphone-formatting.html */; };
+		F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* readable-formatting.html */; };
 		F759AEA6189EC28400BD46D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
 		F76ACA6614354265004CF9EA /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F77319C8189EC2AC00C360F1 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
@@ -55,13 +54,12 @@
 		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
 		F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
 		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
 		F73D24E2196614730046E941 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
-		F747AAF81491358600F3C84F /* ipad-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "ipad-formatting.html"; path = "Resources/ipad-formatting.html"; sourceTree = "<group>"; };
-		F747AAF91491358600F3C84F /* iphone-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "iphone-formatting.html"; path = "Resources/iphone-formatting.html"; sourceTree = "<group>"; };
+		F747AAF91491358600F3C84F /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "Resources/readable-formatting.html"; sourceTree = "<group>"; };
 		F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F76ACA6514354265004CF9EA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		F77319C7189EC2AC00C360F1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -156,8 +154,7 @@
 		F75D3683143A056D005BCA23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F747AAF81491358600F3C84F /* ipad-formatting.html */,
-				F747AAF91491358600F3C84F /* iphone-formatting.html */,
+				F747AAF91491358600F3C84F /* readable-formatting.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -259,7 +256,7 @@
 				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
 				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
 				F75D3683143A056D005BCA23 /* Resources */,
-				F72BC9D2196608A500CA1161 /* iPhoneStoryboard.storyboard */,
+				F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);
@@ -412,9 +409,8 @@
 			files = (
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
-				F747AAFA1491358600F3C84F /* ipad-formatting.html in Resources */,
-				F72BC9D3196608A500CA1161 /* iPhoneStoryboard.storyboard in Resources */,
-				F747AAFB1491358600F3C84F /* iphone-formatting.html in Resources */,
+				F72BC9D3196608A500CA1161 /* MainStoryboard.storyboard in Resources */,
+				F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

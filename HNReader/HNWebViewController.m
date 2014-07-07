@@ -115,7 +115,7 @@
         char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
         
         if (readable_content != NULL) {
-            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"iphone-formatting" ofType:@"html"];
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"readable-formatting" ofType:@"html"];
             NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
             NSString *readableHTMLString = @(readable_content);
             NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];

@@ -93,6 +93,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    // TODO: wtf is this?
 //    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
     [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
 }
@@ -103,14 +104,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= self.dataSource.entries.count) {
-        // load more entries..
+        // TODO: call via to data source
 //        [self.model loadMoreEntriesForIndex:[_entriesControl selectedSegmentIndex]];
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
         HNEntry *selectedEntry = (HNEntry *)self.dataSource.entries[indexPath.row];
         
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhoneStoryboard" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNCommentsViewControllerIdentifier];
         [nextController setEntry:selectedEntry];
         [self.navigationController pushViewController:nextController animated:YES];
