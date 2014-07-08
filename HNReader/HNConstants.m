@@ -34,3 +34,4 @@ NSString * const HNEntryURLKey = @"HNEntryURL";
 NSString * const HNEntryNextKey = @"HNNextEntry";
 
 CGFloat const HNDefaultTableCellHeight = 72.0f;
+CGFloat const HNMaxDatabaseCacheInterval = 360.0f;

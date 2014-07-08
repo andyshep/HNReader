@@ -34,19 +34,12 @@
         self.entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:self.entry];
         
-        @weakify(self);
         [RACObserve(self.model, comments) subscribeNext:^(id comments) {
-            @strongify(self);
-            NSLog(@"data source thinks model entries have changed..");
             self.comments = comments;
         }];
         
         [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
-            @strongify(self);
-            NSLog(@"data source thinks model got an error");
-            if (error) {
-                self.error = error;
-            }
+            self.error = error;
         }];
         
         [self reloadComments];
@@ -74,7 +67,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
+        HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         
         cell.siteTitleLabel.text = self.entry.title;
         cell.siteDomainLabel.text = self.entry.siteDomainURL;
@@ -82,7 +75,7 @@
         
         return cell;
     } else {
-        HNCommentsTableViewCell *cell = (HNCommentsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
+        HNCommentsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
         [self configureCommentCell:cell forIndexPath:indexPath];
         
         return cell;

@@ -6,9 +6,8 @@
 //
 //
 
-static const CGFloat maxCacheInterval = 360.0f;
-
 #import "HNCacheManager.h"
+#import "HNConstants.h"
 
 @interface HNCacheManager ()
 
@@ -50,22 +49,22 @@ static const CGFloat maxCacheInterval = 360.0f;
     __block BOOL shouldExpireCache = NO;
     __block NSArray *entries = nil;
     [self.readerConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
-        NSNumber *metadata = [transaction metadataForKey:key inCollection:@"entries"];
+        NSNumber *metadata = [transaction metadataForKey:key inCollection:HNEntriesKeyPath];
         NSDate *modificationDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[metadata doubleValue]];
         
         NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:modificationDate];
-        if (interval > maxCacheInterval) {
+        if (interval > HNMaxDatabaseCacheInterval) {
             shouldExpireCache = YES;
         } else {
-            entries = [transaction objectForKey:key inCollection:@"entries"];
+            entries = [transaction objectForKey:key inCollection:HNEntriesKeyPath];
         }
     }];
     
     if (shouldExpireCache) {
         NSLog(@"expiring cache for %@...", key);
-//        [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-//            [transaction removeObjectForKey:key inCollection:@"entries"];
-//        }];
+        [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
+            [transaction removeObjectForKey:key inCollection:HNEntriesKeyPath];
+        }];
     }
     
     return entries;
@@ -74,14 +73,14 @@ static const CGFloat maxCacheInterval = 360.0f;
 - (void)cacheEntries:(NSArray *)entries forKey:(NSString *)key {
     [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
         NSNumber *metadata = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]];
-        [transaction setObject:entries forKey:key inCollection:@"entries" withMetadata:metadata];
+        [transaction setObject:entries forKey:key inCollection:HNEntriesKeyPath withMetadata:metadata];
     }];
 }
 
 - (id)cachedCommentsForKey:(NSString *)key {
     __block NSDictionary *comments = nil;
     [self.readerConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
-        comments = [transaction objectForKey:key inCollection:@"comments"];
+        comments = [transaction objectForKey:key inCollection:HNCommentsKeyPath];
     }];
     
     return comments;
@@ -90,7 +89,7 @@ static const CGFloat maxCacheInterval = 360.0f;
 - (void)cacheComments:(id)comments forKey:(NSString *)key {
     [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
         NSNumber *metadata = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]];
-        [transaction setObject:comments forKey:key inCollection:@"comments" withMetadata:metadata];
+        [transaction setObject:comments forKey:key inCollection:HNCommentsKeyPath withMetadata:metadata];
     }];
 }
 

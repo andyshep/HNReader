@@ -34,3 +34,4 @@ extern NSString * const HNBestPageKey;
 extern NSString * const HNNewestPageKey;
 
 extern CGFloat const HNDefaultTableCellHeight;
+extern CGFloat const HNMaxDatabaseCacheInterval;

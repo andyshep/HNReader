@@ -32,12 +32,10 @@
         self.tableView = tableView;
         
         [RACObserve(self.model, error) subscribeNext:^(id x) {
-            NSLog(@"data source thinks model got an error");
+            self.error = self.model.error;
         }];
         
         [RACObserve(self.model, entries) subscribeNext:^(id x) {
-            NSLog(@"data source thinks model entries have changed..");
-            
             self.entries = self.model.entries;
         }];
     }
@@ -74,8 +72,8 @@
     if ([indexPath row] >= self.model.entries.count) {
         return [tableView dequeueReusableCellWithIdentifier:HNLoadMoreTableViewCellIdentifier];
     } else {
-        HNEntriesTableViewCell *cell = (HNEntriesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
+        HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         
         cell.siteTitleLabel.text = entry.title;
         cell.siteDomainLabel.text = entry.siteDomainURL;

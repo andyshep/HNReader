@@ -19,7 +19,7 @@
 #import "HNConstants.h"
 
 typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
-    HNEntriesFrontPageIdentifier,
+    HNEntriesFrontPageIdentifier = 0,
     HNEntriesNewestPageIdentifier,
     HNEntriesBestPageIdentifier
 };
@@ -29,7 +29,6 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 @property (nonatomic, copy, readwrite) NSError *error;
 @property (nonatomic, strong, readwrite) NSMutableArray *entries;
 
-- (NSString *)cacheFilePathForIndex:(NSUInteger)index;
 - (NSURL *)pageURLForIndex:(NSUInteger)index;
 - (NSTimeInterval)cacheTimeForPageIndex:(NSUInteger)index;
 - (NSOperationQueue *)operationQueue;
@@ -50,15 +49,19 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 #pragma mark - Cache Management
-- (NSString *)cacheFilePathForIndex:(NSUInteger)index {
-    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    if (index == HNEntriesFrontPageIdentifier) {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNFrontPageKey]];
-    } else if (index == HNEntriesBestPageIdentifier) {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNBestPageKey]];
-    } else {
-        return [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", HNNewestPageKey]];
-    }
++ (NSArray *)cacheKeys {
+    static NSArray *_cacheKeys = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _cacheKeys = @[HNFrontPageKey, HNNewestPageKey, HNBestPageKey];
+    });
+    return _cacheKeys;
+}
+
+- (NSString *)cacheKeyForIndex:(NSUInteger)index {
+    NSAssert(index <= 2, @"Cache Key index expected to be less than 2");
+    NSString *key = [[HNEntriesModel cacheKeys] objectAtIndex:index];
+    return key;
 }
 
 - (NSURL *)pageURLForIndex:(NSUInteger)index {
@@ -84,7 +87,8 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (NSString *)cacheKeyForFilePath:(NSString *)filePath {
-    return [[[filePath lastPathComponent] componentsSeparatedByString:@"."] firstObject];
+    NSString *key = [[[filePath lastPathComponent] componentsSeparatedByString:@"."] firstObject];
+    return key;
 }
 
 - (NSTimeInterval)cacheTimeForPageIndex:(NSUInteger)index {
@@ -119,10 +123,10 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (void)reloadEntriesForIndex:(NSUInteger)index {
-    NSString *filePath = [self cacheFilePathForIndex:index];
+    NSString *cacheKey = [self cacheKeyForIndex:index];
     NSURL *url = [self pageURLForIndex:index];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self loadEntriesForRequest:request atCachedFilePath:filePath];
+    [self loadEntriesForRequest:request withCacheKey:cacheKey];
 }
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index {
@@ -130,16 +134,16 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // we can keep the old entries around if we're loading more
-    NSString *cachedFilePath = [self cacheFilePathForIndex:index];
-    [self loadEntriesForRequest:request atCachedFilePath:cachedFilePath];
+    NSString *cacheKey = [self cacheKeyForIndex:index];
+    [self loadEntriesForRequest:request withCacheKey:cacheKey];
 }
 
-- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath {
+- (void)loadEntriesForRequest:(NSURLRequest *)request withCacheKey:(NSString *)cachedKey {
     @weakify(self);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [[manager signalForRequest:request] subscribeNext:^(AFHTTPRequestOperation *operation) {
         @strongify(self);
-        [self parseResponse:operation.responseData withCachedFilePath:cachedFilePath];
+        [self parseResponse:operation.responseData withCacheKey:cachedKey];
     } error:^(NSError *err) {
         @strongify(self);
         self.error = err;
@@ -150,7 +154,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     [manager signalForRequest:request];
 }
 
-- (void)parseResponse:(NSData *)response withCachedFilePath:(NSString *)cachedFilePath {
+- (void)parseResponse:(NSData *)response withCacheKey:(NSString *)cacheKey {
     NSDictionary *parsedResponse = [HNParser parsedEntriesFromResponse:response];
     
     NSArray *entries = [parsedResponse objectForKey:HNEntriesKey];
@@ -161,8 +165,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     
     self.moreEntriesLink = [parsedResponse objectForKey:HNEntryNextKey];
     
-    NSString *key = [self cacheKeyForFilePath:cachedFilePath];
-    [[HNCacheManager sharedManager] cacheEntries:entries forKey:key];
+    [[HNCacheManager sharedManager] cacheEntries:entries forKey:cacheKey];
 }
 
 - (NSOperationQueue *)operationQueue {

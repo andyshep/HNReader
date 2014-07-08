@@ -15,7 +15,7 @@
 - (void)reloadEntriesForIndex:(NSUInteger)index;
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index;
-- (void)loadEntriesForRequest:(NSURLRequest *)request atCachedFilePath:(NSString *)cachedFilePath;
+- (void)loadEntriesForRequest:(NSURLRequest *)request withCacheKey:(NSString *)cachedKey;
 
 @end
 

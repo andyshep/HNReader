@@ -18,7 +18,6 @@
 
 @property (nonatomic, copy, readwrite) NSDictionary *comments;
 
-- (NSString *)cacheFilePath;
 - (NSOperationQueue *)operationQueue;
 
 @end
@@ -34,23 +33,14 @@
 }
 
 #pragma mark - Cache Management
-- (NSString *)cacheFilePath {
-    NSString *commentId = [[_entry commentsPageURL] substringFromIndex:8];
-    NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *cacheFilePath = [cachesDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"comments_%@.plist", commentId]];
-    
-    return cacheFilePath;
-}
-
 - (void)loadComments {
-    
-    NSString *commentId = [[_entry commentsPageURL] substringFromIndex:8];
+    NSString *commentId = [self.entry.commentsPageURL substringFromIndex:8];
     id cachedObj = [[HNCacheManager sharedManager] cachedCommentsForKey:commentId];
     if (cachedObj) {
         NSDictionary *comments = (NSDictionary *)cachedObj;
         self.comments = [NSDictionary dictionaryWithDictionary:comments];
     } else {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:HNWebsitePlaceholderURL, [_entry commentsPageURL]]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:HNWebsitePlaceholderURL, self.entry.commentsPageURL]];
         [self loadCommentsForRequest:[NSURLRequest requestWithURL:url]];
     }
 }
