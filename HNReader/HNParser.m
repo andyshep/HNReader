@@ -48,7 +48,7 @@
                 entry.siteDomainURL = [[titles[1] findChildOfClass:@"comhead"] contents];
                 
                 if ([entry.linkURL hasPrefix:@"item?id="]) {
-                    NSString *baseURL = @"http://news.ycombinator.com/";
+                    NSString *baseURL = [HNWebsiteBaseURL stringByAppendingString:@"/"];
                     entry.linkURL = [baseURL stringByAppendingString:entry.linkURL];
                 }
                 

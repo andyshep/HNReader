@@ -10,7 +10,8 @@
 
 @interface HNCommentsViewController : UIViewController <UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshButton;
 @property (nonatomic, strong) HNEntry *entry;
 
 @end

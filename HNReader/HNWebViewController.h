@@ -11,9 +11,7 @@
 @interface HNWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) HNEntry *entry;
-@property (nonatomic, strong) UIBarButtonItem *readableButton;
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
-
-- (IBAction)toggleReadableDisplay:(id)sender;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *readableButton;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end

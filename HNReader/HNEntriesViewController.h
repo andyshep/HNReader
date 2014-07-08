@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIToolbar *bottomToolbar;
-@property (nonatomic, strong) UISegmentedControl *entriesControl;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshButton;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *entriesControl;
 
 @end

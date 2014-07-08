@@ -19,10 +19,9 @@
 @interface HNWebViewController ()
 
 @property (nonatomic, strong) NSURL *displayedURL;
-@property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, strong) UIPopoverController *popoverViewController;
-
 @property (nonatomic, assign) BOOL showReadableContent;
+
+- (void)toggleReadableDisplay;
 
 @end
 
@@ -35,36 +34,20 @@
     }
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if ((self = [super initWithCoder:aDecoder])) {
-        self.items = [NSMutableArray array];
-        self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        [self.webView setScalesPageToFit:YES];
-        [self.webView setDelegate:self];
-        [self.webView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-        
-        self.showReadableContent = NO;
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
     NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
     
-    [self.webView setFrame:self.view.frame];
-    [self.view addSubview:self.webView];
+    self.readableButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        self.showReadableContent = !self.showReadableContent;
+        return [RACSignal empty];
+    }];
     
-    UIImage *image = [UIImage imageNamed:@"glasses.png"];
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(toggleReadableDisplay:)];
-    [button setTintColor:[UIColor blueColor]];
-    [self.navigationItem setRightBarButtonItem:button];
-    
-    // TODO: reactive?
-    [self loadHTMLContent];
+    [RACObserve(self, showReadableContent) subscribeNext:^(id x) {
+        [self toggleReadableDisplay];
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -96,9 +79,7 @@
 }
 
 #pragma mark - HTML and Readable Content Loading
-- (void)toggleReadableDisplay:(id)sender {
-    self.showReadableContent = !self.showReadableContent;
-    
+- (void)toggleReadableDisplay {
     if (self.showReadableContent) {
         [self.navigationItem.rightBarButtonItem setTintColor:[UIColor hn_brightOrangeColor]];
         [self loadReadableContent];

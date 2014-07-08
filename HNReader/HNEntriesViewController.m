@@ -29,22 +29,6 @@
 
 @implementation HNEntriesViewController
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self) {
-        NSArray *items = @[NSLocalizedString(@"Front", @"Front"),
-                           NSLocalizedString(@"Newest", @"Newest"),
-                           NSLocalizedString(@"Best", @"Best")];
-        
-        self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
-        [self.entriesControl setFrame:CGRectMake(0.0f, 0.0f, 287.0f, 30.0f)];
-        [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-        [self.entriesControl setSelectedSegmentIndex:0];
-    }
-    return self;
-}
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
@@ -52,21 +36,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
     self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
     
+    NSAssert(self.entriesControl.numberOfSegments == 3, @"Entries control expects 3 segments");
     [self.navigationItem setTitle:NSLocalizedString(@"News", @"News Entries")];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-    
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadEntries)];
-    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
-    
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:self.entriesControl];
-    [self.bottomToolbar setItems:@[buttonItem]];
-    
-    [self.bottomToolbar setTintColor:[UIColor hn_brightOrangeColor]];
-    [self.entriesControl setTintColor:[UIColor hn_brightOrangeColor]];
+    [self.entriesControl setTitle:NSLocalizedString(@"Front", @"Front") forSegmentAtIndex:0];
+    [self.entriesControl setTitle:NSLocalizedString(@"Newest", @"Newest") forSegmentAtIndex:1];
+    [self.entriesControl setTitle:NSLocalizedString(@"Best", @"Best") forSegmentAtIndex:2];
+
+    // use resizing mask because control needs to support landscape
+    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
     @weakify(self);
     [RACObserve(self.dataSource, entries) subscribeNext:^(NSArray *entries) {
@@ -84,6 +66,12 @@
     [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
         @strongify(self);
         [self loadEntries];
+    }];
+    
+    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self reloadEntries];
+        return [RACSignal empty];
     }];
 }
 
@@ -138,7 +126,6 @@
 
 - (void)entriesDidLoad {
     // TODO: animate
-
     self.requestInProgress = NO;
     [self.tableView reloadData];
     [self.tableView setScrollEnabled:YES];
@@ -151,7 +138,7 @@
 }
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {
-    // TODO: document
+    // respond to preferred text size notifications changes and support dynamic type
     [self.tableView reloadData];
 }
 

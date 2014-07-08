@@ -55,7 +55,7 @@
     }
 }
 
--(void)loadCommentsForRequest:(NSURLRequest *)request {
+- (void)loadCommentsForRequest:(NSURLRequest *)request {
     @weakify(self);
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

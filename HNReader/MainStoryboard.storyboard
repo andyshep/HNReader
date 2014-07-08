@@ -95,7 +95,19 @@
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oc1-yu-Z33">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items/>
+                                <items>
+                                    <barButtonItem style="plain" id="YwC-hc-Quu">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Kp0-jw-6ir">
+                                            <rect key="frame" x="16" y="7" width="287" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="First"/>
+                                                <segment title="Second"/>
+                                                <segment title="Third"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -113,9 +125,13 @@
                             <constraint firstItem="0gT-2l-MrM" firstAttribute="leading" secondItem="Bzo-3F-nvV" secondAttribute="leading" id="njD-8y-2NK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nSf-fL-XI8"/>
+                    <navigationItem key="navigationItem" id="nSf-fL-XI8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Qw1-L3-mgb"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomToolbar" destination="oc1-yu-Z33" id="u9G-St-rvs"/>
+                        <outlet property="entriesControl" destination="Kp0-jw-6ir" id="6Pu-JJ-AsQ"/>
+                        <outlet property="refreshButton" destination="Qw1-L3-mgb" id="X1N-IM-CZg"/>
                         <outlet property="tableView" destination="0gT-2l-MrM" id="VOB-Dj-aci"/>
                     </connections>
                 </viewController>
@@ -139,8 +155,49 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" rowHeight="72" id="zF6-jI-KLD" customClass="HNEntriesTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zF6-jI-KLD" id="GTm-T8-wkW">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The Two Line Title: Wrapping around so you don't have to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-Wz-y3d">
+                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-qu-cQs">
+                                                    <rect key="frame" x="20" y="45" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-ou-3gD">
+                                                    <rect key="frame" x="258" y="45" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="LrX-Wz-y3d" secondAttribute="trailing" constant="20" id="5L7-Zs-x9X"/>
+                                                <constraint firstAttribute="bottom" secondItem="E6a-qu-cQs" secondAttribute="bottom" constant="5" id="5sg-Y7-xLo"/>
+                                                <constraint firstAttribute="trailing" secondItem="CMW-ou-3gD" secondAttribute="trailing" constant="20" id="DFt-He-Izp"/>
+                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="top" secondItem="LrX-Wz-y3d" secondAttribute="bottom" constant="1" id="NBV-Nw-CIU"/>
+                                                <constraint firstAttribute="bottom" secondItem="CMW-ou-3gD" secondAttribute="bottom" constant="5" id="h5W-GY-vPP"/>
+                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="igr-rV-2Z4"/>
+                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="v4p-r3-wav"/>
+                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="top" secondItem="GTm-T8-wkW" secondAttribute="top" id="yZx-Em-vJB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="siteDomainLabel" destination="E6a-qu-cQs" id="mgY-aT-NzC"/>
+                                            <outlet property="siteTitleLabel" destination="LrX-Wz-y3d" id="zM3-lN-ykH"/>
+                                            <outlet property="totalPointsLabel" destination="CMW-ou-3gD" id="Xd4-ZL-NVC"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNCommentsTableViewCell" rowHeight="44" id="XO0-cl-iPe" customClass="HNCommentsTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="158" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XO0-cl-iPe" id="j1F-oY-2Fb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -182,47 +239,6 @@
                                             <outlet property="usernameLabel" destination="e41-8K-gFY" id="l3e-0Y-voU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" rowHeight="72" id="zF6-jI-KLD" customClass="HNEntriesTableViewCell">
-                                        <rect key="frame" x="0.0" y="130" width="320" height="72"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zF6-jI-KLD" id="GTm-T8-wkW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The Two Line Title: Wrapping around so you don't have to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-Wz-y3d">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-qu-cQs">
-                                                    <rect key="frame" x="20" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-ou-3gD">
-                                                    <rect key="frame" x="258" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LrX-Wz-y3d" secondAttribute="trailing" constant="20" id="5L7-Zs-x9X"/>
-                                                <constraint firstAttribute="bottom" secondItem="E6a-qu-cQs" secondAttribute="bottom" constant="5" id="5sg-Y7-xLo"/>
-                                                <constraint firstAttribute="trailing" secondItem="CMW-ou-3gD" secondAttribute="trailing" constant="20" id="DFt-He-Izp"/>
-                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="top" secondItem="LrX-Wz-y3d" secondAttribute="bottom" constant="1" id="NBV-Nw-CIU"/>
-                                                <constraint firstAttribute="bottom" secondItem="CMW-ou-3gD" secondAttribute="bottom" constant="5" id="h5W-GY-vPP"/>
-                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="igr-rV-2Z4"/>
-                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="v4p-r3-wav"/>
-                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="top" secondItem="GTm-T8-wkW" secondAttribute="top" id="yZx-Em-vJB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="siteDomainLabel" destination="E6a-qu-cQs" id="mgY-aT-NzC"/>
-                                            <outlet property="siteTitleLabel" destination="LrX-Wz-y3d" id="zM3-lN-ykH"/>
-                                            <outlet property="totalPointsLabel" destination="CMW-ou-3gD" id="Xd4-ZL-NVC"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="delegate" destination="nBM-q0-jmz" id="mCr-pQ-yHR"/>
@@ -237,9 +253,12 @@
                             <constraint firstItem="Kjb-OS-hck" firstAttribute="leading" secondItem="heP-5k-8ac" secondAttribute="leading" id="vCt-qp-ZSy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZBf-et-EhQ"/>
+                    <navigationItem key="navigationItem" id="ZBf-et-EhQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="3I8-5l-vMg"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="refreshButton" destination="3I8-5l-vMg" id="jN7-HZ-YWj"/>
                         <outlet property="tableView" destination="Kjb-OS-hck" id="Oj2-gB-A1y"/>
                     </connections>
                 </viewController>
@@ -263,13 +282,23 @@
                                 <rect key="frame" x="-1" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KCi-ZJ-PJq" id="Lho-2p-18i"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="cfz-lN-4iy">
+                        <barButtonItem key="rightBarButtonItem" image="glasses" id="Knw-LG-doW"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="readableButton" destination="Knw-LG-doW" id="1ST-ZT-SSb"/>
+                        <outlet property="webView" destination="O2K-oY-IIi" id="K4d-yh-Zyo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fve-7n-4hL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,6 +323,9 @@
             <point key="canvasLocation" x="558" y="131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="glasses" width="30" height="22"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

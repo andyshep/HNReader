@@ -23,7 +23,6 @@
 
 @interface HNCommentsViewController ()
 
-
 @property (nonatomic, strong) HNCommentsDataSource *dataSource;
 @property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
 
@@ -43,9 +42,6 @@
     
     NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
     
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.dataSource action:@selector(reloadComments)];
-    [self.navigationItem setRightBarButtonItem:refreshButton animated:YES];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     self.dataSource = [[HNCommentsDataSource alloc] initWithTableView:self.tableView entry:self.entry];
@@ -63,11 +59,21 @@
             [alertView show];
         }
     }];
+    
+    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        [self.dataSource reloadComments];
+        return [RACSignal empty];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
 }
 
 #pragma mark - UITableView
@@ -82,7 +88,6 @@
         });
         
         [self.dataSource configureCommentCell:stubCell forIndexPath:indexPath];
-        
         stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
         
         [stubCell setNeedsLayout];
@@ -104,10 +109,6 @@
         [nextController setEntry:self.entry];
         [self.navigationController pushViewController:nextController animated:YES];
     }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
 }
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding {

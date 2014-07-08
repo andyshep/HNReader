@@ -12,6 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[UINavigationBar appearance] setTintColor:[UIColor hn_brightOrangeColor]];
+    [[UISegmentedControl appearanceWhenContainedIn:[UIToolbar class], nil] setTintColor:[UIColor hn_brightOrangeColor]];
     
     return YES;
 }
