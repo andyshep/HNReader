@@ -17,7 +17,7 @@
             [subscriber sendNext:operation];
             [subscriber sendCompleted];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:nil];
+            [subscriber sendError:error];
         }];
         
         [[self operationQueue] addOperation:operation];
