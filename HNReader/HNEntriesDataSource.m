@@ -50,8 +50,16 @@
     [self.model reloadEntriesForIndex:index];
 }
 
-#pragma mark - UITableView
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
+    HNEntriesTableViewCell *entryCell = (HNEntriesTableViewCell *)cell;
+    
+    entryCell.siteTitleLabel.text = entry.title;
+    entryCell.siteDomainLabel.text = entry.siteDomainURL;
+    entryCell.totalPointsLabel.text = entry.totalPoints;
+}
 
+#pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -65,20 +73,15 @@
     
     // if we have the entries then show
     // and plus one for the 'load more...' cell
-    return self.model.entries.count + 1;
+    return self.model.entries.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= self.model.entries.count) {
         return [tableView dequeueReusableCellWithIdentifier:HNLoadMoreTableViewCellIdentifier];
     } else {
-        HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
         HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        
-        cell.siteTitleLabel.text = entry.title;
-        cell.siteDomainLabel.text = entry.siteDomainURL;
-        cell.totalPointsLabel.text = entry.totalPoints;
-        
+        [self configureCell:cell forIndexPath:indexPath];
         return cell;
     }
 }

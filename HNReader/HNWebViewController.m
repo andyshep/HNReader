@@ -84,7 +84,7 @@
         [self.navigationItem.rightBarButtonItem setTintColor:[UIColor hn_brightOrangeColor]];
         [self loadReadableContent];
     } else {
-        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blueColor]];
+        [self.navigationItem.rightBarButtonItem setTintColor:[[UIColor hn_brightOrangeColor] colorWithAlphaComponent:0.25f]];
         [self loadHTMLContent];
     }
 }

@@ -20,4 +20,6 @@
 - (void)loadEntriesForIndex:(NSUInteger)index;
 - (void)reloadEntriesForIndex:(NSUInteger)index;
 
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
+
 @end

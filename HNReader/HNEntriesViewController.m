@@ -19,6 +19,8 @@
 
 @interface HNEntriesViewController ()
 
+//@property (nonatomic, strong) HNEntriesTableViewCell *stubCell;
+
 @property (nonatomic, strong) HNEntriesDataSource *dataSource;
 @property (nonatomic, assign) BOOL requestInProgress;
 
@@ -40,6 +42,9 @@
     
     self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
+    
+    UINib *nib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
     
     NSAssert(self.entriesControl.numberOfSegments == 3, @"Entries control expects 3 segments");
     [self.navigationItem setTitle:NSLocalizedString(@"News", @"News Entries")];
@@ -86,7 +91,24 @@
     [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
+    static HNEntriesTableViewCell *stubCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        stubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
+    });
+    
+    [self.dataSource configureCell:stubCell forIndexPath:indexPath];
+    stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+    
+    [stubCell setNeedsLayout];
+    [stubCell layoutIfNeeded];
+    
+    CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return HNDefaultTableCellHeight;
 }
 

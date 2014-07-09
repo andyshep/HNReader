@@ -21,8 +21,6 @@
     
     UIView *selectedView = [[UIView alloc] initWithFrame:CGRectZero];
     [selectedView setBackgroundColor:[UIColor hn_brightOrangeColor]];
-    [self setSelectedBackgroundView:selectedView];
-    [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     [self setup];
 }
@@ -35,10 +33,6 @@
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     [super setHighlighted:highlighted animated:animated];
     [self applyHighlightAndSelectionStyle:highlighted];
-}
-
-- (NSString *)reuseIdentifier {
-    return NSStringFromClass([self class]);
 }
 
 - (void)prepareForReuse {

@@ -24,7 +24,7 @@
 @interface HNCommentsViewController ()
 
 @property (nonatomic, strong) HNCommentsDataSource *dataSource;
-@property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
+//@property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
@@ -46,6 +46,9 @@
     
     self.dataSource = [[HNCommentsDataSource alloc] initWithTableView:self.tableView entry:self.entry];
     self.tableView.dataSource = self.dataSource;
+    
+    UINib *nib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
     
     @weakify(self);
     [RACObserve(self.dataSource, comments) subscribeNext:^(id comments) {
@@ -79,7 +82,20 @@
 #pragma mark - UITableView
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     if ([indexPath section] == 0) {
-        return HNDefaultTableCellHeight;
+        static HNEntriesTableViewCell *stubCell = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            stubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
+        });
+        
+        [self.dataSource configureEntryCell:stubCell];
+        stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+        
+        [stubCell setNeedsLayout];
+        [stubCell layoutIfNeeded];
+        
+        CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        return height;
     } else {
         static HNCommentsTableViewCell *stubCell = nil;
         static dispatch_once_t onceToken;

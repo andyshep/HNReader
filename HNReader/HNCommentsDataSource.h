@@ -10,6 +10,7 @@
 
 @class HNEntry;
 @class HNCommentsTableViewCell;
+@class HNEntriesTableViewCell;
 
 @interface HNCommentsDataSource : NSObject <UITableViewDataSource>
 
@@ -18,6 +19,7 @@
 @property (nonatomic, weak, readonly) NSDictionary *comments;
 @property (nonatomic, weak, readonly) NSError *error;
 
+- (void)configureEntryCell:(HNEntriesTableViewCell *)cell;
 - (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
 - (void)reloadComments;
 

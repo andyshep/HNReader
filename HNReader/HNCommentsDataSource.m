@@ -68,10 +68,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
         HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        
-        cell.siteTitleLabel.text = self.entry.title;
-        cell.siteDomainLabel.text = self.entry.siteDomainURL;
-        cell.totalPointsLabel.text = self.entry.totalPoints;
+        [self configureEntryCell:cell];
         
         return cell;
     } else {
@@ -80,6 +77,12 @@
         
         return cell;
     }
+}
+
+- (void)configureEntryCell:(HNEntriesTableViewCell *)cell {
+    cell.siteTitleLabel.text = self.entry.title;
+    cell.siteDomainLabel.text = self.entry.siteDomainURL;
+    cell.totalPointsLabel.text = self.entry.totalPoints;
 }
 
 - (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {

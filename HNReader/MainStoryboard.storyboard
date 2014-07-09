@@ -20,53 +20,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" rowHeight="72" id="JJP-cy-Bqh" customClass="HNEntriesTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="72"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" id="JJP-cy-Bqh">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JJP-cy-Bqh" id="e7h-BR-JN7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The Two Line Title: Wrapping around so you don't have to" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-3e-cZT">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D05-6u-ZQY">
-                                                    <rect key="frame" x="20" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="236" verticalCompressionResistancePriority="236" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-dl-pCx">
-                                                    <rect key="frame" x="258" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="D05-6u-ZQY" secondAttribute="bottom" constant="5" id="2td-gB-ZsK"/>
-                                                <constraint firstAttribute="bottom" secondItem="J4s-dl-pCx" secondAttribute="bottom" constant="5" id="AqG-jm-erI"/>
-                                                <constraint firstAttribute="trailing" secondItem="J4s-dl-pCx" secondAttribute="trailing" constant="20" id="Ghw-47-q1k"/>
-                                                <constraint firstItem="3gf-3e-cZT" firstAttribute="leading" secondItem="e7h-BR-JN7" secondAttribute="leading" constant="20" id="OIg-uH-hAr"/>
-                                                <constraint firstItem="D05-6u-ZQY" firstAttribute="top" secondItem="3gf-3e-cZT" secondAttribute="bottom" constant="1" id="Pid-Ob-4B0"/>
-                                                <constraint firstAttribute="trailing" secondItem="3gf-3e-cZT" secondAttribute="trailing" constant="20" id="XCI-Ue-PLX"/>
-                                                <constraint firstItem="3gf-3e-cZT" firstAttribute="top" secondItem="e7h-BR-JN7" secondAttribute="top" id="b17-O0-hCA"/>
-                                                <constraint firstItem="D05-6u-ZQY" firstAttribute="top" secondItem="3gf-3e-cZT" secondAttribute="bottom" constant="1" id="fJM-23-ZBZ"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="J4s-dl-pCx" secondAttribute="bottom" constant="5" id="fi6-G0-KnJ"/>
-                                                <constraint firstItem="J4s-dl-pCx" firstAttribute="top" secondItem="3gf-3e-cZT" secondAttribute="bottom" constant="1" id="jMO-7W-NEh"/>
-                                                <constraint firstItem="D05-6u-ZQY" firstAttribute="leading" secondItem="e7h-BR-JN7" secondAttribute="leading" constant="20" id="lUf-Xa-MeB"/>
-                                                <constraint firstAttribute="bottom" secondItem="D05-6u-ZQY" secondAttribute="bottom" constant="5" id="ywW-af-Nyu"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="siteDomainLabel" destination="D05-6u-ZQY" id="0Ee-tf-ghj"/>
-                                            <outlet property="siteTitleLabel" destination="3gf-3e-cZT" id="7Ga-Gy-fxq"/>
-                                            <outlet property="totalPointsLabel" destination="J4s-dl-pCx" id="hTZ-tC-dCb"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNLoadMoreTableViewCell" rowHeight="72" id="Hae-Xq-OwC" customClass="HNLoadMoreTableViewCell">
-                                        <rect key="frame" x="0.0" y="158" width="320" height="72"/>
+                                        <rect key="frame" x="0.0" y="130" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hae-Xq-OwC" id="IN9-7W-BIf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
@@ -155,49 +118,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" rowHeight="72" id="zF6-jI-KLD" customClass="HNEntriesTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="72"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" id="zF6-jI-KLD">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zF6-jI-KLD" id="GTm-T8-wkW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The Two Line Title: Wrapping around so you don't have to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-Wz-y3d">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-qu-cQs">
-                                                    <rect key="frame" x="20" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-ou-3gD">
-                                                    <rect key="frame" x="258" y="45" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LrX-Wz-y3d" secondAttribute="trailing" constant="20" id="5L7-Zs-x9X"/>
-                                                <constraint firstAttribute="bottom" secondItem="E6a-qu-cQs" secondAttribute="bottom" constant="5" id="5sg-Y7-xLo"/>
-                                                <constraint firstAttribute="trailing" secondItem="CMW-ou-3gD" secondAttribute="trailing" constant="20" id="DFt-He-Izp"/>
-                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="top" secondItem="LrX-Wz-y3d" secondAttribute="bottom" constant="1" id="NBV-Nw-CIU"/>
-                                                <constraint firstAttribute="bottom" secondItem="CMW-ou-3gD" secondAttribute="bottom" constant="5" id="h5W-GY-vPP"/>
-                                                <constraint firstItem="E6a-qu-cQs" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="igr-rV-2Z4"/>
-                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="leading" secondItem="GTm-T8-wkW" secondAttribute="leading" constant="20" id="v4p-r3-wav"/>
-                                                <constraint firstItem="LrX-Wz-y3d" firstAttribute="top" secondItem="GTm-T8-wkW" secondAttribute="top" id="yZx-Em-vJB"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="siteDomainLabel" destination="E6a-qu-cQs" id="mgY-aT-NzC"/>
-                                            <outlet property="siteTitleLabel" destination="LrX-Wz-y3d" id="zM3-lN-ykH"/>
-                                            <outlet property="totalPointsLabel" destination="CMW-ou-3gD" id="Xd4-ZL-NVC"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNCommentsTableViewCell" rowHeight="44" id="XO0-cl-iPe" customClass="HNCommentsTableViewCell">
-                                        <rect key="frame" x="0.0" y="158" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XO0-cl-iPe" id="j1F-oY-2Fb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
