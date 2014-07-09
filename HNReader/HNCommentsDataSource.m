@@ -68,31 +68,34 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
         HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        [self configureEntryCell:cell];
+        [self configureCell:cell forIndexPath:indexPath];
         
         return cell;
     } else {
         HNCommentsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
-        [self configureCommentCell:cell forIndexPath:indexPath];
+        [self configureCell:cell forIndexPath:indexPath];
         
         return cell;
     }
 }
 
-- (void)configureEntryCell:(HNEntriesTableViewCell *)cell {
-    cell.siteTitleLabel.text = self.entry.title;
-    cell.siteDomainLabel.text = self.entry.siteDomainURL;
-    cell.totalPointsLabel.text = self.entry.totalPoints;
-}
-
-- (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    NSArray *comments = (NSArray *)self.model.comments[HNEntryCommentsKey];
-    HNComment *comment = (HNComment *)comments[indexPath.row];
-    
-    [cell.usernameLabel setText:comment.username];
-    [cell.timeLabel setText:comment.timeSinceCreation];
-    [cell setCommentText:comment.commentString];
-    [cell setPadding:comment.padding];
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[HNEntriesTableViewCell class]]) {
+        HNEntriesTableViewCell *entryCell = (HNEntriesTableViewCell *)cell;
+        entryCell.siteTitleLabel.text = self.entry.title;
+        entryCell.siteDomainLabel.text = self.entry.siteDomainURL;
+        entryCell.totalPointsLabel.text = self.entry.totalPoints;
+    }
+    else if ([cell isKindOfClass:[HNCommentsTableViewCell class]]) {
+        HNCommentsTableViewCell *commentsCell = (HNCommentsTableViewCell *)cell;
+        NSArray *comments = (NSArray *)self.model.comments[HNEntryCommentsKey];
+        HNComment *comment = (HNComment *)comments[indexPath.row];
+        
+        [commentsCell.usernameLabel setText:comment.username];
+        [commentsCell.timeLabel setText:comment.timeSinceCreation];
+        [commentsCell setCommentText:comment.commentString];
+        [commentsCell setPadding:comment.padding];
+    }
 }
 
 @end

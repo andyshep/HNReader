@@ -47,8 +47,11 @@
     self.dataSource = [[HNCommentsDataSource alloc] initWithTableView:self.tableView entry:self.entry];
     self.tableView.dataSource = self.dataSource;
     
-    UINib *nib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
+    UINib *entryNib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:entryNib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
+    
+    UINib *commentNib = [UINib nibWithNibName:HNCommentsTableViewCellIdentifier bundle:nil];
+    [self.tableView registerNib:commentNib forCellReuseIdentifier:HNCommentsTableViewCellIdentifier];
     
     @weakify(self);
     [RACObserve(self.dataSource, comments) subscribeNext:^(id comments) {
@@ -82,19 +85,19 @@
 #pragma mark - UITableView
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     if ([indexPath section] == 0) {
-        static HNEntriesTableViewCell *stubCell = nil;
+        static HNEntriesTableViewCell *entryStubCell = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            stubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
+            entryStubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         });
         
-        [self.dataSource configureEntryCell:stubCell];
-        stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+        [self.dataSource configureCell:entryStubCell forIndexPath:indexPath];
+        entryStubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
         
-        [stubCell setNeedsLayout];
-        [stubCell layoutIfNeeded];
+        [entryStubCell setNeedsLayout];
+        [entryStubCell layoutIfNeeded];
         
-        CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        CGFloat height = [entryStubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         return height;
     } else {
         static HNCommentsTableViewCell *stubCell = nil;
@@ -103,7 +106,7 @@
             stubCell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
         });
         
-        [self.dataSource configureCommentCell:stubCell forIndexPath:indexPath];
+        [self.dataSource configureCell:stubCell forIndexPath:indexPath];
         stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
         
         [stubCell setNeedsLayout];

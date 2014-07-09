@@ -6,6 +6,8 @@
 //
 //
 
+// http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout
+
 #import "HNLabel.h"
 
 @implementation HNLabel

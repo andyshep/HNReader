@@ -19,8 +19,7 @@
 @property (nonatomic, weak, readonly) NSDictionary *comments;
 @property (nonatomic, weak, readonly) NSError *error;
 
-- (void)configureEntryCell:(HNEntriesTableViewCell *)cell;
-- (void)configureCommentCell:(HNCommentsTableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;
 - (void)reloadComments;
 
 @end

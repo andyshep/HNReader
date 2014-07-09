@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
+		F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */; };
 		F70AE36D196CB2C70028584D /* HNEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */; };
 		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		8EDB044C889942B9B7B7B864 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNEntriesTableViewCell.xib; sourceTree = "<group>"; };
 		F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -234,9 +236,10 @@
 				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
 				F75D3683143A056D005BCA23 /* Resources */,
 				F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */,
+				F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */,
+				F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
-				F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */,
 			);
 			path = HNReader;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F70AE36D196CB2C70028584D /* HNEntriesTableViewCell.xib in Resources */,
+				F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */,
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
 				F72BC9D3196608A500CA1161 /* MainStoryboard.storyboard in Resources */,

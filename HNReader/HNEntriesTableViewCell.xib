@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="304" placeholderIntrinsicHeight="21" text="Website Title: Could be very long." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="304" translatesAutoresizingMaskIntoConstraints="NO" id="Dsc-le-9Yq">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="304" placeholderIntrinsicHeight="21" text="Website Title: Could be very long." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="304" translatesAutoresizingMaskIntoConstraints="NO" id="Dsc-le-9Yq" customClass="HNLabel">
                         <rect key="frame" x="8" y="8" width="304" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -33,9 +33,9 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="jED-vS-59J" secondAttribute="trailing" constant="8" id="16u-YU-nRu"/>
                     <constraint firstAttribute="trailing" secondItem="Dsc-le-9Yq" secondAttribute="trailing" constant="8" id="1fO-Zr-CGq"/>
-                    <constraint firstItem="mZI-jw-abQ" firstAttribute="top" secondItem="Dsc-le-9Yq" secondAttribute="bottom" constant="13" id="6Xe-RH-shk"/>
+                    <constraint firstItem="mZI-jw-abQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dsc-le-9Yq" secondAttribute="bottom" constant="8" id="6Xe-RH-shk"/>
                     <constraint firstItem="mZI-jw-abQ" firstAttribute="leading" secondItem="JMU-Mc-w0X" secondAttribute="leading" constant="8" id="Ci4-3R-vRr"/>
-                    <constraint firstItem="jED-vS-59J" firstAttribute="top" secondItem="Dsc-le-9Yq" secondAttribute="bottom" constant="13" id="DrW-83-MrI"/>
+                    <constraint firstItem="jED-vS-59J" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dsc-le-9Yq" secondAttribute="bottom" constant="8" id="DrW-83-MrI"/>
                     <constraint firstAttribute="bottom" secondItem="mZI-jw-abQ" secondAttribute="bottom" constant="8" id="RtU-Nr-BcB"/>
                     <constraint firstAttribute="bottom" secondItem="jED-vS-59J" secondAttribute="bottom" constant="8" id="bs2-is-c7J"/>
                     <constraint firstItem="Dsc-le-9Yq" firstAttribute="top" secondItem="JMU-Mc-w0X" secondAttribute="top" constant="8" id="kHj-uo-UCN"/>

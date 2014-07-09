@@ -12,12 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     [self setup];
-}
-
-- (NSString *)reuseIdentifier {
-    return NSStringFromClass([self class]);
 }
 
 - (void)prepareForReuse {

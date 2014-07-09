@@ -126,48 +126,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNCommentsTableViewCell" rowHeight="44" id="XO0-cl-iPe" customClass="HNCommentsTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNCommentsTableViewCell" rowHeight="44" id="XO0-cl-iPe">
                                         <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XO0-cl-iPe" id="j1F-oY-2Fb">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e41-8K-gFY" customClass="HNLabel">
-                                                    <rect key="frame" x="20" y="0.0" width="64" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timestamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8j-0T-SbQ" customClass="HNLabel">
-                                                    <rect key="frame" x="232" y="0.0" width="68" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="this is the comment text string" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="BNZ-fk-urm" customClass="HNLabel">
-                                                    <rect key="frame" x="20" y="20" width="280" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="p8j-0T-SbQ" firstAttribute="top" secondItem="j1F-oY-2Fb" secondAttribute="top" id="5ro-yd-XYV"/>
-                                                <constraint firstItem="BNZ-fk-urm" firstAttribute="leading" secondItem="j1F-oY-2Fb" secondAttribute="leading" constant="20" id="7cV-S1-C54"/>
-                                                <constraint firstItem="e41-8K-gFY" firstAttribute="leading" secondItem="j1F-oY-2Fb" secondAttribute="leading" constant="20" id="Eih-Mt-2uU"/>
-                                                <constraint firstAttribute="bottom" secondItem="BNZ-fk-urm" secondAttribute="bottom" constant="2" id="IXy-CQ-Y0i"/>
-                                                <constraint firstItem="e41-8K-gFY" firstAttribute="top" secondItem="j1F-oY-2Fb" secondAttribute="top" id="Luf-zP-dG5"/>
-                                                <constraint firstItem="BNZ-fk-urm" firstAttribute="top" secondItem="e41-8K-gFY" secondAttribute="bottom" constant="3" id="QZc-EI-ntt"/>
-                                                <constraint firstAttribute="trailing" secondItem="p8j-0T-SbQ" secondAttribute="trailing" constant="20" id="in0-Wr-Mv5"/>
-                                                <constraint firstAttribute="trailing" secondItem="BNZ-fk-urm" secondAttribute="trailing" constant="20" id="t41-so-reN"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="commentTextLabel" destination="BNZ-fk-urm" id="swb-x5-s9x"/>
-                                            <outlet property="timeLabel" destination="p8j-0T-SbQ" id="LnZ-4J-QgA"/>
-                                            <outlet property="usernameLabel" destination="e41-8K-gFY" id="l3e-0Y-voU"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

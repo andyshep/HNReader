@@ -50,15 +50,6 @@
     [self.model reloadEntriesForIndex:index];
 }
 
-- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
-    HNEntriesTableViewCell *entryCell = (HNEntriesTableViewCell *)cell;
-    
-    entryCell.siteTitleLabel.text = entry.title;
-    entryCell.siteDomainLabel.text = entry.siteDomainURL;
-    entryCell.totalPointsLabel.text = entry.totalPoints;
-}
-
 #pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -83,6 +74,17 @@
         HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
         [self configureCell:cell forIndexPath:indexPath];
         return cell;
+    }
+}
+
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[HNEntriesTableViewCell class]]) {
+        HNEntriesTableViewCell *entryCell = (HNEntriesTableViewCell *)cell;
+        HNEntry *entry = (HNEntry *)self.model.entries[indexPath.row];
+        
+        entryCell.siteTitleLabel.text = entry.title;
+        entryCell.siteDomainLabel.text = entry.siteDomainURL;
+        entryCell.totalPointsLabel.text = entry.totalPoints;
     }
 }
 
