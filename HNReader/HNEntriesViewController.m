@@ -22,7 +22,7 @@
 //@property (nonatomic, strong) HNEntriesTableViewCell *stubCell;
 
 @property (nonatomic, strong) HNEntriesDataSource *dataSource;
-@property (nonatomic, assign) BOOL requestInProgress;
+//@property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
@@ -129,18 +129,18 @@
 }
 
 - (void)loadEntries {
-    if (_requestInProgress) {
-        return;
-    }
+//    if (_requestInProgress) {
+//        return;
+//    }
     
     [self prepareForRequest];
     [self.dataSource loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
 - (void)reloadEntries {
-    if (_requestInProgress) {
-        return;
-    }
+//    if (_requestInProgress) {
+//        return;
+//    }
     
     [self prepareForRequest];
     [self.dataSource reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
@@ -148,7 +148,7 @@
 
 - (void)entriesDidLoad {
     // TODO: animate
-    self.requestInProgress = NO;
+//    self.requestInProgress = NO;
     [self.tableView reloadData];
     [self.tableView setScrollEnabled:YES];
     [self.tableView setUserInteractionEnabled:YES];
@@ -165,7 +165,7 @@
 }
 
 - (void)prepareForRequest {
-    self.requestInProgress = YES;
+//    self.requestInProgress = YES;
     [self.tableView setUserInteractionEnabled:NO];
     [self.tableView setScrollEnabled:NO];
 }

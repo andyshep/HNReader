@@ -12,13 +12,13 @@
 #import "HNEntry.h"
 #import "HNComment.h"
 
+#import "HNClient.h"
 #import "HNCacheManager.h"
 
 @interface HNCommentsModel ()
 
+@property (nonatomic, strong) HNClient *client;
 @property (nonatomic, copy, readwrite) NSDictionary *comments;
-
-- (NSOperationQueue *)operationQueue;
 
 @end
 
@@ -27,6 +27,7 @@
 - (instancetype)initWithEntry:(HNEntry *)entry {
     if ((self = [super init])) {
         self.entry = entry;
+        self.client = [[HNClient alloc] init];
     }
     
     return self;
@@ -46,24 +47,16 @@
 }
 
 - (void)loadCommentsForRequest:(NSURLRequest *)request {
-    @weakify(self);
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        @strongify(self);
-        NSDictionary *comments = [HNParser parsedCommentsFromResponse:responseObject];
+    [[self.client signalForRequest:request] subscribeNext:^(id response) {
+        NSDictionary *comments = [HNParser parsedCommentsFromResponse:response];
         self.comments = [NSDictionary dictionaryWithDictionary:comments];
         NSString *commentId = [self.entry.commentsPageURL substringFromIndex:8];
         [[HNCacheManager sharedManager] cacheComments:comments forKey:commentId];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        @strongify(self);
-        self.error = err;
+    } error:^(NSError *error) {
+        self.error = error;
+    } completed:^{
+        // no-op
     }];
-    
-    [[self operationQueue] addOperation:operation];
-}
-
-- (NSOperationQueue *)operationQueue {
-    return [[AFHTTPRequestOperationManager manager] operationQueue];
 }
 
 @end

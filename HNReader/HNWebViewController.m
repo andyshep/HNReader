@@ -8,7 +8,6 @@
 
 #import "HNWebViewController.h"
 
-#import "AFHTTPRequestOperation.h"
 #import "HNEntry.h"
 #import "HNConstants.h"
 
@@ -84,7 +83,7 @@
         [self.navigationItem.rightBarButtonItem setTintColor:[UIColor hn_brightOrangeColor]];
         [self loadReadableContent];
     } else {
-        [self.navigationItem.rightBarButtonItem setTintColor:[[UIColor hn_brightOrangeColor] colorWithAlphaComponent:0.25f]];
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor lightGrayColor]];
         [self loadHTMLContent];
     }
 }
@@ -96,36 +95,23 @@
 }
 
 - (void)loadReadableContent {
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    NSString *html = [self.webView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
+    const char *htmlContent = [html UTF8String];
+    char *readableContent = readable(htmlContent, "", NULL, READABLE_OPTIONS_DEFAULT);
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *rawHtmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        const char *html_content = [rawHtmlString UTF8String];
-        char *readable_content = readable(html_content, "", NULL, READABLE_OPTIONS_DEFAULT);
+    if (readableContent != NULL) {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"readable-formatting" ofType:@"html"];
+        NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        NSString *readableHTMLString = @(readableContent);
+        NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
         
-        if (readable_content != NULL) {
-            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"readable-formatting" ofType:@"html"];
-            NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-            NSString *readableHTMLString = @(readable_content);
-            NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
-            
-            [self.webView loadHTMLString:html baseURL:self.displayedURL];
-        } else {
-            [self showReadableAlertWithError:nil];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *err) {
-        [self showReadableAlertWithError:err];
-    }];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:operation];
-}
-
-- (void)showReadableAlertWithError:(NSError *)error {
-    NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
-    UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
-    [alert show];
+        [self.webView loadHTMLString:html baseURL:self.displayedURL];
+    } else {
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor lightGrayColor]];
+        NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
+        UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
+        [alert show];
+    }
 }
 
 @end

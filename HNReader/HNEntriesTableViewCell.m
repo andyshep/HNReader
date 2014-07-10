@@ -21,6 +21,7 @@
     
     UIView *selectedView = [[UIView alloc] initWithFrame:CGRectZero];
     [selectedView setBackgroundColor:[UIColor hn_brightOrangeColor]];
+    [self setSelectedBackgroundView:selectedView];
     
     [self setup];
 }

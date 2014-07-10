@@ -8,9 +8,7 @@
 
 #import "HNEntriesModel.h"
 
-#import "AFHTTPRequestOperation.h"
-#import "AFNetworkActivityIndicatorManager.h"
-#import "AFHTTPRequestOperationManager+HNReactiveExtension.h"
+#import "HNClient.h"
 
 #import "HNEntry.h"
 #import "HNParser.h"
@@ -26,12 +24,12 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 
 @interface HNEntriesModel ()
 
+@property (nonatomic, strong) HNClient *client;
 @property (nonatomic, copy, readwrite) NSError *error;
 @property (nonatomic, strong, readwrite) NSMutableArray *entries;
 
 - (NSURL *)pageURLForIndex:(NSUInteger)index;
 - (NSTimeInterval)cacheTimeForPageIndex:(NSUInteger)index;
-- (NSOperationQueue *)operationQueue;
 
 @end
 
@@ -41,8 +39,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     if ((self = [super init])) {
         self.moreEntriesLink = @"/news2";
         self.entries = [NSMutableArray array];
-        
-        [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+        self.client = [[HNClient alloc] init];
     }
     
     return self;
@@ -139,19 +136,13 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (void)loadEntriesForRequest:(NSURLRequest *)request withCacheKey:(NSString *)cachedKey {
-    @weakify(self);
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [[manager signalForRequest:request] subscribeNext:^(AFHTTPRequestOperation *operation) {
-        @strongify(self);
-        [self parseResponse:operation.responseData withCacheKey:cachedKey];
-    } error:^(NSError *err) {
-        @strongify(self);
-        self.error = err;
+    [[self.client signalForRequest:request] subscribeNext:^(id response) {
+        [self parseResponse:response withCacheKey:cachedKey];
+    } error:^(NSError *error) {
+        self.error = error;
     } completed:^{
-        //
+        // no-op
     }];
-    
-    [manager signalForRequest:request];
 }
 
 - (void)parseResponse:(NSData *)response withCacheKey:(NSString *)cacheKey {
@@ -166,10 +157,6 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
     self.moreEntriesLink = [parsedResponse objectForKey:HNEntryNextKey];
     
     [[HNCacheManager sharedManager] cacheEntries:entries forKey:cacheKey];
-}
-
-- (NSOperationQueue *)operationQueue {
-    return [[AFHTTPRequestOperationManager manager] operationQueue];
 }
 
 @end
