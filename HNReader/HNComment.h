@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Mantle/Mantle.h>
 
-@interface HNComment : MTLModel
+@interface HNComment : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *timeSinceCreation;
