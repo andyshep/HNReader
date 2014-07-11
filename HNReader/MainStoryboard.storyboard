@@ -173,8 +173,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-oY-IIi">
-                                <rect key="frame" x="-1" y="0.0" width="320" height="568"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-oY-IIi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -183,6 +183,12 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="il7-5Y-7WN" firstAttribute="top" secondItem="O2K-oY-IIi" secondAttribute="bottom" id="AAp-Sw-j7E"/>
+                            <constraint firstItem="O2K-oY-IIi" firstAttribute="top" secondItem="pGe-Km-c5k" secondAttribute="top" id="aGf-el-6GR"/>
+                            <constraint firstAttribute="trailing" secondItem="O2K-oY-IIi" secondAttribute="trailing" id="eZU-YK-2Rg"/>
+                            <constraint firstItem="O2K-oY-IIi" firstAttribute="leading" secondItem="pGe-Km-c5k" secondAttribute="leading" id="o7U-4w-0Ah"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cfz-lN-4iy">

@@ -25,9 +25,9 @@
 }
 
 - (void)setPadding:(NSInteger)padding {
-//    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
-//    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
-//    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
+    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
+    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
+    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
     [self setNeedsUpdateConstraints];
     [self setNeedsLayout];
 }
@@ -40,11 +40,14 @@
     [self.usernameLabel setTextColor:[UIColor lightGrayColor]];
     [self.timeLabel setTextColor:[UIColor lightGrayColor]];
     [self.timeLabel setTextAlignment:NSTextAlignmentRight];
-    [self.commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+//    [self.commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
     
     [self.usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     [self.timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     [self.commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
+    
+    self.commentTextLabel.delegate = nil;
+    [self.commentTextLabel setEnabledTextCheckingTypes:NSTextCheckingTypeLink];
 }
 
 @end

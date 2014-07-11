@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jED-vS-59J">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Points" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jED-vS-59J">
                         <rect key="frame" x="263" y="42" width="49" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
@@ -39,6 +39,7 @@
                     <constraint firstAttribute="bottom" secondItem="mZI-jw-abQ" secondAttribute="bottom" constant="8" id="RtU-Nr-BcB"/>
                     <constraint firstAttribute="bottom" secondItem="jED-vS-59J" secondAttribute="bottom" constant="8" id="bs2-is-c7J"/>
                     <constraint firstItem="Dsc-le-9Yq" firstAttribute="top" secondItem="JMU-Mc-w0X" secondAttribute="top" constant="8" id="kHj-uo-UCN"/>
+                    <constraint firstItem="jED-vS-59J" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mZI-jw-abQ" secondAttribute="trailing" constant="8" id="o7P-El-iK3"/>
                     <constraint firstItem="Dsc-le-9Yq" firstAttribute="leading" secondItem="JMU-Mc-w0X" secondAttribute="leading" constant="8" id="roN-o0-dgj"/>
                 </constraints>
             </tableViewCellContentView>

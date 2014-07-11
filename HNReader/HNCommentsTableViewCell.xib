@@ -20,14 +20,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSG-dc-Ujr">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSG-dc-Ujr">
                         <rect key="frame" x="5" y="5" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYA-7H-Upg">
-                        <rect key="frame" x="273" y="5" width="42" height="13"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYA-7H-Upg">
+                        <rect key="frame" x="270" y="5" width="42" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                 <constraints>
                     <constraint firstItem="TYA-7H-Upg" firstAttribute="top" secondItem="Nh8-i2-UPZ" secondAttribute="top" constant="5" id="65s-Gn-oMe"/>
                     <constraint firstAttribute="bottom" secondItem="bBG-Y6-xDY" secondAttribute="bottom" constant="8" id="GsW-GN-ac4"/>
-                    <constraint firstAttribute="trailing" secondItem="TYA-7H-Upg" secondAttribute="trailing" constant="5" id="MMK-6U-rcl"/>
+                    <constraint firstAttribute="trailing" secondItem="TYA-7H-Upg" secondAttribute="trailing" constant="8" id="MMK-6U-rcl"/>
                     <constraint firstItem="TSG-dc-Ujr" firstAttribute="top" secondItem="Nh8-i2-UPZ" secondAttribute="top" constant="5" id="Su4-bN-tAD"/>
                     <constraint firstItem="bBG-Y6-xDY" firstAttribute="top" secondItem="TYA-7H-Upg" secondAttribute="bottom" constant="5" id="fKW-5b-KAo"/>
                     <constraint firstAttribute="trailing" secondItem="bBG-Y6-xDY" secondAttribute="trailing" constant="8" id="gaj-7w-xxe"/>
@@ -46,6 +46,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentTextLabel" destination="bBG-Y6-xDY" id="Cgg-E1-quq"/>
+                <outlet property="leadingSpaceForCommentLabel" destination="ufH-3V-Ebe" id="BVI-Vr-gMI"/>
+                <outlet property="leadingSpaceForUsernameLabel" destination="jkr-2J-F3m" id="ysq-iA-Y7Q"/>
                 <outlet property="timeLabel" destination="TYA-7H-Upg" id="QaD-O6-F5F"/>
                 <outlet property="usernameLabel" destination="TSG-dc-Ujr" id="nTw-x9-WVw"/>
             </connections>
