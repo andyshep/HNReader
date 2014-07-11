@@ -135,11 +135,11 @@
                     
                     // make sure comment wasn't deleted.
                     if ([[comHead children] count] > 1) {
-                        commentUserName = [[[node findChildOfClass:@"comhead"] firstChild] contents];
+                        commentUserName = [[[node findChildOfClass:@"comhead"] firstChild] allContents];
                         HTMLNode *commentTextSpan = [node findChildOfClass:@"comment"];
                         commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                         
-                        NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] rawContents];
+                        NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] allContents];
                         commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
                         
                         NSString *roughTime = [[comHead children][1] rawContents];
