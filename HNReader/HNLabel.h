@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TTTAttributedLabel.h>
 
-@interface HNLabel : UILabel
+@interface HNLabel : TTTAttributedLabel
 
 @end

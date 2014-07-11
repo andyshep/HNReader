@@ -15,7 +15,9 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNCommentsTableViewCell.h"
 
-@interface HNCommentsDataSource ()
+#import <TTTAttributedLabel.h>
+
+@interface HNCommentsDataSource () <TTTAttributedLabelDelegate>
 
 @property (nonatomic, weak, readwrite) NSDictionary *comments;
 @property (nonatomic, weak, readwrite) NSError *error;
@@ -95,7 +97,14 @@
         [commentsCell.timeLabel setText:comment.timeSinceCreation];
         [commentsCell setCommentText:comment.commentString];
         [commentsCell setPadding:comment.padding];
+        
+        [commentsCell.commentTextLabel setDelegate:self];
     }
+}
+
+#pragma mark - TTTAttributedLabel
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSLog(@"url: %@", url);
 }
 
 @end
