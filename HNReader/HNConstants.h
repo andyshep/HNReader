@@ -11,6 +11,9 @@
 extern NSString * const HNCommentsViewControllerIdentifier;
 extern NSString * const HNWebViewControllerIdentifier;
 
+extern NSString * const HNEntriesToCommentsSegueIdentifier;
+extern NSString * const HNCommentsToWebSegueIdentifier;
+
 extern NSString * const HNEntriesTableViewCellIdentifier;
 extern NSString * const HNCommentsTableViewCellIdentifier;
 extern NSString * const HNLoadMoreTableViewCellIdentifier;

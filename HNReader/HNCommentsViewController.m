@@ -1,4 +1,4 @@
-//
+
 //  HNCommentsViewController.m
 //  HNReader
 //
@@ -92,10 +92,6 @@
         });
         
         [self.dataSource configureCell:entryStubCell forIndexPath:indexPath];
-        entryStubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
-        
-        [entryStubCell setNeedsLayout];
-        [entryStubCell layoutIfNeeded];
         
         CGFloat height = [entryStubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         return height;
@@ -107,26 +103,22 @@
         });
         
         [self.dataSource configureCell:stubCell forIndexPath:indexPath];
-        stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
-        
-        [stubCell setNeedsLayout];
-        [stubCell layoutIfNeeded];
         
         CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         return height;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return HNDefaultTableCellHeight;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-        HNWebViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNWebViewControllerIdentifier];
+        [self performSegueWithIdentifier:HNCommentsToWebSegueIdentifier sender:indexPath];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[HNWebViewController class]]) {
+        HNWebViewController *nextController = (HNWebViewController *)segue.destinationViewController;
         [nextController setEntry:self.entry];
-        [self.navigationController pushViewController:nextController animated:YES];
     }
 }
 

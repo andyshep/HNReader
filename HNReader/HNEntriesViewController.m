@@ -38,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
@@ -99,17 +101,9 @@
     });
     
     [self.dataSource configureCell:stubCell forIndexPath:indexPath];
-    stubCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
-    
-    [stubCell setNeedsLayout];
-    [stubCell layoutIfNeeded];
     
     CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return HNDefaultTableCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,12 +113,17 @@
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     }
     else {
+        [self performSegueWithIdentifier:HNEntriesToCommentsSegueIdentifier sender:indexPath];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[HNCommentsViewController class]]) {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
         HNEntry *selectedEntry = (HNEntry *)self.dataSource.entries[indexPath.row];
+        HNCommentsViewController *nextController = (HNCommentsViewController *)segue.destinationViewController;
         
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-        HNCommentsViewController *nextController = [storyboard instantiateViewControllerWithIdentifier:HNCommentsViewControllerIdentifier];
         [nextController setEntry:selectedEntry];
-        [self.navigationController pushViewController:nextController animated:YES];
     }
 }
 

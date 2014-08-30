@@ -11,6 +11,9 @@
 NSString * const HNCommentsViewControllerIdentifier = @"HNCommentsViewController";
 NSString * const HNWebViewControllerIdentifier = @"HNWebViewController";
 
+NSString * const HNEntriesToCommentsSegueIdentifier = @"HNEntriesToCommentsSegueIdentifier";
+NSString * const HNCommentsToWebSegueIdentifier = @"HNCommentsToWebSegueIdentifier";
+
 NSString * const HNEntriesTableViewCellIdentifier = @"HNEntriesTableViewCell";
 NSString * const HNCommentsTableViewCellIdentifier = @"HNCommentsTableViewCell";
 NSString * const HNLoadMoreTableViewCellIdentifier = @"HNLoadMoreTableViewCell";

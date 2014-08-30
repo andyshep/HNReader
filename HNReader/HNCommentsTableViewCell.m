@@ -29,7 +29,7 @@
     self.leadingSpaceForCommentLabel.constant = adjustedPadding;
     self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
     [self setNeedsUpdateConstraints];
-    [self setNeedsLayout];
+//    [self setNeedsLayout];
 }
 
 - (void)setup {
@@ -40,7 +40,7 @@
     [self.usernameLabel setTextColor:[UIColor lightGrayColor]];
     [self.timeLabel setTextColor:[UIColor lightGrayColor]];
     [self.timeLabel setTextAlignment:NSTextAlignmentRight];
-//    [self.commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [self.commentTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
     
     [self.usernameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     [self.timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];

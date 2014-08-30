@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Aq-cE-aV4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Aq-cE-aV4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
         <!--Entries View Controller-->
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" id="JJP-cy-Bqh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HNEntriesTableViewCell" rowHeight="44" id="JJP-cy-Bqh">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JJP-cy-Bqh" id="e7h-BR-JN7">
@@ -96,6 +96,7 @@
                         <outlet property="entriesControl" destination="Kp0-jw-6ir" id="6Pu-JJ-AsQ"/>
                         <outlet property="refreshButton" destination="Qw1-L3-mgb" id="X1N-IM-CZg"/>
                         <outlet property="tableView" destination="0gT-2l-MrM" id="VOB-Dj-aci"/>
+                        <segue destination="nBM-q0-jmz" kind="push" identifier="HNEntriesToCommentsSegueIdentifier" id="pFj-BP-cex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vm-HQ-qni" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,6 +156,7 @@
                     <connections>
                         <outlet property="refreshButton" destination="3I8-5l-vMg" id="jN7-HZ-YWj"/>
                         <outlet property="tableView" destination="Kjb-OS-hck" id="Oj2-gB-A1y"/>
+                        <segue destination="KCi-ZJ-PJq" kind="push" identifier="HNCommentsToWebSegueIdentifier" id="XVY-77-dPX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMU-Pw-q5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,7 +177,6 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-oY-IIi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="KCi-ZJ-PJq" id="Lho-2p-18i"/>
@@ -230,6 +231,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
 </document>
