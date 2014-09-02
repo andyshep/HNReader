@@ -89,6 +89,10 @@
 }
 
 - (void)loadHTMLContent {
+    if (!self.displayedURL) {
+        return;
+    }
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     [self.webView loadRequest:request];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

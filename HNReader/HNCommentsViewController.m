@@ -116,9 +116,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[HNWebViewController class]]) {
-        HNWebViewController *nextController = (HNWebViewController *)segue.destinationViewController;
-        [nextController setEntry:self.entry];
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UIViewController *topViewController = [(UINavigationController *)segue.destinationViewController topViewController];
+        if ([topViewController isKindOfClass:[HNWebViewController class]]) {
+            HNWebViewController *nextController = (HNWebViewController *)topViewController;
+            [nextController setEntry:self.entry];
+        }
     }
 }
 

@@ -14,7 +14,6 @@
 		F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
 		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
 		F72B8487196E6293003ABF13 /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F72B8486196E6293003ABF13 /* HNClient.m */; };
-		F72BC9D3196608A500CA1161 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */; };
 		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
 		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
 		F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* readable-formatting.html */; };
@@ -44,6 +43,7 @@
 		F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B7E1966073D00041006 /* HNCommentsModel.m */; };
 		F7EA9A0C1969C34900444255 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA9A0B1969C34900444255 /* HNCommentsDataSource.m */; };
 		F7EA9A0F1969C90A00444255 /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA9A0E1969C90A00444255 /* UIAlertView+HNAlertView.m */; };
+		F7FFF41219B28FF50018ADD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FFF41119B28FF50018ADD5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,6 @@
 		F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNEntriesTableViewCell.xib; sourceTree = "<group>"; };
 		F72B8485196E6293003ABF13 /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNClient.h; sourceTree = "<group>"; };
 		F72B8486196E6293003ABF13 /* HNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNClient.m; sourceTree = "<group>"; };
-		F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
 		F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
 		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		F7EA9A0B1969C34900444255 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
 		F7EA9A0D1969C90A00444255 /* UIAlertView+HNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+HNAlertView.h"; sourceTree = "<group>"; };
 		F7EA9A0E1969C90A00444255 /* UIAlertView+HNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+HNAlertView.m"; sourceTree = "<group>"; };
+		F7FFF41119B28FF50018ADD5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 				F72B8485196E6293003ABF13 /* HNClient.h */,
 				F72B8486196E6293003ABF13 /* HNClient.m */,
 				F75D3683143A056D005BCA23 /* Resources */,
-				F72BC9D2196608A500CA1161 /* MainStoryboard.storyboard */,
+				F7FFF41119B28FF50018ADD5 /* Main.storyboard */,
 				F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */,
 				F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */,
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
@@ -391,8 +391,8 @@
 				F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */,
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
-				F72BC9D3196608A500CA1161 /* MainStoryboard.storyboard in Resources */,
 				F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */,
+				F7FFF41219B28FF50018ADD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
