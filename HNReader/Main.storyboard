@@ -104,14 +104,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7r1-zy-Pux" firstAttribute="leading" secondItem="D3L-Er-V2V" secondAttribute="leading" id="25Q-G5-w5a"/>
                             <constraint firstItem="ZMf-Oj-X95" firstAttribute="leading" secondItem="D3L-Er-V2V" secondAttribute="leading" id="6GE-lc-jLa"/>
                             <constraint firstItem="ZMf-Oj-X95" firstAttribute="top" secondItem="D3L-Er-V2V" secondAttribute="top" id="88O-bA-Cas"/>
-                            <constraint firstAttribute="trailing" secondItem="7r1-zy-Pux" secondAttribute="trailing" id="Blu-pN-Wtu"/>
-                            <constraint firstAttribute="trailing" secondItem="7r1-zy-Pux" secondAttribute="trailing" id="Jn6-tH-R01"/>
                             <constraint firstItem="ctS-Ls-DPb" firstAttribute="top" secondItem="7r1-zy-Pux" secondAttribute="bottom" id="QFb-QO-dHh"/>
                             <constraint firstAttribute="trailing" secondItem="ZMf-Oj-X95" secondAttribute="trailing" id="adW-P0-erI"/>
-                            <constraint firstItem="7r1-zy-Pux" firstAttribute="leading" secondItem="D3L-Er-V2V" secondAttribute="leading" id="f4C-JM-JhK"/>
                             <constraint firstItem="7r1-zy-Pux" firstAttribute="top" secondItem="ZMf-Oj-X95" secondAttribute="bottom" id="lIS-4F-gWi"/>
                             <constraint firstAttribute="trailing" secondItem="7r1-zy-Pux" secondAttribute="trailing" id="s81-zl-kHr"/>
                             <constraint firstItem="7r1-zy-Pux" firstAttribute="leading" secondItem="D3L-Er-V2V" secondAttribute="leading" id="z6I-Og-cbZ"/>
@@ -203,22 +199,7 @@
                     <view key="view" contentMode="scaleToFill" id="QLm-dM-v9G">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ik2-G3-vVM">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="fAu-rs-lvb" id="hMJ-h2-Id1"/>
-                                </connections>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Nss-P5-FdV" firstAttribute="top" secondItem="Ik2-G3-vVM" secondAttribute="bottom" id="BQ6-4q-nN7"/>
-                            <constraint firstItem="Ik2-G3-vVM" firstAttribute="leading" secondItem="QLm-dM-v9G" secondAttribute="leading" id="uZR-NK-2J7"/>
-                            <constraint firstAttribute="trailing" secondItem="Ik2-G3-vVM" secondAttribute="trailing" id="wmK-LS-mMr"/>
-                            <constraint firstItem="Ik2-G3-vVM" firstAttribute="top" secondItem="QLm-dM-v9G" secondAttribute="top" id="wor-Ng-hQv"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rA7-9N-vHD">
@@ -228,7 +209,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="readableButton" destination="5eM-79-MCY" id="zQJ-qn-CKp"/>
-                        <outlet property="webView" destination="Ik2-G3-vVM" id="JqU-5m-dnV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEa-uD-jlO" userLabel="First Responder" sceneMemberID="firstResponder"/>

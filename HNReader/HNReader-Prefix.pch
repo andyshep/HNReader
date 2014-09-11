@@ -11,6 +11,7 @@
 #ifdef __OBJC__
     @import UIKit;
     @import Foundation;
+    @import WebKit;
 
     #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <libextobjc/EXTScope.h>

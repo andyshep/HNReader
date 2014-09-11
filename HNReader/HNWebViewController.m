@@ -17,6 +17,8 @@
 
 @interface HNWebViewController ()
 
+@property (nonatomic, strong) WKWebView *webView;
+
 @property (nonatomic, strong) NSURL *displayedURL;
 @property (nonatomic, assign) BOOL showReadableContent;
 
@@ -36,8 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
-    NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
+//    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
+//    NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
+    
+    self.webView = [[WKWebView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.webView];
     
     self.readableButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         self.showReadableContent = !self.showReadableContent;
@@ -47,6 +52,12 @@
     [RACObserve(self, showReadableContent) subscribeNext:^(id x) {
         [self toggleReadableDisplay];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.webView setFrame:self.view.bounds];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -62,20 +73,20 @@
     }];
 }
 
-#pragma mark - UIWebViewDelegate
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
-    // https://discussions.apple.com/thread/1727260
-    if (error.code == NSURLErrorCancelled) return;
-    
-    UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
-    [alert show];
-}
+//#pragma mark - UIWebViewDelegate
+//- (void)webViewDidFinishLoad:(UIWebView *)webView {
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//}
+//
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//    
+//    // https://discussions.apple.com/thread/1727260
+//    if (error.code == NSURLErrorCancelled) return;
+//    
+//    UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
+//    [alert show];
+//}
 
 #pragma mark - HTML and Readable Content Loading
 - (void)toggleReadableDisplay {
@@ -95,27 +106,29 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:self.displayedURL];
     [self.webView loadRequest:request];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void)loadReadableContent {
-    NSString *html = [self.webView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
-    const char *htmlContent = [html UTF8String];
-    char *readableContent = readable(htmlContent, "", NULL, READABLE_OPTIONS_DEFAULT);
-    
-    if (readableContent != NULL) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"readable-formatting" ofType:@"html"];
-        NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-        NSString *readableHTMLString = @(readableContent);
-        NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
+    [self.webView evaluateJavaScript:@"document.body.innerHTML" completionHandler:^(id result, NSError *error) {
+        NSString *html = (NSString *)result;
+        const char *htmlContent = [html UTF8String];
+        char *readableContent = readable(htmlContent, "", NULL, READABLE_OPTIONS_DEFAULT);
         
-        [self.webView loadHTMLString:html baseURL:self.displayedURL];
-    } else {
-        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor lightGrayColor]];
-        NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
-        UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
-        [alert show];
-    }
+        if (readableContent != NULL) {
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"readable-formatting" ofType:@"html"];
+            NSString *formattingTags = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+            NSString *readableHTMLString = @(readableContent);
+            NSString *html = [NSString stringWithFormat:@"%@%@", formattingTags, readableHTMLString];
+            
+            [self.webView loadHTMLString:html baseURL:self.displayedURL];
+        } else {
+            [self.navigationItem.rightBarButtonItem setTintColor:[UIColor lightGrayColor]];
+            NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
+            UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
+            [alert show];
+        }
+    }];
 }
 
 @end

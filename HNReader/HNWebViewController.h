@@ -8,10 +8,10 @@
 
 @class HNEntry;
 
-@interface HNWebViewController : UIViewController <UIWebViewDelegate>
+@interface HNWebViewController : UIViewController
 
 @property (nonatomic, strong) HNEntry *entry;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *readableButton;
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
+//@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end
