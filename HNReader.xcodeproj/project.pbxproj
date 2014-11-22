@@ -17,6 +17,12 @@
 		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
 		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
 		F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* readable-formatting.html */; };
+		F74853901A2153EC009AE367 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F748538F1A2153EC009AE367 /* AppDelegate.m */; };
+		F74853921A2153EC009AE367 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853911A2153EC009AE367 /* main.m */; };
+		F74853941A2153EC009AE367 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F74853931A2153EC009AE367 /* Images.xcassets */; };
+		F74853971A2153EC009AE367 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F74853951A2153EC009AE367 /* MainMenu.xib */; };
+		F74853A31A2153EC009AE367 /* HNReader_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */; };
+		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
 		F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F775DAE214340D7E00F93F48 /* InfoPlist.strings */; };
@@ -46,6 +52,23 @@
 		F7FFF41219B28FF50018ADD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FFF41119B28FF50018ADD5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F748539D1A2153EC009AE367 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F74853891A2153EC009AE367;
+			remoteInfo = "HNReader OSX";
+		};
+		F74853B41A215433009AE367 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F775DAD414340D7E00F93F48;
+			remoteInfo = "HNReader iOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D52C69518EBD815D29A11545 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,10 +83,23 @@
 		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
 		F73D24E2196614730046E941 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "Resources/readable-formatting.html"; sourceTree = "<group>"; };
+		F748538A1A2153EC009AE367 /* HNReader OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F748538D1A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F748538E1A2153EC009AE367 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F748538F1A2153EC009AE367 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F74853911A2153EC009AE367 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F74853931A2153EC009AE367 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F74853961A2153EC009AE367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74853A11A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_OSXTests.m; sourceTree = "<group>"; };
+		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74853B11A215433009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_iOS_Tests.m; sourceTree = "<group>"; };
 		F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F76ACA6514354265004CF9EA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		F77319C7189EC2AC00C360F1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		F775DAD514340D7E00F93F48 /* HNReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HNReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F775DAD514340D7E00F93F48 /* HNReader iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775DAD914340D7E00F93F48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F775DADB14340D7E00F93F48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F775DADD14340D7E00F93F48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -72,10 +108,6 @@
 		F775DAE514340D7E00F93F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNReader-Prefix.pch"; sourceTree = "<group>"; };
 		F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		F775DB0814340D7F00F93F48 /* HNReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HNReaderTests-Info.plist"; sourceTree = "<group>"; };
-		F775DB0A14340D7F00F93F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F775DB0C14340D7F00F93F48 /* HNReaderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNReaderTests.h; sourceTree = "<group>"; };
-		F775DB0E14340D7F00F93F48 /* HNReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReaderTests.m; sourceTree = "<group>"; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F778DE1F1965F9A2008765D2 /* HNLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLabel.h; sourceTree = "<group>"; };
@@ -125,6 +157,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F74853871A2153EC009AE367 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F74853991A2153EC009AE367 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F74853AB1A215433009AE367 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F775DAD214340D7E00F93F48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +202,81 @@
 				D52C69518EBD815D29A11545 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F748538B1A2153EC009AE367 /* HNReader OS X */ = {
+			isa = PBXGroup;
+			children = (
+				F748538E1A2153EC009AE367 /* AppDelegate.h */,
+				F748538F1A2153EC009AE367 /* AppDelegate.m */,
+				F74853931A2153EC009AE367 /* Images.xcassets */,
+				F74853951A2153EC009AE367 /* MainMenu.xib */,
+				F748538C1A2153EC009AE367 /* Supporting Files */,
+			);
+			name = "HNReader OS X";
+			path = "HNReader OSX";
+			sourceTree = "<group>";
+		};
+		F748538C1A2153EC009AE367 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F748538D1A2153EC009AE367 /* Info.plist */,
+				F74853911A2153EC009AE367 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F748539F1A2153EC009AE367 /* HNReader OS X Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */,
+				F74853A01A2153EC009AE367 /* Supporting Files */,
+			);
+			name = "HNReader OS X Tests";
+			path = "HNReader OSXTests";
+			sourceTree = "<group>";
+		};
+		F74853A01A2153EC009AE367 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F74853A11A2153EC009AE367 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F74853AF1A215433009AE367 /* HNReader iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */,
+				F74853B01A215433009AE367 /* Supporting Files */,
+			);
+			path = "HNReader iOS Tests";
+			sourceTree = "<group>";
+		};
+		F74853B01A215433009AE367 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F74853B11A215433009AE367 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F74853B91A2154CD009AE367 /* HNReader iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F775DADF14340D7E00F93F48 /* HNReader iOS */,
+				F74853AF1A215433009AE367 /* HNReader iOS Tests */,
+			);
+			name = "HNReader iOS";
+			sourceTree = "<group>";
+		};
+		F74853BA1A2154D9009AE367 /* HNReader OS X */ = {
+			isa = PBXGroup;
+			children = (
+				F748538B1A2153EC009AE367 /* HNReader OS X */,
+				F748539F1A2153EC009AE367 /* HNReader OS X Tests */,
+			);
+			name = "HNReader OS X";
 			sourceTree = "<group>";
 		};
 		F75D3683143A056D005BCA23 /* Resources */ = {
@@ -196,8 +324,8 @@
 		F775DACA14340D7E00F93F48 = {
 			isa = PBXGroup;
 			children = (
-				F775DADF14340D7E00F93F48 /* HNReader */,
-				F775DB0614340D7F00F93F48 /* HNReaderTests */,
+				F74853B91A2154CD009AE367 /* HNReader iOS */,
+				F74853BA1A2154D9009AE367 /* HNReader OS X */,
 				F775DB1F143410C500F93F48 /* Vendor */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
 				F775DAD614340D7E00F93F48 /* Products */,
@@ -208,7 +336,10 @@
 		F775DAD614340D7E00F93F48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F775DAD514340D7E00F93F48 /* HNReader.app */,
+				F775DAD514340D7E00F93F48 /* HNReader iOS.app */,
+				F748538A1A2153EC009AE367 /* HNReader OSX.app */,
+				F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */,
+				F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,7 +363,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F775DADF14340D7E00F93F48 /* HNReader */ = {
+		F775DADF14340D7E00F93F48 /* HNReader iOS */ = {
 			isa = PBXGroup;
 			children = (
 				F7E42B50196606C100041006 /* HNReaderAppDelegate.h */,
@@ -253,6 +384,7 @@
 				F7C4EEAB183D47DA001036E4 /* Images.xcassets */,
 				F775DAE014340D7E00F93F48 /* Supporting Files */,
 			);
+			name = "HNReader iOS";
 			path = HNReader;
 			sourceTree = "<group>";
 		};
@@ -263,25 +395,6 @@
 				F775DAE214340D7E00F93F48 /* InfoPlist.strings */,
 				F775DAE514340D7E00F93F48 /* main.m */,
 				F775DAE714340D7E00F93F48 /* HNReader-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F775DB0614340D7F00F93F48 /* HNReaderTests */ = {
-			isa = PBXGroup;
-			children = (
-				F775DB0C14340D7F00F93F48 /* HNReaderTests.h */,
-				F775DB0E14340D7F00F93F48 /* HNReaderTests.m */,
-				F775DB0714340D7F00F93F48 /* Supporting Files */,
-			);
-			path = HNReaderTests;
-			sourceTree = "<group>";
-		};
-		F775DB0714340D7F00F93F48 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F775DB0814340D7F00F93F48 /* HNReaderTests-Info.plist */,
-				F775DB0914340D7F00F93F48 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -347,9 +460,62 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F775DAD414340D7E00F93F48 /* HNReader */ = {
+		F74853891A2153EC009AE367 /* HNReader OS X */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader" */;
+			buildConfigurationList = F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */;
+			buildPhases = (
+				F74853861A2153EC009AE367 /* Sources */,
+				F74853871A2153EC009AE367 /* Frameworks */,
+				F74853881A2153EC009AE367 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HNReader OS X";
+			productName = "HNReader OSX";
+			productReference = F748538A1A2153EC009AE367 /* HNReader OSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F748539B1A2153EC009AE367 /* HNReader OS X Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F74853A71A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X Tests" */;
+			buildPhases = (
+				F74853981A2153EC009AE367 /* Sources */,
+				F74853991A2153EC009AE367 /* Frameworks */,
+				F748539A1A2153EC009AE367 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F748539E1A2153EC009AE367 /* PBXTargetDependency */,
+			);
+			name = "HNReader OS X Tests";
+			productName = "HNReader OSXTests";
+			productReference = F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F74853AD1A215433009AE367 /* HNReader iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */;
+			buildPhases = (
+				F74853AA1A215433009AE367 /* Sources */,
+				F74853AB1A215433009AE367 /* Frameworks */,
+				F74853AC1A215433009AE367 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F74853B51A215433009AE367 /* PBXTargetDependency */,
+			);
+			name = "HNReader iOS Tests";
+			productName = "HNReader iOS Tests";
+			productReference = F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F775DAD414340D7E00F93F48 /* HNReader iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader iOS" */;
 			buildPhases = (
 				534CD3E76477478099402D64 /* Check Pods Manifest.lock */,
 				F775DAD114340D7E00F93F48 /* Sources */,
@@ -361,9 +527,9 @@
 			);
 			dependencies = (
 			);
-			name = HNReader;
+			name = "HNReader iOS";
 			productName = HNReader;
-			productReference = F775DAD514340D7E00F93F48 /* HNReader.app */;
+			productReference = F775DAD514340D7E00F93F48 /* HNReader iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -374,6 +540,20 @@
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0600;
+				TargetAttributes = {
+					F74853891A2153EC009AE367 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					F748539B1A2153EC009AE367 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 9XH5KEL8D8;
+						TestTargetID = F74853891A2153EC009AE367;
+					};
+					F74853AD1A215433009AE367 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = F775DAD414340D7E00F93F48;
+					};
+				};
 			};
 			buildConfigurationList = F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -381,18 +561,45 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = F775DACA14340D7E00F93F48;
 			productRefGroup = F775DAD614340D7E00F93F48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F775DAD414340D7E00F93F48 /* HNReader */,
+				F775DAD414340D7E00F93F48 /* HNReader iOS */,
+				F74853891A2153EC009AE367 /* HNReader OS X */,
+				F748539B1A2153EC009AE367 /* HNReader OS X Tests */,
+				F74853AD1A215433009AE367 /* HNReader iOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F74853881A2153EC009AE367 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F74853941A2153EC009AE367 /* Images.xcassets in Resources */,
+				F74853971A2153EC009AE367 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F748539A1A2153EC009AE367 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F74853AC1A215433009AE367 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F775DAD314340D7E00F93F48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +647,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F74853861A2153EC009AE367 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F74853921A2153EC009AE367 /* main.m in Sources */,
+				F74853901A2153EC009AE367 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F74853981A2153EC009AE367 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F74853A31A2153EC009AE367 /* HNReader_OSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F74853AA1A215433009AE367 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F775DAD114340D7E00F93F48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,7 +705,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F748539E1A2153EC009AE367 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F74853891A2153EC009AE367 /* HNReader OS X */;
+			targetProxy = F748539D1A2153EC009AE367 /* PBXContainerItemProxy */;
+		};
+		F74853B51A215433009AE367 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F775DAD414340D7E00F93F48 /* HNReader iOS */;
+			targetProxy = F74853B41A215433009AE367 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		F74853951A2153EC009AE367 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F74853961A2153EC009AE367 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		F775DAE214340D7E00F93F48 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -482,17 +735,188 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F775DB0914340D7F00F93F48 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F775DB0A14340D7F00F93F48 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F74853A51A2153EC009AE367 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F74853A61A2153EC009AE367 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F74853A81A2153EC009AE367 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OSX.app/Contents/MacOS/HNReader OSX";
+			};
+			name = Debug;
+		};
+		F74853A91A2153EC009AE367 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OSX.app/Contents/MacOS/HNReader OSX";
+			};
+			name = Release;
+		};
+		F74853B71A215433009AE367 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
+			};
+			name = Debug;
+		};
+		F74853B81A215433009AE367 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "HNReader iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
+			};
+			name = Release;
+		};
 		F775DB1014340D7F00F93F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -644,6 +1068,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F74853A51A2153EC009AE367 /* Debug */,
+				F74853A61A2153EC009AE367 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F74853A71A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F74853A81A2153EC009AE367 /* Debug */,
+				F74853A91A2153EC009AE367 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F74853B71A215433009AE367 /* Debug */,
+				F74853B81A215433009AE367 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -653,7 +1101,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader" */ = {
+		F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F775DB1314340D7F00F93F48 /* Debug */,
