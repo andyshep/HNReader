@@ -7,6 +7,7 @@
 //
 
 #import "HNCommentsModel.h"
+#import "HNConstants.h"
 
 #import "HNParser.h"
 #import "HNEntry.h"

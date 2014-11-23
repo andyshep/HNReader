@@ -6,6 +6,8 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @interface HNEntriesModel : NSObject
 
 @property (nonatomic, copy, readonly) NSError *error;

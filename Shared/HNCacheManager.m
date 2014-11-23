@@ -9,6 +9,8 @@
 #import "HNCacheManager.h"
 #import "HNConstants.h"
 
+#import <YapDatabase/YapDatabase.h>
+
 @interface HNCacheManager ()
 
 @property (nonatomic, strong, readwrite) YapDatabase *database;

@@ -6,6 +6,8 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @class HNEntry;
 
 @interface HNCommentsModel : NSObject

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */; };
 		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
+		BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */; };
 		F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */; };
 		F70AE36D196CB2C70028584D /* HNEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */; };
 		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
 		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
-		F72B8487196E6293003ABF13 /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F72B8486196E6293003ABF13 /* HNClient.m */; };
 		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
 		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
 		F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* readable-formatting.html */; };
@@ -33,20 +34,21 @@
 		F7A9112C19687A2B00F7FAFE /* HNEntriesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A9112B19687A2B00F7FAFE /* HNEntriesDataSource.m */; };
 		F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C4EEAB183D47DA001036E4 /* Images.xcassets */; };
 		F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7CD38EF1475F9ED00EB57B5 /* rd_list.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DF2AA81965FFA6004DF35D /* HNConstants.m */; };
 		F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B51196606C100041006 /* HNReaderAppDelegate.m */; };
 		F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5A196606E600041006 /* HNCommentsViewController.m */; };
 		F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5C196606E600041006 /* HNEntriesViewController.m */; };
 		F7E42B60196606E600041006 /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B5D196606E600041006 /* HNWebViewController.m */; };
-		F7E42B6C1966071800041006 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B631966071800041006 /* HNCacheManager.m */; };
-		F7E42B6D1966071800041006 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B651966071800041006 /* HNComment.m */; };
-		F7E42B6E1966071800041006 /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B671966071800041006 /* HNEntriesModel.m */; };
-		F7E42B6F1966071800041006 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B691966071800041006 /* HNEntry.m */; };
-		F7E42B701966071800041006 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B6B1966071800041006 /* HNParser.m */; };
 		F7E42B791966072900041006 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B721966072900041006 /* HNCommentsTableViewCell.m */; };
 		F7E42B7A1966072900041006 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B741966072900041006 /* HNEntriesTableViewCell.m */; };
 		F7E42B7B1966072900041006 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B761966072900041006 /* HNLoadMoreTableViewCell.m */; };
-		F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E42B7E1966073D00041006 /* HNCommentsModel.m */; };
+		F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
+		F7E8DA161A229C15007D009E /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
+		F7E8DA171A229C15007D009E /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
+		F7E8DA181A229C15007D009E /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0C1A229C15007D009E /* HNCommentsModel.m */; };
+		F7E8DA191A229C15007D009E /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0E1A229C15007D009E /* HNConstants.m */; };
+		F7E8DA1A1A229C15007D009E /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA101A229C15007D009E /* HNEntriesModel.m */; };
+		F7E8DA1B1A229C15007D009E /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA121A229C15007D009E /* HNEntry.m */; };
+		F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA141A229C15007D009E /* HNParser.m */; };
 		F7EA9A0C1969C34900444255 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA9A0B1969C34900444255 /* HNCommentsDataSource.m */; };
 		F7EA9A0F1969C90A00444255 /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA9A0E1969C90A00444255 /* UIAlertView+HNAlertView.m */; };
 		F7FFF41219B28FF50018ADD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FFF41119B28FF50018ADD5 /* Main.storyboard */; };
@@ -70,27 +72,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.release.xcconfig"; sourceTree = "<group>"; };
 		96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader OS X.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D52C69518EBD815D29A11545 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.debug.xcconfig"; sourceTree = "<group>"; };
 		F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNEntriesTableViewCell.xib; sourceTree = "<group>"; };
-		F72B8485196E6293003ABF13 /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNClient.h; sourceTree = "<group>"; };
-		F72B8486196E6293003ABF13 /* HNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNClient.m; sourceTree = "<group>"; };
 		F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
 		F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
 		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
 		F73D24E2196614730046E941 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "Resources/readable-formatting.html"; sourceTree = "<group>"; };
-		F748538A1A2153EC009AE367 /* HNReader OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F748538A1A2153EC009AE367 /* HNReader OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F748538D1A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F748538E1A2153EC009AE367 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F748538F1A2153EC009AE367 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F74853911A2153EC009AE367 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F74853931A2153EC009AE367 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F74853961A2153EC009AE367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74853A11A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_OSXTests.m; sourceTree = "<group>"; };
 		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,8 +127,6 @@
 		F7CD38EE1475F9ED00EB57B5 /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7CD38EF1475F9ED00EB57B5 /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
 		F7CD38F01475F9ED00EB57B5 /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
-		F7DF2AA71965FFA6004DF35D /* HNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNConstants.h; sourceTree = "<group>"; };
-		F7DF2AA81965FFA6004DF35D /* HNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNConstants.m; sourceTree = "<group>"; };
 		F7E42B50196606C100041006 /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNReaderAppDelegate.h; sourceTree = "<group>"; };
 		F7E42B51196606C100041006 /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNReaderAppDelegate.m; sourceTree = "<group>"; };
 		F7E42B59196606E600041006 /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsViewController.h; sourceTree = "<group>"; };
@@ -131,24 +135,28 @@
 		F7E42B5C196606E600041006 /* HNEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesViewController.m; sourceTree = "<group>"; };
 		F7E42B5D196606E600041006 /* HNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNWebViewController.m; sourceTree = "<group>"; };
 		F7E42B61196606F100041006 /* HNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNWebViewController.h; sourceTree = "<group>"; };
-		F7E42B621966071800041006 /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCacheManager.h; sourceTree = "<group>"; };
-		F7E42B631966071800041006 /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCacheManager.m; sourceTree = "<group>"; };
-		F7E42B641966071800041006 /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNComment.h; sourceTree = "<group>"; };
-		F7E42B651966071800041006 /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNComment.m; sourceTree = "<group>"; };
-		F7E42B661966071800041006 /* HNEntriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesModel.h; sourceTree = "<group>"; };
-		F7E42B671966071800041006 /* HNEntriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesModel.m; sourceTree = "<group>"; };
-		F7E42B681966071800041006 /* HNEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntry.h; sourceTree = "<group>"; };
-		F7E42B691966071800041006 /* HNEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntry.m; sourceTree = "<group>"; };
-		F7E42B6A1966071800041006 /* HNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNParser.h; sourceTree = "<group>"; };
-		F7E42B6B1966071800041006 /* HNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNParser.m; sourceTree = "<group>"; };
 		F7E42B711966072900041006 /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsTableViewCell.h; sourceTree = "<group>"; };
 		F7E42B721966072900041006 /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsTableViewCell.m; sourceTree = "<group>"; };
 		F7E42B731966072900041006 /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNEntriesTableViewCell.h; sourceTree = "<group>"; };
 		F7E42B741966072900041006 /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNEntriesTableViewCell.m; sourceTree = "<group>"; };
 		F7E42B751966072900041006 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
 		F7E42B761966072900041006 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
-		F7E42B7D1966073D00041006 /* HNCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsModel.h; sourceTree = "<group>"; };
-		F7E42B7E1966073D00041006 /* HNCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsModel.m; sourceTree = "<group>"; };
+		F7E8DA051A229C15007D009E /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
+		F7E8DA061A229C15007D009E /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
+		F7E8DA071A229C15007D009E /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNClient.h; path = Shared/HNClient.h; sourceTree = "<group>"; };
+		F7E8DA081A229C15007D009E /* HNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNClient.m; path = Shared/HNClient.m; sourceTree = "<group>"; };
+		F7E8DA091A229C15007D009E /* HNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNComment.h; path = Shared/HNComment.h; sourceTree = "<group>"; };
+		F7E8DA0A1A229C15007D009E /* HNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNComment.m; path = Shared/HNComment.m; sourceTree = "<group>"; };
+		F7E8DA0B1A229C15007D009E /* HNCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsModel.h; path = Shared/HNCommentsModel.h; sourceTree = "<group>"; };
+		F7E8DA0C1A229C15007D009E /* HNCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsModel.m; path = Shared/HNCommentsModel.m; sourceTree = "<group>"; };
+		F7E8DA0D1A229C15007D009E /* HNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNConstants.h; path = Shared/HNConstants.h; sourceTree = "<group>"; };
+		F7E8DA0E1A229C15007D009E /* HNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNConstants.m; path = Shared/HNConstants.m; sourceTree = "<group>"; };
+		F7E8DA0F1A229C15007D009E /* HNEntriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesModel.h; path = Shared/HNEntriesModel.h; sourceTree = "<group>"; };
+		F7E8DA101A229C15007D009E /* HNEntriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesModel.m; path = Shared/HNEntriesModel.m; sourceTree = "<group>"; };
+		F7E8DA111A229C15007D009E /* HNEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntry.h; path = Shared/HNEntry.h; sourceTree = "<group>"; };
+		F7E8DA121A229C15007D009E /* HNEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntry.m; path = Shared/HNEntry.m; sourceTree = "<group>"; };
+		F7E8DA131A229C15007D009E /* HNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNParser.h; path = Shared/HNParser.h; sourceTree = "<group>"; };
+		F7E8DA141A229C15007D009E /* HNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNParser.m; path = Shared/HNParser.m; sourceTree = "<group>"; };
 		F7EA9A0A1969C34900444255 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
 		F7EA9A0B1969C34900444255 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
 		F7EA9A0D1969C90A00444255 /* UIAlertView+HNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+HNAlertView.h"; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +198,7 @@
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
 				F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */,
 				AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */,
+				0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +210,10 @@
 			children = (
 				96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */,
 				D52C69518EBD815D29A11545 /* Pods.release.xcconfig */,
+				E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */,
+				531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */,
+				A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */,
+				DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -302,28 +316,10 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		F76ACA591434F9E1004CF9EA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F7E42B681966071800041006 /* HNEntry.h */,
-				F7E42B691966071800041006 /* HNEntry.m */,
-				F7E42B641966071800041006 /* HNComment.h */,
-				F7E42B651966071800041006 /* HNComment.m */,
-				F7E42B661966071800041006 /* HNEntriesModel.h */,
-				F7E42B671966071800041006 /* HNEntriesModel.m */,
-				F7E42B7D1966073D00041006 /* HNCommentsModel.h */,
-				F7E42B7E1966073D00041006 /* HNCommentsModel.m */,
-				F7E42B621966071800041006 /* HNCacheManager.h */,
-				F7E42B631966071800041006 /* HNCacheManager.m */,
-				F7E42B6A1966071800041006 /* HNParser.h */,
-				F7E42B6B1966071800041006 /* HNParser.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		F775DACA14340D7E00F93F48 = {
 			isa = PBXGroup;
 			children = (
+				F7CDB00A1A2298D000547F5F /* Shared */,
 				F74853B91A2154CD009AE367 /* HNReader iOS */,
 				F74853BA1A2154D9009AE367 /* HNReader OS X */,
 				F775DB1F143410C500F93F48 /* Vendor */,
@@ -337,8 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				F775DAD514340D7E00F93F48 /* HNReader iOS.app */,
-				F748538A1A2153EC009AE367 /* HNReader OSX.app */,
-				F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */,
+				F748538A1A2153EC009AE367 /* HNReader OS X.app */,
+				F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */,
 				F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */,
 			);
 			name = Products;
@@ -359,6 +355,8 @@
 				F76ACA6514354265004CF9EA /* libxml2.2.dylib */,
 				F7A2406E1475704D00004287 /* libicucore.dylib */,
 				DBA80079524E4F5FBE1F3871 /* libPods.a */,
+				9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */,
+				2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,13 +368,8 @@
 				F7E42B51196606C100041006 /* HNReaderAppDelegate.m */,
 				F7DF2AAA196605D7004DF35D /* Controllers */,
 				F769881C143B5D1A00BD53F6 /* Views */,
-				F76ACA591434F9E1004CF9EA /* Model */,
 				F7A9112D196881C700F7FAFE /* Data Sources */,
 				F7E42B831966078B00041006 /* Categories */,
-				F7DF2AA71965FFA6004DF35D /* HNConstants.h */,
-				F7DF2AA81965FFA6004DF35D /* HNConstants.m */,
-				F72B8485196E6293003ABF13 /* HNClient.h */,
-				F72B8486196E6293003ABF13 /* HNClient.m */,
 				F75D3683143A056D005BCA23 /* Resources */,
 				F7FFF41119B28FF50018ADD5 /* Main.storyboard */,
 				F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */,
@@ -431,6 +424,29 @@
 			name = "Data Sources";
 			sourceTree = "<group>";
 		};
+		F7CDB00A1A2298D000547F5F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F7E8DA051A229C15007D009E /* HNCacheManager.h */,
+				F7E8DA061A229C15007D009E /* HNCacheManager.m */,
+				F7E8DA131A229C15007D009E /* HNParser.h */,
+				F7E8DA141A229C15007D009E /* HNParser.m */,
+				F7E8DA071A229C15007D009E /* HNClient.h */,
+				F7E8DA081A229C15007D009E /* HNClient.m */,
+				F7E8DA091A229C15007D009E /* HNComment.h */,
+				F7E8DA0A1A229C15007D009E /* HNComment.m */,
+				F7E8DA0B1A229C15007D009E /* HNCommentsModel.h */,
+				F7E8DA0C1A229C15007D009E /* HNCommentsModel.m */,
+				F7E8DA0D1A229C15007D009E /* HNConstants.h */,
+				F7E8DA0E1A229C15007D009E /* HNConstants.m */,
+				F7E8DA0F1A229C15007D009E /* HNEntriesModel.h */,
+				F7E8DA101A229C15007D009E /* HNEntriesModel.m */,
+				F7E8DA111A229C15007D009E /* HNEntry.h */,
+				F7E8DA121A229C15007D009E /* HNEntry.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		F7DF2AAA196605D7004DF35D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,9 +480,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */;
 			buildPhases = (
+				F517CBDD1D6A96B2FD5BE774 /* Check Pods Manifest.lock */,
 				F74853861A2153EC009AE367 /* Sources */,
 				F74853871A2153EC009AE367 /* Frameworks */,
 				F74853881A2153EC009AE367 /* Resources */,
+				B9D5DA5CCF24E08EC2208740 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -474,7 +492,7 @@
 			);
 			name = "HNReader OS X";
 			productName = "HNReader OSX";
-			productReference = F748538A1A2153EC009AE367 /* HNReader OSX.app */;
+			productReference = F748538A1A2153EC009AE367 /* HNReader OS X.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F748539B1A2153EC009AE367 /* HNReader OS X Tests */ = {
@@ -492,7 +510,7 @@
 			);
 			name = "HNReader OS X Tests";
 			productName = "HNReader OSXTests";
-			productReference = F748539C1A2153EC009AE367 /* HNReader OSXTests.xctest */;
+			productReference = F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F74853AD1A215433009AE367 /* HNReader iOS Tests */ = {
@@ -630,6 +648,21 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 		};
+		B9D5DA5CCF24E08EC2208740 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C511BC34BE894F8FB00BD40A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -642,7 +675,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F517CBDD1D6A96B2FD5BE774 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -676,29 +725,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7E42B701966071800041006 /* HNParser.m in Sources */,
+				F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */,
 				F775DAE614340D7E00F93F48 /* main.m in Sources */,
 				F7E42B7B1966072900041006 /* HNLoadMoreTableViewCell.m in Sources */,
 				F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */,
-				F7E42B6F1966071800041006 /* HNEntry.m in Sources */,
 				F7E42B5F196606E600041006 /* HNEntriesViewController.m in Sources */,
-				F7E42B6D1966071800041006 /* HNComment.m in Sources */,
-				F7E42B6C1966071800041006 /* HNCacheManager.m in Sources */,
+				F7E8DA161A229C15007D009E /* HNClient.m in Sources */,
 				F7EA9A0F1969C90A00444255 /* UIAlertView+HNAlertView.m in Sources */,
+				F7E8DA191A229C15007D009E /* HNConstants.m in Sources */,
 				F7E42B791966072900041006 /* HNCommentsTableViewCell.m in Sources */,
+				F7E8DA171A229C15007D009E /* HNComment.m in Sources */,
 				F7E42B60196606E600041006 /* HNWebViewController.m in Sources */,
 				F7EA9A0C1969C34900444255 /* HNCommentsDataSource.m in Sources */,
 				F778DE211965F9A2008765D2 /* HNLabel.m in Sources */,
-				F7DF2AA91965FFA6004DF35D /* HNConstants.m in Sources */,
 				F7E42B7A1966072900041006 /* HNEntriesTableViewCell.m in Sources */,
 				F7E42B52196606C100041006 /* HNReaderAppDelegate.m in Sources */,
-				F7E42B6E1966071800041006 /* HNEntriesModel.m in Sources */,
 				F7A24073147577B000004287 /* readable.c in Sources */,
-				F72B8487196E6293003ABF13 /* HNClient.m in Sources */,
 				F7A9112C19687A2B00F7FAFE /* HNEntriesDataSource.m in Sources */,
+				F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */,
 				F7E42B5E196606E600041006 /* HNCommentsViewController.m in Sources */,
-				F7E42B7F1966073D00041006 /* HNCommentsModel.m in Sources */,
+				F7E8DA181A229C15007D009E /* HNCommentsModel.m in Sources */,
+				F7E8DA1B1A229C15007D009E /* HNEntry.m in Sources */,
 				F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */,
+				F7E8DA1A1A229C15007D009E /* HNEntriesModel.m in Sources */,
 				F7CD38F11475F9ED00EB57B5 /* rd_list.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,6 +789,7 @@
 /* Begin XCBuildConfiguration section */
 		F74853A51A2153EC009AE367 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -768,6 +818,7 @@
 		};
 		F74853A61A2153EC009AE367 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1025,7 +1076,7 @@
 		};
 		F775DB1314340D7F00F93F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1046,7 +1097,7 @@
 		};
 		F775DB1414340D7F00F93F48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D52C69518EBD815D29A11545 /* Pods.release.xcconfig */;
+			baseConfigurationReference = DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1075,6 +1126,7 @@
 				F74853A61A2153EC009AE367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F74853A71A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X Tests" */ = {
 			isa = XCConfigurationList;
@@ -1083,6 +1135,7 @@
 				F74853A91A2153EC009AE367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */ = {
 			isa = XCConfigurationList;
@@ -1091,6 +1144,7 @@
 				F74853B81A215433009AE367 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */ = {
 			isa = XCConfigurationList;

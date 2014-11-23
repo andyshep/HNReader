@@ -7,6 +7,7 @@
 //
 
 #import "HNParser.h"
+#import "HNConstants.h"
 
 #import "HTMLParser.h"
 #import "HTMLNode.h"
