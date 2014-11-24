@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import "HNCacheManager.h"
-
 @interface AppDelegate ()
 
 @property (nonatomic, weak) IBOutlet NSWindow *window;
@@ -19,7 +17,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    //
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
