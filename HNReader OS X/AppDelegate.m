@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "HNCacheManager.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, weak) IBOutlet NSWindow *window;

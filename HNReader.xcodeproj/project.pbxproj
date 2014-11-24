@@ -12,17 +12,25 @@
 		BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */; };
 		F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */; };
 		F70AE36D196CB2C70028584D /* HNEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */; };
+		F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281181A22BDAB00C57D60 /* AppDelegate.m */; };
+		F712811D1A22BDAB00C57D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F712811A1A22BDAB00C57D60 /* main.m */; };
+		F71281231A22BE2F00C57D60 /* HNReader_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */; };
+		F71281251A22BF0100C57D60 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F712811E1A22BDBB00C57D60 /* MainMenu.xib */; };
+		F71281571A22C07000C57D60 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
+		F71281581A22C07000C57D60 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA141A229C15007D009E /* HNParser.m */; };
+		F71281591A22C07000C57D60 /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
+		F712815A1A22C07000C57D60 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
+		F712815B1A22C07000C57D60 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0C1A229C15007D009E /* HNCommentsModel.m */; };
+		F712815C1A22C07000C57D60 /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0E1A229C15007D009E /* HNConstants.m */; };
+		F712815D1A22C07000C57D60 /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA101A229C15007D009E /* HNEntriesModel.m */; };
+		F712815E1A22C07000C57D60 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA121A229C15007D009E /* HNEntry.m */; };
+		F71281601A22C45100C57D60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F712815F1A22C45100C57D60 /* Images.xcassets */; };
 		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
 		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
 		F73D24E01966135F0046E941 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */; };
 		F73D24E3196614730046E941 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F73D24E2196614730046E941 /* NSString+HNCommentTools.m */; };
 		F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F747AAF91491358600F3C84F /* readable-formatting.html */; };
-		F74853901A2153EC009AE367 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F748538F1A2153EC009AE367 /* AppDelegate.m */; };
-		F74853921A2153EC009AE367 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853911A2153EC009AE367 /* main.m */; };
-		F74853941A2153EC009AE367 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F74853931A2153EC009AE367 /* Images.xcassets */; };
-		F74853971A2153EC009AE367 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F74853951A2153EC009AE367 /* MainMenu.xib */; };
-		F74853A31A2153EC009AE367 /* HNReader_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */; };
 		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
@@ -74,31 +82,29 @@
 /* Begin PBXFileReference section */
 		2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.release.xcconfig"; sourceTree = "<group>"; };
-		96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader OS X.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D52C69518EBD815D29A11545 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.debug.xcconfig"; sourceTree = "<group>"; };
 		F700DDBC196DB67E00239645 /* HNCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F70AE36C196CB2C70028584D /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNEntriesTableViewCell.xib; sourceTree = "<group>"; };
+		F71281171A22BDAB00C57D60 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "HNReader OS X/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
+		F71281181A22BDAB00C57D60 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "HNReader OS X/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
+		F71281191A22BDAB00C57D60 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "HNReader OS X/Info.plist"; sourceTree = SOURCE_ROOT; };
+		F712811A1A22BDAB00C57D60 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "HNReader OS X/main.m"; sourceTree = SOURCE_ROOT; };
+		F712811F1A22BDBB00C57D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "HNReader OS X/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNReader_OSXTests.m; path = "HNReader OS X Tests/HNReader_OSXTests.m"; sourceTree = SOURCE_ROOT; };
+		F71281221A22BE2F00C57D60 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "HNReader OS X Tests/Info.plist"; sourceTree = SOURCE_ROOT; };
+		F712815F1A22C45100C57D60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "HNReader OS X/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		F73D24DE1966135F0046E941 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
 		F73D24DF1966135F0046E941 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
 		F73D24E1196614730046E941 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
 		F73D24E2196614730046E941 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
 		F747AAF91491358600F3C84F /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "Resources/readable-formatting.html"; sourceTree = "<group>"; };
 		F748538A1A2153EC009AE367 /* HNReader OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F748538D1A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F748538E1A2153EC009AE367 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F748538F1A2153EC009AE367 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F74853911A2153EC009AE367 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F74853931A2153EC009AE367 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F74853961A2153EC009AE367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F74853A11A2153EC009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_OSXTests.m; sourceTree = "<group>"; };
 		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74853B11A215433009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_iOS_Tests.m; sourceTree = "<group>"; };
@@ -208,8 +214,6 @@
 		04AABEA50996D06B5FCF79F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				96C2949619923034B2AE3BD5 /* Pods.debug.xcconfig */,
-				D52C69518EBD815D29A11545 /* Pods.release.xcconfig */,
 				E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */,
 				531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */,
 				A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */,
@@ -221,10 +225,10 @@
 		F748538B1A2153EC009AE367 /* HNReader OS X */ = {
 			isa = PBXGroup;
 			children = (
-				F748538E1A2153EC009AE367 /* AppDelegate.h */,
-				F748538F1A2153EC009AE367 /* AppDelegate.m */,
-				F74853931A2153EC009AE367 /* Images.xcassets */,
-				F74853951A2153EC009AE367 /* MainMenu.xib */,
+				F71281171A22BDAB00C57D60 /* AppDelegate.h */,
+				F71281181A22BDAB00C57D60 /* AppDelegate.m */,
+				F712811E1A22BDBB00C57D60 /* MainMenu.xib */,
+				F712815F1A22C45100C57D60 /* Images.xcassets */,
 				F748538C1A2153EC009AE367 /* Supporting Files */,
 			);
 			name = "HNReader OS X";
@@ -234,8 +238,8 @@
 		F748538C1A2153EC009AE367 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F748538D1A2153EC009AE367 /* Info.plist */,
-				F74853911A2153EC009AE367 /* main.m */,
+				F71281191A22BDAB00C57D60 /* Info.plist */,
+				F712811A1A22BDAB00C57D60 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -243,17 +247,16 @@
 		F748539F1A2153EC009AE367 /* HNReader OS X Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F74853A21A2153EC009AE367 /* HNReader_OSXTests.m */,
+				F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */,
 				F74853A01A2153EC009AE367 /* Supporting Files */,
 			);
-			name = "HNReader OS X Tests";
-			path = "HNReader OSXTests";
+			path = "HNReader OS X Tests";
 			sourceTree = "<group>";
 		};
 		F74853A01A2153EC009AE367 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F74853A11A2153EC009AE367 /* Info.plist */,
+				F71281221A22BE2F00C57D60 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -509,7 +512,7 @@
 				F748539E1A2153EC009AE367 /* PBXTargetDependency */,
 			);
 			name = "HNReader OS X Tests";
-			productName = "HNReader OSXTests";
+			productName = "HNReader OS X Tests";
 			productReference = F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -599,8 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F74853941A2153EC009AE367 /* Images.xcassets in Resources */,
-				F74853971A2153EC009AE367 /* MainMenu.xib in Resources */,
+				F71281251A22BF0100C57D60 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +626,7 @@
 			files = (
 				F70AE36D196CB2C70028584D /* HNEntriesTableViewCell.xib in Resources */,
 				F700DDBD196DB67E00239645 /* HNCommentsTableViewCell.xib in Resources */,
+				F71281601A22C45100C57D60 /* Images.xcassets in Resources */,
 				F775DAE414340D7E00F93F48 /* InfoPlist.strings in Resources */,
 				F7C4EEAC183D47DA001036E4 /* Images.xcassets in Resources */,
 				F747AAFB1491358600F3C84F /* readable-formatting.html in Resources */,
@@ -700,8 +703,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F74853921A2153EC009AE367 /* main.m in Sources */,
-				F74853901A2153EC009AE367 /* AppDelegate.m in Sources */,
+				F712815D1A22C07000C57D60 /* HNEntriesModel.m in Sources */,
+				F71281581A22C07000C57D60 /* HNParser.m in Sources */,
+				F712815A1A22C07000C57D60 /* HNComment.m in Sources */,
+				F712815B1A22C07000C57D60 /* HNCommentsModel.m in Sources */,
+				F712815E1A22C07000C57D60 /* HNEntry.m in Sources */,
+				F712815C1A22C07000C57D60 /* HNConstants.m in Sources */,
+				F71281571A22C07000C57D60 /* HNCacheManager.m in Sources */,
+				F712811D1A22BDAB00C57D60 /* main.m in Sources */,
+				F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */,
+				F71281591A22C07000C57D60 /* HNClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F74853A31A2153EC009AE367 /* HNReader_OSXTests.m in Sources */,
+				F71281231A22BE2F00C57D60 /* HNReader_OSXTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,10 +779,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F74853951A2153EC009AE367 /* MainMenu.xib */ = {
+		F712811E1A22BDBB00C57D60 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F74853961A2153EC009AE367 /* Base */,
+				F712811F1A22BDBB00C57D60 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -807,7 +818,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OSX/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HNReader OS X/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -834,7 +845,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OSX/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HNReader OS X/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -867,7 +878,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OSXTests/Info.plist";
+				INFOPLIST_FILE = "HNReader OS X Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -900,7 +911,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OSXTests/Info.plist";
+				INFOPLIST_FILE = "HNReader OS X Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
