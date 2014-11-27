@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */; };
-		AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA80079524E4F5FBE1F3871 /* libPods.a */; };
 		BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */; };
 		F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281181A22BDAB00C57D60 /* AppDelegate.m */; };
 		F712811D1A22BDAB00C57D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F712811A1A22BDAB00C57D60 /* main.m */; };
@@ -50,6 +49,7 @@
 		F7CAB0A61A22C7B70074A76C /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0911A22C7B70074A76C /* NSString+HNCommentTools.m */; };
 		F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */; };
 		F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */; };
+		F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */; };
 		F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
 		F7E8DA161A229C15007D009E /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
 		F7E8DA171A229C15007D009E /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
@@ -74,6 +74,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F775DAD414340D7E00F93F48;
 			remoteInfo = "HNReader iOS";
+		};
+		F7F796661A263FF2006DDD4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F74853891A2153EC009AE367;
+			remoteInfo = "HNReader OS X";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -148,6 +155,8 @@
 		F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+HNAlertView.m"; path = "HNReader iOS/UIAlertView+HNAlertView.m"; sourceTree = SOURCE_ROOT; };
 		F7CAB0941A22C7B70074A76C /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HNReaderTheme.h"; path = "HNReader iOS/UIColor+HNReaderTheme.h"; sourceTree = SOURCE_ROOT; };
 		F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HNReaderTheme.m"; path = "HNReader iOS/UIColor+HNReaderTheme.m"; sourceTree = SOURCE_ROOT; };
+		F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableController.h; path = "HNReader OS X/HNEntriesTableController.h"; sourceTree = SOURCE_ROOT; };
+		F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableController.m; path = "HNReader OS X/HNEntriesTableController.m"; sourceTree = SOURCE_ROOT; };
 		F7E8DA051A229C15007D009E /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
 		F7E8DA061A229C15007D009E /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7E8DA071A229C15007D009E /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNClient.h; path = Shared/HNClient.h; sourceTree = "<group>"; };
@@ -199,7 +208,6 @@
 				F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */,
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
 				F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */,
-				AE59B6DF31954A76A5E98D27 /* libPods.a in Frameworks */,
 				0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +231,8 @@
 			children = (
 				F71281171A22BDAB00C57D60 /* AppDelegate.h */,
 				F71281181A22BDAB00C57D60 /* AppDelegate.m */,
+				F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */,
+				F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */,
 				F712811E1A22BDBB00C57D60 /* MainMenu.xib */,
 				F712815F1A22C45100C57D60 /* Images.xcassets */,
 				F748538C1A2153EC009AE367 /* Supporting Files */,
@@ -473,6 +483,7 @@
 			);
 			dependencies = (
 				F74853B51A215433009AE367 /* PBXTargetDependency */,
+				F7F796671A263FF2006DDD4E /* PBXTargetDependency */,
 			);
 			name = "HNReader iOS Tests";
 			productName = "HNReader iOS Tests";
@@ -656,6 +667,7 @@
 				F712811D1A22BDAB00C57D60 /* main.m in Sources */,
 				F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */,
 				F71281591A22C07000C57D60 /* HNClient.m in Sources */,
+				F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +730,11 @@
 			isa = PBXTargetDependency;
 			target = F775DAD414340D7E00F93F48 /* HNReader iOS */;
 			targetProxy = F74853B41A215433009AE367 /* PBXContainerItemProxy */;
+		};
+		F7F796671A263FF2006DDD4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F74853891A2153EC009AE367 /* HNReader OS X */;
+			targetProxy = F7F796661A263FF2006DDD4E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -820,7 +837,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OSX.app/Contents/MacOS/HNReader OSX";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OS X.app/Contents/MacOS/HNReader OS X";
 			};
 			name = Debug;
 		};
@@ -853,7 +870,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OSX.app/Contents/MacOS/HNReader OSX";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OS X.app/Contents/MacOS/HNReader OS X";
 			};
 			name = Release;
 		};
@@ -959,6 +976,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				PROVISIONING_PROFILE = "";
@@ -1010,6 +1028,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				PROVISIONING_PROFILE = "";
