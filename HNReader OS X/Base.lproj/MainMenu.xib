@@ -18,6 +18,7 @@
         </customObject>
         <customObject id="psz-Ga-Lcs" customClass="HNEntriesTableController">
             <connections>
+                <outlet property="entriesControl" destination="TNZ-bJ-a53" id="sBY-7t-AS6"/>
                 <outlet property="tableView" destination="sjq-iW-R4K" id="bNN-3u-JOn"/>
             </connections>
         </customObject>

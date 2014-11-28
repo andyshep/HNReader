@@ -11,6 +11,7 @@
 #import "HNEntry.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <libextobjc/EXTScope.h>
 
 @interface HNEntriesTableController ()
 
@@ -23,9 +24,13 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self setup];
+        //
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [self setup];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -36,7 +41,7 @@
     
     HNEntry *entry = self.entries[row];
 
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"EntryCell" owner:self];
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"EntryCell" owner:tableView];
     cell.textField.stringValue = entry.title;
     
     return cell;
@@ -55,7 +60,16 @@
         [self.tableView reloadData];
     }];
     
+    [self.entriesControl setTarget:self];
+    [self.entriesControl setAction:@selector(selectedSegmentDidChange:)];
+    
+    [self.entriesControl setSelectedSegment:0];
     [self.model loadEntriesForIndex:0];
+}
+
+- (void)selectedSegmentDidChange:(id)sender {
+    NSInteger index = self.entriesControl.selectedSegment;
+    [self.model loadEntriesForIndex:index];
 }
 
 @end

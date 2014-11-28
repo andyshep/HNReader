@@ -12,5 +12,6 @@
 @interface HNEntriesTableController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *entriesControl;
 
 @end
