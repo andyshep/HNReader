@@ -50,6 +50,7 @@
 		F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */; };
 		F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */; };
 		F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */; };
+		F7D745F11A28E1560054711D /* HNEntriesCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */; };
 		F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
 		F7E8DA161A229C15007D009E /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
 		F7E8DA171A229C15007D009E /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
@@ -157,6 +158,8 @@
 		F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HNReaderTheme.m"; path = "HNReader iOS/UIColor+HNReaderTheme.m"; sourceTree = SOURCE_ROOT; };
 		F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableController.h; path = "HNReader OS X/HNEntriesTableController.h"; sourceTree = SOURCE_ROOT; };
 		F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableController.m; path = "HNReader OS X/HNEntriesTableController.m"; sourceTree = SOURCE_ROOT; };
+		F7D745EE1A28E11D0054711D /* HNEntriesCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesCellView.h; path = "HNReader OS X/HNEntriesCellView.h"; sourceTree = SOURCE_ROOT; };
+		F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesCellView.m; path = "HNReader OS X/HNEntriesCellView.m"; sourceTree = SOURCE_ROOT; };
 		F7E8DA051A229C15007D009E /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
 		F7E8DA061A229C15007D009E /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7E8DA071A229C15007D009E /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNClient.h; path = Shared/HNClient.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				F71281181A22BDAB00C57D60 /* AppDelegate.m */,
 				F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */,
 				F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */,
+				F7D745EE1A28E11D0054711D /* HNEntriesCellView.h */,
+				F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */,
 				F712811E1A22BDBB00C57D60 /* MainMenu.xib */,
 				F712815F1A22C45100C57D60 /* Images.xcassets */,
 				F748538C1A2153EC009AE367 /* Supporting Files */,
@@ -666,6 +671,7 @@
 				F71281571A22C07000C57D60 /* HNCacheManager.m in Sources */,
 				F712811D1A22BDAB00C57D60 /* main.m in Sources */,
 				F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */,
+				F7D745F11A28E1560054711D /* HNEntriesCellView.m in Sources */,
 				F71281591A22C07000C57D60 /* HNClient.m in Sources */,
 				F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */,
 			);

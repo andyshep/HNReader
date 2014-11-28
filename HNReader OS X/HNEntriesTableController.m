@@ -10,6 +10,8 @@
 #import "HNEntriesModel.h"
 #import "HNEntry.h"
 
+#import "HNEntriesCellView.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <libextobjc/EXTScope.h>
 
@@ -41,9 +43,14 @@
     
     HNEntry *entry = self.entries[row];
 
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"EntryCell" owner:tableView];
-    cell.textField.stringValue = entry.title;
+    HNEntriesCellView *cell = [tableView makeViewWithIdentifier:@"EntryCell" owner:tableView];
+    cell.siteTitleField.stringValue = entry.title;
+    if (entry.siteDomainURL) {
+        cell.siteDomainField.stringValue = entry.siteDomainURL;
+    }
     
+    cell.totalPointsField.stringValue = entry.totalPoints;
+
     return cell;
 }
 
