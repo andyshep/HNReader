@@ -23,13 +23,18 @@
 		F712815E1A22C07000C57D60 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA121A229C15007D009E /* HNEntry.m */; };
 		F71281601A22C45100C57D60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F712815F1A22C45100C57D60 /* Images.xcassets */; };
 		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
-		F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */; };
 		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
 		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
 		F7556F941A22C9EF0065557E /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
 		F7556F961A22C9EF0065557E /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F921A22C9EF0065557E /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
+		F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F78BA17E1A2A278400D57312 /* readable-formatting.html */; };
+		F78BA1841A2A35D800D57312 /* HNCommentsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */; };
+		F78BA1851A2A3B4F00D57312 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
+		F78BA1881A2A3B6100D57312 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA1871A2A3B6100D57312 /* libicucore.dylib */; };
+		F78BA18A1A2A3B7A00D57312 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */; };
+		F78BA18C1A2A3B8100D57312 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */; };
 		F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */; };
@@ -122,6 +127,12 @@
 		F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F78BA17E1A2A278400D57312 /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "HNReader iOS/Resources/readable-formatting.html"; sourceTree = SOURCE_ROOT; };
+		F78BA1801A2A353B00D57312 /* HNCommentsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsTableController.h; path = "HNReader OS X/HNCommentsTableController.h"; sourceTree = SOURCE_ROOT; };
+		F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsTableController.m; path = "HNReader OS X/HNCommentsTableController.m"; sourceTree = SOURCE_ROOT; };
+		F78BA1871A2A3B6100D57312 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
+		F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libxml2.2.dylib; sourceTree = DEVELOPER_DIR; };
+		F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libstdc++.dylib"; sourceTree = DEVELOPER_DIR; };
 		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7CAB0751A22C7B70074A76C /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsDataSource.h; path = "HNReader iOS/HNCommentsDataSource.h"; sourceTree = SOURCE_ROOT; };
 		F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsDataSource.m; path = "HNReader iOS/HNCommentsDataSource.m"; sourceTree = SOURCE_ROOT; };
@@ -183,6 +194,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78BA18C1A2A3B8100D57312 /* libstdc++.dylib in Frameworks */,
+				F78BA18A1A2A3B7A00D57312 /* libxml2.2.dylib in Frameworks */,
+				F78BA1881A2A3B6100D57312 /* libicucore.dylib in Frameworks */,
 				BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */,
-				F71C31E4196C9B88003C8BCD /* libsqlite3.dylib in Frameworks */,
 				F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */,
 				F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */,
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
@@ -236,6 +249,8 @@
 				F71281181A22BDAB00C57D60 /* AppDelegate.m */,
 				F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */,
 				F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */,
+				F78BA1801A2A353B00D57312 /* HNCommentsTableController.h */,
+				F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */,
 				F7D745EE1A28E11D0054711D /* HNEntriesCellView.h */,
 				F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */,
 				F712811E1A22BDBB00C57D60 /* MainMenu.xib */,
@@ -345,6 +360,9 @@
 		F775DAD814340D7E00F93F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */,
+				F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */,
+				F78BA1871A2A3B6100D57312 /* libicucore.dylib */,
 				F77319C7189EC2AC00C360F1 /* libstdc++.dylib */,
 				F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */,
 				F775DB3D1434110700F93F48 /* MobileCoreServices.framework */,
@@ -366,6 +384,7 @@
 		F775DADF14340D7E00F93F48 /* HNReader iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F78BA17E1A2A278400D57312 /* readable-formatting.html */,
 				F7CAB0751A22C7B70074A76C /* HNCommentsDataSource.h */,
 				F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */,
 				F7CAB0771A22C7B70074A76C /* HNCommentsTableViewCell.h */,
@@ -588,6 +607,7 @@
 				F7CAB09C1A22C7B70074A76C /* HNEntriesTableViewCell.xib in Resources */,
 				F7CAB0A31A22C7B70074A76C /* Images.xcassets in Resources */,
 				F71281601A22C45100C57D60 /* Images.xcassets in Resources */,
+				F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */,
 				F7CAB0A51A22C7B70074A76C /* Main.storyboard in Resources */,
 				F7CAB0981A22C7B70074A76C /* HNCommentsTableViewCell.xib in Resources */,
 			);
@@ -663,6 +683,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F712815D1A22C07000C57D60 /* HNEntriesModel.m in Sources */,
+				F78BA1851A2A3B4F00D57312 /* rd_list.c in Sources */,
+				F78BA1841A2A35D800D57312 /* HNCommentsTableController.m in Sources */,
 				F71281581A22C07000C57D60 /* HNParser.m in Sources */,
 				F712815A1A22C07000C57D60 /* HNComment.m in Sources */,
 				F712815B1A22C07000C57D60 /* HNCommentsModel.m in Sources */,

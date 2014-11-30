@@ -12,6 +12,8 @@
 
 #import "HNEntriesCellView.h"
 
+#import "HNCommentsTableController.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <libextobjc/EXTScope.h>
 
@@ -35,26 +37,33 @@
     [self setup];
 }
 
+#pragma mark - NSTableViewDataSource
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return self.entries.count;
 }
+
+#pragma mark - NSTableViewDelegate
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     
     HNEntry *entry = self.entries[row];
 
     HNEntriesCellView *cell = [tableView makeViewWithIdentifier:@"EntryCell" owner:tableView];
-    cell.siteTitleField.stringValue = entry.title;
-    if (entry.siteDomainURL) {
-        cell.siteDomainField.stringValue = entry.siteDomainURL;
-    }
-    
-    cell.totalPointsField.stringValue = entry.totalPoints;
+    cell.textField.stringValue = entry.title;
 
     return cell;
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSUInteger row = [self.tableView selectedRow];
+    HNEntry *entry = self.entries[row];
+    
+    [self.commentsController setEntry:entry];
+}
+
 #pragma mark - Private
+
 - (void)setup {
     self.model = [[HNEntriesModel alloc] init];
     

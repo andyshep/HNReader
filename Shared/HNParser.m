@@ -35,12 +35,12 @@
         HTMLNode *entiresTable = [bodyNode findChildTags:@"table"][2];
         NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
         
-        HTMLNode *_currentNode = tableNodes[0];
-        while ([_currentNode allContents] != NULL) {
+        HTMLNode *currentNode = tableNodes[0];
+        while ([currentNode allContents] != NULL) {
             
             // the title <td> has a CSS class of title
             // we are concerned with the second one
-            NSArray *titles = [_currentNode findChildrenOfClass:@"title"];
+            NSArray *titles = [currentNode findChildrenOfClass:@"title"];
             
             if ([titles count] > 1) {
                 HNEntry *entry = [[HNEntry alloc] init];
@@ -55,7 +55,7 @@
                 
                 // after the title <td>, the next child is a commment <td>
                 // we move to the next child and extract comments
-                HTMLNode *commentNode = [_currentNode nextSibling];
+                HTMLNode *commentNode = [currentNode nextSibling];
                 HTMLNode *commentTdNode = [commentNode findChildOfClass:@"subtext"];
                 
                 // some stories don't have comments
@@ -72,7 +72,7 @@
             
             // move to the next node
             // which may or may not be a title.
-            _currentNode = [_currentNode nextSibling];
+            currentNode = [currentNode nextSibling];
         }
         
         // after we have all the entries
@@ -141,7 +141,13 @@
                         commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                         
                         NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] allContents];
-                        commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
+                        
+                        if ([rawCommentHTML respondsToSelector:@selector(hn_stringAsFormatedCommentText)]) {
+                            commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
+                        }
+                        else {
+                            commentString = rawCommentHTML;
+                        }
                         
                         NSString *roughTime = [[comHead children][1] rawContents];
                         timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
