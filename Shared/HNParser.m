@@ -7,7 +7,6 @@
 //
 
 #import "HNParser.h"
-#import "HNConstants.h"
 
 #import "HTMLParser.h"
 #import "HTMLNode.h"
@@ -17,6 +16,8 @@
 
 #import "NSString+HTML.h"
 #import "NSString+HNCommentTools.h"
+
+#import "HNConstants.h"
 
 @implementation HNParser
 
@@ -35,18 +36,23 @@
         HTMLNode *entiresTable = [bodyNode findChildTags:@"table"][2];
         NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
         
-        HTMLNode *currentNode = tableNodes[0];
-        while ([currentNode allContents] != NULL) {
+        HTMLNode *_currentNode = tableNodes[0];
+        while ([_currentNode allContents] != NULL) {
             
             // the title <td> has a CSS class of title
             // we are concerned with the second one
-            NSArray *titles = [currentNode findChildrenOfClass:@"title"];
+            NSArray *titles = [_currentNode findChildrenOfClass:@"title"];
             
             if ([titles count] > 1) {
                 HNEntry *entry = [[HNEntry alloc] init];
-                entry.title = [[titles[1] firstChild] contents];
-                entry.linkURL = [[titles[1] firstChild] getAttributeNamed:@"href"];
-                entry.siteDomainURL = [[titles[1] findChildOfClass:@"comhead"] contents];
+                entry.title = [titles[1] allContents];
+                
+                if ([titles[1] children].count >= 3) {
+                    HTMLNode *hrefNode = [titles[1] children][1];
+                    HTMLNode *domainNode = [titles[1] children][2];
+                    entry.linkURL = [hrefNode getAttributeNamed:@"href"];
+                    entry.siteDomainURL = [domainNode allContents];
+                }
                 
                 if ([entry.linkURL hasPrefix:@"item?id="]) {
                     NSString *baseURL = [HNWebsiteBaseURL stringByAppendingString:@"/"];
@@ -55,15 +61,17 @@
                 
                 // after the title <td>, the next child is a commment <td>
                 // we move to the next child and extract comments
-                HTMLNode *commentNode = [currentNode nextSibling];
+                HTMLNode *commentNode = [_currentNode nextSibling];
                 HTMLNode *commentTdNode = [commentNode findChildOfClass:@"subtext"];
                 
                 // some stories don't have comments
                 // YC alumi job posts
-                if ([[commentTdNode children] count] == 5) {
+                if ([[commentTdNode children] count] >= 5) {
                     entry.totalPoints = [[commentTdNode children][0] contents];
                     entry.username = [[commentTdNode children][2] contents];
                     entry.commentsPageURL = [[commentTdNode children][4] getAttributeNamed:@"href"];
+                    
+                    // FIXME
                     entry.commentsCount = [[commentTdNode children][4] contents];
                 }
                 
@@ -72,7 +80,7 @@
             
             // move to the next node
             // which may or may not be a title.
-            currentNode = [currentNode nextSibling];
+            _currentNode = [_currentNode nextSibling];
         }
         
         // after we have all the entries
@@ -141,16 +149,11 @@
                         commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
                         
                         NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] allContents];
+                        commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
                         
-                        if ([rawCommentHTML respondsToSelector:@selector(hn_stringAsFormatedCommentText)]) {
-                            commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
-                        }
-                        else {
-                            commentString = rawCommentHTML;
-                        }
-                        
-                        NSString *roughTime = [[comHead children][1] rawContents];
-                        timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
+                        // FIXME
+//                        NSString *roughTime = [[comHead children][1] rawContents];
+//                        timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
                     } else {
                         commentUserName = @"";
                         commentString = @"[deleted]";
