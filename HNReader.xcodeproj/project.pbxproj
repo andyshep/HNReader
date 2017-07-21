@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2701FCF0ACD51579D02D1E28 /* Pods_HNReader_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */; };
-		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
-		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
+		F721C3031F224A0300B29A85 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3021F2249F800B29A85 /* libxml2.2.tbd */; };
+		F721C3071F224A5000B29A85 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3061F224A4B00B29A85 /* libicucore.tbd */; };
+		F721C3081F224B7B00B29A85 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3001F22492A00B29A85 /* HTMLParser.m */; };
+		F721C3091F224B7D00B29A85 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C2FE1F22492A00B29A85 /* HTMLNode.m */; };
 		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
 		F7556F941A22C9EF0065557E /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
 		F7556F961A22C9EF0065557E /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F921A22C9EF0065557E /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
 		F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F78BA17E1A2A278400D57312 /* readable-formatting.html */; };
-		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */; };
 		F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */; };
 		F7CAB0981A22C7B70074A76C /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7CAB0791A22C7B70074A76C /* HNCommentsTableViewCell.xib */; };
@@ -56,14 +56,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.release.xcconfig"; sourceTree = "<group>"; };
-		690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNReader_OS_X.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.release.xcconfig"; sourceTree = "<group>"; };
-		E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.debug.xcconfig"; sourceTree = "<group>"; };
-		EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNReader_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F721C2E51F2248DB00B29A85 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Vendor/MWFeedParser/Classes/RootViewController.h; sourceTree = SOURCE_ROOT; };
+		F721C2E61F2248DB00B29A85 /* MWFeedParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedParser.m; path = Vendor/MWFeedParser/Classes/MWFeedParser.m; sourceTree = SOURCE_ROOT; };
+		F721C2E71F2248DB00B29A85 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Vendor/MWFeedParser/Classes/RootViewController.m; sourceTree = SOURCE_ROOT; };
+		F721C2E81F2248DB00B29A85 /* MWFeedInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedInfo.m; path = Vendor/MWFeedParser/Classes/MWFeedInfo.m; sourceTree = SOURCE_ROOT; };
+		F721C2E91F2248DB00B29A85 /* MWFeedInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedInfo.h; path = Vendor/MWFeedParser/Classes/MWFeedInfo.h; sourceTree = SOURCE_ROOT; };
+		F721C2EA1F2248DB00B29A85 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "GTMNSString+HTML.m"; path = "Vendor/MWFeedParser/Classes/GTMNSString+HTML.m"; sourceTree = SOURCE_ROOT; };
+		F721C2EB1F2248DB00B29A85 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+HTML.h"; path = "Vendor/MWFeedParser/Classes/GTMNSString+HTML.h"; sourceTree = SOURCE_ROOT; };
+		F721C2EC1F2248DB00B29A85 /* MWFeedParserAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedParserAppDelegate.m; path = Vendor/MWFeedParser/Classes/MWFeedParserAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		F721C2ED1F2248DB00B29A85 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDate+InternetDateTime.m"; path = "Vendor/MWFeedParser/Classes/NSDate+InternetDateTime.m"; sourceTree = SOURCE_ROOT; };
+		F721C2EE1F2248DB00B29A85 /* NSString+HTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+HTML.h"; path = "Vendor/MWFeedParser/Classes/NSString+HTML.h"; sourceTree = SOURCE_ROOT; };
+		F721C2EF1F2248DB00B29A85 /* MWFeedParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParser.h; path = Vendor/MWFeedParser/Classes/MWFeedParser.h; sourceTree = SOURCE_ROOT; };
+		F721C2F01F2248DB00B29A85 /* DetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = Vendor/MWFeedParser/Classes/DetailTableViewController.m; sourceTree = SOURCE_ROOT; };
+		F721C2F11F2248DB00B29A85 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+XMLEntities.h"; path = "Vendor/MWFeedParser/Classes/NSString+XMLEntities.h"; sourceTree = SOURCE_ROOT; };
+		F721C2F21F2248DB00B29A85 /* MWFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedItem.m; path = Vendor/MWFeedParser/Classes/MWFeedItem.m; sourceTree = SOURCE_ROOT; };
+		F721C2F31F2248DB00B29A85 /* MWFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedItem.h; path = Vendor/MWFeedParser/Classes/MWFeedItem.h; sourceTree = SOURCE_ROOT; };
+		F721C2F41F2248DB00B29A85 /* NSString+XMLEntities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+XMLEntities.m"; path = "Vendor/MWFeedParser/Classes/NSString+XMLEntities.m"; sourceTree = SOURCE_ROOT; };
+		F721C2F51F2248DB00B29A85 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSDate+InternetDateTime.h"; path = "Vendor/MWFeedParser/Classes/NSDate+InternetDateTime.h"; sourceTree = SOURCE_ROOT; };
+		F721C2F61F2248DB00B29A85 /* MWFeedParserAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParserAppDelegate.h; path = Vendor/MWFeedParser/Classes/MWFeedParserAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		F721C2F71F2248DB00B29A85 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParser_Private.h; path = Vendor/MWFeedParser/Classes/MWFeedParser_Private.h; sourceTree = SOURCE_ROOT; };
+		F721C2F81F2248DB00B29A85 /* DetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = Vendor/MWFeedParser/Classes/DetailTableViewController.h; sourceTree = SOURCE_ROOT; };
+		F721C2F91F2248DB00B29A85 /* NSString+HTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTML.m"; path = "Vendor/MWFeedParser/Classes/NSString+HTML.m"; sourceTree = SOURCE_ROOT; };
+		F721C2FD1F22492A00B29A85 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		F721C2FE1F22492A00B29A85 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		F721C2FF1F22492A00B29A85 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		F721C3001F22492A00B29A85 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		F721C3021F2249F800B29A85 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		F721C3061F224A4B00B29A85 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74853B11A215433009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_iOS_Tests.m; sourceTree = "<group>"; };
@@ -72,21 +92,13 @@
 		F7556F911A22C9EF0065557E /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
 		F7556F921A22C9EF0065557E /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
 		F7556F931A22C9EF0065557E /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
-		F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F76ACA6514354265004CF9EA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		F77319C7189EC2AC00C360F1 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		F775DAD514340D7E00F93F48 /* HNReader iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775DAD914340D7E00F93F48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F775DADB14340D7E00F93F48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F775DADD14340D7E00F93F48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F78BA17E1A2A278400D57312 /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "HNReader iOS/Resources/readable-formatting.html"; sourceTree = SOURCE_ROOT; };
-		F78BA1871A2A3B6100D57312 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
-		F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libxml2.2.dylib; sourceTree = DEVELOPER_DIR; };
-		F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libstdc++.dylib"; sourceTree = DEVELOPER_DIR; };
-		F7A2406E1475704D00004287 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F7CAB0751A22C7B70074A76C /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsDataSource.h; path = "HNReader iOS/HNCommentsDataSource.h"; sourceTree = SOURCE_ROOT; };
 		F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsDataSource.m; path = "HNReader iOS/HNCommentsDataSource.m"; sourceTree = SOURCE_ROOT; };
 		F7CAB0771A22C7B70074A76C /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsTableViewCell.h; path = "HNReader iOS/HNCommentsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -150,28 +162,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */,
-				F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */,
-				F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */,
+				F721C3071F224A5000B29A85 /* libicucore.tbd in Frameworks */,
+				F721C3031F224A0300B29A85 /* libxml2.2.tbd in Frameworks */,
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
 				F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */,
-				2701FCF0ACD51579D02D1E28 /* Pods_HNReader_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04AABEA50996D06B5FCF79F1 /* Pods */ = {
+		F721C2CE1F22487200B29A85 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */,
-				531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */,
-				A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */,
-				DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */,
+				F721C2FC1F22492A00B29A85 /* Objective-C-HMTL-Parser */,
+				F721C2CF1F22488500B29A85 /* MWFeedParser */,
 			);
-			name = Pods;
+			name = Vendor;
+			path = "New Group";
 			sourceTree = "<group>";
+		};
+		F721C2CF1F22488500B29A85 /* MWFeedParser */ = {
+			isa = PBXGroup;
+			children = (
+				F721C2F81F2248DB00B29A85 /* DetailTableViewController.h */,
+				F721C2F01F2248DB00B29A85 /* DetailTableViewController.m */,
+				F721C2EB1F2248DB00B29A85 /* GTMNSString+HTML.h */,
+				F721C2EA1F2248DB00B29A85 /* GTMNSString+HTML.m */,
+				F721C2E91F2248DB00B29A85 /* MWFeedInfo.h */,
+				F721C2E81F2248DB00B29A85 /* MWFeedInfo.m */,
+				F721C2F31F2248DB00B29A85 /* MWFeedItem.h */,
+				F721C2F21F2248DB00B29A85 /* MWFeedItem.m */,
+				F721C2F71F2248DB00B29A85 /* MWFeedParser_Private.h */,
+				F721C2EF1F2248DB00B29A85 /* MWFeedParser.h */,
+				F721C2E61F2248DB00B29A85 /* MWFeedParser.m */,
+				F721C2F61F2248DB00B29A85 /* MWFeedParserAppDelegate.h */,
+				F721C2EC1F2248DB00B29A85 /* MWFeedParserAppDelegate.m */,
+				F721C2F51F2248DB00B29A85 /* NSDate+InternetDateTime.h */,
+				F721C2ED1F2248DB00B29A85 /* NSDate+InternetDateTime.m */,
+				F721C2EE1F2248DB00B29A85 /* NSString+HTML.h */,
+				F721C2F91F2248DB00B29A85 /* NSString+HTML.m */,
+				F721C2F11F2248DB00B29A85 /* NSString+XMLEntities.h */,
+				F721C2F41F2248DB00B29A85 /* NSString+XMLEntities.m */,
+				F721C2E51F2248DB00B29A85 /* RootViewController.h */,
+				F721C2E71F2248DB00B29A85 /* RootViewController.m */,
+			);
+			path = MWFeedParser;
+			sourceTree = "<group>";
+		};
+		F721C2FC1F22492A00B29A85 /* Objective-C-HMTL-Parser */ = {
+			isa = PBXGroup;
+			children = (
+				F721C2FD1F22492A00B29A85 /* HTMLNode.h */,
+				F721C2FE1F22492A00B29A85 /* HTMLNode.m */,
+				F721C2FF1F22492A00B29A85 /* HTMLParser.h */,
+				F721C3001F22492A00B29A85 /* HTMLParser.m */,
+			);
+			name = "Objective-C-HMTL-Parser";
+			path = "Vendor/Objective-C-HMTL-Parser";
+			sourceTree = SOURCE_ROOT;
 		};
 		F74853AF1A215433009AE367 /* HNReader iOS Tests */ = {
 			isa = PBXGroup;
@@ -214,11 +263,11 @@
 		F775DACA14340D7E00F93F48 = {
 			isa = PBXGroup;
 			children = (
+				F721C2CE1F22487200B29A85 /* Vendor */,
 				F7CDB00A1A2298D000547F5F /* Shared */,
 				F74853B91A2154CD009AE367 /* HNReader iOS */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
 				F775DAD614340D7E00F93F48 /* Products */,
-				04AABEA50996D06B5FCF79F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,23 +283,14 @@
 		F775DAD814340D7E00F93F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */,
-				F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */,
-				F78BA1871A2A3B6100D57312 /* libicucore.dylib */,
-				F77319C7189EC2AC00C360F1 /* libstdc++.dylib */,
-				F759AEA5189EC28400BD46D1 /* libsqlite3.dylib */,
+				F721C3061F224A4B00B29A85 /* libicucore.tbd */,
+				F721C3021F2249F800B29A85 /* libxml2.2.tbd */,
 				F775DB3D1434110700F93F48 /* MobileCoreServices.framework */,
 				F775DB3E1434110700F93F48 /* SystemConfiguration.framework */,
 				F775DAD914340D7E00F93F48 /* UIKit.framework */,
 				F775DADB14340D7E00F93F48 /* Foundation.framework */,
 				F775DADD14340D7E00F93F48 /* CoreGraphics.framework */,
-				F775DAFF14340D7F00F93F48 /* SenTestingKit.framework */,
 				F70A0FF2143BF99100D61E8A /* QuartzCore.framework */,
-				F76ACA6514354265004CF9EA /* libxml2.2.dylib */,
-				F7A2406E1475704D00004287 /* libicucore.dylib */,
-				DBA80079524E4F5FBE1F3871 /* libPods.a */,
-				690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */,
-				EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -354,12 +394,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader iOS" */;
 			buildPhases = (
-				534CD3E76477478099402D64 /* [CP] Check Pods Manifest.lock */,
 				F775DAD114340D7E00F93F48 /* Sources */,
 				F775DAD214340D7E00F93F48 /* Frameworks */,
 				F775DAD314340D7E00F93F48 /* Resources */,
-				C511BC34BE894F8FB00BD40A /* [CP] Copy Pods Resources */,
-				749E4DAFC4D316FA7B576DE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,11 +414,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0900;
 				TargetAttributes = {
 					F74853AD1A215433009AE367 = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = F775DAD414340D7E00F93F48;
+					};
+					F775DAD414340D7E00F93F48 = {
+						DevelopmentTeam = 9XH5KEL8D8;
 					};
 				};
 			};
@@ -426,53 +466,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		534CD3E76477478099402D64 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-		};
-		749E4DAFC4D316FA7B576DE0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C511BC34BE894F8FB00BD40A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		F74853AA1A215433009AE367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -490,11 +483,13 @@
 				F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */,
 				F7CAB09E1A22C7B70074A76C /* HNLabel.m in Sources */,
 				F7E8DA161A229C15007D009E /* HNClient.m in Sources */,
+				F721C3081F224B7B00B29A85 /* HTMLParser.m in Sources */,
 				F7E8DA191A229C15007D009E /* HNConstants.m in Sources */,
 				F7CAB09D1A22C7B70074A76C /* HNEntriesViewController.m in Sources */,
 				F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */,
 				F7CAB09A1A22C7B70074A76C /* HNEntriesDataSource.m in Sources */,
 				F7E8DA171A229C15007D009E /* HNComment.m in Sources */,
+				F721C3091F224B7D00B29A85 /* HTMLNode.m in Sources */,
 				F7CAB0991A22C7B70074A76C /* HNCommentsViewController.m in Sources */,
 				F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */,
 				F7556F961A22C9EF0065557E /* readable.c in Sources */,
@@ -549,6 +544,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
 			};
@@ -576,6 +573,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
 			};
@@ -585,26 +584,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "READABLE_USE_LIBICU=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
@@ -624,11 +633,13 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -640,18 +651,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -659,6 +678,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "READABLE_USE_LIBICU=1";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -676,11 +696,13 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -691,42 +713,48 @@
 		};
 		F775DB1314340D7F00F93F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9XH5KEL8D8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader iOS/HNReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/HNReader iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		F775DB1414340D7F00F93F48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9XH5KEL8D8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HNReader iOS/HNReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "$(SRCROOT)/HNReader iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
