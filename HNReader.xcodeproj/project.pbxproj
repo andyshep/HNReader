@@ -15,25 +15,25 @@
 		F721C35F1F224D9A00B29A85 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F721C33F1F224D4C00B29A85 /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
-		F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F78BA17E1A2A278400D57312 /* readable-formatting.html */; };
-		F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */; };
-		F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */; };
-		F7CAB0981A22C7B70074A76C /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7CAB0791A22C7B70074A76C /* HNCommentsTableViewCell.xib */; };
-		F7CAB0991A22C7B70074A76C /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB07B1A22C7B70074A76C /* HNCommentsViewController.m */; };
-		F7CAB09A1A22C7B70074A76C /* HNEntriesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB07D1A22C7B70074A76C /* HNEntriesDataSource.m */; };
-		F7CAB09B1A22C7B70074A76C /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB07F1A22C7B70074A76C /* HNEntriesTableViewCell.m */; };
-		F7CAB09C1A22C7B70074A76C /* HNEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7CAB0801A22C7B70074A76C /* HNEntriesTableViewCell.xib */; };
-		F7CAB09D1A22C7B70074A76C /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0821A22C7B70074A76C /* HNEntriesViewController.m */; };
-		F7CAB09E1A22C7B70074A76C /* HNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0841A22C7B70074A76C /* HNLabel.m */; };
-		F7CAB09F1A22C7B70074A76C /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0861A22C7B70074A76C /* HNLoadMoreTableViewCell.m */; };
-		F7CAB0A11A22C7B70074A76C /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB08A1A22C7B70074A76C /* HNReaderAppDelegate.m */; };
-		F7CAB0A21A22C7B70074A76C /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB08C1A22C7B70074A76C /* HNWebViewController.m */; };
-		F7CAB0A31A22C7B70074A76C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7CAB08D1A22C7B70074A76C /* Images.xcassets */; };
-		F7CAB0A41A22C7B70074A76C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB08E1A22C7B70074A76C /* main.m */; };
-		F7CAB0A51A22C7B70074A76C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CAB08F1A22C7B70074A76C /* Main.storyboard */; };
-		F7CAB0A61A22C7B70074A76C /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0911A22C7B70074A76C /* NSString+HNCommentTools.m */; };
-		F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */; };
-		F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */; };
+		F7C537A91F2283800025CC61 /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537861F22836F0025CC61 /* HNCommentsDataSource.m */; };
+		F7C537AA1F2283800025CC61 /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537881F22836F0025CC61 /* HNCommentsTableViewCell.m */; };
+		F7C537AB1F2283800025CC61 /* HNCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5378B1F22836F0025CC61 /* HNCommentsViewController.m */; };
+		F7C537AC1F2283800025CC61 /* HNEntriesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5378D1F22836F0025CC61 /* HNEntriesDataSource.m */; };
+		F7C537AD1F2283800025CC61 /* HNEntriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5378F1F22836F0025CC61 /* HNEntriesTableViewCell.m */; };
+		F7C537AE1F2283800025CC61 /* HNEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537921F22836F0025CC61 /* HNEntriesViewController.m */; };
+		F7C537AF1F2283800025CC61 /* HNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537941F22836F0025CC61 /* HNLabel.m */; };
+		F7C537B01F2283800025CC61 /* HNLoadMoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537961F22836F0025CC61 /* HNLoadMoreTableViewCell.m */; };
+		F7C537B11F2283800025CC61 /* HNReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537991F22836F0025CC61 /* HNReaderAppDelegate.m */; };
+		F7C537B21F2283800025CC61 /* HNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5379B1F22836F0025CC61 /* HNWebViewController.m */; };
+		F7C537B31F2283800025CC61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5379E1F22836F0025CC61 /* main.m */; };
+		F7C537B41F2283800025CC61 /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537A11F22836F0025CC61 /* NSString+HNCommentTools.m */; };
+		F7C537B51F2283800025CC61 /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537A61F22836F0025CC61 /* UIAlertView+HNAlertView.m */; };
+		F7C537B61F2283800025CC61 /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C537A81F22836F0025CC61 /* UIColor+HNReaderTheme.m */; };
+		F7C537B71F2283D40025CC61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C5379F1F22836F0025CC61 /* Main.storyboard */; };
+		F7C537B81F2283EF0025CC61 /* HNCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C537891F22836F0025CC61 /* HNCommentsTableViewCell.xib */; };
+		F7C537B91F2283EF0025CC61 /* HNEntriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C537901F22836F0025CC61 /* HNEntriesTableViewCell.xib */; };
+		F7C537BA1F2283F30025CC61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C5379C1F22836F0025CC61 /* Images.xcassets */; };
+		F7C537BC1F2284AA0025CC61 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C537BB1F2284AA0025CC61 /* Launch Screen.storyboard */; };
 		F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
 		F7E8DA161A229C15007D009E /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
 		F7E8DA171A229C15007D009E /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
@@ -63,40 +63,42 @@
 		F775DADD14340D7E00F93F48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		F78BA17E1A2A278400D57312 /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "HNReader iOS/Resources/readable-formatting.html"; sourceTree = SOURCE_ROOT; };
-		F7CAB0751A22C7B70074A76C /* HNCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsDataSource.h; path = "HNReader iOS/HNCommentsDataSource.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsDataSource.m; path = "HNReader iOS/HNCommentsDataSource.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0771A22C7B70074A76C /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsTableViewCell.h; path = "HNReader iOS/HNCommentsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsTableViewCell.m; path = "HNReader iOS/HNCommentsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0791A22C7B70074A76C /* HNCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNCommentsTableViewCell.xib; path = "HNReader iOS/HNCommentsTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
-		F7CAB07A1A22C7B70074A76C /* HNCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsViewController.h; path = "HNReader iOS/HNCommentsViewController.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB07B1A22C7B70074A76C /* HNCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsViewController.m; path = "HNReader iOS/HNCommentsViewController.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB07C1A22C7B70074A76C /* HNEntriesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesDataSource.h; path = "HNReader iOS/HNEntriesDataSource.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB07D1A22C7B70074A76C /* HNEntriesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesDataSource.m; path = "HNReader iOS/HNEntriesDataSource.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB07E1A22C7B70074A76C /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableViewCell.h; path = "HNReader iOS/HNEntriesTableViewCell.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB07F1A22C7B70074A76C /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableViewCell.m; path = "HNReader iOS/HNEntriesTableViewCell.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0801A22C7B70074A76C /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HNEntriesTableViewCell.xib; path = "HNReader iOS/HNEntriesTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
-		F7CAB0811A22C7B70074A76C /* HNEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesViewController.h; path = "HNReader iOS/HNEntriesViewController.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0821A22C7B70074A76C /* HNEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesViewController.m; path = "HNReader iOS/HNEntriesViewController.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0831A22C7B70074A76C /* HNLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLabel.h; path = "HNReader iOS/HNLabel.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0841A22C7B70074A76C /* HNLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNLabel.m; path = "HNReader iOS/HNLabel.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0851A22C7B70074A76C /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNLoadMoreTableViewCell.h; path = "HNReader iOS/HNLoadMoreTableViewCell.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0861A22C7B70074A76C /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNLoadMoreTableViewCell.m; path = "HNReader iOS/HNLoadMoreTableViewCell.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0871A22C7B70074A76C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "HNReader iOS/Info.plist"; sourceTree = SOURCE_ROOT; };
-		F7CAB0881A22C7B70074A76C /* HNReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HNReader-Prefix.pch"; path = "HNReader iOS/HNReader-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		F7CAB0891A22C7B70074A76C /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNReaderAppDelegate.h; path = "HNReader iOS/HNReaderAppDelegate.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB08A1A22C7B70074A76C /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNReaderAppDelegate.m; path = "HNReader iOS/HNReaderAppDelegate.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB08B1A22C7B70074A76C /* HNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNWebViewController.h; path = "HNReader iOS/HNWebViewController.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB08C1A22C7B70074A76C /* HNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNWebViewController.m; path = "HNReader iOS/HNWebViewController.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB08D1A22C7B70074A76C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "HNReader iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		F7CAB08E1A22C7B70074A76C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "HNReader iOS/main.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB08F1A22C7B70074A76C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "HNReader iOS/Main.storyboard"; sourceTree = SOURCE_ROOT; };
-		F7CAB0901A22C7B70074A76C /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HNCommentTools.h"; path = "HNReader iOS/NSString+HNCommentTools.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0911A22C7B70074A76C /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HNCommentTools.m"; path = "HNReader iOS/NSString+HNCommentTools.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0921A22C7B70074A76C /* UIAlertView+HNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+HNAlertView.h"; path = "HNReader iOS/UIAlertView+HNAlertView.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+HNAlertView.m"; path = "HNReader iOS/UIAlertView+HNAlertView.m"; sourceTree = SOURCE_ROOT; };
-		F7CAB0941A22C7B70074A76C /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HNReaderTheme.h"; path = "HNReader iOS/UIColor+HNReaderTheme.h"; sourceTree = SOURCE_ROOT; };
-		F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HNReaderTheme.m"; path = "HNReader iOS/UIColor+HNReaderTheme.m"; sourceTree = SOURCE_ROOT; };
+		F7C537851F22836F0025CC61 /* HNCommentsDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNCommentsDataSource.h; sourceTree = "<group>"; };
+		F7C537861F22836F0025CC61 /* HNCommentsDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNCommentsDataSource.m; sourceTree = "<group>"; };
+		F7C537871F22836F0025CC61 /* HNCommentsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNCommentsTableViewCell.h; sourceTree = "<group>"; };
+		F7C537881F22836F0025CC61 /* HNCommentsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNCommentsTableViewCell.m; sourceTree = "<group>"; };
+		F7C537891F22836F0025CC61 /* HNCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HNCommentsTableViewCell.xib; sourceTree = "<group>"; };
+		F7C5378A1F22836F0025CC61 /* HNCommentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNCommentsViewController.h; sourceTree = "<group>"; };
+		F7C5378B1F22836F0025CC61 /* HNCommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNCommentsViewController.m; sourceTree = "<group>"; };
+		F7C5378C1F22836F0025CC61 /* HNEntriesDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNEntriesDataSource.h; sourceTree = "<group>"; };
+		F7C5378D1F22836F0025CC61 /* HNEntriesDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNEntriesDataSource.m; sourceTree = "<group>"; };
+		F7C5378E1F22836F0025CC61 /* HNEntriesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNEntriesTableViewCell.h; sourceTree = "<group>"; };
+		F7C5378F1F22836F0025CC61 /* HNEntriesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNEntriesTableViewCell.m; sourceTree = "<group>"; };
+		F7C537901F22836F0025CC61 /* HNEntriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HNEntriesTableViewCell.xib; sourceTree = "<group>"; };
+		F7C537911F22836F0025CC61 /* HNEntriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNEntriesViewController.h; sourceTree = "<group>"; };
+		F7C537921F22836F0025CC61 /* HNEntriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNEntriesViewController.m; sourceTree = "<group>"; };
+		F7C537931F22836F0025CC61 /* HNLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNLabel.h; sourceTree = "<group>"; };
+		F7C537941F22836F0025CC61 /* HNLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNLabel.m; sourceTree = "<group>"; };
+		F7C537951F22836F0025CC61 /* HNLoadMoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNLoadMoreTableViewCell.h; sourceTree = "<group>"; };
+		F7C537961F22836F0025CC61 /* HNLoadMoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNLoadMoreTableViewCell.m; sourceTree = "<group>"; };
+		F7C537971F22836F0025CC61 /* HNReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HNReader-Prefix.pch"; sourceTree = "<group>"; };
+		F7C537981F22836F0025CC61 /* HNReaderAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNReaderAppDelegate.h; sourceTree = "<group>"; };
+		F7C537991F22836F0025CC61 /* HNReaderAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReaderAppDelegate.m; sourceTree = "<group>"; };
+		F7C5379A1F22836F0025CC61 /* HNWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNWebViewController.h; sourceTree = "<group>"; };
+		F7C5379B1F22836F0025CC61 /* HNWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNWebViewController.m; sourceTree = "<group>"; };
+		F7C5379C1F22836F0025CC61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F7C5379D1F22836F0025CC61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7C5379E1F22836F0025CC61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F7C5379F1F22836F0025CC61 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F7C537A01F22836F0025CC61 /* NSString+HNCommentTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HNCommentTools.h"; sourceTree = "<group>"; };
+		F7C537A11F22836F0025CC61 /* NSString+HNCommentTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HNCommentTools.m"; sourceTree = "<group>"; };
+		F7C537A31F22836F0025CC61 /* ipad-formatting.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "ipad-formatting.html"; sourceTree = "<group>"; };
+		F7C537A41F22836F0025CC61 /* readable-formatting.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "readable-formatting.html"; sourceTree = "<group>"; };
+		F7C537A51F22836F0025CC61 /* UIAlertView+HNAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+HNAlertView.h"; sourceTree = "<group>"; };
+		F7C537A61F22836F0025CC61 /* UIAlertView+HNAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+HNAlertView.m"; sourceTree = "<group>"; };
+		F7C537A71F22836F0025CC61 /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+HNReaderTheme.h"; sourceTree = "<group>"; };
+		F7C537A81F22836F0025CC61 /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HNReaderTheme.m"; sourceTree = "<group>"; };
+		F7C537BB1F2284AA0025CC61 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F7E8DA051A229C15007D009E /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
 		F7E8DA061A229C15007D009E /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7E8DA071A229C15007D009E /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNClient.h; path = Shared/HNClient.h; sourceTree = "<group>"; };
@@ -162,20 +164,12 @@
 			path = readable;
 			sourceTree = "<group>";
 		};
-		F74853B91A2154CD009AE367 /* HNReader iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F775DADF14340D7E00F93F48 /* HNReader iOS */,
-			);
-			name = "HNReader iOS";
-			sourceTree = "<group>";
-		};
 		F775DACA14340D7E00F93F48 = {
 			isa = PBXGroup;
 			children = (
-				F721C30A1F224D4C00B29A85 /* Vendor */,
+				F7C537821F22836F0025CC61 /* HNReader iOS */,
 				F7CDB00A1A2298D000547F5F /* Shared */,
-				F74853B91A2154CD009AE367 /* HNReader iOS */,
+				F721C30A1F224D4C00B29A85 /* Vendor */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
 				F775DAD614340D7E00F93F48 /* Products */,
 			);
@@ -204,54 +198,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F775DADF14340D7E00F93F48 /* HNReader iOS */ = {
+		F7C537821F22836F0025CC61 /* HNReader iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F78BA17E1A2A278400D57312 /* readable-formatting.html */,
-				F7CAB0751A22C7B70074A76C /* HNCommentsDataSource.h */,
-				F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */,
-				F7CAB0771A22C7B70074A76C /* HNCommentsTableViewCell.h */,
-				F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */,
-				F7CAB0791A22C7B70074A76C /* HNCommentsTableViewCell.xib */,
-				F7CAB07A1A22C7B70074A76C /* HNCommentsViewController.h */,
-				F7CAB07B1A22C7B70074A76C /* HNCommentsViewController.m */,
-				F7CAB07C1A22C7B70074A76C /* HNEntriesDataSource.h */,
-				F7CAB07D1A22C7B70074A76C /* HNEntriesDataSource.m */,
-				F7CAB07E1A22C7B70074A76C /* HNEntriesTableViewCell.h */,
-				F7CAB07F1A22C7B70074A76C /* HNEntriesTableViewCell.m */,
-				F7CAB0801A22C7B70074A76C /* HNEntriesTableViewCell.xib */,
-				F7CAB0811A22C7B70074A76C /* HNEntriesViewController.h */,
-				F7CAB0821A22C7B70074A76C /* HNEntriesViewController.m */,
-				F7CAB0831A22C7B70074A76C /* HNLabel.h */,
-				F7CAB0841A22C7B70074A76C /* HNLabel.m */,
-				F7CAB0851A22C7B70074A76C /* HNLoadMoreTableViewCell.h */,
-				F7CAB0861A22C7B70074A76C /* HNLoadMoreTableViewCell.m */,
-				F7CAB0881A22C7B70074A76C /* HNReader-Prefix.pch */,
-				F7CAB0891A22C7B70074A76C /* HNReaderAppDelegate.h */,
-				F7CAB08A1A22C7B70074A76C /* HNReaderAppDelegate.m */,
-				F7CAB08B1A22C7B70074A76C /* HNWebViewController.h */,
-				F7CAB08C1A22C7B70074A76C /* HNWebViewController.m */,
-				F7CAB08D1A22C7B70074A76C /* Images.xcassets */,
-				F7CAB08F1A22C7B70074A76C /* Main.storyboard */,
-				F7CAB0901A22C7B70074A76C /* NSString+HNCommentTools.h */,
-				F7CAB0911A22C7B70074A76C /* NSString+HNCommentTools.m */,
-				F7CAB0921A22C7B70074A76C /* UIAlertView+HNAlertView.h */,
-				F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */,
-				F7CAB0941A22C7B70074A76C /* UIColor+HNReaderTheme.h */,
-				F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */,
-				F775DAE014340D7E00F93F48 /* Supporting Files */,
+				F7C537991F22836F0025CC61 /* HNReaderAppDelegate.m */,
+				F7C537851F22836F0025CC61 /* HNCommentsDataSource.h */,
+				F7C537861F22836F0025CC61 /* HNCommentsDataSource.m */,
+				F7C537871F22836F0025CC61 /* HNCommentsTableViewCell.h */,
+				F7C537881F22836F0025CC61 /* HNCommentsTableViewCell.m */,
+				F7C537891F22836F0025CC61 /* HNCommentsTableViewCell.xib */,
+				F7C5378A1F22836F0025CC61 /* HNCommentsViewController.h */,
+				F7C5378B1F22836F0025CC61 /* HNCommentsViewController.m */,
+				F7C5378C1F22836F0025CC61 /* HNEntriesDataSource.h */,
+				F7C5378D1F22836F0025CC61 /* HNEntriesDataSource.m */,
+				F7C5378E1F22836F0025CC61 /* HNEntriesTableViewCell.h */,
+				F7C5378F1F22836F0025CC61 /* HNEntriesTableViewCell.m */,
+				F7C537901F22836F0025CC61 /* HNEntriesTableViewCell.xib */,
+				F7C537911F22836F0025CC61 /* HNEntriesViewController.h */,
+				F7C537921F22836F0025CC61 /* HNEntriesViewController.m */,
+				F7C537931F22836F0025CC61 /* HNLabel.h */,
+				F7C537941F22836F0025CC61 /* HNLabel.m */,
+				F7C537951F22836F0025CC61 /* HNLoadMoreTableViewCell.h */,
+				F7C537961F22836F0025CC61 /* HNLoadMoreTableViewCell.m */,
+				F7C537971F22836F0025CC61 /* HNReader-Prefix.pch */,
+				F7C537981F22836F0025CC61 /* HNReaderAppDelegate.h */,
+				F7C5379A1F22836F0025CC61 /* HNWebViewController.h */,
+				F7C5379B1F22836F0025CC61 /* HNWebViewController.m */,
+				F7C5379C1F22836F0025CC61 /* Images.xcassets */,
+				F7C5379D1F22836F0025CC61 /* Info.plist */,
+				F7C5379E1F22836F0025CC61 /* main.m */,
+				F7C5379F1F22836F0025CC61 /* Main.storyboard */,
+				F7C537A01F22836F0025CC61 /* NSString+HNCommentTools.h */,
+				F7C537A11F22836F0025CC61 /* NSString+HNCommentTools.m */,
+				F7C537A21F22836F0025CC61 /* Resources */,
+				F7C537A51F22836F0025CC61 /* UIAlertView+HNAlertView.h */,
+				F7C537A61F22836F0025CC61 /* UIAlertView+HNAlertView.m */,
+				F7C537A71F22836F0025CC61 /* UIColor+HNReaderTheme.h */,
+				F7C537A81F22836F0025CC61 /* UIColor+HNReaderTheme.m */,
+				F7C537BB1F2284AA0025CC61 /* Launch Screen.storyboard */,
 			);
-			name = "HNReader iOS";
-			path = HNReader;
+			path = "HNReader iOS";
 			sourceTree = "<group>";
 		};
-		F775DAE014340D7E00F93F48 /* Supporting Files */ = {
+		F7C537A21F22836F0025CC61 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F7CAB0871A22C7B70074A76C /* Info.plist */,
-				F7CAB08E1A22C7B70074A76C /* main.m */,
+				F7C537A31F22836F0025CC61 /* ipad-formatting.html */,
+				F7C537A41F22836F0025CC61 /* readable-formatting.html */,
 			);
-			name = "Supporting Files";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F7CDB00A1A2298D000547F5F /* Shared */ = {
@@ -334,11 +329,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7CAB09C1A22C7B70074A76C /* HNEntriesTableViewCell.xib in Resources */,
-				F7CAB0A31A22C7B70074A76C /* Images.xcassets in Resources */,
-				F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */,
-				F7CAB0A51A22C7B70074A76C /* Main.storyboard in Resources */,
-				F7CAB0981A22C7B70074A76C /* HNCommentsTableViewCell.xib in Resources */,
+				F7C537B91F2283EF0025CC61 /* HNEntriesTableViewCell.xib in Resources */,
+				F7C537BA1F2283F30025CC61 /* Images.xcassets in Resources */,
+				F7C537B71F2283D40025CC61 /* Main.storyboard in Resources */,
+				F7C537BC1F2284AA0025CC61 /* Launch Screen.storyboard in Resources */,
+				F7C537B81F2283EF0025CC61 /* HNCommentsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,32 +344,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7CAB0A11A22C7B70074A76C /* HNReaderAppDelegate.m in Sources */,
 				F721C35E1F224D9800B29A85 /* rd_list.c in Sources */,
+				F7C537B41F2283800025CC61 /* NSString+HNCommentTools.m in Sources */,
 				F721C35D1F224D8400B29A85 /* HTMLParser.m in Sources */,
 				F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */,
-				F7CAB09E1A22C7B70074A76C /* HNLabel.m in Sources */,
+				F7C537B61F2283800025CC61 /* UIColor+HNReaderTheme.m in Sources */,
+				F7C537AF1F2283800025CC61 /* HNLabel.m in Sources */,
+				F7C537AE1F2283800025CC61 /* HNEntriesViewController.m in Sources */,
+				F7C537AA1F2283800025CC61 /* HNCommentsTableViewCell.m in Sources */,
 				F7E8DA161A229C15007D009E /* HNClient.m in Sources */,
 				F7E8DA191A229C15007D009E /* HNConstants.m in Sources */,
-				F7CAB09D1A22C7B70074A76C /* HNEntriesViewController.m in Sources */,
 				F721C35C1F224D8400B29A85 /* HTMLNode.m in Sources */,
-				F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */,
-				F7CAB09A1A22C7B70074A76C /* HNEntriesDataSource.m in Sources */,
 				F721C35F1F224D9A00B29A85 /* readable.c in Sources */,
+				F7C537B31F2283800025CC61 /* main.m in Sources */,
 				F7E8DA171A229C15007D009E /* HNComment.m in Sources */,
-				F7CAB0991A22C7B70074A76C /* HNCommentsViewController.m in Sources */,
 				F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */,
-				F7CAB0A61A22C7B70074A76C /* NSString+HNCommentTools.m in Sources */,
-				F7CAB0A21A22C7B70074A76C /* HNWebViewController.m in Sources */,
+				F7C537AB1F2283800025CC61 /* HNCommentsViewController.m in Sources */,
+				F7C537B51F2283800025CC61 /* UIAlertView+HNAlertView.m in Sources */,
+				F7C537AC1F2283800025CC61 /* HNEntriesDataSource.m in Sources */,
 				F7E8DA181A229C15007D009E /* HNCommentsModel.m in Sources */,
+				F7C537B11F2283800025CC61 /* HNReaderAppDelegate.m in Sources */,
+				F7C537AD1F2283800025CC61 /* HNEntriesTableViewCell.m in Sources */,
+				F7C537B01F2283800025CC61 /* HNLoadMoreTableViewCell.m in Sources */,
 				F7E8DA1B1A229C15007D009E /* HNEntry.m in Sources */,
 				F7E8DA1A1A229C15007D009E /* HNEntriesModel.m in Sources */,
-				F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */,
-				F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */,
-				F7CAB09F1A22C7B70074A76C /* HNLoadMoreTableViewCell.m in Sources */,
-				F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */,
-				F7CAB0A41A22C7B70074A76C /* main.m in Sources */,
-				F7CAB09B1A22C7B70074A76C /* HNEntriesTableViewCell.m in Sources */,
+				F7C537A91F2283800025CC61 /* HNCommentsDataSource.m in Sources */,
+				F7C537B21F2283800025CC61 /* HNWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -540,7 +534,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

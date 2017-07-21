@@ -24,6 +24,7 @@ static void *myContext = &myContext;
 //@property (nonatomic, strong) HNEntriesTableViewCell *stubCell;
 
 @property (nonatomic, strong) HNEntriesDataSource *dataSource;
+@property (nonatomic, strong) UISegmentedControl *entriesControl;
 //@property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
@@ -52,14 +53,14 @@ static void *myContext = &myContext;
     UINib *nib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
     
-    NSAssert(self.entriesControl.numberOfSegments == 3, @"Entries control expects 3 segments");
     [self.navigationItem setTitle:NSLocalizedString(@"News", @"News Entries")];
-    [self.entriesControl setTitle:NSLocalizedString(@"Front", @"Front") forSegmentAtIndex:0];
-    [self.entriesControl setTitle:NSLocalizedString(@"Newest", @"Newest") forSegmentAtIndex:1];
-    [self.entriesControl setTitle:NSLocalizedString(@"Best", @"Best") forSegmentAtIndex:2];
+    
+    NSArray<NSString *> *items = @[@"Front", @"Newest", @"Best"];
+    self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
+    self.entriesControl.selectedSegmentIndex = 0;
 
-    // use resizing mask because control needs to support landscape
-    [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.entriesControl];
+    [self setToolbarItems:@[item]];
     
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial;
     
@@ -73,13 +74,15 @@ static void *myContext = &myContext;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:NO];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    // TODO: wtf is this?
-//    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
-    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -157,7 +160,7 @@ static void *myContext = &myContext;
     [self.tableView setUserInteractionEnabled:YES];
 }
 
-- (void)operationDidFail {
+- (void)operationDidFail {    
     UIAlertView *alert = [UIAlertView hn_alertViewWithError:self.dataSource.error];
     [alert show];
 }

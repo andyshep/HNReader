@@ -47,11 +47,11 @@
                 HNEntry *entry = [[HNEntry alloc] init];
                 entry.title = [titles[1] allContents];
                 
-                if ([titles[1] children].count >= 3) {
+                if ([titles[1] children].count >= 2) {
                     HTMLNode *hrefNode = [titles[1] children][1];
-                    HTMLNode *domainNode = [titles[1] children][2];
+//                    HTMLNode *domainNode = [titles[1] children][2];
                     entry.linkURL = [hrefNode getAttributeNamed:@"href"];
-                    entry.siteDomainURL = [domainNode allContents];
+//                    entry.siteDomainURL = [domainNode allContents];
                 }
                 
                 if ([entry.linkURL hasPrefix:@"item?id="]) {
