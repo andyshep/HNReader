@@ -24,8 +24,8 @@ NSString * const HNFrontPageKey = @"front";
 NSString * const HNBestPageKey = @"best";
 NSString * const HNNewestPageKey = @"newest";
 
-NSString * const HNWebsiteBaseURL = @"http://news.ycombinator.com";
-NSString * const HNWebsitePlaceholderURL = @"http://news.ycombinator.com/%@";
+NSString * const HNWebsiteBaseURL = @"https://news.ycombinator.com";
+NSString * const HNWebsitePlaceholderURL = @"https://news.ycombinator.com/%@";
 
 NSString * const HNEntriesKeyPath = @"entries";
 NSString * const HNCommentsKeyPath = @"comments";
