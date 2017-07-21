@@ -8,20 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2701FCF0ACD51579D02D1E28 /* Pods_HNReader_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */; };
-		562E82AEA140B46654956944 /* Pods_HNReader_OS_X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */; };
-		F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281181A22BDAB00C57D60 /* AppDelegate.m */; };
-		F712811D1A22BDAB00C57D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F712811A1A22BDAB00C57D60 /* main.m */; };
-		F71281231A22BE2F00C57D60 /* HNReader_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */; };
-		F71281251A22BF0100C57D60 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F712811E1A22BDBB00C57D60 /* MainMenu.xib */; };
-		F71281571A22C07000C57D60 /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
-		F71281581A22C07000C57D60 /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA141A229C15007D009E /* HNParser.m */; };
-		F71281591A22C07000C57D60 /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
-		F712815A1A22C07000C57D60 /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
-		F712815B1A22C07000C57D60 /* HNCommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0C1A229C15007D009E /* HNCommentsModel.m */; };
-		F712815C1A22C07000C57D60 /* HNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0E1A229C15007D009E /* HNConstants.m */; };
-		F712815D1A22C07000C57D60 /* HNEntriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA101A229C15007D009E /* HNEntriesModel.m */; };
-		F712815E1A22C07000C57D60 /* HNEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA121A229C15007D009E /* HNEntry.m */; };
-		F71281601A22C45100C57D60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F712815F1A22C45100C57D60 /* Images.xcassets */; };
 		F71C31E3196C9B49003C8BCD /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACA6514354265004CF9EA /* libxml2.2.dylib */; };
 		F71C31E5196C9B96003C8BCD /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F77319C7189EC2AC00C360F1 /* libstdc++.dylib */; };
 		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
@@ -30,11 +16,6 @@
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
 		F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F78BA17E1A2A278400D57312 /* readable-formatting.html */; };
-		F78BA1841A2A35D800D57312 /* HNCommentsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */; };
-		F78BA1851A2A3B4F00D57312 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
-		F78BA1881A2A3B6100D57312 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA1871A2A3B6100D57312 /* libicucore.dylib */; };
-		F78BA18A1A2A3B7A00D57312 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */; };
-		F78BA18C1A2A3B8100D57312 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */; };
 		F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A2406E1475704D00004287 /* libicucore.dylib */; };
 		F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0761A22C7B70074A76C /* HNCommentsDataSource.m */; };
 		F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0781A22C7B70074A76C /* HNCommentsTableViewCell.m */; };
@@ -54,8 +35,6 @@
 		F7CAB0A61A22C7B70074A76C /* NSString+HNCommentTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0911A22C7B70074A76C /* NSString+HNCommentTools.m */; };
 		F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */; };
 		F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */; };
-		F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */; };
-		F7D745F11A28E1560054711D /* HNEntriesCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */; };
 		F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA061A229C15007D009E /* HNCacheManager.m */; };
 		F7E8DA161A229C15007D009E /* HNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA081A229C15007D009E /* HNClient.m */; };
 		F7E8DA171A229C15007D009E /* HNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA0A1A229C15007D009E /* HNComment.m */; };
@@ -67,26 +46,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F748539D1A2153EC009AE367 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F74853891A2153EC009AE367;
-			remoteInfo = "HNReader OSX";
-		};
 		F74853B41A215433009AE367 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F775DAD414340D7E00F93F48;
 			remoteInfo = "HNReader iOS";
-		};
-		F7F796661A263FF2006DDD4E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F74853891A2153EC009AE367;
-			remoteInfo = "HNReader OS X";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -99,16 +64,6 @@
 		E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.debug.xcconfig"; sourceTree = "<group>"; };
 		EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNReader_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F71281171A22BDAB00C57D60 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "HNReader OS X/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
-		F71281181A22BDAB00C57D60 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "HNReader OS X/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
-		F71281191A22BDAB00C57D60 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "HNReader OS X/Info.plist"; sourceTree = SOURCE_ROOT; };
-		F712811A1A22BDAB00C57D60 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "HNReader OS X/main.m"; sourceTree = SOURCE_ROOT; };
-		F712811F1A22BDBB00C57D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "HNReader OS X/Base.lproj/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
-		F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNReader_OSXTests.m; path = "HNReader OS X Tests/HNReader_OSXTests.m"; sourceTree = SOURCE_ROOT; };
-		F71281221A22BE2F00C57D60 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "HNReader OS X Tests/Info.plist"; sourceTree = SOURCE_ROOT; };
-		F712815F1A22C45100C57D60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "HNReader OS X/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		F748538A1A2153EC009AE367 /* HNReader OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader OS X Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74853B11A215433009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_iOS_Tests.m; sourceTree = "<group>"; };
@@ -128,8 +83,6 @@
 		F775DB3D1434110700F93F48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F775DB3E1434110700F93F48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F78BA17E1A2A278400D57312 /* readable-formatting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "readable-formatting.html"; path = "HNReader iOS/Resources/readable-formatting.html"; sourceTree = SOURCE_ROOT; };
-		F78BA1801A2A353B00D57312 /* HNCommentsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCommentsTableController.h; path = "HNReader OS X/HNCommentsTableController.h"; sourceTree = SOURCE_ROOT; };
-		F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCommentsTableController.m; path = "HNReader OS X/HNCommentsTableController.m"; sourceTree = SOURCE_ROOT; };
 		F78BA1871A2A3B6100D57312 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		F78BA1891A2A3B7A00D57312 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libxml2.2.dylib; sourceTree = DEVELOPER_DIR; };
 		F78BA18B1A2A3B8100D57312 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libstdc++.dylib"; sourceTree = DEVELOPER_DIR; };
@@ -167,10 +120,6 @@
 		F7CAB0931A22C7B70074A76C /* UIAlertView+HNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+HNAlertView.m"; path = "HNReader iOS/UIAlertView+HNAlertView.m"; sourceTree = SOURCE_ROOT; };
 		F7CAB0941A22C7B70074A76C /* UIColor+HNReaderTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HNReaderTheme.h"; path = "HNReader iOS/UIColor+HNReaderTheme.h"; sourceTree = SOURCE_ROOT; };
 		F7CAB0951A22C7B70074A76C /* UIColor+HNReaderTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HNReaderTheme.m"; path = "HNReader iOS/UIColor+HNReaderTheme.m"; sourceTree = SOURCE_ROOT; };
-		F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesTableController.h; path = "HNReader OS X/HNEntriesTableController.h"; sourceTree = SOURCE_ROOT; };
-		F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesTableController.m; path = "HNReader OS X/HNEntriesTableController.m"; sourceTree = SOURCE_ROOT; };
-		F7D745EE1A28E11D0054711D /* HNEntriesCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNEntriesCellView.h; path = "HNReader OS X/HNEntriesCellView.h"; sourceTree = SOURCE_ROOT; };
-		F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNEntriesCellView.m; path = "HNReader OS X/HNEntriesCellView.m"; sourceTree = SOURCE_ROOT; };
 		F7E8DA051A229C15007D009E /* HNCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCacheManager.h; path = Shared/HNCacheManager.h; sourceTree = "<group>"; };
 		F7E8DA061A229C15007D009E /* HNCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCacheManager.m; path = Shared/HNCacheManager.m; sourceTree = "<group>"; };
 		F7E8DA071A229C15007D009E /* HNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNClient.h; path = Shared/HNClient.h; sourceTree = "<group>"; };
@@ -190,24 +139,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F74853871A2153EC009AE367 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F78BA18C1A2A3B8100D57312 /* libstdc++.dylib in Frameworks */,
-				F78BA18A1A2A3B7A00D57312 /* libxml2.2.dylib in Frameworks */,
-				F78BA1881A2A3B6100D57312 /* libicucore.dylib in Frameworks */,
-				562E82AEA140B46654956944 /* Pods_HNReader_OS_X.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F74853991A2153EC009AE367 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F74853AB1A215433009AE367 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,51 +173,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F748538B1A2153EC009AE367 /* HNReader OS X */ = {
-			isa = PBXGroup;
-			children = (
-				F71281171A22BDAB00C57D60 /* AppDelegate.h */,
-				F71281181A22BDAB00C57D60 /* AppDelegate.m */,
-				F7CD5F521A27AD5F00BBDFE5 /* HNEntriesTableController.h */,
-				F7CD5F531A27AD5F00BBDFE5 /* HNEntriesTableController.m */,
-				F78BA1801A2A353B00D57312 /* HNCommentsTableController.h */,
-				F78BA1811A2A353B00D57312 /* HNCommentsTableController.m */,
-				F7D745EE1A28E11D0054711D /* HNEntriesCellView.h */,
-				F7D745EF1A28E11D0054711D /* HNEntriesCellView.m */,
-				F712811E1A22BDBB00C57D60 /* MainMenu.xib */,
-				F712815F1A22C45100C57D60 /* Images.xcassets */,
-				F748538C1A2153EC009AE367 /* Supporting Files */,
-			);
-			name = "HNReader OS X";
-			path = "HNReader OSX";
-			sourceTree = "<group>";
-		};
-		F748538C1A2153EC009AE367 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F71281191A22BDAB00C57D60 /* Info.plist */,
-				F712811A1A22BDAB00C57D60 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F748539F1A2153EC009AE367 /* HNReader OS X Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */,
-				F74853A01A2153EC009AE367 /* Supporting Files */,
-			);
-			path = "HNReader OS X Tests";
-			sourceTree = "<group>";
-		};
-		F74853A01A2153EC009AE367 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F71281221A22BE2F00C57D60 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		F74853AF1A215433009AE367 /* HNReader iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,15 +199,6 @@
 			name = "HNReader iOS";
 			sourceTree = "<group>";
 		};
-		F74853BA1A2154D9009AE367 /* HNReader OS X */ = {
-			isa = PBXGroup;
-			children = (
-				F748538B1A2153EC009AE367 /* HNReader OS X */,
-				F748539F1A2153EC009AE367 /* HNReader OS X Tests */,
-			);
-			name = "HNReader OS X";
-			sourceTree = "<group>";
-		};
 		F7556F8E1A22C9DF0065557E /* readable */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +216,6 @@
 			children = (
 				F7CDB00A1A2298D000547F5F /* Shared */,
 				F74853B91A2154CD009AE367 /* HNReader iOS */,
-				F74853BA1A2154D9009AE367 /* HNReader OS X */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
 				F775DAD614340D7E00F93F48 /* Products */,
 				04AABEA50996D06B5FCF79F1 /* Pods */,
@@ -350,8 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				F775DAD514340D7E00F93F48 /* HNReader iOS.app */,
-				F748538A1A2153EC009AE367 /* HNReader OS X.app */,
-				F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */,
 				F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */,
 			);
 			name = Products;
@@ -458,44 +332,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F74853891A2153EC009AE367 /* HNReader OS X */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */;
-			buildPhases = (
-				F517CBDD1D6A96B2FD5BE774 /* [CP] Check Pods Manifest.lock */,
-				F74853861A2153EC009AE367 /* Sources */,
-				F74853871A2153EC009AE367 /* Frameworks */,
-				F74853881A2153EC009AE367 /* Resources */,
-				B9D5DA5CCF24E08EC2208740 /* [CP] Copy Pods Resources */,
-				C29E5B81074FCA229C6BF0BE /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "HNReader OS X";
-			productName = "HNReader OSX";
-			productReference = F748538A1A2153EC009AE367 /* HNReader OS X.app */;
-			productType = "com.apple.product-type.application";
-		};
-		F748539B1A2153EC009AE367 /* HNReader OS X Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F74853A71A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X Tests" */;
-			buildPhases = (
-				F74853981A2153EC009AE367 /* Sources */,
-				F74853991A2153EC009AE367 /* Frameworks */,
-				F748539A1A2153EC009AE367 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F748539E1A2153EC009AE367 /* PBXTargetDependency */,
-			);
-			name = "HNReader OS X Tests";
-			productName = "HNReader OS X Tests";
-			productReference = F748539C1A2153EC009AE367 /* HNReader OS X Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		F74853AD1A215433009AE367 /* HNReader iOS Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */;
@@ -508,7 +344,6 @@
 			);
 			dependencies = (
 				F74853B51A215433009AE367 /* PBXTargetDependency */,
-				F7F796671A263FF2006DDD4E /* PBXTargetDependency */,
 			);
 			name = "HNReader iOS Tests";
 			productName = "HNReader iOS Tests";
@@ -544,14 +379,6 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0600;
 				TargetAttributes = {
-					F74853891A2153EC009AE367 = {
-						CreatedOnToolsVersion = 6.2;
-					};
-					F748539B1A2153EC009AE367 = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 9XH5KEL8D8;
-						TestTargetID = F74853891A2153EC009AE367;
-					};
 					F74853AD1A215433009AE367 = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = F775DAD414340D7E00F93F48;
@@ -572,29 +399,12 @@
 			projectRoot = "";
 			targets = (
 				F775DAD414340D7E00F93F48 /* HNReader iOS */,
-				F74853891A2153EC009AE367 /* HNReader OS X */,
-				F748539B1A2153EC009AE367 /* HNReader OS X Tests */,
 				F74853AD1A215433009AE367 /* HNReader iOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F74853881A2153EC009AE367 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F71281251A22BF0100C57D60 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F748539A1A2153EC009AE367 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F74853AC1A215433009AE367 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,7 +418,6 @@
 			files = (
 				F7CAB09C1A22C7B70074A76C /* HNEntriesTableViewCell.xib in Resources */,
 				F7CAB0A31A22C7B70074A76C /* Images.xcassets in Resources */,
-				F71281601A22C45100C57D60 /* Images.xcassets in Resources */,
 				F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */,
 				F7CAB0A51A22C7B70074A76C /* Main.storyboard in Resources */,
 				F7CAB0981A22C7B70074A76C /* HNCommentsTableViewCell.xib in Resources */,
@@ -647,36 +456,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9D5DA5CCF24E08EC2208740 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C29E5B81074FCA229C6BF0BE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C511BC34BE894F8FB00BD40A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -692,53 +471,9 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F517CBDD1D6A96B2FD5BE774 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F74853861A2153EC009AE367 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F712815D1A22C07000C57D60 /* HNEntriesModel.m in Sources */,
-				F78BA1851A2A3B4F00D57312 /* rd_list.c in Sources */,
-				F78BA1841A2A35D800D57312 /* HNCommentsTableController.m in Sources */,
-				F71281581A22C07000C57D60 /* HNParser.m in Sources */,
-				F712815A1A22C07000C57D60 /* HNComment.m in Sources */,
-				F712815B1A22C07000C57D60 /* HNCommentsModel.m in Sources */,
-				F712815E1A22C07000C57D60 /* HNEntry.m in Sources */,
-				F712815C1A22C07000C57D60 /* HNConstants.m in Sources */,
-				F71281571A22C07000C57D60 /* HNCacheManager.m in Sources */,
-				F712811D1A22BDAB00C57D60 /* main.m in Sources */,
-				F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */,
-				F7D745F11A28E1560054711D /* HNEntriesCellView.m in Sources */,
-				F71281591A22C07000C57D60 /* HNClient.m in Sources */,
-				F7CD5F551A27AD8200BBDFE5 /* HNEntriesTableController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F74853981A2153EC009AE367 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F71281231A22BE2F00C57D60 /* HNReader_OSXTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F74853AA1A215433009AE367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -781,159 +516,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F748539E1A2153EC009AE367 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F74853891A2153EC009AE367 /* HNReader OS X */;
-			targetProxy = F748539D1A2153EC009AE367 /* PBXContainerItemProxy */;
-		};
 		F74853B51A215433009AE367 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F775DAD414340D7E00F93F48 /* HNReader iOS */;
 			targetProxy = F74853B41A215433009AE367 /* PBXContainerItemProxy */;
 		};
-		F7F796671A263FF2006DDD4E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F74853891A2153EC009AE367 /* HNReader OS X */;
-			targetProxy = F7F796661A263FF2006DDD4E /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		F712811E1A22BDBB00C57D60 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F712811F1A22BDBB00C57D60 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		F74853A51A2153EC009AE367 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "$(SRCROOT)/HNReader OS X/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		F74853A61A2153EC009AE367 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "$(SRCROOT)/HNReader OS X/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		F74853A81A2153EC009AE367 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OS X Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OS X.app/Contents/MacOS/HNReader OS X";
-			};
-			name = Debug;
-		};
-		F74853A91A2153EC009AE367 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader OS X Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader OS X.app/Contents/MacOS/HNReader OS X";
-			};
-			name = Release;
-		};
 		F74853B71A215433009AE367 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1144,24 +734,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F74853A51A2153EC009AE367 /* Debug */,
-				F74853A61A2153EC009AE367 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F74853A71A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F74853A81A2153EC009AE367 /* Debug */,
-				F74853A91A2153EC009AE367 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
