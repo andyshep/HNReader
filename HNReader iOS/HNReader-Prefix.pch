@@ -13,8 +13,7 @@
     @import Foundation;
     @import WebKit;
 
-    #import <libextobjc/EXTScope.h>
-    #import "YapDatabase.h"
+    #import <YapDatabase/YapDatabase.h>
 
     #import "HNConstants.h"
     #import "UIColor+HNReaderTheme.h"

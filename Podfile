@@ -5,7 +5,6 @@ target 'HNReader iOS' do
 
 	pod 'TTTAttributedLabel'
 	pod 'MWFeedParser'
-	pod 'libextobjc/EXTScope'
 	pod 'YapDatabase'
 	pod 'Objective-C-HMTL-Parser'
 end
