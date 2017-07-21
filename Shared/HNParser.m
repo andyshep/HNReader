@@ -14,7 +14,7 @@
 #import "HNEntry.h"
 #import "HNComment.h"
 
-#import "NSString+HTML.h"
+//#import "NSString+HTML.h"
 #import "NSString+HNCommentTools.h"
 
 #import "HNConstants.h"
@@ -66,13 +66,13 @@
                 
                 // some stories don't have comments
                 // YC alumi job posts
-                if ([[commentTdNode children] count] >= 5) {
+                if ([[commentTdNode children] count] >= 12) {
                     entry.totalPoints = [[commentTdNode children][0] contents];
                     entry.username = [[commentTdNode children][2] contents];
-                    entry.commentsPageURL = [[commentTdNode children][4] getAttributeNamed:@"href"];
+                    entry.commentsPageURL = [[commentTdNode children][11] getAttributeNamed:@"href"];
                     
                     // FIXME
-                    entry.commentsCount = [[commentTdNode children][4] contents];
+                    entry.commentsCount = [[commentTdNode children][11] contents];
                 }
                 
                 [entries addObject:entry];

@@ -15,7 +15,7 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNCommentsTableViewCell.h"
 
-//#import "TTTAttributedLabel.h"
+static void *myContext = &myContext;
 
 @interface HNCommentsDataSource ()
 
@@ -36,21 +36,35 @@
         self.entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:self.entry];
         
-//        [RACObserve(self.model, comments) subscribeNext:^(id comments) {
-//            self.comments = comments;
-//        }];
-//        
-//        [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
-//            self.error = error;
-//        }];
+        NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial;
+        
+        [self.model addObserver:self forKeyPath:@"comments" options:options context:myContext];
+        [self.model addObserver:self forKeyPath:@"error" options:options context:myContext];
         
         [self reloadComments];
     }
     return self;
 }
 
+- (void)dealloc {
+    [self.model removeObserver:self forKeyPath:@"comments"];
+    [self.model removeObserver:self forKeyPath:@"error"];
+}
+
 - (void)reloadComments {
     [self.model loadComments];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (context == myContext) {
+        if ([keyPath isEqualToString:@"comments"]) {
+            self.comments = self.model.comments;
+        } else if ([keyPath isEqualToString:@"error"]) {
+            self.error = self.model.error;
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - UITableView

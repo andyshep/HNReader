@@ -10,6 +10,6 @@
 
 @interface HNClient : NSObject
 
-- (NSURLSessionTask *)taskForURLRequest:(NSURLRequest *)request success:(void (^)(id))success error:(void (^)(NSError *))error;
+- (NSURLSessionTask *)taskForURLRequest:(NSURLRequest *)request success:(void (^)(NSData *))success error:(void (^)(NSError *))error;
 
 @end

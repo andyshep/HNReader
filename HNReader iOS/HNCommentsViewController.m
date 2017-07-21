@@ -21,6 +21,8 @@
 #import "NSString+HNCommentTools.h"
 #import "UIAlertView+HNAlertView.h"
 
+static void *myContext = &myContext;
+
 @interface HNCommentsViewController ()
 
 @property (nonatomic, strong) HNCommentsDataSource *dataSource;
@@ -35,6 +37,9 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    [self.dataSource removeObserver:self forKeyPath:@"comments"];
+    [self.dataSource removeObserver:self forKeyPath:@"error"];
 }
 
 - (void)viewDidLoad {
@@ -53,11 +58,12 @@
     UINib *commentNib = [UINib nibWithNibName:HNCommentsTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:commentNib forCellReuseIdentifier:HNCommentsTableViewCellIdentifier];
     
-    // TODO:
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial;
     
-    // reload tableview
-    // listen for errors, show alerts
-    // wire up reload button, refresh comments
+    [self.dataSource addObserver:self forKeyPath:@"comments" options:options context:myContext];
+    [self.dataSource addObserver:self forKeyPath:@"error" options:options context:myContext];
+    
+    // TODO: wire refresh button to selector
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,6 +73,19 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self.tableView.visibleCells makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (context == myContext) {
+        if ([keyPath isEqualToString:@"comments"]) {
+            [self.tableView reloadData];
+        } else if ([keyPath isEqualToString:@"error"]) {
+            // TODO: present error
+            NSLog(@"unhandled error: %@", self.dataSource.error);
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - UITableView

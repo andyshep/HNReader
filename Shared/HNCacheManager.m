@@ -11,6 +11,8 @@
 
 @interface HNCacheManager ()
 
+@property (nonatomic, readwrite) NSCache *cache;
+
 - (NSString *)databasePath;
 - (void)refreshReaderConnection:(NSNotification *)notification;
 
@@ -30,47 +32,19 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-//        self.database = [[YapDatabase alloc] initWithPath:[self databasePath]];
-//        self.writerConnection = [self.database newConnection];
-//        self.readerConnection = [self.database newConnection];
-//        [self.readerConnection beginLongLivedReadTransaction];
-//
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshReaderConnection:) name:YapDatabaseModifiedNotification object:nil];
+        self.cache = [[NSCache alloc] init];
     }
     
     return self;
 }
 
 - (NSArray *)cachedEntriesForKey:(NSString *)key {
-    __block BOOL shouldExpireCache = NO;
-    __block NSArray *entries = nil;
-//    [self.readerConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
-//        NSNumber *metadata = [transaction metadataForKey:key inCollection:HNEntriesKeyPath];
-//        NSDate *modificationDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[metadata doubleValue]];
-//
-//        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:modificationDate];
-//        if (interval > HNMaxDatabaseCacheInterval) {
-//            shouldExpireCache = YES;
-//        } else {
-//            entries = [transaction objectForKey:key inCollection:HNEntriesKeyPath];
-//        }
-//    }];
-//
-//    if (shouldExpireCache) {
-//        NSLog(@"expiring cache for %@...", key);
-//        [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-//            [transaction removeObjectForKey:key inCollection:HNEntriesKeyPath];
-//        }];
-//    }
-    
+    NSArray *entries = [self.cache objectForKey:key];
     return entries;
 }
 
 - (void)cacheEntries:(NSArray *)entries forKey:(NSString *)key {
-//    [self.writerConnection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
-//        NSNumber *metadata = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]];
-//        [transaction setObject:entries forKey:key inCollection:HNEntriesKeyPath withMetadata:metadata];
-//    }];
+    [self.cache setObject:entries forKey:key];
 }
 
 - (id)cachedCommentsForKey:(NSString *)key {

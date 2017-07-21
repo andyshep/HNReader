@@ -23,7 +23,7 @@
     return self;
 }
 
-- (NSURLSessionTask *)taskForURLRequest:(NSURLRequest *)request success:(void (^)(id))success error:(void (^)(NSError *))error {
+- (NSURLSessionTask *)taskForURLRequest:(NSURLRequest *)request success:(void (^)(NSData *))success error:(void (^)(NSError *))error {
     NSURLSession *session = [NSURLSession sessionWithConfiguration:self.sessionConfig];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *err) {
         if (!err) {

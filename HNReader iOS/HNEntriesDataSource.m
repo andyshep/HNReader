@@ -14,6 +14,8 @@
 
 #import "HNConstants.h"
 
+static void *myContext = &myContext;
+
 @interface HNEntriesDataSource ()
 
 @property (nonatomic, weak) UITableView *tableView;
@@ -31,15 +33,29 @@
         self.model = [[HNEntriesModel alloc] init];
         self.tableView = tableView;
         
-//        [RACObserve(self.model, error) subscribeNext:^(id x) {
-//            self.error = self.model.error;
-//        }];
-//        
-//        [RACObserve(self.model, entries) subscribeNext:^(id x) {
-//            self.entries = self.model.entries;
-//        }];
+        NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial;
+        
+        [self.model addObserver:self forKeyPath:@"error" options:options context:myContext];
+        [self.model addObserver:self forKeyPath:@"entries" options:options context:myContext];
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.model removeObserver:self forKeyPath:@"entries"];
+    [self.model removeObserver:self forKeyPath:@"error"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (context == myContext) {
+        if ([keyPath isEqualToString:@"entries"]) {
+            self.entries = self.model.entries;
+        } else if ([keyPath isEqualToString:@"error"]) {
+            self.error = self.model.error;
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 - (void)loadEntriesForIndex:(NSUInteger)index {

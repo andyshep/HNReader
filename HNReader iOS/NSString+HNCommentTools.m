@@ -7,7 +7,7 @@
 //
 
 #import "NSString+HNCommentTools.h"
-#import "NSString+HTML.h"
+//#import "NSString+HTML.h"
 
 #define COMMENT_CELL_MARGIN 10.0f
 
@@ -45,9 +45,9 @@
 - (NSString *)hn_stringAsFormatedCommentText {
     NSString *commentText = self;
     
-    commentText = [commentText stringByConvertingHTMLToPlainText];
-    commentText = [commentText stringByDecodingHTMLEntities];
-    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    commentText = [commentText stringByConvertingHTMLToPlainText];
+//    commentText = [commentText stringByDecodingHTMLEntities];
+//    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     return commentText;
 }

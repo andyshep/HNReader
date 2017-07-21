@@ -17,6 +17,8 @@
 
 #import "UIAlertView+HNAlertView.h"
 
+static void *myContext = &myContext;
+
 @interface HNEntriesViewController ()
 
 //@property (nonatomic, strong) HNEntriesTableViewCell *stubCell;
@@ -33,6 +35,8 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    [self.dataSource removeObserver:self forKeyPath:@"entries"];
 }
 
 - (void)viewDidLoad {
@@ -57,29 +61,14 @@
     // use resizing mask because control needs to support landscape
     [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
-//    @weakify(self);
-//    [RACObserve(self.dataSource, entries) subscribeNext:^(NSArray *entries) {
-//        @strongify(self);
-//        [self entriesDidLoad];
-//    }];
-//    
-//    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
-//        if (error) {
-//            UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
-//            [alert show];
-//        }
-//    }];
-//    
-//    [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
-//        @strongify(self);
-//        [self loadEntries];
-//    }];
-//    
-//    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        @strongify(self);
-//        [self reloadEntries];
-//        return [RACSignal empty];
-//    }];
+    NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial;
+    
+    [self.dataSource addObserver:self forKeyPath:@"entries" options:options context:myContext];
+    [self.dataSource addObserver:self forKeyPath:@"error" options:options context:myContext];
+    
+    [self.entriesControl addObserver:self forKeyPath:@"selectedSegmentIndex" options:options context:myContext];
+    
+    // TODO: wire up setup refresh button to selector
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,6 +80,21 @@
     // TODO: wtf is this?
 //    [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(setNeedsUpdateConstraints)];
     [[self.tableView visibleCells] makeObjectsPerformSelector:@selector(layoutIfNeeded)];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (context == myContext) {
+        if ([keyPath isEqualToString:@"entries"]) {
+            [self entriesDidLoad];
+        } else if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
+            [self loadEntries];
+        } else if ([keyPath isEqualToString:@"error"]) {
+            // TODO: present error
+            NSLog(@"unhandled error: %@", self.dataSource.error);
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:nil];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
