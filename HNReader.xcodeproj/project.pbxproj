@@ -11,7 +11,6 @@
 		F721C3071F224A5000B29A85 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3061F224A4B00B29A85 /* libicucore.tbd */; };
 		F721C3081F224B7B00B29A85 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3001F22492A00B29A85 /* HTMLParser.m */; };
 		F721C3091F224B7D00B29A85 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C2FE1F22492A00B29A85 /* HTMLNode.m */; };
-		F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */; };
 		F7556F941A22C9EF0065557E /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
 		F7556F961A22C9EF0065557E /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F921A22C9EF0065557E /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
@@ -45,16 +44,6 @@
 		F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E8DA141A229C15007D009E /* HNParser.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F74853B41A215433009AE367 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F775DACC14340D7E00F93F48 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F775DAD414340D7E00F93F48;
-			remoteInfo = "HNReader iOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F721C2E51F2248DB00B29A85 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Vendor/MWFeedParser/Classes/RootViewController.h; sourceTree = SOURCE_ROOT; };
@@ -84,9 +73,6 @@
 		F721C3001F22492A00B29A85 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		F721C3021F2249F800B29A85 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		F721C3061F224A4B00B29A85 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HNReader iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F74853B11A215433009AE367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNReader_iOS_Tests.m; sourceTree = "<group>"; };
 		F7556F8F1A22C9EF0065557E /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
 		F7556F901A22C9EF0065557E /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
 		F7556F911A22C9EF0065557E /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
@@ -151,13 +137,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F74853AB1A215433009AE367 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F775DAD214340D7E00F93F48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,28 +201,10 @@
 			path = "Vendor/Objective-C-HMTL-Parser";
 			sourceTree = SOURCE_ROOT;
 		};
-		F74853AF1A215433009AE367 /* HNReader iOS Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F74853B21A215433009AE367 /* HNReader_iOS_Tests.m */,
-				F74853B01A215433009AE367 /* Supporting Files */,
-			);
-			path = "HNReader iOS Tests";
-			sourceTree = "<group>";
-		};
-		F74853B01A215433009AE367 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F74853B11A215433009AE367 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		F74853B91A2154CD009AE367 /* HNReader iOS */ = {
 			isa = PBXGroup;
 			children = (
 				F775DADF14340D7E00F93F48 /* HNReader iOS */,
-				F74853AF1A215433009AE367 /* HNReader iOS Tests */,
 			);
 			name = "HNReader iOS";
 			sourceTree = "<group>";
@@ -275,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				F775DAD514340D7E00F93F48 /* HNReader iOS.app */,
-				F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,24 +332,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F74853AD1A215433009AE367 /* HNReader iOS Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */;
-			buildPhases = (
-				F74853AA1A215433009AE367 /* Sources */,
-				F74853AB1A215433009AE367 /* Frameworks */,
-				F74853AC1A215433009AE367 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F74853B51A215433009AE367 /* PBXTargetDependency */,
-			);
-			name = "HNReader iOS Tests";
-			productName = "HNReader iOS Tests";
-			productReference = F74853AE1A215433009AE367 /* HNReader iOS Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		F775DAD414340D7E00F93F48 /* HNReader iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader iOS" */;
@@ -416,10 +358,6 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
-					F74853AD1A215433009AE367 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = F775DAD414340D7E00F93F48;
-					};
 					F775DAD414340D7E00F93F48 = {
 						DevelopmentTeam = 9XH5KEL8D8;
 					};
@@ -439,19 +377,11 @@
 			projectRoot = "";
 			targets = (
 				F775DAD414340D7E00F93F48 /* HNReader iOS */,
-				F74853AD1A215433009AE367 /* HNReader iOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F74853AC1A215433009AE367 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F775DAD314340D7E00F93F48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,14 +397,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F74853AA1A215433009AE367 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F74853B31A215433009AE367 /* HNReader_iOS_Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F775DAD114340D7E00F93F48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,76 +432,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F74853B51A215433009AE367 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F775DAD414340D7E00F93F48 /* HNReader iOS */;
-			targetProxy = F74853B41A215433009AE367 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		F74853B71A215433009AE367 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader iOS Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
-			};
-			name = Debug;
-		};
-		F74853B81A215433009AE367 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "HNReader iOS Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.andyshep.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HNReader iOS.app/HNReader iOS";
-			};
-			name = Release;
-		};
 		F775DB1014340D7F00F93F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -762,15 +615,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F74853B61A215433009AE367 /* Build configuration list for PBXNativeTarget "HNReader iOS Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F74853B71A215433009AE367 /* Debug */,
-				F74853B81A215433009AE367 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F775DACF14340D7E00F93F48 /* Build configuration list for PBXProject "HNReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
