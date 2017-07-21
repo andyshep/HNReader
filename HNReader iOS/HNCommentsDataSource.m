@@ -15,7 +15,7 @@
 #import "HNEntriesTableViewCell.h"
 #import "HNCommentsTableViewCell.h"
 
-#import <TTTAttributedLabel.h>
+#import "TTTAttributedLabel.h"
 
 @interface HNCommentsDataSource () <TTTAttributedLabelDelegate>
 

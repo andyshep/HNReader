@@ -13,9 +13,9 @@
     @import Foundation;
     @import WebKit;
 
-    #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import "ReactiveCocoa/ReactiveCocoa.h"
     #import <libextobjc/EXTScope.h>
-    #import <YapDatabase.h>
+    #import "YapDatabase.h"
 
     #import "HNConstants.h"
     #import "UIColor+HNReaderTheme.h"
