@@ -10,12 +10,12 @@
 
 @interface HNCacheManager : NSObject
 
-+ (instancetype)sharedManager;
++ (nonnull instancetype)sharedManager;
 
-- (NSArray *)cachedEntriesForKey:(NSString *)key;
-- (void)cacheEntries:(NSArray *)entries forKey:(NSString *)key;
+- (nullable NSArray *)cachedEntriesForKey:(nonnull NSString *)key;
+- (void)cacheEntries:(nonnull NSArray *)entries forKey:(nonnull NSString *)key;
 
-- (NSDictionary *)cachedCommentsForKey:(NSString *)key;
-- (void)cacheComments:(NSDictionary *)comments forKey:(NSString *)key;
+- (nullable NSDictionary *)cachedCommentsForKey:(nonnull NSString *)key;
+- (void)cacheComments:(nonnull NSDictionary *)comments forKey:(nonnull NSString *)key;
 
 @end

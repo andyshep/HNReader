@@ -10,19 +10,19 @@
 
 @interface HNEntriesModel : NSObject
 
-@property (nonatomic, copy, readonly) NSError *error;
-@property (nonatomic, copy) NSString *moreEntriesLink;
+@property (nullable, nonatomic, copy, readonly) NSError *error;
+@property (nullable, nonatomic, copy) NSString *moreEntriesLink;
 
 - (void)loadEntriesForIndex:(NSUInteger)index;
 - (void)reloadEntriesForIndex:(NSUInteger)index;
 
 - (void)loadMoreEntriesForIndex:(NSUInteger)index;
-- (void)loadEntriesForRequest:(NSURLRequest *)request withCacheKey:(NSString *)cachedKey;
+- (void)loadEntriesForRequest:(nonnull NSURLRequest *)request withCacheKey:(nonnull NSString *)cachedKey;
 
 @end
 
 @interface HNEntriesModel (HNCollections)
 
-@property (nonatomic, strong, readonly) NSArray *entries;
+@property (nonnull, nonatomic, strong, readonly) NSArray *entries;
 
 @end

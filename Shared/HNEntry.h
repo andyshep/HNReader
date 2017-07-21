@@ -10,12 +10,12 @@
 
 @interface HNEntry : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *linkURL;
-@property (nonatomic, copy) NSString *commentsPageURL;
-@property (nonatomic, copy) NSString *siteDomainURL;
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *commentsCount;
-@property (nonatomic, copy) NSString *totalPoints;
+@property (nonnull, nonatomic, copy) NSString *title;
+@property (nonnull, nonatomic, copy) NSString *linkURL;
+@property (nonnull, nonatomic, copy) NSString *commentsPageURL;
+@property (nonnull, nonatomic, copy) NSString *siteDomainURL;
+@property (nonnull, nonatomic, copy) NSString *username;
+@property (nonnull, nonatomic, copy) NSString *commentsCount;
+@property (nonnull, nonatomic, copy) NSString *totalPoints;
 
 @end

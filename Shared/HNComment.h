@@ -10,9 +10,9 @@
 
 @interface HNComment : NSObject <NSCoding>
 
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *timeSinceCreation;
-@property (nonatomic, copy) NSString *commentString;
+@property (nonnull, nonatomic, copy) NSString *username;
+@property (nonnull, nonatomic, copy) NSString *timeSinceCreation;
+@property (nonnull, nonatomic, copy) NSString *commentString;
 @property (nonatomic, assign) NSInteger padding;
 
 @end

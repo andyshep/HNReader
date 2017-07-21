@@ -12,13 +12,13 @@
 
 @interface HNCommentsModel : NSObject
 
-@property (nonatomic, copy, readonly) NSDictionary *comments;
-@property (nonatomic, copy) NSError *error;
-@property (nonatomic, strong) HNEntry *entry;
+@property (nonnull, nonatomic, copy, readonly) NSDictionary *comments;
+@property (nonnull, nonatomic, copy) NSError *error;
+@property (nonnull, nonatomic, strong) HNEntry *entry;
 
-- (instancetype)initWithEntry:(HNEntry *)entry;
+- (nonnull instancetype)initWithEntry:(nonnull HNEntry *)entry;
 
 - (void)loadComments;
-- (void)loadCommentsForRequest:(NSURLRequest *)request;
+- (void)loadCommentsForRequest:(nonnull NSURLRequest *)request;
 
 @end

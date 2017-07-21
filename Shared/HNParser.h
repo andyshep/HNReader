@@ -10,7 +10,7 @@
 
 @interface HNParser : NSObject
 
-+ (NSDictionary *)parsedEntriesFromResponse:(id)response;
-+ (NSDictionary *)parsedCommentsFromResponse:(id)response;
++ (nullable NSDictionary *)parsedEntriesFromResponse:(nullable id)response;
++ (nullable NSDictionary *)parsedCommentsFromResponse:(nullable id)response;
 
 @end
