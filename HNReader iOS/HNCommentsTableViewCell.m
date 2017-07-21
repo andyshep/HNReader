@@ -46,8 +46,8 @@
     [self.timeLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     [self.commentTextLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
     
-    self.commentTextLabel.delegate = nil;
-    [self.commentTextLabel setEnabledTextCheckingTypes:NSTextCheckingTypeLink];
+//    self.commentTextLabel.delegate = nil;
+//    [self.commentTextLabel setEnabledTextCheckingTypes:NSTextCheckingTypeLink];
 }
 
 @end
