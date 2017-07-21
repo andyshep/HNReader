@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */; };
-		BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */; };
+		2701FCF0ACD51579D02D1E28 /* Pods_HNReader_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */; };
+		562E82AEA140B46654956944 /* Pods_HNReader_OS_X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */; };
 		F712811B1A22BDAB00C57D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281181A22BDAB00C57D60 /* AppDelegate.m */; };
 		F712811D1A22BDAB00C57D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F712811A1A22BDAB00C57D60 /* main.m */; };
 		F71281231A22BE2F00C57D60 /* HNReader_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F71281211A22BE2F00C57D60 /* HNReader_OSXTests.m */; };
@@ -91,13 +91,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		531D5B35C56BCECED1BA5408 /* Pods-HNReader OS X.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.release.xcconfig"; sourceTree = "<group>"; };
-		9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HNReader OS X.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNReader_OS_X.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88E3EAE52E71F17122A60C9 /* Pods-HNReader iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA80079524E4F5FBE1F3871 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE1D00BC77BAAAAA01700B6 /* Pods-HNReader iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E994DDBC5901394C25F2D4F3 /* Pods-HNReader OS X.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HNReader OS X.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X.debug.xcconfig"; sourceTree = "<group>"; };
+		EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNReader_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F71281171A22BDAB00C57D60 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "HNReader OS X/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		F71281181A22BDAB00C57D60 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "HNReader OS X/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
@@ -197,7 +197,7 @@
 				F78BA18C1A2A3B8100D57312 /* libstdc++.dylib in Frameworks */,
 				F78BA18A1A2A3B7A00D57312 /* libxml2.2.dylib in Frameworks */,
 				F78BA1881A2A3B6100D57312 /* libicucore.dylib in Frameworks */,
-				BBEFFC1C6840124824D3BDD1 /* libPods-HNReader OS X.a in Frameworks */,
+				562E82AEA140B46654956944 /* Pods_HNReader_OS_X.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,7 @@
 				F7A2406F1475704D00004287 /* libicucore.dylib in Frameworks */,
 				F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */,
 				F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */,
-				0543517766E62D42CABE42AB /* libPods-HNReader iOS.a in Frameworks */,
+				2701FCF0ACD51579D02D1E28 /* Pods_HNReader_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +375,8 @@
 				F76ACA6514354265004CF9EA /* libxml2.2.dylib */,
 				F7A2406E1475704D00004287 /* libicucore.dylib */,
 				DBA80079524E4F5FBE1F3871 /* libPods.a */,
-				9E8AF2D02AC17B25A692CF5A /* libPods-HNReader OS X.a */,
-				2B912C5AA3874D1ECCF9872B /* libPods-HNReader iOS.a */,
+				690E43394F70FDE60F463668 /* Pods_HNReader_OS_X.framework */,
+				EFCE051492A65D3A5D2A8D52 /* Pods_HNReader_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -462,11 +462,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F74853A41A2153EC009AE367 /* Build configuration list for PBXNativeTarget "HNReader OS X" */;
 			buildPhases = (
-				F517CBDD1D6A96B2FD5BE774 /* Check Pods Manifest.lock */,
+				F517CBDD1D6A96B2FD5BE774 /* [CP] Check Pods Manifest.lock */,
 				F74853861A2153EC009AE367 /* Sources */,
 				F74853871A2153EC009AE367 /* Frameworks */,
 				F74853881A2153EC009AE367 /* Resources */,
-				B9D5DA5CCF24E08EC2208740 /* Copy Pods Resources */,
+				B9D5DA5CCF24E08EC2208740 /* [CP] Copy Pods Resources */,
+				C29E5B81074FCA229C6BF0BE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -518,11 +519,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F775DB1214340D7F00F93F48 /* Build configuration list for PBXNativeTarget "HNReader iOS" */;
 			buildPhases = (
-				534CD3E76477478099402D64 /* Check Pods Manifest.lock */,
+				534CD3E76477478099402D64 /* [CP] Check Pods Manifest.lock */,
 				F775DAD114340D7E00F93F48 /* Sources */,
 				F775DAD214340D7E00F93F48 /* Frameworks */,
 				F775DAD314340D7E00F93F48 /* Resources */,
-				C511BC34BE894F8FB00BD40A /* Copy Pods Resources */,
+				C511BC34BE894F8FB00BD40A /* [CP] Copy Pods Resources */,
+				749E4DAFC4D316FA7B576DE0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -616,28 +618,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		534CD3E76477478099402D64 /* Check Pods Manifest.lock */ = {
+		534CD3E76477478099402D64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 		};
-		B9D5DA5CCF24E08EC2208740 /* Copy Pods Resources */ = {
+		749E4DAFC4D316FA7B576DE0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9D5DA5CCF24E08EC2208740 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,14 +662,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C511BC34BE894F8FB00BD40A /* Copy Pods Resources */ = {
+		C29E5B81074FCA229C6BF0BE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader OS X/Pods-HNReader OS X-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C511BC34BE894F8FB00BD40A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,19 +692,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HNReader iOS/Pods-HNReader iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F517CBDD1D6A96B2FD5BE774 /* Check Pods Manifest.lock */ = {
+		F517CBDD1D6A96B2FD5BE774 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
