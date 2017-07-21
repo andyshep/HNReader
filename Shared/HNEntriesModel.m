@@ -136,13 +136,11 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (void)loadEntriesForRequest:(NSURLRequest *)request withCacheKey:(NSString *)cachedKey {
-    [[self.client signalForRequest:request] subscribeNext:^(id response) {
+    [[self.client taskForURLRequest:request success:^(id response) {
         [self parseResponse:response withCacheKey:cachedKey];
     } error:^(NSError *error) {
         self.error = error;
-    } completed:^{
-        // no-op
-    }];
+    }] resume];
 }
 
 - (void)parseResponse:(NSData *)response withCacheKey:(NSString *)cacheKey {

@@ -36,13 +36,13 @@
         self.entry = entry;
         self.model = [[HNCommentsModel alloc] initWithEntry:self.entry];
         
-        [RACObserve(self.model, comments) subscribeNext:^(id comments) {
-            self.comments = comments;
-        }];
-        
-        [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
-            self.error = error;
-        }];
+//        [RACObserve(self.model, comments) subscribeNext:^(id comments) {
+//            self.comments = comments;
+//        }];
+//        
+//        [RACObserve(self.model, error) subscribeNext:^(NSError *error) {
+//            self.error = error;
+//        }];
         
         [self reloadComments];
     }

@@ -13,7 +13,6 @@
     @import Foundation;
     @import WebKit;
 
-    #import "ReactiveCocoa/ReactiveCocoa.h"
     #import <libextobjc/EXTScope.h>
     #import "YapDatabase.h"
 

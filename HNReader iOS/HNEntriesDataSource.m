@@ -31,13 +31,13 @@
         self.model = [[HNEntriesModel alloc] init];
         self.tableView = tableView;
         
-        [RACObserve(self.model, error) subscribeNext:^(id x) {
-            self.error = self.model.error;
-        }];
-        
-        [RACObserve(self.model, entries) subscribeNext:^(id x) {
-            self.entries = self.model.entries;
-        }];
+//        [RACObserve(self.model, error) subscribeNext:^(id x) {
+//            self.error = self.model.error;
+//        }];
+//        
+//        [RACObserve(self.model, entries) subscribeNext:^(id x) {
+//            self.entries = self.model.entries;
+//        }];
     }
     return self;
 }

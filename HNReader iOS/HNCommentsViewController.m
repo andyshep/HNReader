@@ -53,24 +53,11 @@
     UINib *commentNib = [UINib nibWithNibName:HNCommentsTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:commentNib forCellReuseIdentifier:HNCommentsTableViewCellIdentifier];
     
-    @weakify(self);
-    [RACObserve(self.dataSource, comments) subscribeNext:^(id comments) {
-        @strongify(self);
-        [self.tableView reloadData];
-    }];
+    // TODO:
     
-    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
-        if (error) {
-            UIAlertView *alertView = [UIAlertView hn_alertViewWithError:error];
-            [alertView show];
-        }
-    }];
-    
-    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        [self.dataSource reloadComments];
-        return [RACSignal empty];
-    }];
+    // reload tableview
+    // listen for errors, show alerts
+    // wire up reload button, refresh comments
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -44,14 +44,14 @@
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.webView];
     
-    self.readableButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        self.showReadableContent = !self.showReadableContent;
-        return [RACSignal empty];
-    }];
-    
-    [RACObserve(self, showReadableContent) subscribeNext:^(id x) {
-        [self toggleReadableDisplay];
-    }];
+//    self.readableButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//        self.showReadableContent = !self.showReadableContent;
+//        return [RACSignal empty];
+//    }];
+//    
+//    [RACObserve(self, showReadableContent) subscribeNext:^(id x) {
+//        [self toggleReadableDisplay];
+//    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -57,29 +57,29 @@
     // use resizing mask because control needs to support landscape
     [self.entriesControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     
-    @weakify(self);
-    [RACObserve(self.dataSource, entries) subscribeNext:^(NSArray *entries) {
-        @strongify(self);
-        [self entriesDidLoad];
-    }];
-    
-    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
-        if (error) {
-            UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
-            [alert show];
-        }
-    }];
-    
-    [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
-        @strongify(self);
-        [self loadEntries];
-    }];
-    
-    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        [self reloadEntries];
-        return [RACSignal empty];
-    }];
+//    @weakify(self);
+//    [RACObserve(self.dataSource, entries) subscribeNext:^(NSArray *entries) {
+//        @strongify(self);
+//        [self entriesDidLoad];
+//    }];
+//    
+//    [RACObserve(self.dataSource, error) subscribeNext:^(NSError *error) {
+//        if (error) {
+//            UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
+//            [alert show];
+//        }
+//    }];
+//    
+//    [RACObserve(self.entriesControl, selectedSegmentIndex) subscribeNext:^(id x) {
+//        @strongify(self);
+//        [self loadEntries];
+//    }];
+//    
+//    self.refreshButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+//        @strongify(self);
+//        [self reloadEntries];
+//        return [RACSignal empty];
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

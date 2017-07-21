@@ -48,16 +48,15 @@
 }
 
 - (void)loadCommentsForRequest:(NSURLRequest *)request {
-    [[self.client signalForRequest:request] subscribeNext:^(id response) {
+    
+    [[self.client taskForURLRequest:request success:^(id response) {
         NSDictionary *comments = [HNParser parsedCommentsFromResponse:response];
         self.comments = [NSDictionary dictionaryWithDictionary:comments];
         NSString *commentId = [self.entry.commentsPageURL substringFromIndex:8];
         [[HNCacheManager sharedManager] cacheComments:comments forKey:commentId];
     } error:^(NSError *error) {
         self.error = error;
-    } completed:^{
-        // no-op
-    }];
+    }] resume];
 }
 
 @end
