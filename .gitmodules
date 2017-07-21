@@ -1,5 +1,5 @@
-[submodule "readable"]
-	path = readable
+[submodule "Vendor/readable"]
+	path = Vendor/readable
 	url = git@github.com:andyshep/readable.git
 [submodule "Vendor/MWFeedParser"]
 	path = Vendor/MWFeedParser

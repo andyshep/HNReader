@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		F721C3031F224A0300B29A85 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3021F2249F800B29A85 /* libxml2.2.tbd */; };
 		F721C3071F224A5000B29A85 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3061F224A4B00B29A85 /* libicucore.tbd */; };
-		F721C3081F224B7B00B29A85 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3001F22492A00B29A85 /* HTMLParser.m */; };
-		F721C3091F224B7D00B29A85 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C2FE1F22492A00B29A85 /* HTMLNode.m */; };
-		F7556F941A22C9EF0065557E /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F901A22C9EF0065557E /* rd_list.c */; };
-		F7556F961A22C9EF0065557E /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F7556F921A22C9EF0065557E /* readable.c */; };
+		F721C35C1F224D8400B29A85 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3331F224D4C00B29A85 /* HTMLNode.m */; };
+		F721C35D1F224D8400B29A85 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3351F224D4C00B29A85 /* HTMLParser.m */; };
+		F721C35E1F224D9800B29A85 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F721C33D1F224D4C00B29A85 /* rd_list.c */; };
+		F721C35F1F224D9A00B29A85 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F721C33F1F224D4C00B29A85 /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
 		F775DADC14340D7E00F93F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DADB14340D7E00F93F48 /* Foundation.framework */; };
 		F78BA17F1A2A278400D57312 /* readable-formatting.html in Resources */ = {isa = PBXBuildFile; fileRef = F78BA17E1A2A278400D57312 /* readable-formatting.html */; };
@@ -46,38 +46,17 @@
 
 /* Begin PBXFileReference section */
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F721C2E51F2248DB00B29A85 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Vendor/MWFeedParser/Classes/RootViewController.h; sourceTree = SOURCE_ROOT; };
-		F721C2E61F2248DB00B29A85 /* MWFeedParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedParser.m; path = Vendor/MWFeedParser/Classes/MWFeedParser.m; sourceTree = SOURCE_ROOT; };
-		F721C2E71F2248DB00B29A85 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Vendor/MWFeedParser/Classes/RootViewController.m; sourceTree = SOURCE_ROOT; };
-		F721C2E81F2248DB00B29A85 /* MWFeedInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedInfo.m; path = Vendor/MWFeedParser/Classes/MWFeedInfo.m; sourceTree = SOURCE_ROOT; };
-		F721C2E91F2248DB00B29A85 /* MWFeedInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedInfo.h; path = Vendor/MWFeedParser/Classes/MWFeedInfo.h; sourceTree = SOURCE_ROOT; };
-		F721C2EA1F2248DB00B29A85 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "GTMNSString+HTML.m"; path = "Vendor/MWFeedParser/Classes/GTMNSString+HTML.m"; sourceTree = SOURCE_ROOT; };
-		F721C2EB1F2248DB00B29A85 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+HTML.h"; path = "Vendor/MWFeedParser/Classes/GTMNSString+HTML.h"; sourceTree = SOURCE_ROOT; };
-		F721C2EC1F2248DB00B29A85 /* MWFeedParserAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedParserAppDelegate.m; path = Vendor/MWFeedParser/Classes/MWFeedParserAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		F721C2ED1F2248DB00B29A85 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDate+InternetDateTime.m"; path = "Vendor/MWFeedParser/Classes/NSDate+InternetDateTime.m"; sourceTree = SOURCE_ROOT; };
-		F721C2EE1F2248DB00B29A85 /* NSString+HTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+HTML.h"; path = "Vendor/MWFeedParser/Classes/NSString+HTML.h"; sourceTree = SOURCE_ROOT; };
-		F721C2EF1F2248DB00B29A85 /* MWFeedParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParser.h; path = Vendor/MWFeedParser/Classes/MWFeedParser.h; sourceTree = SOURCE_ROOT; };
-		F721C2F01F2248DB00B29A85 /* DetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = Vendor/MWFeedParser/Classes/DetailTableViewController.m; sourceTree = SOURCE_ROOT; };
-		F721C2F11F2248DB00B29A85 /* NSString+XMLEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+XMLEntities.h"; path = "Vendor/MWFeedParser/Classes/NSString+XMLEntities.h"; sourceTree = SOURCE_ROOT; };
-		F721C2F21F2248DB00B29A85 /* MWFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MWFeedItem.m; path = Vendor/MWFeedParser/Classes/MWFeedItem.m; sourceTree = SOURCE_ROOT; };
-		F721C2F31F2248DB00B29A85 /* MWFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedItem.h; path = Vendor/MWFeedParser/Classes/MWFeedItem.h; sourceTree = SOURCE_ROOT; };
-		F721C2F41F2248DB00B29A85 /* NSString+XMLEntities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+XMLEntities.m"; path = "Vendor/MWFeedParser/Classes/NSString+XMLEntities.m"; sourceTree = SOURCE_ROOT; };
-		F721C2F51F2248DB00B29A85 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSDate+InternetDateTime.h"; path = "Vendor/MWFeedParser/Classes/NSDate+InternetDateTime.h"; sourceTree = SOURCE_ROOT; };
-		F721C2F61F2248DB00B29A85 /* MWFeedParserAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParserAppDelegate.h; path = Vendor/MWFeedParser/Classes/MWFeedParserAppDelegate.h; sourceTree = SOURCE_ROOT; };
-		F721C2F71F2248DB00B29A85 /* MWFeedParser_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MWFeedParser_Private.h; path = Vendor/MWFeedParser/Classes/MWFeedParser_Private.h; sourceTree = SOURCE_ROOT; };
-		F721C2F81F2248DB00B29A85 /* DetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = Vendor/MWFeedParser/Classes/DetailTableViewController.h; sourceTree = SOURCE_ROOT; };
-		F721C2F91F2248DB00B29A85 /* NSString+HTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTML.m"; path = "Vendor/MWFeedParser/Classes/NSString+HTML.m"; sourceTree = SOURCE_ROOT; };
-		F721C2FD1F22492A00B29A85 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
-		F721C2FE1F22492A00B29A85 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
-		F721C2FF1F22492A00B29A85 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
-		F721C3001F22492A00B29A85 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		F721C3021F2249F800B29A85 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		F721C3061F224A4B00B29A85 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		F7556F8F1A22C9EF0065557E /* khash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khash.h; path = readable/khash.h; sourceTree = "<group>"; };
-		F7556F901A22C9EF0065557E /* rd_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_list.c; path = readable/rd_list.c; sourceTree = "<group>"; };
-		F7556F911A22C9EF0065557E /* rd_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_list.h; path = readable/rd_list.h; sourceTree = "<group>"; };
-		F7556F921A22C9EF0065557E /* readable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readable.c; path = readable/readable.c; sourceTree = "<group>"; };
-		F7556F931A22C9EF0065557E /* readable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readable.h; path = readable/readable.h; sourceTree = "<group>"; };
+		F721C3321F224D4C00B29A85 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		F721C3331F224D4C00B29A85 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		F721C3341F224D4C00B29A85 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		F721C3351F224D4C00B29A85 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		F721C3381F224D4C00B29A85 /* khash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khash.h; sourceTree = "<group>"; };
+		F721C33D1F224D4C00B29A85 /* rd_list.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rd_list.c; sourceTree = "<group>"; };
+		F721C33E1F224D4C00B29A85 /* rd_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rd_list.h; sourceTree = "<group>"; };
+		F721C33F1F224D4C00B29A85 /* readable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = readable.c; sourceTree = "<group>"; };
+		F721C3401F224D4C00B29A85 /* readable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readable.h; sourceTree = "<group>"; };
 		F775DAD514340D7E00F93F48 /* HNReader iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HNReader iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F775DAD914340D7E00F93F48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F775DADB14340D7E00F93F48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,55 +130,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F721C2CE1F22487200B29A85 /* Vendor */ = {
+		F721C30A1F224D4C00B29A85 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F721C2FC1F22492A00B29A85 /* Objective-C-HMTL-Parser */,
-				F721C2CF1F22488500B29A85 /* MWFeedParser */,
+				F721C3311F224D4C00B29A85 /* Objective-C-HMTL-Parser */,
+				F721C3371F224D4C00B29A85 /* readable */,
 			);
-			name = Vendor;
-			path = "New Group";
+			path = Vendor;
 			sourceTree = "<group>";
 		};
-		F721C2CF1F22488500B29A85 /* MWFeedParser */ = {
+		F721C3311F224D4C00B29A85 /* Objective-C-HMTL-Parser */ = {
 			isa = PBXGroup;
 			children = (
-				F721C2F81F2248DB00B29A85 /* DetailTableViewController.h */,
-				F721C2F01F2248DB00B29A85 /* DetailTableViewController.m */,
-				F721C2EB1F2248DB00B29A85 /* GTMNSString+HTML.h */,
-				F721C2EA1F2248DB00B29A85 /* GTMNSString+HTML.m */,
-				F721C2E91F2248DB00B29A85 /* MWFeedInfo.h */,
-				F721C2E81F2248DB00B29A85 /* MWFeedInfo.m */,
-				F721C2F31F2248DB00B29A85 /* MWFeedItem.h */,
-				F721C2F21F2248DB00B29A85 /* MWFeedItem.m */,
-				F721C2F71F2248DB00B29A85 /* MWFeedParser_Private.h */,
-				F721C2EF1F2248DB00B29A85 /* MWFeedParser.h */,
-				F721C2E61F2248DB00B29A85 /* MWFeedParser.m */,
-				F721C2F61F2248DB00B29A85 /* MWFeedParserAppDelegate.h */,
-				F721C2EC1F2248DB00B29A85 /* MWFeedParserAppDelegate.m */,
-				F721C2F51F2248DB00B29A85 /* NSDate+InternetDateTime.h */,
-				F721C2ED1F2248DB00B29A85 /* NSDate+InternetDateTime.m */,
-				F721C2EE1F2248DB00B29A85 /* NSString+HTML.h */,
-				F721C2F91F2248DB00B29A85 /* NSString+HTML.m */,
-				F721C2F11F2248DB00B29A85 /* NSString+XMLEntities.h */,
-				F721C2F41F2248DB00B29A85 /* NSString+XMLEntities.m */,
-				F721C2E51F2248DB00B29A85 /* RootViewController.h */,
-				F721C2E71F2248DB00B29A85 /* RootViewController.m */,
+				F721C3321F224D4C00B29A85 /* HTMLNode.h */,
+				F721C3331F224D4C00B29A85 /* HTMLNode.m */,
+				F721C3341F224D4C00B29A85 /* HTMLParser.h */,
+				F721C3351F224D4C00B29A85 /* HTMLParser.m */,
 			);
-			path = MWFeedParser;
+			path = "Objective-C-HMTL-Parser";
 			sourceTree = "<group>";
 		};
-		F721C2FC1F22492A00B29A85 /* Objective-C-HMTL-Parser */ = {
+		F721C3371F224D4C00B29A85 /* readable */ = {
 			isa = PBXGroup;
 			children = (
-				F721C2FD1F22492A00B29A85 /* HTMLNode.h */,
-				F721C2FE1F22492A00B29A85 /* HTMLNode.m */,
-				F721C2FF1F22492A00B29A85 /* HTMLParser.h */,
-				F721C3001F22492A00B29A85 /* HTMLParser.m */,
+				F721C3381F224D4C00B29A85 /* khash.h */,
+				F721C33D1F224D4C00B29A85 /* rd_list.c */,
+				F721C33E1F224D4C00B29A85 /* rd_list.h */,
+				F721C33F1F224D4C00B29A85 /* readable.c */,
+				F721C3401F224D4C00B29A85 /* readable.h */,
 			);
-			name = "Objective-C-HMTL-Parser";
-			path = "Vendor/Objective-C-HMTL-Parser";
-			sourceTree = SOURCE_ROOT;
+			path = readable;
+			sourceTree = "<group>";
 		};
 		F74853B91A2154CD009AE367 /* HNReader iOS */ = {
 			isa = PBXGroup;
@@ -209,22 +170,10 @@
 			name = "HNReader iOS";
 			sourceTree = "<group>";
 		};
-		F7556F8E1A22C9DF0065557E /* readable */ = {
-			isa = PBXGroup;
-			children = (
-				F7556F8F1A22C9EF0065557E /* khash.h */,
-				F7556F901A22C9EF0065557E /* rd_list.c */,
-				F7556F911A22C9EF0065557E /* rd_list.h */,
-				F7556F921A22C9EF0065557E /* readable.c */,
-				F7556F931A22C9EF0065557E /* readable.h */,
-			);
-			name = readable;
-			sourceTree = "<group>";
-		};
 		F775DACA14340D7E00F93F48 = {
 			isa = PBXGroup;
 			children = (
-				F721C2CE1F22487200B29A85 /* Vendor */,
+				F721C30A1F224D4C00B29A85 /* Vendor */,
 				F7CDB00A1A2298D000547F5F /* Shared */,
 				F74853B91A2154CD009AE367 /* HNReader iOS */,
 				F775DAD814340D7E00F93F48 /* Frameworks */,
@@ -308,7 +257,6 @@
 		F7CDB00A1A2298D000547F5F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F7556F8E1A22C9DF0065557E /* readable */,
 				F7E8DA051A229C15007D009E /* HNCacheManager.h */,
 				F7E8DA061A229C15007D009E /* HNCacheManager.m */,
 				F7E8DA131A229C15007D009E /* HNParser.h */,
@@ -402,26 +350,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7CAB0A11A22C7B70074A76C /* HNReaderAppDelegate.m in Sources */,
+				F721C35E1F224D9800B29A85 /* rd_list.c in Sources */,
+				F721C35D1F224D8400B29A85 /* HTMLParser.m in Sources */,
 				F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */,
 				F7CAB09E1A22C7B70074A76C /* HNLabel.m in Sources */,
 				F7E8DA161A229C15007D009E /* HNClient.m in Sources */,
-				F721C3081F224B7B00B29A85 /* HTMLParser.m in Sources */,
 				F7E8DA191A229C15007D009E /* HNConstants.m in Sources */,
 				F7CAB09D1A22C7B70074A76C /* HNEntriesViewController.m in Sources */,
+				F721C35C1F224D8400B29A85 /* HTMLNode.m in Sources */,
 				F7CAB0A81A22C7B70074A76C /* UIColor+HNReaderTheme.m in Sources */,
 				F7CAB09A1A22C7B70074A76C /* HNEntriesDataSource.m in Sources */,
+				F721C35F1F224D9A00B29A85 /* readable.c in Sources */,
 				F7E8DA171A229C15007D009E /* HNComment.m in Sources */,
-				F721C3091F224B7D00B29A85 /* HTMLNode.m in Sources */,
 				F7CAB0991A22C7B70074A76C /* HNCommentsViewController.m in Sources */,
 				F7E8DA151A229C15007D009E /* HNCacheManager.m in Sources */,
-				F7556F961A22C9EF0065557E /* readable.c in Sources */,
 				F7CAB0A61A22C7B70074A76C /* NSString+HNCommentTools.m in Sources */,
 				F7CAB0A21A22C7B70074A76C /* HNWebViewController.m in Sources */,
 				F7E8DA181A229C15007D009E /* HNCommentsModel.m in Sources */,
 				F7E8DA1B1A229C15007D009E /* HNEntry.m in Sources */,
 				F7E8DA1A1A229C15007D009E /* HNEntriesModel.m in Sources */,
 				F7CAB0961A22C7B70074A76C /* HNCommentsDataSource.m in Sources */,
-				F7556F941A22C9EF0065557E /* rd_list.c in Sources */,
 				F7CAB0A71A22C7B70074A76C /* UIAlertView+HNAlertView.m in Sources */,
 				F7CAB09F1A22C7B70074A76C /* HNLoadMoreTableViewCell.m in Sources */,
 				F7CAB0971A22C7B70074A76C /* HNCommentsTableViewCell.m in Sources */,
