@@ -15,7 +15,7 @@
 }
 
 + (UIColor *)hn_lightTanColor {
-    return[UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:239.0f/255.0f alpha:1.0f];
 }
 
 + (UIColor *)hn_veryDarkGrey {
