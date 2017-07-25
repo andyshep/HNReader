@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F721C3031F224A0300B29A85 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3021F2249F800B29A85 /* libxml2.2.tbd */; };
 		F721C3071F224A5000B29A85 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F721C3061F224A4B00B29A85 /* libicucore.tbd */; };
-		F721C35C1F224D8400B29A85 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3331F224D4C00B29A85 /* HTMLNode.m */; };
-		F721C35D1F224D8400B29A85 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F721C3351F224D4C00B29A85 /* HTMLParser.m */; };
 		F721C35E1F224D9800B29A85 /* rd_list.c in Sources */ = {isa = PBXBuildFile; fileRef = F721C33D1F224D4C00B29A85 /* rd_list.c */; };
 		F721C35F1F224D9A00B29A85 /* readable.c in Sources */ = {isa = PBXBuildFile; fileRef = F721C33F1F224D4C00B29A85 /* readable.c */; };
 		F775DADA14340D7E00F93F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F775DAD914340D7E00F93F48 /* UIKit.framework */; };
@@ -48,10 +46,6 @@
 		F70A0FF2143BF99100D61E8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F721C3021F2249F800B29A85 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		F721C3061F224A4B00B29A85 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		F721C3321F224D4C00B29A85 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
-		F721C3331F224D4C00B29A85 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
-		F721C3341F224D4C00B29A85 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
-		F721C3351F224D4C00B29A85 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		F721C3381F224D4C00B29A85 /* khash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khash.h; sourceTree = "<group>"; };
 		F721C33D1F224D4C00B29A85 /* rd_list.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rd_list.c; sourceTree = "<group>"; };
 		F721C33E1F224D4C00B29A85 /* rd_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rd_list.h; sourceTree = "<group>"; };
@@ -135,21 +129,9 @@
 		F721C30A1F224D4C00B29A85 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F721C3311F224D4C00B29A85 /* Objective-C-HMTL-Parser */,
 				F721C3371F224D4C00B29A85 /* readable */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		F721C3311F224D4C00B29A85 /* Objective-C-HMTL-Parser */ = {
-			isa = PBXGroup;
-			children = (
-				F721C3321F224D4C00B29A85 /* HTMLNode.h */,
-				F721C3331F224D4C00B29A85 /* HTMLNode.m */,
-				F721C3341F224D4C00B29A85 /* HTMLParser.h */,
-				F721C3351F224D4C00B29A85 /* HTMLParser.m */,
-			);
-			path = "Objective-C-HMTL-Parser";
 			sourceTree = "<group>";
 		};
 		F721C3371F224D4C00B29A85 /* readable */ = {
@@ -346,7 +328,6 @@
 			files = (
 				F721C35E1F224D9800B29A85 /* rd_list.c in Sources */,
 				F7C537B41F2283800025CC61 /* NSString+HNCommentTools.m in Sources */,
-				F721C35D1F224D8400B29A85 /* HTMLParser.m in Sources */,
 				F7E8DA1C1A229C15007D009E /* HNParser.m in Sources */,
 				F7C537B61F2283800025CC61 /* UIColor+HNReaderTheme.m in Sources */,
 				F7C537AF1F2283800025CC61 /* HNLabel.m in Sources */,
@@ -354,7 +335,6 @@
 				F7C537AA1F2283800025CC61 /* HNCommentsTableViewCell.m in Sources */,
 				F7E8DA161A229C15007D009E /* HNClient.m in Sources */,
 				F7E8DA191A229C15007D009E /* HNConstants.m in Sources */,
-				F721C35C1F224D8400B29A85 /* HTMLNode.m in Sources */,
 				F721C35F1F224D9A00B29A85 /* readable.c in Sources */,
 				F7C537B31F2283800025CC61 /* main.m in Sources */,
 				F7E8DA171A229C15007D009E /* HNComment.m in Sources */,

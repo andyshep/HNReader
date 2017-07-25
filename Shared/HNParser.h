@@ -8,9 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, HNParserParserState) {
+    HNParserParserStateIdle = 100,
+    HNParserParserStateSearchForEntry,
+    HNParserParserStateSearchForStoryLink
+};
+
+@class HNEntry;
+
 @interface HNParser : NSObject
 
-+ (nullable NSDictionary *)parsedEntriesFromResponse:(nullable id)response;
-+ (nullable NSDictionary *)parsedCommentsFromResponse:(nullable id)response;
+@property (nullable, nonatomic, strong) HNEntry *current;
+@property (nonatomic, assign, readonly) HNParserParserState state;
+
+- (nullable instancetype)initWithData:(nonnull NSData *)data;
+
+- (void)nextState;
+- (void)terminate;
+
+- (nonnull NSArray<HNEntry *> *)parseEntries;
 
 @end

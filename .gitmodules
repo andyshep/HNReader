@@ -1,9 +1,3 @@
 [submodule "Vendor/readable"]
 	path = Vendor/readable
 	url = git@github.com:andyshep/readable.git
-[submodule "Vendor/MWFeedParser"]
-	path = Vendor/MWFeedParser
-	url = git@github.com:mwaterfall/MWFeedParser.git
-[submodule "Vendor/Objective-C-HMTL-Parser"]
-	path = Vendor/Objective-C-HMTL-Parser
-	url = git@github.com:zootreeves/Objective-C-HMTL-Parser.git

@@ -144,15 +144,15 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (void)parseResponse:(NSData *)response withCacheKey:(NSString *)cacheKey {
-    NSDictionary *parsedResponse = [HNParser parsedEntriesFromResponse:response];
+    HNParser *parser = [[HNParser alloc] initWithData:response];
+    NSArray *entries = [parser parseEntries];
     
-    NSArray *entries = [parsedResponse objectForKey:HNEntriesKey];
     [self willChangeValueForKey:HNEntriesKeyPath];
     [self.entries removeAllObjects];
     [self.entries addObjectsFromArray:[NSArray arrayWithArray:entries]];
     [self didChangeValueForKey:HNEntriesKeyPath];
     
-    self.moreEntriesLink = [parsedResponse objectForKey:HNEntryNextKey];
+//    self.moreEntriesLink = [parsedResponse objectForKey:HNEntryNextKey];
     
     [[HNCacheManager sharedManager] cacheEntries:entries forKey:cacheKey];
 }

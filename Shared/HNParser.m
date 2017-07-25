@@ -7,176 +7,194 @@
 //
 
 #import "HNParser.h"
-
-#import "HTMLParser.h"
-#import "HTMLNode.h"
-
 #import "HNEntry.h"
-#import "HNComment.h"
 
-//#import "NSString+HTML.h"
-#import "NSString+HNCommentTools.h"
+#import <libxml/HTMLparser.h>
 
-#import "HNConstants.h"
+static NSDictionary* dictionaryFromAttributes(const xmlChar **atts) {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    if (atts != NULL) {
+        for (int i = 0; (atts[i] != NULL); i++) {
+            const xmlChar *attribValue = NULL;
+            const xmlChar *attribName = atts[i++];
+            
+            if (atts[i] != NULL) {
+                attribValue = atts[i];
+                
+                NSString *name = [NSString stringWithUTF8String:(const char *)attribName];
+                NSString *value = [NSString stringWithUTF8String:(const char *)attribValue];
+                
+                [dictionary setObject:value forKey:name];
+            }
+        }
+    }
+    
+    return [dictionary copy];
+}
+
+static void searchForStoryLink(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNParser *parser = (__bridge HNParser *)ctx;
+    
+    if (!xmlStrcmp(name, (xmlChar *)"a")) {
+        NSDictionary *attributes = dictionaryFromAttributes(atts);
+        NSString *href = [attributes objectForKey:@"href"];
+        NSString *klass = [attributes objectForKey:@"class"];
+        
+        if ([klass isEqualToString:@"storylink"] && href != nil) {
+            parser.current.linkURL = href;
+        }
+    }
+}
+
+static void searchForEntry(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNParser *parser = (__bridge HNParser *)ctx;
+    
+    if (!xmlStrcmp(name, (xmlChar *)"tr")) {
+        NSDictionary *attributes = dictionaryFromAttributes(atts);
+        NSString *klass = [attributes objectForKey:@"class"];
+        
+        if ([klass isEqualToString:@"athing"]) {
+            // found <tr> tag with class of "athing"
+            // this represents the start of a new entry
+            
+            parser.current = [[HNEntry alloc] init];
+            [parser nextState];
+        }
+        else if ([klass isEqualToString:@"morespace"]) {
+            [parser terminate];
+        }
+    }
+}
+
+static void startElementSAX(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNParser *parser = (__bridge HNParser *)ctx;
+    
+    if (parser.state == HNParserParserStateSearchForEntry) {
+        searchForEntry(ctx, name, atts);
+    }
+    else if (parser.state == HNParserParserStateSearchForStoryLink) {
+        searchForStoryLink(ctx, name, atts);
+    }
+}
+
+static void charactersFoundSAX(void *ctx, const xmlChar *ch, int len) {
+    HNParser *parser = (__bridge HNParser *)ctx;
+    
+    if (parser.state == HNParserParserStateSearchForStoryLink) {
+        if (parser.current.linkURL != nil) {
+            // FIXME: should be appending characters
+            
+            NSString *title = [NSString stringWithUTF8String:(const char *)ch];
+            parser.current.title = title;
+        }
+    }
+}
+
+static void endElementSAX(void *ctx, const xmlChar *name) {
+    HNParser *parser = (__bridge HNParser *)ctx;
+    
+    if (parser.state == HNParserParserStateSearchForStoryLink) {
+        if (parser.current.linkURL != nil && parser.current.title != nil) {
+            // if title and url are both not nil
+            // then the current entry should be done
+             
+            [parser nextState];
+        }
+    }
+}
+
+static void errorEncounteredSAX(void *ctx, const char *msg, ...) {
+    // Handle errors as appropriate for your application.
+    NSCAssert(NO, @"Unhandled error encountered during SAX parse.");
+}
+
+static htmlSAXHandler simpleSAXHandlerStruct = {
+    NULL,                       /* internalSubset */
+    NULL,                       /* isStandalone   */
+    NULL,                       /* hasInternalSubset */
+    NULL,                       /* hasExternalSubset */
+    NULL,                       /* resolveEntity */
+    NULL,                       /* getEntity */
+    NULL,                       /* entityDecl */
+    NULL,                       /* notationDecl */
+    NULL,                       /* attributeDecl */
+    NULL,                       /* elementDecl */
+    NULL,                       /* unparsedEntityDecl */
+    NULL,                       /* setDocumentLocator */
+    NULL,                       /* startDocument */
+    NULL,                       /* endDocument */
+    startElementSAX,            /* startElement*/
+    endElementSAX,              /* endElement */
+    NULL,                       /* reference */
+    charactersFoundSAX,         /* characters */
+    NULL,                       /* ignorableWhitespace */
+    NULL,                       /* processingInstruction */
+    NULL,                       /* comment */
+    NULL,                       /* warning */
+    errorEncounteredSAX,        /* error */
+    NULL,                       /* fatalError //: unused error() get all the errors */
+    NULL,                       /* getParameterEntity */
+    NULL,                       /* cdataBlock */
+    NULL,                       /* externalSubset */
+    XML_SAX2_MAGIC,             //
+    NULL,
+    NULL,                       /* startElementNs */
+    NULL,                       /* endElementNs */
+    NULL,                       /* serror */
+};
+
+@interface HNParser ()
+
+@property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSMutableArray *results;
+
+@property (nonatomic, assign) htmlParserCtxt *htmlContext;
+@property (nonatomic, assign, readwrite) HNParserParserState state;
+
+@end
 
 @implementation HNParser
 
-+ (NSDictionary *)parsedEntriesFromResponse:(id)response {
-    NSMutableArray *entries = [NSMutableArray array];
-    NSString *next = @"";
-    
-    NSError *error = nil;
-    NSString *html = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
-    
-    if (!error) {
-        HTMLNode *bodyNode = [parser body];
-        
-        // entries table is the third table on screen
-        HTMLNode *entiresTable = [bodyNode findChildTags:@"table"][2];
-        NSArray *tableNodes = [entiresTable findChildTags:@"tr"];
-        
-        HTMLNode *_currentNode = tableNodes[0];
-        while ([_currentNode allContents] != NULL) {
-            
-            // the title <td> has a CSS class of title
-            // we are concerned with the second one
-            NSArray *titles = [_currentNode findChildrenOfClass:@"title"];
-            
-            if ([titles count] > 1) {
-                HNEntry *entry = [[HNEntry alloc] init];
-                entry.title = [titles[1] allContents];
-                
-                if ([titles[1] children].count >= 2) {
-                    HTMLNode *hrefNode = [titles[1] children][1];
-//                    HTMLNode *domainNode = [titles[1] children][2];
-                    entry.linkURL = [hrefNode getAttributeNamed:@"href"];
-//                    entry.siteDomainURL = [domainNode allContents];
-                }
-                
-                if ([entry.linkURL hasPrefix:@"item?id="]) {
-                    NSString *baseURL = [HNWebsiteBaseURL stringByAppendingString:@"/"];
-                    entry.linkURL = [baseURL stringByAppendingString:entry.linkURL];
-                }
-                
-                // after the title <td>, the next child is a commment <td>
-                // we move to the next child and extract comments
-                HTMLNode *commentNode = [_currentNode nextSibling];
-                HTMLNode *commentTdNode = [commentNode findChildOfClass:@"subtext"];
-                
-                // some stories don't have comments
-                // YC alumi job posts
-                if ([[commentTdNode children] count] >= 12) {
-                    entry.totalPoints = [[commentTdNode children][0] contents];
-                    entry.username = [[commentTdNode children][2] contents];
-                    entry.commentsPageURL = [[commentTdNode children][11] getAttributeNamed:@"href"];
-                    
-                    // FIXME
-                    entry.commentsCount = [[commentTdNode children][11] contents];
-                }
-                
-                [entries addObject:entry];
-            }
-            
-            // move to the next node
-            // which may or may not be a title.
-            _currentNode = [_currentNode nextSibling];
-        }
-        
-        // after we have all the entries
-        // we grab the link the load the next 30 entries
-        // we will load these next 30 when the user selects the last table cell
-        HTMLNode *moreEntriesNode = [[tableNodes lastObject] findChildOfClass:@"title"];
-        if (moreEntriesNode != NULL) {
-            NSString *moreEntriesLink = [[moreEntriesNode firstChild] getAttributeNamed:@"href"];
-            if (![moreEntriesLink hasPrefix:@"/"]) {
-                moreEntriesLink = [NSString stringWithFormat:@"/%@", moreEntriesLink];
-            }
-            
-            next = moreEntriesLink;
-        }
+- (instancetype)initWithData:(NSData *)data {
+    if (self = [super init]) {
+        self.data = data;
+        self.state = HNParserParserStateIdle;
+        self.results = [NSMutableArray array];
     }
     
-    return @{HNEntriesKey: [NSArray arrayWithArray:entries], HNEntryNextKey: next};
+    return self;
 }
 
-+ (NSDictionary *)parsedCommentsFromResponse:(id)response {
-    NSMutableDictionary *commentsInfo = [NSMutableDictionary dictionary];
-    
-    NSError *error = nil;
-    NSString *html = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
-    
-    if (!error) {
-        HTMLNode *bodyNode = [parser body];
-        
-        // entries table is the third table on screen
-        // if there is a black banner, it is the forth table
-        // hackiness ensues...
-        
-        // ignore anything without a title, like job postings from yc alum
-        if ([[bodyNode findChildrenOfClass:@"title"] count] > 0) {
-            HTMLNode *titleNode = [bodyNode findChildrenOfClass:@"title"][0];
-            NSString *titleString = [[titleNode firstChild] contents];
-            NSString *siteURL = [[titleNode firstChild] getAttributeNamed:@"href"];
-            NSArray *tableNodes = [bodyNode findChildTags:@"tr"];
-            NSString *bgColor = [[tableNodes[0] firstChild] getAttributeNamed:@"bgcolor"];
-            
-            HTMLNode *commentsTableRow = tableNodes[3];
-            if (bgColor != nil && [bgColor compare:@"#000000"] == NSOrderedSame) {
-                commentsTableRow = tableNodes[4];
-            }
-            
-            NSMutableArray *comments = [NSMutableArray array];
-            NSArray *commentsTableArray = [[commentsTableRow firstChild] findChildTags:@"table"];
-            
-            // make sure we have comments
-            if ([commentsTableArray count]  > 1) {
-                HTMLNode *commentsTable = [[commentsTableRow firstChild] findChildTags:@"table"][1];
-                NSArray *commentsNodes = [commentsTable children];
-                
-                [commentsNodes enumerateObjectsUsingBlock:^(HTMLNode *node, NSUInteger idx, BOOL *stop) {
-                    HTMLNode *comHead = [node findChildOfClass:@"comhead"];
-                    NSString *commentUserName = nil;
-                    NSString *commentString = nil;
-                    NSString *timeSinceCreation = nil;
-                    NSUInteger commentPadding = 0;
-                    
-                    // make sure comment wasn't deleted.
-                    if ([[comHead children] count] > 1) {
-                        commentUserName = [[[node findChildOfClass:@"comhead"] firstChild] allContents];
-                        HTMLNode *commentTextSpan = [node findChildOfClass:@"comment"];
-                        commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
-                        
-                        NSString *rawCommentHTML = [[commentTextSpan findChildTag:@"font"] allContents];
-                        commentString = [rawCommentHTML hn_stringAsFormatedCommentText];
-                        
-                        // FIXME
-//                        NSString *roughTime = [[comHead children][1] rawContents];
-//                        timeSinceCreation = [roughTime substringToIndex:[roughTime length] - 2];
-                    } else {
-                        commentUserName = @"";
-                        commentString = @"[deleted]";
-                        commentPadding = [[[node findChildTag:@"img"] getAttributeNamed:@"width"] integerValue];
-                    }
-                    
-                    HNComment *comment = [[HNComment alloc] init];
-                    comment.username = commentUserName;
-                    comment.padding = commentPadding;
-                    comment.commentString = commentString;
-                    comment.timeSinceCreation = timeSinceCreation;
-                    
-                    [comments addObject:comment];
-                }];
-            }
-            
-            [commentsInfo setValue:titleString forKey:HNEntryTitleKey];
-            [commentsInfo setValue:siteURL forKey:HNEntryURLKey];
-            [commentsInfo setValue:[NSArray arrayWithArray:comments] forKey:HNEntryCommentsKey];
-        }
+- (void)nextState {
+    if (_state == HNParserParserStateSearchForEntry) {
+        _state = HNParserParserStateSearchForStoryLink;
     }
+    else if (_state == HNParserParserStateSearchForStoryLink) {
+        [_results addObject:_current];
+        self.current = nil;
+        
+        _state = HNParserParserStateSearchForEntry;
+    }
+    else {
+        _state = HNParserParserStateIdle;
+    }
+}
+
+- (void)terminate {
+    _state = HNParserParserStateIdle;
+}
+
+- (NSArray<HNEntry *> *)parseEntries {
+    _state = HNParserParserStateSearchForEntry;
+    _current = nil;
     
-    return [NSDictionary dictionaryWithDictionary:commentsInfo];
+    self.htmlContext = htmlCreatePushParserCtxt(&simpleSAXHandlerStruct, (__bridge void *)self, NULL, 0, NULL, XML_CHAR_ENCODING_UTF8);
+    
+    htmlParseChunk(_htmlContext, [_data bytes], (int)[_data length], 0);
+    htmlFreeParserCtxt(_htmlContext);
+    
+    return [NSArray arrayWithArray:_results];
 }
 
 @end
