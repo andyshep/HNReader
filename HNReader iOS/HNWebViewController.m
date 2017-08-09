@@ -11,8 +11,6 @@
 #import "HNEntry.h"
 #import "HNConstants.h"
 
-#import "UIAlertView+HNAlertView.h"
-
 #import "readable.h"
 
 @interface HNWebViewController ()
@@ -125,8 +123,10 @@
         } else {
             [self.navigationItem.rightBarButtonItem setTintColor:[UIColor lightGrayColor]];
             NSString *message = NSLocalizedString(@"Could not find any article content to display; not all webpages can be cleaned up into readable content.", @"");
-            UIAlertView *alert = [UIAlertView hn_alertViewWithMessage:message];
-            [alert show];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     }];
 }

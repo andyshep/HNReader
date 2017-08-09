@@ -19,7 +19,6 @@
 #import "HNWebViewController.h"
 
 #import "NSString+HNCommentTools.h"
-#import "UIAlertView+HNAlertView.h"
 
 static void *myContext = &myContext;
 

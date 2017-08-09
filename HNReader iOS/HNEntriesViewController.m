@@ -15,8 +15,6 @@
 #import "HNEntry.h"
 #import "HNEntriesDataSource.h"
 
-#import "UIAlertView+HNAlertView.h"
-
 static void *myContext = &myContext;
 
 @interface HNEntriesViewController ()
@@ -160,9 +158,12 @@ static void *myContext = &myContext;
     [self.tableView setUserInteractionEnabled:YES];
 }
 
-- (void)operationDidFail {    
-    UIAlertView *alert = [UIAlertView hn_alertViewWithError:self.dataSource.error];
-    [alert show];
+- (void)operationDidFail {
+    NSString *title = self.dataSource.error.description;
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:title preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification {

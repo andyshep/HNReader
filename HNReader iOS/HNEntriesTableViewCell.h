@@ -6,11 +6,9 @@
 //  Copyright 2011 Andrew Shepard. All rights reserved.
 //
 
-#import "HNLabel.h"
-
 @interface HNEntriesTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet HNLabel *siteTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *siteTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *siteDomainLabel;
 @property (nonatomic, strong) IBOutlet UILabel *totalPointsLabel;
 
