@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class HNEntry;
+@class HNComment;
 
 @interface HNCommentsModel : NSObject
 
-@property (nonnull, nonatomic, copy, readonly) NSDictionary *comments;
+@property (nonnull, nonatomic, copy, readonly) NSArray<HNComment *> *comments;
 @property (nonnull, nonatomic, copy) NSError *error;
 @property (nonnull, nonatomic, strong) HNEntry *entry;
 

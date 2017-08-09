@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class HNEntry;
+@class HNComment;
 @class HNCommentsTableViewCell;
 @class HNEntriesTableViewCell;
 
@@ -16,7 +17,7 @@
 
 - (instancetype)initWithTableView:(UITableView *)tableView entry:(HNEntry *)entry;
 
-@property (nonatomic, weak, readonly) NSDictionary *comments;
+@property (nonatomic, weak, readonly) NSArray<HNComment *> *comments;
 @property (nonatomic, weak, readonly) NSError *error;
 
 - (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath;

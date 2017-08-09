@@ -11,7 +11,7 @@
 #import "HNClient.h"
 
 #import "HNEntry.h"
-#import "HNParser.h"
+#import "HNEntriesParser.h"
 #import "HNCacheManager.h"
 
 #import "HNConstants.h"
@@ -144,7 +144,7 @@ typedef NS_ENUM(NSInteger, HNEntriesPageIdentifier) {
 }
 
 - (void)parseResponse:(NSData *)response withCacheKey:(NSString *)cacheKey {
-    HNParser *parser = [[HNParser alloc] initWithData:response];
+    HNEntriesParser *parser = [[HNEntriesParser alloc] initWithData:response];
     NSArray *entries = [parser parseEntries];
     
     [self willChangeValueForKey:HNEntriesKeyPath];

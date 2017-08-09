@@ -19,7 +19,7 @@ static void *myContext = &myContext;
 
 @interface HNCommentsDataSource ()
 
-@property (nonatomic, weak, readwrite) NSDictionary *comments;
+@property (nonatomic, weak, readwrite) NSArray<HNComment *> *comments;
 @property (nonatomic, weak, readwrite) NSError *error;
 
 @property (nonatomic, weak) UITableView *tableView;
@@ -78,7 +78,8 @@ static void *myContext = &myContext;
     if (section == 0) {
         return 1;
     }
-    return [self.model.comments[HNEntryCommentsKey] count];
+
+    return self.model.comments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,8 +105,7 @@ static void *myContext = &myContext;
     }
     else if ([cell isKindOfClass:[HNCommentsTableViewCell class]]) {
         HNCommentsTableViewCell *commentsCell = (HNCommentsTableViewCell *)cell;
-        NSArray *comments = (NSArray *)self.model.comments[HNEntryCommentsKey];
-        HNComment *comment = (HNComment *)comments[indexPath.row];
+        HNComment *comment = self.model.comments[indexPath.row];
         
         [commentsCell.usernameLabel setText:comment.username];
         [commentsCell.timeLabel setText:comment.timeSinceCreation];
