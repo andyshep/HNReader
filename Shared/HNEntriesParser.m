@@ -1,12 +1,12 @@
 //
-//  HNParser.m
+//  HNEntriesParser.m
 //  HNReader
 //
 //  Created by Andrew Shepard on 1/31/14.
 //  Copyright 2014 Andrew Shepard. All rights reserved.
 //
 
-#import "HNParser.h"
+#import "HNEntriesParser.h"
 #import "HNEntry.h"
 
 #import <libxml/HTMLparser.h>
@@ -34,7 +34,7 @@ static NSDictionary* dictionaryFromAttributes(const xmlChar **atts) {
 }
 
 static void searchForStoryLink(void *ctx, const xmlChar *name, const xmlChar **atts) {
-    HNParser *parser = (__bridge HNParser *)ctx;
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
     
     if (!xmlStrcmp(name, (xmlChar *)"a")) {
         NSDictionary *attributes = dictionaryFromAttributes(atts);
@@ -48,7 +48,7 @@ static void searchForStoryLink(void *ctx, const xmlChar *name, const xmlChar **a
 }
 
 static void searchForEntry(void *ctx, const xmlChar *name, const xmlChar **atts) {
-    HNParser *parser = (__bridge HNParser *)ctx;
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
     
     if (!xmlStrcmp(name, (xmlChar *)"tr")) {
         NSDictionary *attributes = dictionaryFromAttributes(atts);
@@ -67,21 +67,79 @@ static void searchForEntry(void *ctx, const xmlChar *name, const xmlChar **atts)
     }
 }
 
-static void startElementSAX(void *ctx, const xmlChar *name, const xmlChar **atts) {
-    HNParser *parser = (__bridge HNParser *)ctx;
+static void searchForDomainURL(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
     
-    if (parser.state == HNParserParserStateSearchForEntry) {
+    if (!xmlStrcmp(name, (xmlChar *)"span")) {
+        NSDictionary *attributes = dictionaryFromAttributes(atts);
+        NSString *klass = [attributes objectForKey:@"class"];
+        
+        if ([klass isEqualToString:@"sitestr"]) {
+            [parser nextState];
+        }
+    }
+}
+
+static void searchForSubtext(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
+    
+    if (!xmlStrcmp(name, (xmlChar *)"td")) {
+        NSDictionary *attributes = dictionaryFromAttributes(atts);
+        NSString *klass = [attributes objectForKey:@"class"];
+        
+        if ([klass isEqualToString:@"subtext"]) {
+            // found <td> tag with class of "subtext"
+            // this represents the continuation of an entry
+            
+//            parser.current = [[HNEntry alloc] init];
+            [parser nextState];
+        }
+    }
+}
+
+static void searchForCommentAnchor(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
+    
+    if (!xmlStrcmp(name, (xmlChar *)"a")) {
+        NSDictionary *attributes = dictionaryFromAttributes(atts);
+        NSString *href = [attributes objectForKey:@"href"];
+        
+        if ([href containsString:@"item?"]) {
+            BOOL firstLinkFound = (parser.current.commentsPageURL == nil);
+            
+            parser.current.commentsPageURL = href;
+            
+            if (firstLinkFound == NO) {
+                [parser nextState];
+            }
+        }
+    }
+}
+
+static void startElementSAX(void *ctx, const xmlChar *name, const xmlChar **atts) {
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
+    
+    if (parser.state == HNEntriesParserStateSearchForEntry) {
         searchForEntry(ctx, name, atts);
     }
-    else if (parser.state == HNParserParserStateSearchForStoryLink) {
+    else if (parser.state == HNEntriesParserStateSearchForStoryLink) {
         searchForStoryLink(ctx, name, atts);
+    }
+    else if (parser.state == HNEntriesParserStateSearchForDomainURL) {
+        searchForDomainURL(ctx, name, atts);
+    }
+    else if (parser.state == HNEntriesParserStateSearchForSubtext) {
+        searchForSubtext(ctx, name, atts);
+    }
+    else if (parser.state == HNEntriesParserStateSearchForCommentAnchor) {
+        searchForCommentAnchor(ctx, name, atts);
     }
 }
 
 static void charactersFoundSAX(void *ctx, const xmlChar *ch, int len) {
-    HNParser *parser = (__bridge HNParser *)ctx;
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
     
-    if (parser.state == HNParserParserStateSearchForStoryLink) {
+    if (parser.state == HNEntriesParserStateSearchForStoryLink) {
         if (parser.current.linkURL != nil) {
             // FIXME: should be appending characters
             
@@ -89,16 +147,40 @@ static void charactersFoundSAX(void *ctx, const xmlChar *ch, int len) {
             parser.current.title = title;
         }
     }
+    else if (parser.state == HNEntriesParserStateLoadDomainURL) {
+        NSString *domain = [NSString stringWithUTF8String:(const char *)ch];
+        parser.current.siteDomainURL = domain;
+        
+        [parser nextState];
+    }
+    else if (parser.state == HNEntriesParserStateSearchForCommentCount) {
+        NSString *existing = parser.current.commentsCount;
+        if (!existing) {
+            existing = @"";
+        }
+        
+        NSString *current = [NSString stringWithUTF8String:(const char *)ch];
+        
+        parser.current.commentsCount = [existing stringByAppendingString:current];
+    }
 }
 
 static void endElementSAX(void *ctx, const xmlChar *name) {
-    HNParser *parser = (__bridge HNParser *)ctx;
+    HNEntriesParser *parser = (__bridge HNEntriesParser *)ctx;
     
-    if (parser.state == HNParserParserStateSearchForStoryLink) {
+    if (parser.state == HNEntriesParserStateSearchForStoryLink) {
         if (parser.current.linkURL != nil && parser.current.title != nil) {
             // if title and url are both not nil
             // then the current entry should be done
              
+            [parser nextState];
+        }
+    }
+    else if (parser.state == HNEntriesParserStateSearchForCommentCount) {
+        if (!xmlStrcmp(name, (xmlChar *)"a")) {
+            // if we were search for comment anchors and find
+            // a closing </a> tag, then the comment tree is done.
+            
             [parser nextState];
         }
     }
@@ -144,22 +226,22 @@ static htmlSAXHandler simpleSAXHandlerStruct = {
     NULL,                       /* serror */
 };
 
-@interface HNParser ()
+@interface HNEntriesParser ()
 
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, strong) NSMutableArray *results;
 
 @property (nonatomic, assign) htmlParserCtxt *htmlContext;
-@property (nonatomic, assign, readwrite) HNParserParserState state;
+@property (nonatomic, assign, readwrite) HNEntriesParserState state;
 
 @end
 
-@implementation HNParser
+@implementation HNEntriesParser
 
 - (instancetype)initWithData:(NSData *)data {
     if (self = [super init]) {
         self.data = data;
-        self.state = HNParserParserStateIdle;
+        self.state = HNEntriesParserStateIdle;
         self.results = [NSMutableArray array];
     }
     
@@ -167,26 +249,41 @@ static htmlSAXHandler simpleSAXHandlerStruct = {
 }
 
 - (void)nextState {
-    if (_state == HNParserParserStateSearchForEntry) {
-        _state = HNParserParserStateSearchForStoryLink;
+    if (_state == HNEntriesParserStateSearchForEntry) {
+        _state = HNEntriesParserStateSearchForStoryLink;
     }
-    else if (_state == HNParserParserStateSearchForStoryLink) {
+    else if (_state == HNEntriesParserStateSearchForStoryLink) {
+        _state = HNEntriesParserStateSearchForDomainURL;
+    }
+    else if (_state == HNEntriesParserStateSearchForDomainURL) {
+        _state = HNEntriesParserStateLoadDomainURL;
+    }
+    else if (_state == HNEntriesParserStateLoadDomainURL) {
+        _state = HNEntriesParserStateSearchForSubtext;
+    }
+    else if (_state == HNEntriesParserStateSearchForSubtext) {
+        _state = HNEntriesParserStateSearchForCommentAnchor;
+    }
+    else if (_state == HNEntriesParserStateSearchForCommentAnchor) {
+        _state = HNEntriesParserStateSearchForCommentCount;
+    }
+    else if (_state == HNEntriesParserStateSearchForCommentCount) {
         [_results addObject:_current];
         self.current = nil;
         
-        _state = HNParserParserStateSearchForEntry;
+        _state = HNEntriesParserStateSearchForEntry;
     }
     else {
-        _state = HNParserParserStateIdle;
+        _state = HNEntriesParserStateIdle;
     }
 }
 
 - (void)terminate {
-    _state = HNParserParserStateIdle;
+    _state = HNEntriesParserStateIdle;
 }
 
 - (NSArray<HNEntry *> *)parseEntries {
-    _state = HNParserParserStateSearchForEntry;
+    _state = HNEntriesParserStateSearchForEntry;
     _current = nil;
     
     self.htmlContext = htmlCreatePushParserCtxt(&simpleSAXHandlerStruct, (__bridge void *)self, NULL, 0, NULL, XML_CHAR_ENCODING_UTF8);
