@@ -36,8 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
-//    NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
+    NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
+    NSAssert(self.displayedURL != nil, @"displayURL cannot be nil");
     
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.webView];
@@ -50,6 +50,8 @@
 //    [RACObserve(self, showReadableContent) subscribeNext:^(id x) {
 //        [self toggleReadableDisplay];
 //    }];
+    
+    [self loadHTMLContent];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,33 +60,18 @@
     [self.webView setFrame:self.view.bounds];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [self.webView stopLoading];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
-    [super viewDidDisappear:animated];
-}
+//- (void)viewDidDisappear:(BOOL)animated {
+//    [self.webView stopLoading];
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//    
+//    [super viewDidDisappear:animated];
+//}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [UIView animateWithDuration:duration animations:^{
         [self.webView setFrame:self.view.bounds];
     }];
 }
-
-//#pragma mark - UIWebViewDelegate
-//- (void)webViewDidFinishLoad:(UIWebView *)webView {
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//}
-//
-//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//    
-//    // https://discussions.apple.com/thread/1727260
-//    if (error.code == NSURLErrorCancelled) return;
-//    
-//    UIAlertView *alert = [UIAlertView hn_alertViewWithError:error];
-//    [alert show];
-//}
 
 #pragma mark - HTML and Readable Content Loading
 - (void)toggleReadableDisplay {

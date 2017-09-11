@@ -19,11 +19,8 @@ static void *myContext = &myContext;
 
 @interface HNEntriesViewController ()
 
-//@property (nonatomic, strong) HNEntriesTableViewCell *stubCell;
-
 @property (nonatomic, strong) HNEntriesDataSource *dataSource;
 @property (nonatomic, strong) UISegmentedControl *entriesControl;
-//@property (nonatomic, assign) BOOL requestInProgress;
 
 - (void)loadEntries;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
@@ -106,19 +103,6 @@ static void *myContext = &myContext;
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
-    static HNEntriesTableViewCell *stubCell = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        stubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-    });
-    
-    [self.dataSource configureCell:stubCell forIndexPath:indexPath];
-    
-    CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    return height;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] >= self.dataSource.entries.count) {
         // TODO: call via to data source
@@ -141,10 +125,6 @@ static void *myContext = &myContext;
 }
 
 - (void)loadEntries {
-//    if (_requestInProgress) {
-//        return;
-//    }
-    
     [self prepareForRequest];
     [self.dataSource loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
