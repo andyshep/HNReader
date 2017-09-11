@@ -83,17 +83,13 @@ static void *myContext = &myContext;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath section] == 0) {
-        HNEntriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        [self configureCell:cell forIndexPath:indexPath];
-        
-        return cell;
-    } else {
-        HNCommentsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
-        [self configureCell:cell forIndexPath:indexPath];
-        
-        return cell;
-    }
+    
+    NSString *identifier = indexPath.section == 0 ? HNEntriesTableViewCellIdentifier : HNCommentsTableViewCellIdentifier;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    [self configureCell:cell forIndexPath:indexPath];
+    
+    return cell;
 }
 
 - (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
@@ -101,14 +97,15 @@ static void *myContext = &myContext;
         HNEntriesTableViewCell *entryCell = (HNEntriesTableViewCell *)cell;
         entryCell.siteTitleLabel.text = self.entry.title;
         entryCell.siteDomainLabel.text = self.entry.siteDomainURL;
-        entryCell.totalPointsLabel.text = self.entry.totalPoints;
+        entryCell.totalPointsLabel.text = self.entry.commentsCount;
     }
     else if ([cell isKindOfClass:[HNCommentsTableViewCell class]]) {
         HNCommentsTableViewCell *commentsCell = (HNCommentsTableViewCell *)cell;
         HNComment *comment = self.model.comments[indexPath.row];
         
-        [commentsCell.usernameLabel setText:comment.username];
-        [commentsCell.timeLabel setText:comment.timeSinceCreation];
+        commentsCell.usernameLabel.text = comment.username;
+        commentsCell.timeLabel.text = comment.timeSinceCreation;
+        
         [commentsCell setCommentText:comment.commentString];
         [commentsCell setPadding:comment.padding];
     }
