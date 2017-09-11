@@ -38,6 +38,7 @@ static void *myContext = &myContext;
         [self.model addObserver:self forKeyPath:@"error" options:options context:myContext];
         [self.model addObserver:self forKeyPath:@"entries" options:options context:myContext];
     }
+    
     return self;
 }
 
@@ -100,7 +101,7 @@ static void *myContext = &myContext;
         
         entryCell.siteTitleLabel.text = entry.title;
         entryCell.siteDomainLabel.text = entry.siteDomainURL;
-        entryCell.totalPointsLabel.text = entry.totalPoints;
+        entryCell.totalPointsLabel.text = entry.commentsCount;
     }
 }
 
