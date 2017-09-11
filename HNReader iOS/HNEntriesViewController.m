@@ -48,12 +48,19 @@ static void *myContext = &myContext;
     self.dataSource = [[HNEntriesDataSource alloc] initWithTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0f;
+    
     UINib *nib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
     
-    [self.navigationItem setTitle:NSLocalizedString(@"News", @"News Entries")];
+    [self.navigationController.navigationBar setPrefersLargeTitles:YES];
     
-    NSArray<NSString *> *items = @[@"Front", @"Newest", @"Best"];
+    NSDictionary *titleAttributes = @{NSForegroundColorAttributeName: [UIColor hn_brightOrangeColor]};
+    self.navigationController.navigationBar.largeTitleTextAttributes = titleAttributes;
+    self.navigationController.navigationBar.titleTextAttributes = titleAttributes;
+    
+    NSArray<NSString *> *items = @[@"Top", @"New", @"Best"];
     self.entriesControl = [[UISegmentedControl alloc] initWithItems:items];
     self.entriesControl.selectedSegmentIndex = 0;
 
@@ -89,6 +96,7 @@ static void *myContext = &myContext;
             [self entriesDidLoad];
         } else if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
             [self loadEntries];
+            [self setTitleForEntries];
         } else if ([keyPath isEqualToString:@"error"]) {
             // TODO: present error
             NSLog(@"unhandled error: %@", self.dataSource.error);
@@ -141,18 +149,15 @@ static void *myContext = &myContext;
     [self.dataSource loadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
 }
 
-- (void)reloadEntries {
-//    if (_requestInProgress) {
-//        return;
-//    }
+- (void)setTitleForEntries {
+    NSUInteger index = [self.entriesControl selectedSegmentIndex];
+    NSString *title = [self.entriesControl titleForSegmentAtIndex:index];
     
-    [self prepareForRequest];
-    [self.dataSource reloadEntriesForIndex:[_entriesControl selectedSegmentIndex]];
+    [self setTitle:title];
 }
 
 - (void)entriesDidLoad {
     // TODO: animate
-//    self.requestInProgress = NO;
     [self.tableView reloadData];
     [self.tableView setScrollEnabled:YES];
     [self.tableView setUserInteractionEnabled:YES];
@@ -172,7 +177,6 @@ static void *myContext = &myContext;
 }
 
 - (void)prepareForRequest {
-//    self.requestInProgress = YES;
     [self.tableView setUserInteractionEnabled:NO];
     [self.tableView setScrollEnabled:NO];
 }
