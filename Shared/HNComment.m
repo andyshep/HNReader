@@ -13,6 +13,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.padding = 0;
+        self.commentString = @"";
     }
     return self;
 }
