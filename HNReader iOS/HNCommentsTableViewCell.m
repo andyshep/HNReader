@@ -21,14 +21,20 @@
 }
 
 - (void)setCommentText:(NSString *)commentText {
-    self.commentTextLabel.text = commentText;
+    
+    NSData *data = [commentText dataUsingEncoding:NSUnicodeStringEncoding];
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+    
+    NSAttributedString *string = [[NSAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
+    
+    self.commentTextLabel.attributedText = string;
 }
 
 - (void)setPadding:(NSInteger)padding {
-    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
-    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
-    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
-    [self setNeedsUpdateConstraints];
+//    CGFloat adjustedPadding = 20.0f + floorf(padding * 0.33f);
+//    self.leadingSpaceForCommentLabel.constant = adjustedPadding;
+//    self.leadingSpaceForUsernameLabel.constant = adjustedPadding;
+//    [self setNeedsUpdateConstraints];
 //    [self setNeedsLayout];
 }
 

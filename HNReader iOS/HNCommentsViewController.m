@@ -25,7 +25,6 @@ static void *myContext = &myContext;
 @interface HNCommentsViewController ()
 
 @property (nonatomic, strong) HNCommentsDataSource *dataSource;
-//@property (nonatomic, strong) HNCommentsTableViewCell *stubCell;
 
 - (CGRect)sizeForString:(NSString *)string withIndentPadding:(NSInteger)padding;
 - (void)handleContentSizeChangeNotification:(NSNotification *)notification;
@@ -46,10 +45,15 @@ static void *myContext = &myContext;
     
     NSAssert(self.entry != nil, @"HNEntry must be set by the time viewDidLoad is called");
     
+    [self.navigationItem setLargeTitleDisplayMode:UINavigationItemLargeTitleDisplayModeNever];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleContentSizeChangeNotification:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     self.dataSource = [[HNCommentsDataSource alloc] initWithTableView:self.tableView entry:self.entry];
     self.tableView.dataSource = self.dataSource;
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0f;
     
     UINib *entryNib = [UINib nibWithNibName:HNEntriesTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:entryNib forCellReuseIdentifier:HNEntriesTableViewCellIdentifier];
@@ -88,32 +92,6 @@ static void *myContext = &myContext;
 }
 
 #pragma mark - UITableView
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
-    if ([indexPath section] == 0) {
-        static HNEntriesTableViewCell *entryStubCell = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            entryStubCell = [tableView dequeueReusableCellWithIdentifier:HNEntriesTableViewCellIdentifier];
-        });
-        
-        [self.dataSource configureCell:entryStubCell forIndexPath:indexPath];
-        
-        CGFloat height = [entryStubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        return height;
-    } else {
-        static HNCommentsTableViewCell *stubCell = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            stubCell = [tableView dequeueReusableCellWithIdentifier:HNCommentsTableViewCellIdentifier];
-        });
-        
-        [self.dataSource configureCell:stubCell forIndexPath:indexPath];
-        
-        CGFloat height = [stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        return height;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath section] == 0) {
         [self performSegueWithIdentifier:HNCommentsToWebSegueIdentifier sender:indexPath];
